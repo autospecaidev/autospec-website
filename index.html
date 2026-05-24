@@ -1,6 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0NRRFTHJRV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  // Respect cookie consent — default denied until user accepts
+  gtag('consent', 'default', {
+    'analytics_storage': 'denied',
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied'
+  });
+  gtag('config', 'G-0NRRFTHJRV');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AutoSpec.ai — Autonomous AI Agents for Food Specification Management</title>
@@ -717,6 +732,38 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
   .hero-actions { flex-direction: column; gap: 10px; }
   .hero-actions .btn { width: 100%; justify-content: center; }
 }
+
+/* ── GDPR COOKIE BANNER ── */
+.cookie-bar {
+  position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+  background: var(--bg-dark); color: #fff;
+  border-radius: var(--radius-lg); padding: 18px 22px;
+  display: flex; flex-direction: column; gap: 14px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  z-index: 9998; max-width: 560px; width: calc(100% - 32px);
+}
+.cookie-content { display: flex; gap: 12px; align-items: flex-start; }
+.cookie-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+.cookie-text strong { font-size: 13.5px; color: #fff; display: block; margin-bottom: 5px; font-family: var(--fd); }
+.cookie-text p { font-size: 12.5px; color: rgba(255,255,255,0.65); line-height: 1.6; margin: 0; }
+.cookie-text p a { color: #c990f0; text-decoration: underline; }
+.cookie-btns { display: flex; gap: 8px; justify-content: flex-end; }
+.cookie-bar.hidden { display: none; }
+
+/* ── PRIVACY POLICY MODAL ── */
+.privacy-section { margin-bottom: 20px; }
+.privacy-section h4 { font-family: var(--fd); font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+.privacy-section p { font-size: 13.5px; color: var(--muted); line-height: 1.7; }
+.privacy-section ul { list-style: none; margin: 8px 0; padding: 0; }
+.privacy-section ul li { font-size: 13.5px; color: var(--muted); padding: 4px 0 4px 18px; position: relative; line-height: 1.6; }
+.privacy-section ul li::before { content: '→'; position: absolute; left: 0; color: var(--pri); font-weight: 700; }
+.privacy-section code { font-family: var(--font-mono, monospace); font-size: 11.5px; background: var(--bg-2); padding: 2px 6px; border-radius: 4px; }
+
+@media(max-width:480px) {
+  .cookie-bar { flex-direction: column; bottom: 12px; }
+  .cookie-btns { justify-content: stretch; }
+  .cookie-btns .btn { flex: 1; justify-content: center; }
+}
 </style>
 </head>
 <body>
@@ -1367,17 +1414,23 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
     </div>
     <div class="foot-bottom">
       <span>© 2025 AutoSpec.ai · All rights reserved · Built for the future of food &amp; beverage.</span>
-      <div class="foot-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookie Policy</a></div>
+      <div class="foot-links"><a href="#" onclick="openPrivacyModal();return false;">Privacy Policy</a><a href="#" onclick="openPrivacyModal();return false;">Cookie Policy</a><a href="mailto:info@autospec.ai">Contact</a></div>
     </div>
   </div>
 </footer>
 
 <!-- COOKIE BANNER -->
 <div class="cookie-bar" id="cookieBar">
-  <p>We use cookies to improve your experience and collect analytics. By continuing, you agree to our <a href="#">Cookie Policy</a> and <a href="#">Privacy Policy</a>.</p>
+  <div class="cookie-content">
+    <div class="cookie-icon">🍪</div>
+    <div class="cookie-text">
+      <strong>We value your privacy</strong>
+      <p>We use analytics cookies to understand how visitors use autospec.ai — helping us improve the experience. We do not sell your data or use it for advertising. You can choose to accept or decline below. <a href="#" onclick="openPrivacyModal();return false;">Privacy Policy</a></p>
+    </div>
+  </div>
   <div class="cookie-btns">
     <button class="btn btn-outline btn-sm" onclick="rejectCookies()">Decline</button>
-    <button class="btn btn-primary btn-sm" onclick="acceptCookies()">Accept</button>
+    <button class="btn btn-primary btn-sm" onclick="acceptCookies()">Accept analytics</button>
   </div>
 </div>
 
@@ -1510,20 +1563,102 @@ function submitModal() {
   });
 }
 
+// Privacy modal
+function openPrivacyModal() { document.getElementById('privacyModal').classList.add('open'); }
+function closePrivacyModal() { document.getElementById('privacyModal').classList.remove('open'); }
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closePrivacyModal(); });
+
 // Cookie banner
 function acceptCookies() {
   try { localStorage.setItem('cookieChoice', 'accepted'); } catch(e) {}
   document.getElementById('cookieBar').classList.add('hidden');
+  if (typeof gtag !== 'undefined') {
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+  }
 }
 function rejectCookies() {
   try { localStorage.setItem('cookieChoice', 'rejected'); } catch(e) {}
   document.getElementById('cookieBar').classList.add('hidden');
 }
 try {
-  if (localStorage.getItem('cookieChoice')) {
+  var choice = localStorage.getItem('cookieChoice');
+  if (choice) {
     document.getElementById('cookieBar').classList.add('hidden');
+    if (choice === 'accepted' && typeof gtag !== 'undefined') {
+      gtag('consent', 'update', { 'analytics_storage': 'granted' });
+    }
   }
 } catch(e) {}
 </script>
+
+<!-- PRIVACY POLICY MODAL -->
+<div class="modal-overlay" id="privacyModal">
+  <div class="modal-box" style="max-width:640px;max-height:80vh;overflow-y:auto">
+    <button class="modal-close" onclick="closePrivacyModal()">✕</button>
+    <div class="sec-tag" style="margin-bottom:6px">Legal</div>
+    <h3>Privacy Policy</h3>
+    <p style="font-size:12px;color:var(--faint);margin-bottom:20px">Last updated: May 2025</p>
+
+    <div class="privacy-section">
+      <h4>1. Who we are</h4>
+      <p>AutoSpec.ai is an AI-powered food specification management platform. References to "we", "us" or "our" refer to AutoSpec.ai. Our contact email is <a href="mailto:info@autospec.ai" style="color:var(--pri)">info@autospec.ai</a>.</p>
+    </div>
+
+    <div class="privacy-section">
+      <h4>2. What data we collect</h4>
+      <p>When you visit autospec.ai we may collect the following information, only with your consent:</p>
+      <ul>
+        <li>Pages visited and time spent on each page</li>
+        <li>Your approximate country and city (not precise location)</li>
+        <li>Device type, browser, and operating system</li>
+        <li>How you arrived at our site (e.g. search engine, direct link)</li>
+      </ul>
+      <p>When you submit a demo or quote request we collect your name, work email address, company name, and any message you choose to include.</p>
+    </div>
+
+    <div class="privacy-section">
+      <h4>3. How we use your data</h4>
+      <p>Analytics data is used solely to understand how visitors use our website so we can improve it. Contact form data is used only to respond to your enquiry. We do not use your data for advertising, profiling, or automated decision-making.</p>
+    </div>
+
+    <div class="privacy-section">
+      <h4>4. Legal basis (GDPR)</h4>
+      <p>For analytics cookies we rely on your <strong>consent</strong> (Article 6(1)(a) GDPR). You may withdraw consent at any time by clicking "Decline" in the cookie banner or clearing your browser cookies. For contact form submissions we rely on <strong>legitimate interests</strong> (Article 6(1)(f) GDPR) to respond to your enquiry.</p>
+    </div>
+
+    <div class="privacy-section">
+      <h4>5. Third-party services</h4>
+      <p><strong>Google Analytics 4</strong> — used to analyse website traffic. Data is processed by Google LLC. Google may transfer data outside the EEA under Standard Contractual Clauses. Analytics only activates with your consent. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color:var(--pri)">Google Privacy Policy →</a></p>
+      <p style="margin-top:8px"><strong>Formspree</strong> — used to receive contact form submissions. Your form data is transmitted securely to Formspree and forwarded to our team email. <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener" style="color:var(--pri)">Formspree Privacy Policy →</a></p>
+    </div>
+
+    <div class="privacy-section">
+      <h4>6. Data retention</h4>
+      <p>Analytics data is retained for 14 months (Google Analytics default). Contact form enquiries are retained in our email for as long as necessary to respond and for legitimate business record-keeping.</p>
+    </div>
+
+    <div class="privacy-section">
+      <h4>7. Your rights under GDPR</h4>
+      <p>If you are in the EEA or UK, you have the right to: access your personal data, request correction or deletion, object to processing, withdraw consent at any time, and lodge a complaint with your local data protection authority. To exercise any right, email <a href="mailto:info@autospec.ai" style="color:var(--pri)">info@autospec.ai</a>.</p>
+    </div>
+
+    <div class="privacy-section">
+      <h4>8. Cookies we use</h4>
+      <p><strong>Strictly necessary:</strong> A single cookie (<code>cookieChoice</code>) stored in your browser to remember your consent preference. No expiry — persists until you clear your browser data.</p>
+      <p style="margin-top:8px"><strong>Analytics (with consent only):</strong> Google Analytics sets cookies (<code>_ga</code>, <code>_ga_*</code>) to distinguish unique visitors and sessions. These expire after 2 years and 24 hours respectively.</p>
+    </div>
+
+    <div class="privacy-section">
+      <h4>9. Contact</h4>
+      <p>For any privacy-related questions, email us at <a href="mailto:info@autospec.ai" style="color:var(--pri)">info@autospec.ai</a>. We aim to respond within 5 business days.</p>
+    </div>
+
+    <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn btn-primary btn-sm" onclick="acceptCookies();closePrivacyModal()">Accept analytics</button>
+      <button class="btn btn-outline btn-sm" onclick="rejectCookies();closePrivacyModal()">Decline analytics</button>
+      <button class="btn btn-outline btn-sm" onclick="closePrivacyModal()">Close</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
