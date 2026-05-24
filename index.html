@@ -77,17 +77,17 @@ nav.scrolled { background: rgba(249,248,252,0.96); border-color: var(--border); 
 .mob-close { position: absolute; top: 18px; right: 22px; font-size: 26px; cursor: pointer; color: var(--muted); background: none; border: none; }
 
 /* ── HERO ── */
-.hero { padding: 140px 0 80px; position: relative; overflow: hidden; }
+.hero { padding: 110px 0 48px; position: relative; overflow: hidden; min-height: 100vh; display: flex; align-items: center; }
 .hero-bg { position: absolute; inset: 0; background: linear-gradient(160deg, #f9f8fc 45%, #f0e8fb 100%); z-index: 0; }
 .hero-blob { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0; }
 .hero-blob-1 { width: 500px; height: 400px; background: rgba(168,85,212,0.1); top: -80px; right: -80px; }
 .hero-blob-2 { width: 350px; height: 350px; background: rgba(192,32,176,0.07); bottom: -60px; left: -60px; }
-.hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; width: 100%; margin-top: 24px; }
 .hero-tag { display: inline-flex; align-items: center; gap: 8px; padding: 5px 14px; border-radius: var(--pill); background: linear-gradient(130deg, rgba(139,53,200,0.08), rgba(192,32,176,0.05)); border: 1px solid var(--border); font-size: 12px; font-weight: 600; color: var(--pri); margin-bottom: 22px; letter-spacing: 0.04em; }
 .hero-tag .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--mag); animation: pulse 2.2s infinite; }
 @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.72)} }
 .hero h1 { font-size: clamp(36px, 4.8vw, 58px); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 18px; color: var(--text); line-height: 1.1; }
-.hero-sub { font-size: clamp(15px, 1.8vw, 17px); color: var(--muted); margin-bottom: 14px; line-height: 1.75; }
+.hero-sub { font-size: clamp(14px, 1.5vw, 15.5px); color: var(--muted); margin-bottom: 12px; line-height: 1.7; }
 .hero-tagline { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--pri); margin-bottom: 30px; padding: 5px 12px; background: var(--pri-glow); border-radius: var(--pill); }
 .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px; }
 .hero-trust { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
@@ -402,7 +402,7 @@ h1,h2,h3,h4 { letter-spacing: -0.02em; }
 .stat-num { font-size: 44px; font-weight: 700; }
 
 /* ── RALEWAY FONT TUNING (elegant geometric sans, lighter feel) ── */
-.hero h1 { font-size: clamp(38px, 5vw, 64px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
+.hero h1 { font-size: clamp(32px, 4.2vw, 54px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
 .hero-kicker { font-family: var(--fd); font-size: clamp(17px, 2vw, 22px); font-style: normal; font-weight: 500; color: var(--pri); margin-bottom: 18px; margin-top: -6px; letter-spacing: 0.01em; }
 .sec-head { font-size: clamp(28px, 3.8vw, 48px); font-weight: 700; letter-spacing: -0.01em; }
 .how-card h3 { font-size: 21px; font-weight: 600; letter-spacing: -0.01em; }
@@ -446,7 +446,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
   box-shadow: var(--shadow-lg), 0 0 0 1px rgba(139,53,200,0.04);
   overflow: hidden;
   font-family: var(--fb);
-  max-height: 480px;
+  max-height: calc(100vh - 160px);
   display: flex;
   flex-direction: column;
 }
@@ -675,6 +675,50 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
   margin-right: 5px;
 }
 .app-logo-dot { color: var(--mag); }
+
+/* ── PRICING REFRESH ── */
+.price-accent-line {
+  width: 36px; height: 3px;
+  background: linear-gradient(90deg, var(--pri), var(--mag));
+  border-radius: 2px;
+  margin-bottom: 18px;
+}
+.price-card.featured {
+  background: var(--bg-dark);
+  border-color: transparent;
+}
+.price-signal {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 12px 14px;
+  margin-bottom: 20px;
+}
+.price-signal-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--faint);
+  margin-bottom: 4px;
+}
+.price-signal-text {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.pricing-footnote {
+  text-align: center;
+  font-size: 13px;
+  color: var(--faint);
+  margin-top: 40px;
+  letter-spacing: 0.01em;
+}
+/* Hero above-fold fix */
+.hero > .container { width: 100%; }
+@media (max-width: 920px) {
+  .hero { min-height: auto; padding: 100px 0 48px; }
+}
 </style>
 </head>
 <body>
@@ -741,7 +785,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
           <!-- App top nav -->
           <div class="app-nav">
             <div class="app-nav-left">
-              <span class="app-logo-text"><span class="app-logo-a">A</span>utospec<span class="app-logo-dot">.ai</span></span>
+              <img src="autospec-logo.png" alt="AutoSpec.ai" style="height:22px;width:auto;display:block;">
               <button class="app-hamburger">☰</button>
             </div>
             <div class="app-search">
@@ -800,7 +844,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
                     </div>
                     <div class="app-info-item">
                       <div class="app-info-key">Description:</div>
-                      <div class="app-info-val">Ventura Foods Classic Mayonnaise</div>
+                      <div class="app-info-val">Classic Mayonnaise</div>
                     </div>
                     <div class="app-info-item">
                       <div class="app-info-key">Category:</div>
@@ -812,7 +856,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
                     </div>
                     <div class="app-info-item">
                       <div class="app-info-key">Supplier:</div>
-                      <div class="app-info-val">New York Clothing</div>
+                      <div class="app-info-val">New City Ingredients</div>
                     </div>
                   </div>
                 </div>
@@ -1091,74 +1135,88 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
 <section class="pricing" id="pricing">
   <div class="container">
     <div class="pricing-head reveal">
-      <div class="sec-tag">Outcome-based pricing</div>
-      <h2 class="sec-head">You pay for results, not seats</h2>
+      <div class="sec-tag">AI-Powered Ingredient Spec Platform</div>
+      <h2 class="sec-head">What you get at every level</h2>
     </div>
-    <p class="pricing-intro reveal" style="transition-delay:0.1s">We believe pricing should reflect the value you receive. AutoSpec.ai is priced on the outcomes we deliver — efficiency gained, errors eliminated, and time saved — not the number of users or a flat monthly fee. Contact us for a tailored quote based on your product portfolio and use case.</p>
+    <p class="pricing-intro reveal" style="transition-delay:0.1s">Three tiers built around outcomes — not seats, not storage. You pay only when value is delivered.</p>
+
     <div class="pricing-grid">
 
+      <!-- CONNECT -->
       <div class="price-card reveal">
-        <div class="price-tier">For growing brands</div>
-        <div class="price-name">Essentials</div>
-        <div class="price-desc">Start-ups and emerging brands ready to replace spreadsheet chaos with structured, AI-powered specification management.</div>
+        <div class="price-accent-line"></div>
+        <div class="price-tier">Entry</div>
+        <div class="price-name">Connect</div>
+        <div class="price-desc">Small suppliers &amp; emerging brands entering the network for the first time.</div>
         <div class="price-outcome">
-          <div class="po-label">Pricing model</div>
-          <div class="po-value">Per spec generated</div>
-          <div class="po-note">Pay only for what you create — no idle seat fees</div>
+          <div class="po-label">Outcome Unit</div>
+          <div class="po-value">Per accepted spec translation</div>
         </div>
         <ul class="price-feats">
-          <li><span class="ck">✓</span> Ingredient &amp; formula management</li>
-          <li><span class="ck">✓</span> Nutritional &amp; allergen roll-up</li>
-          <li><span class="ck">✓</span> PDF &amp; Excel export</li>
-          <li><span class="ck">✓</span> UK &amp; EU regulatory pack</li>
-          <li><span class="ck">✓</span> Natural language search</li>
+          <li><span class="ck">✓</span> Up to 3 active buyer connections</li>
+          <li><span class="ck">✓</span> 10 free spec translations per month</li>
+          <li><span class="ck">✓</span> Any-format ingest — PDF, Excel, image</li>
+          <li><span class="ck">✓</span> Basic compliance flag alerts</li>
         </ul>
+        <div class="price-signal">
+          <div class="price-signal-label">Growth Signal</div>
+          <div class="price-signal-text">More than 3 buyer connections or 50+ specs per month</div>
+        </div>
         <button class="btn btn-outline price-cta" onclick="openModal()">Get a Quote →</button>
       </div>
 
+      <!-- NETWORK -->
       <div class="price-card featured reveal" style="transition-delay:0.12s">
         <div class="feat-badge">Most Popular</div>
-        <div class="price-tier">For scaling operations</div>
-        <div class="price-name">Professional</div>
-        <div class="price-desc">Mid-market food brands and manufacturers managing complex supplier networks and multiple product lines.</div>
-        <div class="price-outcome">
-          <div class="po-label">Pricing model</div>
-          <div class="po-value">Per outcome bundle</div>
-          <div class="po-note">Volume bundles based on spec throughput and data integrations</div>
+        <div class="price-accent-line" style="background:linear-gradient(90deg,var(--pri-lt),var(--mag))"></div>
+        <div class="price-tier" style="color:#c990f0">Growth</div>
+        <div class="price-name" style="color:#fff">Network</div>
+        <div class="price-desc" style="color:rgba(255,255,255,0.65)">Mid-size brands &amp; multi-customer suppliers acting as network hubs.</div>
+        <div class="price-outcome" style="background:rgba(255,255,255,0.07);border-color:rgba(255,255,255,0.12)">
+          <div class="po-label" style="color:rgba(255,255,255,0.5)">Outcome Unit</div>
+          <div class="po-value" style="color:#fff">Per active connection + volume bands</div>
         </div>
         <ul class="price-feats">
-          <li><span class="ck">✓</span> Everything in Essentials</li>
-          <li><span class="ck">✓</span> Specs automation &amp; packaging intelligence</li>
-          <li><span class="ck">✓</span> Alcohol calculations &amp; label compliance</li>
-          <li><span class="ck">✓</span> Multi-supplier data ingestion</li>
-          <li><span class="ck">✓</span> Real-time regulatory monitoring</li>
-          <li><span class="ck">✓</span> Collaborative review &amp; approvals</li>
-          <li><span class="ck">✓</span> Supplier portal push</li>
+          <li style="color:rgba(255,255,255,0.8)"><span class="ck" style="color:#c990f0">✓</span> Unlimited active connections</li>
+          <li style="color:rgba(255,255,255,0.8)"><span class="ck" style="color:#c990f0">✓</span> 200 included spec translations per month</li>
+          <li style="color:rgba(255,255,255,0.8)"><span class="ck" style="color:#c990f0">✓</span> Supplier-to-supplier data sharing</li>
+          <li style="color:rgba(255,255,255,0.8)"><span class="ck" style="color:#c990f0">✓</span> Compliance scoring dashboard</li>
+          <li style="color:rgba(255,255,255,0.8)"><span class="ck" style="color:#c990f0">✓</span> Bi-directional format mapping</li>
         </ul>
-        <button class="btn btn-primary price-cta" onclick="openModal()">Get a Quote →</button>
+        <div class="price-signal" style="background:rgba(255,255,255,0.07);border-color:rgba(255,255,255,0.1)">
+          <div class="price-signal-label" style="color:rgba(255,255,255,0.5)">Growth Signal</div>
+          <div class="price-signal-text" style="color:rgba(255,255,255,0.75)">500+ specs per month or anchor buyer mandate</div>
+        </div>
+        <button class="btn btn-white price-cta" onclick="openModal()">Get a Quote →</button>
       </div>
 
+      <!-- PLATFORM -->
       <div class="price-card reveal" style="transition-delay:0.24s">
-        <div class="price-tier">For enterprises &amp; co-mans</div>
-        <div class="price-name">Enterprise</div>
-        <div class="price-desc">Large manufacturers, co-packers, and Fortune 500 food companies with complex PLM, ERP and QMS integration needs.</div>
+        <div class="price-accent-line" style="background:linear-gradient(90deg,#6330a8,#9040c8)"></div>
+        <div class="price-tier">Enterprise</div>
+        <div class="price-name">Platform</div>
+        <div class="price-desc">Large CPG &amp; foodservice anchors managing 100s of supply chain nodes.</div>
         <div class="price-outcome">
-          <div class="po-label">Pricing model</div>
-          <div class="po-value">Value-share model</div>
-          <div class="po-note">Priced against measurable efficiency gains and cost reductions</div>
+          <div class="po-label">Outcome Unit</div>
+          <div class="po-value">SLA-backed acceptance rate &amp; compliance %</div>
         </div>
         <ul class="price-feats">
-          <li><span class="ck">✓</span> Everything in Professional</li>
-          <li><span class="ck">✓</span> ERP integration (SAP, Oracle, Sage)</li>
-          <li><span class="ck">✓</span> PLM &amp; QMS connectors</li>
-          <li><span class="ck">✓</span> Custom regulatory frameworks</li>
-          <li><span class="ck">✓</span> SSO &amp; SCIM provisioning</li>
-          <li><span class="ck">✓</span> Dedicated Customer Success Manager</li>
+          <li><span class="ck">✓</span> Unlimited network nodes</li>
+          <li><span class="ck">✓</span> Guaranteed spec acceptance SLA ≥98%</li>
+          <li><span class="ck">✓</span> White-label supplier onboarding</li>
+          <li><span class="ck">✓</span> Regulatory &amp; allergen compliance engine</li>
+          <li><span class="ck">✓</span> ERP / PLM integration connectors</li>
+          <li><span class="ck">✓</span> Dedicated customer success</li>
         </ul>
+        <div class="price-signal" style="background:rgba(99,48,168,0.06);border-color:rgba(99,48,168,0.15)">
+          <div class="price-signal-label" style="color:var(--pri)">Network Effect</div>
+          <div class="price-signal-text">Anchor buyer joins — suppliers auto-onboard to the platform</div>
+        </div>
         <button class="btn btn-outline price-cta" onclick="openModal()">Contact Sales →</button>
       </div>
 
     </div>
+    <p class="pricing-footnote reveal">Outcome-based pricing · No seats · No storage charges · You pay only when value is delivered</p>
   </div>
 </section>
 
@@ -1358,73 +1416,116 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
 
 <script>
 // Nav scroll
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>24));
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', function() {
+  nav.classList.toggle('scrolled', window.scrollY > 24);
+});
 
 // Mobile menu
-const hamburger=document.getElementById('hamburger'),mobMenu=document.getElementById('mobMenu'),mobClose=document.getElementById('mobClose');
-hamburger.addEventListener('click',()=>mobMenu.classList.add('open'));
-mobClose.addEventListener('click',()=>mobMenu.classList.remove('open'));
-document.querySelectorAll('.mob-link').forEach(l=>l.addEventListener('click',()=>mobMenu.classList.remove('open')));
+const hamburger = document.getElementById('hamburger');
+const mobMenu   = document.getElementById('mobMenu');
+const mobClose  = document.getElementById('mobClose');
+hamburger.addEventListener('click', function() { mobMenu.classList.add('open'); });
+mobClose.addEventListener('click',  function() { mobMenu.classList.remove('open'); });
+document.querySelectorAll('.mob-link').forEach(function(l) {
+  l.addEventListener('click', function() { mobMenu.classList.remove('open'); });
+});
 
-// Reveal on scroll
-const reveals=document.querySelectorAll('.reveal');
-const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:0.08});
-reveals.forEach(el=>obs.observe(el));
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window) {
+  const obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(function(el) { obs.observe(el); });
+} else {
+  reveals.forEach(function(el) { el.classList.add('visible'); });
+}
 
-// FAQ
-document.querySelectorAll('.faq-q').forEach(btn=>btn.addEventListener('click',()=>{
-  const item=btn.parentElement,isOpen=item.classList.contains('open');
-  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
-  if(!isOpen)item.classList.add('open');
-}));
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var item   = btn.parentElement;
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(function(i) {
+      i.classList.remove('open');
+    });
+    if (!isOpen) item.classList.add('open');
+  });
+});
 
-// Modal
-function openModal(){document.getElementById('demoModal').classList.add('open')}
-function closeModal(){document.getElementById('demoModal').classList.remove('open')}
-document.getElementById('demoModal').addEventListener('click',function(e){if(e.target===this)closeModal()});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
-function async submitModal(){
-  const name=document.getElementById('mName').value.trim();
-  const email=document.getElementById('mEmail').value.trim();
-  const company=document.getElementById('mCompany').value.trim();
-  const type=document.getElementById('mType').value;
-  const msg=document.querySelector('#modalForm textarea').value.trim();
-  const emailInput=document.getElementById('mEmail');
-  if(!email||!email.includes('@')){
-    emailInput.style.borderColor='#c05050';
-    emailInput.placeholder='Please enter a valid email';
+// Modal open / close
+function openModal() {
+  document.getElementById('demoModal').classList.add('open');
+}
+function closeModal() {
+  document.getElementById('demoModal').classList.remove('open');
+}
+document.getElementById('demoModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
+
+// Form submit → Formspree
+function submitModal() {
+  var name    = document.getElementById('mName').value.trim();
+  var email   = document.getElementById('mEmail').value.trim();
+  var company = document.getElementById('mCompany').value.trim();
+  var type    = document.getElementById('mType').value;
+  var msg     = document.querySelector('#modalForm textarea').value.trim();
+  var emailInput = document.getElementById('mEmail');
+
+  if (!email || email.indexOf('@') === -1) {
+    emailInput.style.borderColor = '#c05050';
+    emailInput.placeholder = 'Please enter a valid email';
     return;
   }
-  emailInput.style.borderColor='';
-  const btn=document.querySelector('#modalForm .btn-primary');
-  btn.textContent='Sending...';
-  btn.disabled=true;
-  try{
-    const res=await fetch('https://formspree.io/f/xnjrzgga',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body:JSON.stringify({Name:name,Email:email,Company:company,Type:type,Message:msg})
-    });
-    if(res.ok){
-      document.getElementById('modalForm').style.display='none';
-      document.getElementById('modalSuccess').style.display='block';
+  emailInput.style.borderColor = '';
+
+  var btn = document.querySelector('#modalForm .btn-primary');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+
+  fetch('https://formspree.io/f/xnjrzgga', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({ Name: name, Email: email, Company: company, Type: type, Message: msg })
+  })
+  .then(function(res) {
+    if (res.ok) {
+      document.getElementById('modalForm').style.display = 'none';
+      document.getElementById('modalSuccess').style.display = 'block';
     } else {
-      btn.textContent='Send Request →';
-      btn.disabled=false;
-      alert('Something went wrong. Please email us at info@autospec.ai');
+      btn.textContent = 'Send Request →';
+      btn.disabled = false;
+      alert('Something went wrong. Please email info@autospec.ai directly.');
     }
-  }catch(e){
-    btn.textContent='Send Request →';
-    btn.disabled=false;
-    alert('Something went wrong. Please email us at info@autospec.ai');
-  }
+  })
+  .catch(function() {
+    btn.textContent = 'Send Request →';
+    btn.disabled = false;
+    alert('Something went wrong. Please email info@autospec.ai directly.');
+  });
 }
 
 // Cookie banner
-if(localStorage.getItem('cookieChoice')){document.getElementById('cookieBar').classList.add('hidden')}
-function acceptCookies(){localStorage.setItem('cookieChoice','accepted');document.getElementById('cookieBar').classList.add('hidden')}
-function rejectCookies(){localStorage.setItem('cookieChoice','rejected');document.getElementById('cookieBar').classList.add('hidden')}
+function acceptCookies() {
+  try { localStorage.setItem('cookieChoice', 'accepted'); } catch(e) {}
+  document.getElementById('cookieBar').classList.add('hidden');
+}
+function rejectCookies() {
+  try { localStorage.setItem('cookieChoice', 'rejected'); } catch(e) {}
+  document.getElementById('cookieBar').classList.add('hidden');
+}
+try {
+  if (localStorage.getItem('cookieChoice')) {
+    document.getElementById('cookieBar').classList.add('hidden');
+  }
+} catch(e) {}
 </script>
 </body>
 </html>
