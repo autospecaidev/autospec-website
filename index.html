@@ -26,7 +26,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg:        #f9f8fc;
@@ -92,12 +92,12 @@ nav.scrolled { background: rgba(249,248,252,0.96); border-color: var(--border); 
 .mob-close { position: absolute; top: 18px; right: 22px; font-size: 26px; cursor: pointer; color: var(--muted); background: none; border: none; }
 
 /* ── HERO ── */
-.hero { padding: 110px 0 56px; position: relative; overflow: hidden; min-height: 100vh; display: flex; align-items: center; }
+.hero { padding: 100px 0 60px; position: relative; overflow: hidden; min-height: 100vh; display: flex; align-items: flex-start; }
 .hero-bg { position: absolute; inset: 0; background: linear-gradient(160deg, #f9f8fc 45%, #f0e8fb 100%); z-index: 0; }
 .hero-blob { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0; }
 .hero-blob-1 { width: 500px; height: 400px; background: rgba(168,85,212,0.1); top: -80px; right: -80px; }
 .hero-blob-2 { width: 350px; height: 350px; background: rgba(192,32,176,0.07); bottom: -60px; left: -60px; }
-.hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; width: 100%; }
+.hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 5fr 7fr; gap: 40px; align-items: start; width: 100%; }
 .hero-tag { display: inline-flex; align-items: center; gap: 8px; padding: 5px 14px; border-radius: var(--pill); background: linear-gradient(130deg, rgba(139,53,200,0.08), rgba(192,32,176,0.05)); border: 1px solid var(--border); font-size: 12px; font-weight: 600; color: var(--pri); margin-bottom: 22px; letter-spacing: 0.04em; }
 .hero-tag .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--mag); animation: pulse 2.2s infinite; }
 @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.72)} }
@@ -348,33 +348,8 @@ footer { background: #fff; border-top: 1px solid var(--border); padding: 60px 0 
 .modal-success p { font-size: 13.5px; }
 
 /* ── RESPONSIVE ── */
-@media(max-width:920px) {
-  .nav-links,.nav-actions{display:none}
-  .hamburger{display:flex}
-  .hero { min-height: auto; padding: 90px 0 48px; }
-  .hero-inner { grid-template-columns: 1fr; gap: 32px; }
-  .app-shell { max-height: 420px; }
-  .problem-grid,.faq-grid,.team-grid,.foot-grid{grid-template-columns:1fr;gap:36px}
-  .how-grid,.aud-grid,.cap-grid,.test-grid,.rm-track{grid-template-columns:1fr}
-  .pricing-grid{grid-template-columns:1fr}
-  .price-card.featured{transform:none}
-  .stats-grid{grid-template-columns:repeat(2,1fr)}
-  .stat-item{border-right:none;border-bottom:1px solid var(--border)}
-  .impact-grid{grid-template-columns:1fr}
-  .cta-card{padding:48px 24px}
-  .foot-grid{grid-template-columns:1fr 1fr}
-  .team-stat-row{grid-template-columns:repeat(3,1fr)}
-}
-@media(max-width:480px) {
-  .hero h1{font-size:34px}
-  .hero-actions{flex-direction:column}
-  .stats-grid{grid-template-columns:1fr 1fr}
-  .foot-grid{grid-template-columns:1fr}
-  .foot-bottom{flex-direction:column;align-items:flex-start}
-  .container{padding:0 16px}
-  .cta-actions{flex-direction:column;align-items:center}
-  .team-stat-row{grid-template-columns:1fr 1fr}
-}
+
+
 
 /* ── HERO KICKER & PROOF ROW ── */
 .hero-kicker {
@@ -439,9 +414,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
 .test-cta-row { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 48px; }
 .test-ref-note { font-size: 17px; font-weight: 600; color: var(--text-2); font-family: var(--fd); letter-spacing: -0.01em; }
 
-@media(max-width:920px) {
-  .test-grid { grid-template-columns: 1fr; }
-}
+
 
 /* ── REAL APP UI MOCKUP ── */
 .app-shell {
@@ -451,7 +424,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
   box-shadow: var(--shadow-lg), 0 0 0 1px rgba(139,53,200,0.04);
   overflow: hidden;
   font-family: var(--fb);
-  max-height: 520px;
+  max-height: calc(100vh - 160px);
   display: flex;
   flex-direction: column;
 }
@@ -721,17 +694,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
 }
 
 /* ── MOBILE HERO FIX ── */
-@media (max-width: 480px) {
-  .hero { padding: 82px 0 40px; }
-  .hero h1 { font-size: 30px; line-height: 1.12; }
-  .hero-kicker { font-size: 16px; }
-  .hero-sub { font-size: 14px; }
-  .hero-proof-row { gap: 6px; }
-  .hero-proof-item { font-size: 12px; }
-  .app-shell { max-height: 380px; }
-  .hero-actions { flex-direction: column; gap: 10px; }
-  .hero-actions .btn { width: 100%; justify-content: center; }
-}
+
 
 /* ── GDPR COOKIE BANNER ── */
 .cookie-bar {
@@ -759,10 +722,1265 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
 .privacy-section ul li::before { content: '→'; position: absolute; left: 0; color: var(--pri); font-weight: 700; }
 .privacy-section code { font-family: var(--font-mono, monospace); font-size: 11.5px; background: var(--bg-2); padding: 2px 6px; border-radius: 4px; }
 
-@media(max-width:480px) {
-  .cookie-bar { flex-direction: column; bottom: 12px; }
+
+
+/* ══════════════════════════════════════════
+   SPEC CONVERSION HERO UI
+═══════════════════════════════════════════ */
+.conv-shell {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(139,53,200,0.04);
+  overflow: hidden;
+  font-family: var(--fb);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top bar */
+.conv-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 14px;
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.conv-dot { width: 9px; height: 9px; border-radius: 50%; }
+.conv-dot.r{background:#ff5f57}
+.conv-dot.y{background:#febc2e}
+.conv-dot.g{background:#28c840}
+.conv-title { font-size: 11px; color: var(--faint); margin-left: 6px; font-weight: 500; flex: 1; }
+.conv-badge { font-size: 9.5px; font-weight: 700; padding: 2px 8px; background: linear-gradient(130deg,var(--pri),var(--mag)); color: #fff; border-radius: 99px; letter-spacing: 0.04em; }
+
+/* Body: three columns */
+.conv-body {
+  display: grid;
+  grid-template-columns: 1fr 68px 1fr;
+  gap: 0;
+  min-height: 480px;
+  max-height: calc(100vh - 200px);
+  overflow: hidden;
+}
+
+/* Panel labels */
+.conv-panel { display: flex; flex-direction: column; overflow: hidden; }
+.conv-panel-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--faint);
+  padding: 8px 12px 6px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  flex-shrink: 0;
+}
+.conv-panel-icon { font-size: 12px; }
+.conv-live-badge {
+  margin-left: auto;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 1px 7px;
+  background: rgba(40,180,100,0.12);
+  color: #198051;
+  border-radius: 99px;
+  animation: livepulse 1.8s infinite;
+}
+@keyframes livepulse { 0%,100%{opacity:1}50%{opacity:0.5} }
+
+/* LEFT — handwritten doc */
+.left-panel { border-right: 1px solid var(--border); }
+.handwritten-doc {
+  flex: 1;
+  padding: 10px 12px 10px 38px;
+  overflow-y: auto;
+  position: relative;
+  background-color: #fdf9f0;
+  background-image:
+    linear-gradient(#e8e0d0 1px, transparent 1px),
+    linear-gradient(90deg, #f5a0a0 1px, transparent 1px);
+  background-size: 100% 20px, 100% 100%;
+  background-position: 0 28px, 30px 0;
+  scrollbar-width: thin;
+  scrollbar-color: #d4c8a8 transparent;
+  font-family: 'Caveat', cursive;
+}
+/* Red margin line */
+.handwritten-doc::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 32px; bottom: 0;
+  width: 1px;
+  background: rgba(220, 80, 80, 0.35);
+  pointer-events: none;
+}
+.hw-title {
+  font-family: 'Caveat', cursive;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1060;
+  margin-bottom: 6px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid #1a1060;
+  letter-spacing: 0.01em;
+  transform: rotate(-0.4deg);
+  display: inline-block;
+}
+.hw-line {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  font-size: 13.5px;
+  margin-bottom: 0px;
+  line-height: 1.5;
+  color: #1c1848;
+}
+.hw-line.sm {
+  font-size: 13px;
+  color: #2a2466;
+}
+.hw-key {
+  font-weight: 600;
+  color: #1c1848;
+  font-size: 13.5px;
+  flex-shrink: 0;
+}
+.hw-val { color: #2a2466; }
+.hw-note {
+  color: #7060a0;
+  font-size: 13px;
+  font-style: italic;
+}
+.hw-bullet {
+  color: #8b35c8;
+  font-weight: 600;
+  flex-shrink: 0;
+  width: 14px;
+  font-size: 16px;
+}
+.hw-divider {
+  border: none;
+  border-top: 1px dashed #c4b898;
+  margin: 2px 0 1px;
+}
+.hw-section {
+  font-family: 'Caveat', cursive;
+  font-size: 12px;
+  font-weight: 600;
+  color: #8b35c8;
+  margin-bottom: 2px;
+  margin-top: 4px;
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-underline-offset: 3px;
+  letter-spacing: 0.03em;
+}
+.hw-stamp {
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%,-50%) rotate(-22deg);
+  font-family: 'Caveat', cursive;
+  font-size: 38px;
+  font-weight: 600;
+  color: rgba(200,50,50,0.12);
+  letter-spacing: 0.12em;
+  pointer-events: none;
+  border: 3px solid rgba(200,50,50,0.1);
+  padding: 4px 12px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+/* CENTRE — convert button */
+.conv-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 12px 0;
+  background: var(--bg);
+  border-right: 1px solid var(--border);
+}
+.conv-arrow-track {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.conv-arrow-line {
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, var(--border), transparent);
+}
+.conv-center-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+}
+.conv-try-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--pri);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  animation: trybounce 1.6s ease-in-out infinite;
+  white-space: nowrap;
+}
+.conv-try-arrow {
+  font-size: 14px;
+  animation: arrowbounce 1.6s ease-in-out infinite;
+  line-height: 1;
+}
+@keyframes trybounce {
+  0%,100%{opacity:1;transform:translateY(0)}
+  50%{opacity:0.6;transform:translateY(-2px)}
+}
+@keyframes arrowbounce {
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(3px)}
+}
+.conv-btn-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Pulsing ring around button */
+.conv-btn-wrap::before {
+  content: '';
+  position: absolute;
+  width: 68px; height: 68px;
+  border-radius: 50%;
+  border: 2px solid var(--pri);
+  opacity: 0;
+  animation: ringpulse 2s ease-out infinite;
+}
+.conv-btn-wrap::after {
+  content: '';
+  position: absolute;
+  width: 68px; height: 68px;
+  border-radius: 50%;
+  border: 2px solid var(--mag);
+  opacity: 0;
+  animation: ringpulse 2s ease-out infinite 1s;
+}
+@keyframes ringpulse {
+  0%   { width:52px; height:52px; opacity:0.7; }
+  100% { width:80px; height:80px; opacity:0; }
+}
+.conv-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--pri-lt), var(--mag));
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  box-shadow: 0 4px 16px rgba(139,53,200,0.35);
+  transition: all 0.2s;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.conv-btn:hover { transform: scale(1.1); box-shadow: 0 8px 24px rgba(139,53,200,0.45); }
+.conv-btn:active { transform: scale(0.96); }
+.conv-btn-icon { font-size: 20px; line-height: 1; }
+.conv-btn-text { font-size: 8px; font-weight: 700; color: #fff; text-align: center; line-height: 1.2; letter-spacing: 0.03em; }
+/* Tooltip */
+.conv-tooltip {
+  position: absolute;
+  bottom: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-dark);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 99px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.conv-btn-wrap:hover .conv-tooltip { opacity: 1; }
+.conv-tooltip::before {
+  content: '';
+  position: absolute;
+  top: -4px; left: 50%; transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-bottom-color: var(--bg-dark);
+  border-top: none;
+}
+
+/* RIGHT — structured output */
+.right-panel { }
+.conv-waiting {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+}
+.conv-waiting-icon { font-size: 32px; opacity: 0.4; }
+.conv-waiting-text { font-size: 12px; color: var(--faint); text-align: center; line-height: 1.6; }
+.conv-result { display: flex; flex-direction: column; flex: 1; overflow: hidden; }
+.conv-result-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: rgba(139,53,200,0.04);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.crh-name { font-size: 12.5px; font-weight: 700; color: var(--text); font-family: var(--fd); }
+.crh-code { font-size: 10px; color: var(--faint); background: var(--bg-2); padding: 2px 7px; border-radius: 99px; border: 1px solid var(--border); }
+
+/* Result tabs */
+.conv-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  background: #fff;
+}
+.conv-tab {
+  font-size: 10.5px;
+  font-weight: 500;
+  color: var(--muted);
+  padding: 6px 10px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.conv-tab:hover { color: var(--pri); }
+.conv-tab.active-ct { color: var(--pri); border-bottom-color: var(--pri); font-weight: 600; }
+
+/* Tab panels */
+.conv-tab-panel { flex: 1; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+.conv-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+.conv-table thead tr { background: var(--bg); position: sticky; top: 0; }
+.conv-table th { text-align: left; padding: 6px 10px; font-size: 9.5px; font-weight: 700; color: var(--faint); text-transform: uppercase; letter-spacing: 0.07em; border-bottom: 1px solid var(--border); }
+.conv-table td { padding: 6px 10px; color: var(--text); border-bottom: 1px solid rgba(139,53,200,0.05); }
+.conv-table tbody tr:hover td { background: rgba(139,53,200,0.02); }
+.cs { font-size: 11px; font-weight: 700; }
+.cs.ok { color: #198051; }
+.cs.warn { color: #8a5e00; background: rgba(251,188,5,0.1); padding: 1px 5px; border-radius: 4px; font-size: 10px; }
+.cs.info { color: var(--pri); background: var(--pri-glow); padding: 1px 5px; border-radius: 4px; font-size: 10px; }
+
+/* Info grid */
+.conv-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
+.conv-info-item { background: #fff; padding: 10px 12px; }
+.cii-key { font-size: 9.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--faint); margin-bottom: 3px; }
+.cii-val { font-size: 12px; color: var(--text); font-weight: 500; }
+
+/* Export actions */
+.conv-actions {
+  display: flex;
+  gap: 6px;
+  padding: 8px 10px;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+  flex-shrink: 0;
+}
+.conv-action-btn {
+  flex: 1;
+  padding: 5px 6px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--muted);
+  font-size: 9.5px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--fb);
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.conv-action-btn:hover { border-color: var(--pri); color: var(--pri); }
+.conv-action-btn.pri { background: linear-gradient(130deg,var(--pri),var(--mag)); color: #fff; border-color: transparent; }
+
+/* Status bar */
+.conv-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--faint);
+  background: var(--bg);
+  flex-shrink: 0;
+}
+.cs-dot {
+  width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
+}
+.cs-dot.idle { background: var(--faint); }
+.cs-dot.processing { background: #e8a000; animation: livepulse 0.8s infinite; }
+.cs-dot.done { background: #198051; }
+
+/* Processing animation */
+.conv-btn.processing { animation: spin 1s linear infinite; pointer-events: none; }
+@keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+
+/* Mobile: stack panels */
+
+
+
+/* ── HERO LEFT COLUMN COMPRESSION ── */
+.hero-tag { margin-bottom: 16px; }
+.hero h1 { margin-bottom: 10px; }
+.hero-kicker { margin-bottom: 10px; margin-top: -4px; }
+.hero-sub { margin-bottom: 14px; }
+.hero-proof-row { margin-bottom: 18px; }
+.hero-actions { margin-bottom: 18px; }
+.hero-tagline { font-size: 12px; }
+
+/* ════════════════════════════════════════
+   AUTHENTIC HANDWRITTEN DOC ELEMENTS
+════════════════════════════════════════ */
+
+/* Coffee ring stain */
+.hw-coffee-ring {
+  position: absolute;
+  top: 18px; right: 18px;
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  border: 3px solid rgba(160,100,40,0.18);
+  box-shadow: inset 0 0 8px rgba(160,100,40,0.08);
+  pointer-events: none;
+}
+.hw-coffee-ring::after {
+  content: '';
+  position: absolute;
+  top: 4px; left: 4px;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(160,100,40,0.08);
+}
+
+/* Folded corner */
+.hw-fold {
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 0; height: 0;
+  border-style: solid;
+  border-width: 0 0 22px 22px;
+  border-color: transparent transparent #e8dfc8 transparent;
+  filter: drop-shadow(-1px -1px 2px rgba(0,0,0,0.08));
+}
+
+/* Date on title line */
+.hw-date {
+  float: right;
+  font-size: 12px;
+  font-weight: 400;
+  color: #7060a0;
+  font-style: italic;
+  margin-top: 2px;
+}
+
+/* Strikethrough corrections */
+.hw-strikethrough {
+  text-decoration: line-through;
+  color: #c05050;
+  font-size: 13px;
+}
+.hw-correction {
+  font-size: 10px;
+  color: #8b35c8;
+  font-style: italic;
+  margin-left: 4px;
+  opacity: 0.8;
+}
+
+/* Underline */
+.hw-underline {
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-underline-offset: 3px;
+  text-decoration-color: #8b35c8;
+}
+
+/* Highlight */
+.hw-highlight {
+  background: rgba(255,220,0,0.35);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 0 4px;
+  border-radius: 2px;
+  margin-left: 6px;
+  color: #6b4800;
+  font-style: italic;
+}
+
+/* Tick marks */
+.hw-tick {
+  color: #198051;
+  font-size: 13px;
+  margin-left: auto;
+  font-weight: 600;
+}
+
+/* Flag badges */
+.hw-flag {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 3px;
+  margin-left: 4px;
+  letter-spacing: 0.04em;
+  font-family: var(--fb);
+}
+.hw-flag.red { background: rgba(200,50,50,0.12); color: #c03030; border: 1px solid rgba(200,50,50,0.2); }
+.hw-flag.amber { background: rgba(200,140,0,0.12); color: #8a5e00; border: 1px solid rgba(200,140,0,0.2); }
+
+/* Question/annotation */
+.hw-question {
+  font-size: 11px;
+  color: #8b35c8;
+  font-style: italic;
+  margin-left: 6px;
+}
+.hw-question.red-q { color: #c03030; font-weight: 600; }
+
+/* Circled text */
+.hw-circled {
+  display: inline-block;
+  border: 1.5px solid #c03030;
+  border-radius: 50%;
+  padding: 0 4px;
+  color: #c03030;
+  font-weight: 600;
+}
+
+/* Bold allergen marks */
+.hw-bold-mark { font-weight: 600; color: #1c1848; text-transform: uppercase; }
+
+/* Section small note */
+.hw-small-note { font-size: 12px; font-weight: 400; color: #7060a0; font-style: italic; }
+
+/* Margin notes */
+.hw-margin-note {
+  position: absolute;
+  left: 4px;
+  font-size: 10px;
+  color: #8b35c8;
+  font-style: italic;
+  line-height: 1.4;
+  font-family: 'Caveat', cursive;
+  transform: rotate(-4deg);
+  opacity: 0.85;
+}
+
+/* Regulatory scribble */
+.hw-scribble {
+  font-size: 11px;
+  color: #c05050;
+  font-style: italic;
+  margin: 3px 0;
+  padding-left: 6px;
+  border-left: 2px solid #c05050;
+  line-height: 1.5;
+  font-family: 'Caveat', cursive;
+  transform: rotate(-0.5deg);
+  display: inline-block;
+}
+
+/* sticky notes removed */
+
+/* Approval stamp */
+.hw-stamp-approve {
+  display: inline-block;
+  margin-top: 8px;
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(200,50,50,0.22);
+  letter-spacing: 0.08em;
+  border: 3px solid rgba(200,50,50,0.18);
+  padding: 3px 10px;
+  border-radius: 4px;
+  transform: rotate(-12deg);
+  display: block;
+  text-align: center;
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-12deg);
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
+/* Initials at bottom */
+.hw-initials {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  display: flex;
+  gap: 6px;
+}
+.hw-initial {
+  font-family: 'Caveat', cursive;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 4px;
+  border: 1px solid currentColor;
+}
+.hw-initial.mc { color: #8b35c8; border-color: rgba(139,53,200,0.3); }
+.hw-initial.jo { color: #c05050; border-color: rgba(192,80,80,0.3); }
+.hw-initial.sr { color: #198051; border-color: rgba(25,128,81,0.3); }
+
+/* ── HERO VISUAL FULL HEIGHT FIX ── */
+.hero-visual {
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+}
+.conv-shell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.conv-body {
+  flex: 1;
+}
+.left-panel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.handwritten-doc {
+  flex: 1;
+}
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.conv-waiting {
+  flex: 1;
+}
+.conv-result {
+  flex: 1;
+}
+
+
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS — CONSOLIDATED
+   1280px+  : Large desktop  (full layout, 5fr 7fr hero)
+   920–1280px: Small desktop / laptop
+   768–920px : Tablet landscape
+   480–768px : Tablet portrait / large phone
+   <480px   : Mobile phone
+═══════════════════════════════════════════════════════ */
+
+/* ── Small desktop / laptop (920–1280px) ── */
+@media (max-width: 1100px) {
+  .hero-inner { gap: 32px; }
+  .hero h1 { font-size: clamp(30px, 4vw, 48px); }
+  .conv-body { min-height: 420px; }
+}
+
+/* ── Tablet & below (≤920px) — stack hero, single-col grids ── */
+@media (max-width: 920px) {
+  /* Nav */
+  .nav-links, .nav-actions { display: none; }
+  .hamburger { display: flex; }
+
+  /* Hero */
+  .hero { min-height: auto; padding: 88px 0 48px; align-items: flex-start; }
+  .hero-inner { grid-template-columns: 1fr; gap: 28px; }
+  .hero h1 { font-size: clamp(28px, 5.5vw, 42px); }
+  .hero-visual { align-self: auto; }
+
+  /* Conversion UI — stack vertically */
+  .conv-body {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 70px auto;
+    min-height: auto;
+    max-height: none;
+  }
+  .conv-shell { max-height: none; }
+  .conv-center {
+    flex-direction: row;
+    padding: 8px 16px;
+    border-right: none;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .conv-arrow-line { width: 100%; height: 1px; }
+  .conv-btn { flex-shrink: 0; }
+  .conv-center-wrap { flex-direction: row; gap: 10px; align-items: center; }
+  .conv-try-label { writing-mode: horizontal-tb; }
+  .conv-try-arrow:first-of-type { transform: rotate(-90deg); }
+  .conv-try-arrow:last-of-type  { transform: rotate(90deg); }
+  .left-panel { border-right: none; max-height: 380px; }
+  .handwritten-doc { max-height: 340px; }
+  .conv-result { min-height: 340px; }
+  .conv-waiting { min-height: 200px; }
+
+  /* All section grids → single column */
+  .problem-grid, .faq-grid, .team-grid, .foot-grid { grid-template-columns: 1fr; gap: 32px; }
+  .how-grid, .aud-grid, .cap-grid, .test-grid { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .price-card.featured { transform: none; }
+  .impact-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: repeat(2,1fr); }
+  .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
+  .team-stat-row { grid-template-columns: repeat(3,1fr); }
+  .foot-grid { grid-template-columns: 1fr 1fr; }
+  .cta-card { padding: 44px 24px; }
+  .waitlist-form { flex-direction: column; }
+
+  /* Cookie */
+  .cookie-bar { max-width: calc(100% - 32px); }
+}
+
+/* ── Large phone / tablet portrait (≤768px) ── */
+@media (max-width: 768px) {
+  .hero { padding: 84px 0 40px; }
+  .hero h1 { font-size: clamp(26px, 6vw, 36px); }
+  .hero-actions { flex-wrap: wrap; gap: 10px; }
+  .sec-head { font-size: clamp(24px, 5vw, 34px); }
+  .foot-grid { grid-template-columns: 1fr; }
+  .pricing-grid { gap: 14px; }
+  .conv-body { grid-template-rows: auto 64px auto; }
+  .left-panel { max-height: 300px; }
+  .handwritten-doc { max-height: 260px; }
+}
+
+/* ── Mobile phone (≤480px) ── */
+@media (max-width: 480px) {
+  /* Layout */
+  .container { padding: 0 16px; }
+  .hero { padding: 80px 0 36px; }
+  .hero h1 { font-size: 28px; line-height: 1.12; }
+  .hero-kicker { font-size: 15px; }
+  .hero-sub { font-size: 13.5px; }
+  .hero-proof-row { gap: 5px; flex-wrap: wrap; }
+  .hero-proof-item { font-size: 11.5px; }
+  .hero-actions { flex-direction: column; gap: 10px; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
+  .hero-tagline { font-size: 11.5px; }
+
+  /* Stats */
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .stat-num { font-size: 32px; }
+
+  /* Sections */
+  .sec-head { font-size: 26px; }
+  .foot-grid { grid-template-columns: 1fr; }
+  .foot-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .cta-actions { flex-direction: column; align-items: center; }
+  .team-stat-row { grid-template-columns: 1fr 1fr; }
+
+  /* Conversion UI */
+  .conv-body { grid-template-rows: auto 60px auto; }
+  .left-panel { max-height: 260px; }
+  .handwritten-doc { max-height: 220px; font-size: 12px; padding: 8px 10px 8px 28px; }
+  .hw-title { font-size: 13px; }
+  .hw-line { font-size: 12px; }
+  .hw-line.sm { font-size: 11.5px; }
+  .conv-result { min-height: 280px; }
+  .conv-actions { flex-wrap: wrap; gap: 4px; }
+  .conv-action-btn { font-size: 9px; padding: 4px; }
+  .conv-bar { padding: 8px 10px; }
+  .conv-title { font-size: 10px; }
+
+  /* Cookie */
+  .cookie-bar { flex-direction: column; bottom: 10px; }
   .cookie-btns { justify-content: stretch; }
   .cookie-btns .btn { flex: 1; justify-content: center; }
+
+  /* Pricing */
+  .pricing-grid { gap: 12px; }
+  .shift-card { padding: 20px 16px; }
+  .test-card { padding: 20px 16px; }
+}
+
+/* ── Very small phones (≤375px) ── */
+@media (max-width: 375px) {
+  .hero h1 { font-size: 24px; }
+  .conv-shell { border-radius: 10px; }
+  .hero-proof-row { display: none; }
+  .stat-num { font-size: 28px; }
+}
+
+/* ══════════════════════════════════════
+   STAGE HERO REDESIGN
+══════════════════════════════════════ */
+
+/* Hero: vertical stack, center-aligned */
+.hero {
+  padding: 100px 0 0;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+}
+.hero > .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+}
+
+/* Text block: centered, compact */
+.hero-text-block {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+  padding-bottom: 40px;
+}
+.hero-text-block .hero-tag { margin-bottom: 20px; }
+.hero-text-block h1 {
+  font-size: clamp(34px, 4.5vw, 58px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+}
+.hero-text-block .hero-kicker {
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--pri);
+  font-family: var(--fd);
+  font-weight: 500;
+  margin-bottom: 24px;
+  font-style: normal;
+}
+.hero-cta-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.hero-tagline-inline {
+  font-size: 12.5px;
+  color: var(--faint);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Stage: full width, product as centrepiece */
+.hero-stage {
+  width: 100%;
+  position: relative;
+  padding: 0 0 56px;
+}
+
+/* Glow halo */
+.stage-glow {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 300px;
+  background: radial-gradient(ellipse at center,
+    rgba(168,85,212,0.18) 0%,
+    rgba(192,32,176,0.1) 40%,
+    transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(20px);
+}
+
+/* conv-shell: full width at desktop */
+.hero-stage .conv-shell {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-height: none;
+  box-shadow:
+    0 0 0 1px rgba(139,53,200,0.12),
+    0 24px 80px rgba(100,40,160,0.18),
+    0 4px 20px rgba(0,0,0,0.08);
+}
+
+/* conv-body: tall enough to show everything */
+.hero-stage .conv-body {
+  min-height: 500px;
+  max-height: 540px;
+  grid-template-columns: 1fr 72px 1fr;
+}
+
+/* Wider handwritten doc — content now fits without scroll */
+.hero-stage .handwritten-doc {
+  overflow-y: auto;
+}
+
+/* Top bar with audience labels */
+.conv-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+.conv-bar-stat {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--faint);
+  padding: 2px 8px;
+  background: rgba(139,53,200,0.06);
+  border: 1px solid var(--border);
+  border-radius: var(--pill);
+  white-space: nowrap;
+}
+
+/* Floating spec chips */
+.spec-chip {
+  position: absolute;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--pill);
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-2);
+  box-shadow: 0 4px 16px rgba(100,40,160,0.1);
+  z-index: 2;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.chip-1 { top: -18px; left: 3%;  animation: chipfloat 4s ease-in-out infinite; color: #c03030; border-color: rgba(200,50,50,0.2); }
+.chip-2 { top: -18px; right: 8%; animation: chipfloat 4s ease-in-out infinite 1s; color: #198051; border-color: rgba(25,128,81,0.2); }
+.chip-3 { bottom: 38px; left: 2%;  animation: chipfloat 4s ease-in-out infinite 0.5s; }
+.chip-4 { bottom: 38px; right: 6%; animation: chipfloat 4s ease-in-out infinite 1.5s; color: var(--pri); border-color: var(--border); }
+.chip-5 { top: 40%; left: -2px; animation: chipfloat 4s ease-in-out infinite 2s; font-size: 10px; }
+.chip-6 { top: 45%; right: -2px; animation: chipfloat 4s ease-in-out infinite 2.5s; color: #198051; font-size: 10px; }
+@keyframes chipfloat {
+  0%,100% { transform: translateY(0px); opacity: 0.85; }
+  50%      { transform: translateY(-6px); opacity: 1; }
+}
+
+/* Proof row below stage */
+.hero-proof-below {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 24px 0 52px;
+  border-top: 1px solid var(--border);
+  width: 100%;
+  margin-top: 0;
+}
+.hero-proof-below .hero-proof-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+}
+.hero-proof-below .hero-proof-sep { color: var(--faint); font-size: 14px; }
+.hero-proof-below .hpi-icon { font-size: 15px; }
+
+/* Hide old hero-inner styles — replaced by stage layout */
+.hero-inner { display: none; }
+
+/* ── STAGE RESPONSIVE ── */
+@media (max-width: 920px) {
+  .hero { padding: 88px 0 0; }
+  .hero-text-block { padding-bottom: 28px; }
+  .hero-text-block h1 { font-size: clamp(26px, 6vw, 38px); }
+  .hero-stage .conv-body {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 64px auto;
+    min-height: auto;
+    max-height: none;
+  }
+  .hero-stage .conv-shell { max-height: none; }
+  .conv-bar-stat { display: none; }
+  .spec-chip { display: none; }
+  .stage-glow { width: 400px; }
+  .left-panel { max-height: 340px; }
+  .handwritten-doc { max-height: 300px; }
+  .conv-result { min-height: 300px; }
+  .conv-center { flex-direction: row; border-right: none; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 8px 16px; }
+  .conv-arrow-line { width: 100%; height: 1px; }
+  .conv-center-wrap { flex-direction: row; gap: 12px; align-items: center; }
+  .hero-proof-below { gap: 8px; padding: 16px 0 32px; }
+}
+@media (max-width: 480px) {
+  .hero { padding: 80px 0 0; }
+  .hero-text-block h1 { font-size: 26px; }
+  .hero-kicker { font-size: 15px !important; }
+  .hero-cta-row { flex-direction: column; gap: 10px; }
+  .hero-cta-row .btn { width: 100%; justify-content: center; }
+  .hero-tagline-inline { display: none; }
+  .hero-proof-below { display: none; }
+  .conv-bar-right { display: none; }
+}
+
+/* ── HERO CTAs BELOW GRAPHIC ── */
+.hero-cta-below {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 32px 0 32px;
+  width: 100%;
+}
+.btn-lg { padding: 14px 32px; font-size: 15px; }
+.hero-tagline-inline {
+  font-size: 12.5px;
+  color: var(--faint);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Tighten text block — no more CTA inside it */
+.hero-text-block {
+  padding-bottom: 36px;
+}
+.hero-text-block h1 {
+  margin-bottom: 14px;
+}
+.hero-text-block .hero-kicker {
+  margin-bottom: 0;
+}
+
+/* Responsive */
+@media (max-width: 920px) {
+  .hero-cta-below { padding: 20px 0 0; gap: 12px; }
+  .btn-lg { padding: 12px 24px; font-size: 14px; }
+}
+@media (max-width: 480px) {
+  .hero-cta-below { flex-direction: column; gap: 10px; }
+  .hero-cta-below .btn { width: 100%; justify-content: center; }
+  .hero-tagline-inline { display: none; }
+}
+
+/* ── CERTIFICATIONS TAB ── */
+.cert-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  overflow-y: auto;
+  flex: 1;
+}
+.cert-card {
+  display: flex;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #fff;
+  align-items: flex-start;
+  transition: box-shadow 0.2s;
+}
+.cert-card:hover { box-shadow: 0 2px 12px rgba(139,53,200,0.08); }
+.cert-card.cert-warn { border-color: rgba(200,140,0,0.3); background: rgba(251,188,5,0.02); }
+.cert-logo {
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-2);
+  border-radius: 10px;
+  flex-shrink: 0;
+  border: 1px solid var(--border);
+}
+.cert-body { flex: 1; min-width: 0; }
+.cert-name { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 1px; font-family: var(--fd); }
+.cert-issuer { font-size: 11px; color: var(--faint); margin-bottom: 6px; }
+.cert-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 7px; flex-wrap: wrap; }
+.cert-status { font-size: 10.5px; font-weight: 700; }
+.cert-status.ok { color: #198051; }
+.cert-status.warn { color: #8a5e00; }
+.cert-exp { font-size: 10.5px; color: var(--faint); font-family: var(--font-mono, monospace); }
+.cert-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+.cert-dl-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--muted);
+  cursor: pointer;
+  font-family: var(--fb);
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+.cert-dl-btn:hover { border-color: var(--pri); color: var(--pri); background: var(--pri-glow); }
+.warn-btn { color: #8a5e00 !important; border-color: rgba(200,140,0,0.3) !important; background: rgba(251,188,5,0.05) !important; }
+.warn-btn:hover { background: rgba(251,188,5,0.1) !important; }
+.cert-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+  flex-shrink: 0;
+}
+.cert-footer-text { font-size: 11px; color: var(--faint); font-weight: 500; }
+
+/* ── CONNECTIONS TAB ── */
+.conn-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  flex-shrink: 0;
+}
+.conn-header-title { font-size: 12px; font-weight: 700; color: var(--text); font-family: var(--fd); }
+.conn-header-sub { font-size: 10.5px; color: var(--faint); }
+.conn-node-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 16px 20px;
+  flex: 1;
+  overflow-y: auto;
+}
+/* Product node */
+.conn-product-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, rgba(139,53,200,0.06), rgba(192,32,176,0.04));
+  border: 1.5px solid var(--border-h);
+  border-radius: 14px;
+  min-width: 80px;
+  text-align: center;
+}
+.conn-node-icon { font-size: 26px; }
+.conn-node-label { font-size: 11px; font-weight: 700; color: var(--text); line-height: 1.3; font-family: var(--fd); }
+.conn-node-sku { font-size: 9.5px; color: var(--faint); background: var(--bg-2); padding: 1px 6px; border-radius: 99px; border: 1px solid var(--border); }
+/* Connector line */
+.conn-line-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  min-width: 60px;
+  max-width: 100px;
+}
+.conn-line {
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--pri), var(--mag));
+  border-radius: 2px;
+  position: relative;
+  overflow: visible;
+}
+.conn-line-pulse {
+  position: absolute;
+  top: -4px;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--pri);
+  box-shadow: 0 0 8px var(--pri-glow);
+  animation: linepulse 2s ease-in-out infinite;
+}
+@keyframes linepulse {
+  0%   { left: 0%; opacity: 1; }
+  100% { left: calc(100% - 10px); opacity: 0.3; }
+}
+.conn-line-label { font-size: 9px; color: var(--faint); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap; }
+/* Supplier node */
+.conn-supplier-node {
+  flex: 1;
+  border: 1px solid rgba(25,128,81,0.25);
+  border-radius: 14px;
+  background: rgba(25,128,81,0.02);
+  overflow: hidden;
+}
+.conn-supplier-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(25,128,81,0.12);
+  background: rgba(25,128,81,0.03);
+}
+.conn-supplier-avatar {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #198051, #0f5c38);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: var(--fd);
+}
+.conn-supplier-name { font-size: 13px; font-weight: 700; color: var(--text); font-family: var(--fd); }
+.conn-supplier-tag { font-size: 10px; color: #198051; font-weight: 600; }
+.conn-supplier-specs {
+  display: flex;
+  gap: 6px;
+  padding: 8px 14px;
+  border-bottom: 1px solid rgba(25,128,81,0.1);
+  flex-wrap: wrap;
+}
+.conn-spec-pill {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 9px;
+  background: rgba(25,128,81,0.08);
+  color: #198051;
+  border-radius: 99px;
+  border: 1px solid rgba(25,128,81,0.15);
+}
+.conn-supplier-meta {
+  display: flex;
+  gap: 12px;
+  padding: 7px 14px;
+  border-bottom: 1px solid rgba(25,128,81,0.1);
+  flex-wrap: wrap;
+}
+.conn-meta-item { font-size: 10.5px; color: var(--muted); font-weight: 500; }
+.conn-supplier-actions {
+  display: flex;
+  gap: 6px;
+  padding: 8px 14px;
+  flex-wrap: wrap;
 }
 </style>
 </head>
@@ -802,169 +2020,312 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
   <div class="hero-bg"></div>
   <div class="hero-blob hero-blob-1"></div>
   <div class="hero-blob hero-blob-2"></div>
-  <div class="container">
-    <div class="hero-inner">
-      <div class="reveal">
-        <div class="hero-tag"><span class="dot"></span>AI for Food Specs · Automate · Analyze · Optimize</div>
-        <h1>Autonomous AI agents<br>that <span class="grad">manage your spec data.</span></h1>
-        <p class="hero-kicker">So your food scientists can do food science.</p>
-        <p class="hero-sub">You didn't hire a food scientist to spend their best hours chasing supplier spec sheets, untangling ingredient changes across a dozen product versions, or second-guessing whether the formula and the label are still telling the same story. AutoSpec.ai deploys intelligent agents across your ingredients, formulations, labels, and regulatory requirements — working quietly in the background, so your team ships great products with confidence.</p>
-        <div class="hero-proof-row">
-          <div class="hero-proof-item"><span class="hpi-icon">🔬</span><span>Food Scientists</span></div>
-          <div class="hero-proof-sep">·</div>
-          <div class="hero-proof-item"><span class="hpi-icon">⚗️</span><span>R&amp;D Teams</span></div>
-          <div class="hero-proof-sep">·</div>
-          <div class="hero-proof-item"><span class="hpi-icon">📋</span><span>Compliance &amp; Regulatory</span></div>
-          <div class="hero-proof-sep">·</div>
-          <div class="hero-proof-item"><span class="hpi-icon">🏭</span><span>Co-Manufacturers</span></div>
-        </div>
-        <div class="hero-actions">
-          <button class="btn btn-primary" onclick="openModal()">See it in action →</button>
-          <button class="btn btn-outline" onclick="openModal()">Get a Quote</button>
-        </div>
-        <div class="hero-tagline">✦ AI-driven. Human-verified. Built by industry insiders.</div>
-      </div>
-      <div class="hero-visual reveal" style="transition-delay:0.15s">
-        <div class="app-shell">
 
-          <!-- App top nav -->
-          <div class="app-nav">
-            <div class="app-nav-left">
-              <img src="autospec-logo.png" alt="AutoSpec.ai" style="height:22px;width:auto;display:block;">
-              <button class="app-hamburger">☰</button>
+  <div class="container" style="position:relative;z-index:1;width:100%">
+
+    <!-- ① Centered minimal text above the product -->
+    <div class="hero-text-block reveal">
+      <h1>Autonomous AI agents that<br><span class="grad">manage your spec data.</span></h1>
+      <p class="hero-kicker">So your food scientists can do food science.</p>
+
+    </div>
+
+    <!-- ② Product stage — full width, the star of the page -->
+    <div class="hero-stage reveal" style="transition-delay:0.2s">
+
+      <!-- Glow halo behind the UI -->
+      <div class="stage-glow"></div>
+
+      <!-- Floating spec chips -->
+      <div class="spec-chip chip-1">⚠ Salt: 1.6g — flagged for review</div>
+      <div class="spec-chip chip-2">✓ EU 1169/2011 validated</div>
+      <div class="spec-chip chip-3">🥚 Allergen: Eggs — Contains</div>
+      <div class="spec-chip chip-4">⚡ Generated in 3.4s</div>
+      <div class="spec-chip chip-5">📋 4 ingredients extracted</div>
+      <div class="spec-chip chip-6">✓ Regulatory compliant</div>
+
+      <!-- The conversion UI — full width -->
+      <div class="conv-shell">
+
+        <div class="conv-bar">
+          <span class="conv-dot r"></span>
+          <span class="conv-dot y"></span>
+          <span class="conv-dot g"></span>
+          <span class="conv-title">AutoSpec.ai — Spec Converter</span>
+          <div class="conv-bar-right">
+            <span class="conv-bar-stat">🔬 Food Scientists</span>
+            <span class="conv-bar-stat">📋 Regulatory</span>
+            <span class="conv-bar-stat">⚗️ R&amp;D</span>
+            <span class="conv-badge">AI-Powered</span>
+          </div>
+        </div>
+
+        <div class="conv-body" id="convBody">
+
+          <!-- LEFT: Handwritten spec -->
+          <div class="conv-panel left-panel">
+            <div class="conv-panel-label">
+              <span class="conv-panel-icon">📋</span>
+              Handwritten Specification
             </div>
-            <div class="app-search">
-              <span class="app-search-icon">🔍</span>
-              <span class="app-search-text">Search...</span>
-              <span class="app-search-mic">🎤</span>
-            </div>
-            <div class="app-nav-right">
-              <button class="app-invite-btn">Invite</button>
-              <span class="app-bell">🔔</span>
+            <div class="handwritten-doc">
+              <div class="hw-coffee-ring"></div>
+              <div class="hw-fold"></div>
+              <div class="hw-title">Product Spec Sheet<span class="hw-date">12/03/25</span></div>
+              <div class="hw-line"><span class="hw-key">Product:</span><span class="hw-val">Classic Mayonnaise</span></div>
+              <div class="hw-line"><span class="hw-key">Code:</span><span class="hw-strikethrough">011</span><span class="hw-val"> 012</span><span class="hw-correction">corrected MC</span></div>
+              <div class="hw-line"><span class="hw-key">Supplier:</span><span class="hw-val hw-underline">New City Ingredients</span></div>
+              <div class="hw-divider"></div>
+              <div class="hw-section">Ingredients <span class="hw-highlight">check % by weight!</span></div>
+              <div class="hw-line sm"><span class="hw-bullet">—</span>Soybean oil <span class="hw-note">(oil)</span><span class="hw-tick">✓</span></div>
+              <div class="hw-line sm"><span class="hw-bullet">—</span>Whole egg <span class="hw-note">(emulsifier)</span><span class="hw-flag red">ALLERGEN</span></div>
+              <div class="hw-line sm"><span class="hw-bullet">—</span>White vinegar <span class="hw-note">(preservative)</span><span class="hw-tick">✓</span></div>
+              <div class="hw-line sm"><span class="hw-bullet">—</span>Salt, Sugar, Spices <span class="hw-question">spec %?</span></div>
+              <div class="hw-divider"></div>
+              <div class="hw-section">Nutritional <span class="hw-small-note">(per 100g)</span></div>
+              <div class="hw-line sm"><span class="hw-bullet">—</span>Energy: 680 kcal<span class="hw-tick">✓</span></div>
+              <div class="hw-line sm"><span class="hw-bullet">—</span>Fat: 75g &nbsp;Sat: 11g<span class="hw-tick">✓</span></div>
+              <div class="hw-line sm"><span class="hw-bullet">—</span>Carbs: 1.5g &nbsp;Sugar: 1.2g<span class="hw-tick">✓</span></div>
+              <div class="hw-line sm"><span class="hw-bullet">—</span>Protein: 1.2g<span class="hw-tick">✓</span></div>
+              <div class="hw-line sm"><span class="hw-bullet">—</span><span class="hw-circled">Salt: 1.6g</span><span class="hw-question red-q">⚠ high — recheck</span></div>
+              <div class="hw-divider"></div>
+              <div class="hw-section">Allergens</div>
+              <div class="hw-line sm"><span class="hw-bullet">—</span><span class="hw-bold-mark">Eggs</span> — Contains<span class="hw-flag red">BOLD on label</span></div>
+              <div class="hw-line sm"><span class="hw-bullet">—</span>Soya — May contain<span class="hw-flag amber">advisory</span></div>
+              <div class="hw-scribble">← Cross-check with Reg 1169/2011 Art.21</div>
+              <div class="hw-divider"></div>
+              <div class="hw-line"><span class="hw-key">Shelf life:</span><span class="hw-strikethrough">9 months</span><span class="hw-val"> 12 months</span><span class="hw-correction">updated SR</span></div>
+              <div class="hw-line"><span class="hw-key">Storage:</span><span class="hw-val">Refrigerate after opening</span></div>
+              <div class="hw-stamp-approve">DRAFT<br><span style="font-size:10px">pending review</span></div>
+              <div class="hw-initials">
+                <span class="hw-initial mc">MC ✓</span>
+                <span class="hw-initial jo">JO ?</span>
+                <span class="hw-initial sr">SR ✓</span>
+              </div>
             </div>
           </div>
 
-          <div class="app-body">
-            <!-- Left sidebar -->
-            <div class="app-sidebar">
-              <div class="app-sidebar-icon active" title="Products">⊞</div>
-              <div class="app-sidebar-icon" title="Formulations">⚗</div>
-              <div class="app-sidebar-icon" title="Ingredients">⬡</div>
-              <div class="app-sidebar-icon" title="Suppliers">👤</div>
-              <div class="app-sidebar-icon" title="Connections">👥</div>
-              <div class="app-sidebar-icon" title="Team">🤝</div>
+          <!-- CENTRE: Convert button -->
+          <div class="conv-center">
+            <div class="conv-arrow-track"><div class="conv-arrow-line"></div></div>
+            <div class="conv-center-wrap">
+              <span class="conv-try-label">Try it</span>
+              <span class="conv-try-arrow">↓</span>
+              <div class="conv-btn-wrap">
+                <button class="conv-btn" id="convBtn" onclick="runConversion()">
+                  <span class="conv-btn-icon">⚡</span>
+                  <span class="conv-btn-text">Convert<br>to Data</span>
+                </button>
+                <div class="conv-tooltip">Click to convert</div>
+              </div>
+              <span class="conv-try-arrow" style="animation-delay:0.3s">↑</span>
             </div>
+            <div class="conv-arrow-track"><div class="conv-arrow-line"></div></div>
+          </div>
 
-            <!-- Main content -->
-            <div class="app-main">
-
-              <!-- Product header -->
-              <div class="app-product-header">
-                <div class="app-product-title">
-                  <span class="app-product-name">Classic Mayonnaise</span>
-                  <span class="app-no-conn">NO CONNECTIONS</span>
-                </div>
-                <div class="app-product-actions">
-                  <span class="app-action-icon">♡</span>
-                  <span class="app-action-icon">✎</span>
-                  <span class="app-action-icon">🗑</span>
-                </div>
+          <!-- RIGHT: Structured data output -->
+          <div class="conv-panel right-panel" id="rightPanel">
+            <div class="conv-panel-label">
+              <span class="conv-panel-icon">✅</span>
+              Structured Specification
+              <span class="conv-live-badge" id="liveBadge" style="display:none">Live</span>
+            </div>
+            <div class="conv-waiting" id="convWaiting">
+              <div class="conv-waiting-icon">🤖</div>
+              <div class="conv-waiting-text">Click convert to<br>extract structured data</div>
+            </div>
+            <div class="conv-result" id="convResult" style="display:none">
+              <div class="conv-result-head">
+                <span class="crh-name">Classic Mayonnaise</span>
+                <span class="crh-code">SKU: 012</span>
               </div>
-
-              <!-- Basic info card -->
-              <div class="app-card">
-                <div class="app-card-label">Basic Info</div>
-                <div class="app-basic-info">
-                  <div class="app-product-img">
-                    <div class="app-img-placeholder">🫙</div>
-                  </div>
-                  <div class="app-info-grid">
-                    <div class="app-info-item">
-                      <div class="app-info-key">Product Code:</div>
-                      <div class="app-info-val">012</div>
-                    </div>
-                    <div class="app-info-item">
-                      <div class="app-info-key">Product Name:</div>
-                      <div class="app-info-val">Classic Mayonnaise</div>
-                    </div>
-                    <div class="app-info-item">
-                      <div class="app-info-key">Description:</div>
-                      <div class="app-info-val">Classic Mayonnaise</div>
-                    </div>
-                    <div class="app-info-item">
-                      <div class="app-info-key">Category:</div>
-                      <div class="app-info-val">Miscellaneous</div>
-                    </div>
-                    <div class="app-info-item">
-                      <div class="app-info-key">Density:</div>
-                      <div class="app-info-val">0 g/ml</div>
-                    </div>
-                    <div class="app-info-item">
-                      <div class="app-info-key">Supplier:</div>
-                      <div class="app-info-val">New City Ingredients</div>
-                    </div>
-                  </div>
-                </div>
+              <div class="conv-tabs">
+                <span class="conv-tab active-ct" onclick="switchTab(this,'tab-ingredients')">Ingredients</span>
+                <span class="conv-tab" onclick="switchTab(this,'tab-nutrients')">Nutrients</span>
+                <span class="conv-tab" onclick="switchTab(this,'tab-allergens')">Allergens</span>
+                <span class="conv-tab" onclick="switchTab(this,'tab-info')">Info</span>
+                <span class="conv-tab" onclick="switchTab(this,'tab-certs')">Certifications</span>
+                <span class="conv-tab" onclick="switchTab(this,'tab-connections')">Connections</span>
               </div>
-
-              <!-- Specifications card -->
-              <div class="app-card">
-                <div class="app-card-label">Specifications</div>
-                <div class="app-tabs">
-                  <span class="app-tab">Ingredients</span>
-                  <span class="app-tab">Nutrients</span>
-                  <span class="app-tab active-tab">Allergens</span>
-                  <span class="app-tab">Characteristics</span>
-                  <span class="app-tab">Certifications</span>
-                  <span class="app-tab">Connections</span>
-                </div>
-                <table class="app-table">
-                  <thead>
-                    <tr>
-                      <th>NAME</th>
-                      <th>COMPOSITION</th>
-                      <th>QUANTITY</th>
-                      <th>SOURCE</th>
-                      <th>FUNCTION</th>
-                    </tr>
-                  </thead>
+              <div class="conv-tab-panel" id="tab-ingredients">
+                <table class="conv-table">
+                  <thead><tr><th>Ingredient</th><th>Source</th><th>Function</th><th>Status</th></tr></thead>
                   <tbody>
-                    <tr>
-                      <td>Soybean oil</td>
-                      <td class="app-muted">Not specified</td>
-                      <td></td>
-                      <td>Soybean</td>
-                      <td>Oil</td>
-                    </tr>
-                    <tr>
-                      <td>Whole egg</td>
-                      <td class="app-muted">Not specified</td>
-                      <td></td>
-                      <td>Eggs</td>
-                      <td>Emulsifier</td>
-                    </tr>
-                    <tr>
-                      <td>White vinegar</td>
-                      <td class="app-muted">Not specified</td>
-                      <td></td>
-                      <td>—</td>
-                      <td>Acidulant</td>
-                    </tr>
+                    <tr><td>Soybean oil</td><td>Soybean</td><td>Oil</td><td><span class="cs ok">✓</span></td></tr>
+                    <tr><td>Whole egg</td><td>Eggs</td><td>Emulsifier</td><td><span class="cs ok">✓</span></td></tr>
+                    <tr><td>White vinegar</td><td>—</td><td>Preservative</td><td><span class="cs ok">✓</span></td></tr>
+                    <tr><td>Salt, Sugar</td><td>—</td><td>Seasoning</td><td><span class="cs ok">✓</span></td></tr>
                   </tbody>
                 </table>
               </div>
-
-              <!-- App footer -->
-              <div class="app-footer">
-                <span>Copyright 2025 AutoSpec.AI</span>
-                <span>Version 1.0</span>
+              <div class="conv-tab-panel" id="tab-nutrients" style="display:none">
+                <table class="conv-table">
+                  <thead><tr><th>Nutrient</th><th>Per 100g</th><th>Check</th></tr></thead>
+                  <tbody>
+                    <tr><td>Energy</td><td>680 kcal</td><td><span class="cs ok">✓</span></td></tr>
+                    <tr><td>Fat</td><td>75g</td><td><span class="cs ok">✓</span></td></tr>
+                    <tr><td>– Saturates</td><td>11g</td><td><span class="cs ok">✓</span></td></tr>
+                    <tr><td>Carbohydrates</td><td>1.5g</td><td><span class="cs ok">✓</span></td></tr>
+                    <tr><td>– Sugars</td><td>1.2g</td><td><span class="cs ok">✓</span></td></tr>
+                    <tr><td>Protein</td><td>1.2g</td><td><span class="cs ok">✓</span></td></tr>
+                    <tr><td>Salt</td><td>1.6g</td><td><span class="cs warn">⚠</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="conv-tab-panel" id="tab-allergens" style="display:none">
+                <table class="conv-table">
+                  <thead><tr><th>Allergen</th><th>Status</th><th>Declaration</th></tr></thead>
+                  <tbody>
+                    <tr><td>Eggs</td><td><span class="cs warn">Contains</span></td><td>Bold on label</td></tr>
+                    <tr><td>Soya</td><td><span class="cs info">May contain</span></td><td>Advisory</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="conv-tab-panel" id="tab-info" style="display:none">
+                <div class="conv-info-grid">
+                  <div class="conv-info-item"><div class="cii-key">Shelf Life</div><div class="cii-val">12 months</div></div>
+                  <div class="conv-info-item"><div class="cii-key">Storage</div><div class="cii-val">Refrigerate after opening</div></div>
+                  <div class="conv-info-item"><div class="cii-key">Supplier</div><div class="cii-val">New City Ingredients</div></div>
+                  <div class="conv-info-item"><div class="cii-key">Regulation</div><div class="cii-val">EU 1169/2011 <span class="cs ok">✓</span></div></div>
+                </div>
+              </div>
+              <!-- Certifications tab -->
+              <div class="conv-tab-panel" id="tab-certs" style="display:none">
+                <div class="cert-grid">
+                  <div class="cert-card cert-active">
+                    <div class="cert-logo">✡</div>
+                    <div class="cert-body">
+                      <div class="cert-name">Kosher Certified</div>
+                      <div class="cert-issuer">Orthodox Union (OU)</div>
+                      <div class="cert-meta">
+                        <span class="cert-status ok">● Active</span>
+                        <span class="cert-exp">Expires 31 Dec 2025</span>
+                      </div>
+                      <div class="cert-actions">
+                        <button class="cert-dl-btn">📄 Certificate PDF</button>
+                        <button class="cert-dl-btn">🔗 Verify online</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cert-card cert-active">
+                    <div class="cert-logo">☪</div>
+                    <div class="cert-body">
+                      <div class="cert-name">Halal Certified</div>
+                      <div class="cert-issuer">HMC — Halal Monitoring Committee</div>
+                      <div class="cert-meta">
+                        <span class="cert-status ok">● Active</span>
+                        <span class="cert-exp">Expires 15 Mar 2026</span>
+                      </div>
+                      <div class="cert-actions">
+                        <button class="cert-dl-btn">📄 Certificate PDF</button>
+                        <button class="cert-dl-btn">🔗 Verify online</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cert-card cert-warn">
+                    <div class="cert-logo">🌿</div>
+                    <div class="cert-body">
+                      <div class="cert-name">Non-GMO Verified</div>
+                      <div class="cert-issuer">Non-GMO Project</div>
+                      <div class="cert-meta">
+                        <span class="cert-status warn">● Renewal due</span>
+                        <span class="cert-exp">Expired 01 Jun 2025</span>
+                      </div>
+                      <div class="cert-actions">
+                        <button class="cert-dl-btn">📄 Last Certificate PDF</button>
+                        <button class="cert-dl-btn warn-btn">⚠ Renew now</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cert-footer">
+                  <span class="cert-footer-text">3 certifications · 2 active · 1 renewal required</span>
+                  <button class="cert-dl-btn">📦 Export all certificates</button>
+                </div>
               </div>
 
+              <!-- Connections tab -->
+              <div class="conv-tab-panel" id="tab-connections" style="display:none">
+                <div class="conn-header">
+                  <div class="conn-header-text">
+                    <div class="conn-header-title">Supplier Network</div>
+                    <div class="conn-header-sub">Classic Mayonnaise · 1 active connection</div>
+                  </div>
+                  <button class="cert-dl-btn">+ Add connection</button>
+                </div>
+                <div class="conn-node-wrap">
+                  <div class="conn-product-node">
+                    <div class="conn-node-icon">🫙</div>
+                    <div class="conn-node-label">Classic<br>Mayonnaise</div>
+                    <div class="conn-node-sku">SKU 012</div>
+                  </div>
+                  <div class="conn-line-wrap">
+                    <div class="conn-line"><div class="conn-line-pulse"></div></div>
+                    <div class="conn-line-label">Ingredient supplier</div>
+                  </div>
+                  <div class="conn-supplier-node">
+                    <div class="conn-supplier-header">
+                      <div class="conn-supplier-avatar">NCI</div>
+                      <div>
+                        <div class="conn-supplier-name">New City Ingredients</div>
+                        <div class="conn-supplier-tag">● Connected to your network</div>
+                      </div>
+                    </div>
+                    <div class="conn-supplier-specs">
+                      <div class="conn-spec-pill">🌿 Soybean oil</div>
+                      <div class="conn-spec-pill">🥚 Whole egg</div>
+                      <div class="conn-spec-pill">🍶 White vinegar</div>
+                    </div>
+                    <div class="conn-supplier-meta">
+                      <span class="conn-meta-item">📋 12 specs shared</span>
+                      <span class="conn-meta-item">🔄 Last sync: 2h ago</span>
+                      <span class="conn-meta-item">✓ Data verified</span>
+                    </div>
+                    <div class="conn-supplier-actions">
+                      <button class="cert-dl-btn">📤 Push spec update</button>
+                      <button class="cert-dl-btn">📋 View shared specs</button>
+                      <button class="cert-dl-btn">💬 Message supplier</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="conv-actions">
+                <button class="conv-action-btn">📄 Export PDF</button>
+                <button class="conv-action-btn">📊 Export Excel</button>
+                <button class="conv-action-btn pri">📤 Push to Portal</button>
+              </div>
             </div>
           </div>
         </div>
+
+        <div class="conv-status" id="convStatus">
+          <span class="cs-dot idle" id="csDot"></span>
+          <span id="csText">Ready — upload a spec sheet or paste text to begin</span>
+        </div>
       </div>
     </div>
+
+    <!-- ③ CTAs below the graphic -->
+    <div class="hero-cta-below reveal" style="transition-delay:0.35s">
+      <button class="btn btn-primary btn-lg" onclick="openModal()">See it in action →</button>
+      <button class="btn btn-outline btn-lg" onclick="openModal()">Get a Quote</button>
+      <span class="hero-tagline-inline">✦ AI-driven. Human-verified.</span>
+    </div>
+
+    <!-- ④ Proof row below the stage -->
+    <div class="hero-proof-below reveal" style="transition-delay:0.45s">
+      <div class="hero-proof-item"><span class="hpi-icon">🔬</span><span>Food Scientists</span></div>
+      <div class="hero-proof-sep">·</div>
+      <div class="hero-proof-item"><span class="hpi-icon">⚗️</span><span>R&amp;D Teams</span></div>
+      <div class="hero-proof-sep">·</div>
+      <div class="hero-proof-item"><span class="hpi-icon">📋</span><span>Compliance &amp; Regulatory</span></div>
+      <div class="hero-proof-sep">·</div>
+      <div class="hero-proof-item"><span class="hpi-icon">🏭</span><span>Co-Manufacturers</span></div>
+      <div class="hero-proof-sep">·</div>
+      <div class="hero-proof-item"><span class="hpi-icon">🌿</span><span>Suppliers</span></div>
+    </div>
+
   </div>
 </section>
 
@@ -1567,6 +2928,61 @@ function submitModal() {
 function openPrivacyModal() { document.getElementById('privacyModal').classList.add('open'); }
 function closePrivacyModal() { document.getElementById('privacyModal').classList.remove('open'); }
 document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closePrivacyModal(); });
+
+
+// Spec conversion demo
+function runConversion() {
+  var btn = document.getElementById('convBtn');
+  var dot = document.getElementById('csDot');
+  var txt = document.getElementById('csText');
+
+  // Already converted
+  if (document.getElementById('convResult').style.display !== 'none') {
+    document.getElementById('convResult').style.display = 'none';
+    document.getElementById('convWaiting').style.display = 'flex';
+    document.getElementById('liveBadge').style.display = 'none';
+    btn.classList.remove('processing');
+    dot.className = 'cs-dot idle';
+    txt.textContent = 'Ready — upload a spec sheet or paste text to begin';
+    return;
+  }
+
+  // Start processing
+  btn.classList.add('processing');
+  dot.className = 'cs-dot processing';
+
+  var messages = [
+    'Reading spec sheet...',
+    'Identifying ingredients...',
+    'Extracting nutritional data...',
+    'Mapping allergens...',
+    'Validating against EU 1169/2011...',
+    'Structuring output...'
+  ];
+  var i = 0;
+  var interval = setInterval(function() {
+    if (i < messages.length) {
+      txt.textContent = messages[i++];
+    }
+  }, 300);
+
+  setTimeout(function() {
+    clearInterval(interval);
+    btn.classList.remove('processing');
+    dot.className = 'cs-dot done';
+    txt.textContent = '✓ Spec extracted — 4 ingredients, 7 nutrients, 2 allergens, all fields validated';
+    document.getElementById('convWaiting').style.display = 'none';
+    document.getElementById('convResult').style.display = 'flex';
+    document.getElementById('liveBadge').style.display = 'inline-block';
+  }, 2100);
+}
+
+function switchTab(el, panelId) {
+  document.querySelectorAll('.conv-tab').forEach(function(t){ t.classList.remove('active-ct'); });
+  document.querySelectorAll('.conv-tab-panel').forEach(function(p){ p.style.display = 'none'; });
+  el.classList.add('active-ct');
+  document.getElementById(panelId).style.display = 'block';
+}
 
 // Cookie banner
 function acceptCookies() {
