@@ -753,17 +753,10 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
 .conv-dot.y{background:#febc2e}
 .conv-dot.g{background:#28c840}
 .conv-title { font-size: 11px; color: var(--faint); margin-left: 6px; font-weight: 500; flex: 1; }
-.conv-badge { font-size: 9.5px; font-weight: 700; padding: 2px 8px; background: linear-gradient(130deg,var(--pri),var(--mag)); color: #fff; border-radius: 99px; letter-spacing: 0.04em; }
+.conv-badge { font-size: 10px; font-weight: 600; padding: 4px 12px; background: linear-gradient(130deg,var(--pri),var(--mag)); color: #fff; border-radius: 99px; letter-spacing: 0.01em; white-space: nowrap; }
 
 /* Body: three columns */
-.conv-body {
-  display: grid;
-  grid-template-columns: 1fr 68px 1fr;
-  gap: 0;
-  min-height: 480px;
-  max-height: calc(100vh - 200px);
-  overflow: hidden;
-}
+
 
 /* Panel labels */
 .conv-panel { display: flex; flex-direction: column; overflow: hidden; }
@@ -899,27 +892,10 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
 }
 
 /* CENTRE — convert button */
-.conv-center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
-  padding: 12px 0;
-  background: var(--bg);
-  border-right: 1px solid var(--border);
-}
-.conv-arrow-track {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.conv-arrow-line {
-  width: 1px;
-  height: 100%;
-  background: linear-gradient(180deg, transparent, var(--border), transparent);
-}
+
+
+
+
 .conv-center-wrap {
   display: flex;
   flex-direction: column;
@@ -1363,9 +1339,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
   flex-direction: column;
   height: 100%;
 }
-.conv-body {
-  flex: 1;
-}
+
 .left-panel {
   display: flex;
   flex-direction: column;
@@ -1374,11 +1348,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
 .handwritten-doc {
   flex: 1;
 }
-.right-panel {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
+.right-panel { display: flex; flex-direction: column; overflow: hidden; }
 .conv-waiting {
   flex: 1;
 }
@@ -1400,7 +1370,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
 @media (max-width: 1100px) {
   .hero-inner { gap: 32px; }
   .hero h1 { font-size: clamp(30px, 4vw, 48px); }
-  .conv-body { min-height: 420px; }
+  
 }
 
 /* ── Tablet & below (≤920px) — stack hero, single-col grids ── */
@@ -1416,21 +1386,10 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
   .hero-visual { align-self: auto; }
 
   /* Conversion UI — stack vertically */
-  .conv-body {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 70px auto;
-    min-height: auto;
-    max-height: none;
-  }
+  
   .conv-shell { max-height: none; }
-  .conv-center {
-    flex-direction: row;
-    padding: 8px 16px;
-    border-right: none;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-  .conv-arrow-line { width: 100%; height: 1px; }
+  
+  
   .conv-btn { flex-shrink: 0; }
   .conv-center-wrap { flex-direction: row; gap: 10px; align-items: center; }
   .conv-try-label { writing-mode: horizontal-tb; }
@@ -1466,7 +1425,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
   .sec-head { font-size: clamp(24px, 5vw, 34px); }
   .foot-grid { grid-template-columns: 1fr; }
   .pricing-grid { gap: 14px; }
-  .conv-body { grid-template-rows: auto 64px auto; }
+  
   .left-panel { max-height: 300px; }
   .handwritten-doc { max-height: 260px; }
 }
@@ -1497,7 +1456,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
   .team-stat-row { grid-template-columns: 1fr 1fr; }
 
   /* Conversion UI */
-  .conv-body { grid-template-rows: auto 60px auto; }
+  
   .left-panel { max-height: 260px; }
   .handwritten-doc { max-height: 220px; font-size: 12px; padding: 8px 10px 8px 28px; }
   .hw-title { font-size: 13px; }
@@ -1623,16 +1582,10 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
 }
 
 /* conv-body: tall enough to show everything */
-.hero-stage .conv-body {
-  min-height: 500px;
-  max-height: 540px;
-  grid-template-columns: 1fr 72px 1fr;
-}
+.hero-stage 
 
 /* Wider handwritten doc — content now fits without scroll */
-.hero-stage .handwritten-doc {
-  overflow-y: auto;
-}
+
 
 /* Top bar with audience labels */
 .conv-bar-right {
@@ -1654,6 +1607,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
 
 /* Floating spec chips */
 .spec-chip {
+  display: none !important;
   position: absolute;
   background: #fff;
   border: 1px solid var(--border);
@@ -1709,12 +1663,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
   .hero { padding: 88px 0 0; }
   .hero-text-block { padding-bottom: 28px; }
   .hero-text-block h1 { font-size: clamp(26px, 6vw, 38px); }
-  .hero-stage .conv-body {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 64px auto;
-    min-height: auto;
-    max-height: none;
-  }
+  .hero-stage 
   .hero-stage .conv-shell { max-height: none; }
   .conv-bar-stat { display: none; }
   .spec-chip { display: none; }
@@ -1722,8 +1671,8 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
   .left-panel { max-height: 340px; }
   .handwritten-doc { max-height: 300px; }
   .conv-result { min-height: 300px; }
-  .conv-center { flex-direction: row; border-right: none; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 8px 16px; }
-  .conv-arrow-line { width: 100%; height: 1px; }
+  
+  
   .conv-center-wrap { flex-direction: row; gap: 12px; align-items: center; }
   .hero-proof-below { gap: 8px; padding: 16px 0 32px; }
 }
@@ -2229,6 +2178,810 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
   display: inline-block;
   letter-spacing: 0.01em;
 }
+
+/* ══════════════════════════════════════════
+   MULTI-FORMAT DOCUMENT SWITCHER
+══════════════════════════════════════════ */
+
+/* Format selector tabs */
+.fmt-selector {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  flex-shrink: 0;
+}
+.fmt-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  font-family: var(--fb);
+  transition: all 0.15s;
+  white-space: nowrap;
+  margin-bottom: -1px;
+}
+.fmt-tab:hover { color: var(--pri); background: var(--pri-glow); }
+.fmt-tab.active {
+  color: var(--pri);
+  border-bottom-color: var(--pri);
+  background: #fff;
+}
+.fmt-tab-icon { font-size: 13px; }
+.fmt-tab-label { }
+
+/* Format document container */
+.fmt-doc { flex: 1; overflow-y: auto; display: flex; flex-direction: column; }
+.fmt-any-badge { display: none !important; /* removed */ }
+.fmt-any-badge-hidden {
+  margin-left: auto;
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 2px 8px;
+  background: var(--pri-glow);
+  color: var(--pri);
+  border-radius: 99px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ── PDF DOC ── */
+.pdf-doc {
+  font-family: var(--fb);
+  font-size: 11.5px;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: #fff;
+}
+.pdf-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 12px 14px 10px;
+  border-bottom: 2px solid var(--text);
+  gap: 10px;
+}
+.pdf-logo-area { display: flex; align-items: center; gap: 10px; }
+.pdf-logo-placeholder {
+  width: 36px; height: 36px;
+  background: var(--pri);
+  color: #fff;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 800;
+  flex-shrink: 0;
+}
+.pdf-company { font-size: 12px; font-weight: 700; color: var(--text); }
+.pdf-address { font-size: 10px; color: var(--faint); margin-top: 2px; }
+.pdf-doc-meta { text-align: right; }
+.pdf-meta-row { display: flex; gap: 8px; justify-content: flex-end; font-size: 10px; color: var(--muted); padding: 1px 0; }
+.pdf-meta-row span:first-child { color: var(--faint); }
+.pdf-approved { color: #198051; font-weight: 700; }
+.pdf-title-bar {
+  background: var(--text);
+  color: #fff;
+  text-align: center;
+  padding: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+.pdf-section-head {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--pri);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 8px 14px 4px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.pdf-grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  margin: 0;
+  flex-shrink: 0;
+}
+.pdf-field { background: #fff; padding: 6px 14px; }
+.pdf-field-label { font-size: 9.5px; color: var(--faint); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2px; }
+.pdf-field-val { font-size: 11.5px; color: var(--text); font-weight: 500; }
+.pdf-ingredients {
+  padding: 8px 14px;
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--text-2);
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border);
+}
+.pdf-allergen-box {
+  margin: 0 14px 6px;
+  padding: 7px 10px;
+  background: rgba(200,50,50,0.06);
+  border: 1px solid rgba(200,50,50,0.2);
+  border-radius: 4px;
+  font-size: 10.5px;
+  color: #5a1a1a;
+  line-height: 1.5;
+  flex-shrink: 0;
+}
+.pdf-allergen-label { font-weight: 700; }
+.pdf-nutri-table { margin: 0; flex-shrink: 0; }
+.pdf-nutri-row {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 0.8fr;
+  padding: 4px 14px;
+  font-size: 10.5px;
+  color: var(--text-2);
+  border-bottom: 0.5px solid rgba(0,0,0,0.05);
+}
+.pdf-nutri-row.hd { background: var(--bg-2); font-weight: 700; font-size: 10px; color: var(--muted); }
+.pdf-nutri-row.warn-row { background: rgba(200,50,50,0.04); color: #8a2020; }
+.pdf-footer-bar {
+  margin-top: auto;
+  background: var(--bg-2);
+  border-top: 1px solid var(--border);
+  padding: 5px 14px;
+  font-size: 9.5px;
+  color: var(--faint);
+  flex-shrink: 0;
+}
+
+/* ── EXCEL DOC ── */
+.xls-doc {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  font-family: var(--font-mono, 'Courier New', monospace);
+  font-size: 11px;
+  background: #fff;
+}
+.xls-toolbar {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  background: #f0eff0;
+  flex-shrink: 0;
+}
+.xls-tab {
+  padding: 5px 12px;
+  font-size: 11px;
+  color: var(--muted);
+  cursor: pointer;
+  border-right: 1px solid var(--border);
+  font-family: var(--fb);
+}
+.xls-tab.active-xls { background: #fff; color: var(--text); font-weight: 600; border-bottom: 2px solid #1d6f42; margin-bottom: -1px; }
+.xls-formula-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--border);
+  font-size: 11px;
+  flex-shrink: 0;
+}
+.xls-cell-ref { background: #fff; border: 1px solid var(--border); padding: 2px 6px; font-weight: 600; color: var(--text); }
+.xls-formula { color: #1d6f42; }
+.xls-table { width: 100%; border-collapse: collapse; flex: 1; }
+.xls-table th { background: #e8e8e8; border: 0.5px solid #c0bfbf; padding: 3px 6px; text-align: center; font-size: 10.5px; color: #666; font-weight: 500; }
+.xls-table td { border: 0.5px solid #d0cfcf; padding: 3px 6px; font-size: 10.5px; color: var(--text); }
+.xls-row-num { background: #f5f5f5; color: #999; text-align: center; border: 0.5px solid #d0d0d0; width: 22px; font-size: 10px; }
+.xls-header-row td { background: #1d6f42; color: #fff; font-weight: 600; font-family: var(--fb); font-size: 10.5px; }
+.xls-col-head { background: #e2efda; font-weight: 700; color: #1d5c35; font-family: var(--fb); }
+.xls-num { text-align: right; color: #1a3880; }
+.xls-indent { padding-left: 14px !important; }
+.xls-formula-cell { color: #1d6f42; font-style: italic; }
+.xls-warn-row td { background: rgba(255,200,0,0.12); }
+.xls-warn-row .xls-num { color: #8a5e00; font-weight: 700; }
+.xls-warn-cell { color: #8a5e00; font-weight: 700; text-align: center; }
+.xls-formula-row td { background: #f0f7ee; }
+.xls-merged { background: #1d6f42; color: #fff; font-weight: 700; font-family: var(--fb); font-size: 10.5px; text-align: center; padding: 4px; }
+.xls-comment-bubble {
+  margin: 6px 8px;
+  padding: 6px 10px;
+  background: #fff7e6;
+  border: 1px solid #e8c848;
+  border-radius: 4px;
+  font-size: 10px;
+  color: #6b4800;
+  font-family: var(--fb);
+  flex-shrink: 0;
+}
+.xls-comment-bubble::before { content: "💬 "; }
+
+/* ── PHOTO DOC ── */
+.photo-doc {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 10px;
+  gap: 8px;
+}
+.photo-frame {
+  flex: 1;
+  background: #f5f3ee;
+  border: 2px solid #d4c8a0;
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+  min-height: 200px;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.08);
+}
+.photo-scan-line {
+  position: absolute;
+  left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(139,53,200,0.6), transparent);
+  animation: scanline 2.5s ease-in-out infinite;
+  z-index: 5;
+}
+@keyframes scanline {
+  0%   { top: 0%; opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+.photo-corner {
+  position: absolute;
+  width: 14px; height: 14px;
+  border-color: var(--pri);
+  border-style: solid;
+  z-index: 4;
+}
+.photo-corner.tl { top: 6px; left: 6px;  border-width: 2px 0 0 2px; }
+.photo-corner.tr { top: 6px; right: 6px; border-width: 2px 2px 0 0; }
+.photo-corner.bl { bottom: 6px; left: 6px;  border-width: 0 0 2px 2px; }
+.photo-corner.br { bottom: 6px; right: 6px; border-width: 0 2px 2px 0; }
+.photo-content {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.photo-blur-row {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: #2a1a00;
+  line-height: 1.4;
+  opacity: 0.85;
+}
+.photo-blur-row.hi { font-weight: 700; font-size: 12px; opacity: 1; }
+.photo-blur-row.sm { font-size: 10.5px; }
+.photo-blur-row.warn { color: #8a2020; font-weight: 700; }
+.photo-blur-row.muted { opacity: 0.45; }
+.photo-ai-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+.ai-scan-badge {
+  position: absolute;
+  top: 8px; right: 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(7,0,14,0.75);
+  color: #c990f0;
+  font-size: 9.5px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 99px;
+  font-family: var(--fb);
+  letter-spacing: 0.04em;
+}
+.ai-scan-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #c990f0;
+  animation: pulse 1.2s infinite;
+  flex-shrink: 0;
+}
+.ai-detect-box {
+  position: absolute;
+  border: 1.5px solid rgba(139,53,200,0.7);
+  border-radius: 3px;
+  background: rgba(139,53,200,0.06);
+  font-size: 8.5px;
+  font-weight: 700;
+  color: var(--pri);
+  font-family: var(--fb);
+  padding: 1px 5px;
+  letter-spacing: 0.04em;
+}
+.box-1 { top: 14px; left: 14px; width: 130px; height: 28px; display: flex; align-items: center; }
+.box-2 { top: 68px; left: 14px; width: 160px; height: 52px; display: flex; align-items: flex-end; }
+.box-3 { top: 136px; left: 14px; width: 120px; height: 18px; display: flex; align-items: center; }
+.photo-caption {
+  font-size: 11px;
+  color: var(--faint);
+  line-height: 1.5;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* Responsive */
+@media (max-width: 920px) {
+  .fmt-tab-label { display: none; }
+  .fmt-tab { padding: 8px 10px; }
+}
+@media (max-width: 480px) {
+  .fmt-selector { overflow-x: auto; }
+}
+
+/* ── FORMAT SELECTOR ENHANCEMENTS ── */
+.fmt-drop-hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  background: linear-gradient(90deg, rgba(139,53,200,0.05), rgba(192,32,176,0.03));
+  border-bottom: 1px dashed var(--border);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--pri);
+  flex-shrink: 0;
+}
+.fmt-drop-icon { font-size: 13px; animation: bounceDown 2s ease-in-out infinite; }
+@keyframes bounceDown {
+  0%,100%{transform:translateY(0)} 50%{transform:translateY(3px)}
+}
+.fmt-drop-text { color: var(--muted); font-weight: 500; }
+
+/* File extension hint in tabs */
+.fmt-ext {
+  display: block;
+  font-size: 9.5px;
+  font-weight: 400;
+  color: var(--faint);
+  letter-spacing: 0.03em;
+  line-height: 1;
+  margin-top: 1px;
+}
+.fmt-tab.active .fmt-ext { color: rgba(139,53,200,0.6); }
+
+/* PDF extraction status */
+.pdf-extract-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 8px 10px;
+  background: rgba(139,53,200,0.03);
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.pec {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 99px;
+}
+.pec-ok   { background: rgba(25,128,81,0.1);  color: #198051; }
+.pec-warn { background: rgba(200,140,0,0.1);  color: #8a5e00; }
+
+.pdf-extract-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10.5px;
+  color: var(--pri);
+  font-weight: 500;
+  padding: 5px 10px;
+  background: rgba(139,53,200,0.04);
+  border-top: 1px solid var(--border);
+}
+.pdf-extract-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--pri);
+  animation: pulse 2s infinite;
+  flex-shrink: 0;
+}
+
+/* ── REAL PDF SPEC EXTRACTION ENHANCEMENTS ── */
+.pdf-ai-progress {
+  padding: 8px 10px;
+  background: rgba(139,53,200,0.04);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.pdf-ai-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--pri);
+  margin-bottom: 6px;
+}
+.pdf-progress-track {
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.pdf-progress-fill {
+  height: 100%;
+  width: 82%;
+  background: linear-gradient(90deg, var(--pri), var(--mag));
+  border-radius: 2px;
+  animation: progressLoad 2.5s ease-out forwards;
+}
+@keyframes progressLoad {
+  from { width: 0%; }
+  to   { width: 82%; }
+}
+.pec-info {
+  background: rgba(24,95,165,0.1);
+  color: #185FA5;
+}
+.pdf-certs-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 8px 10px;
+  border-top: 1px solid var(--border);
+  background: rgba(25,128,81,0.02);
+}
+.pdf-cert-pill {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 99px;
+  background: rgba(25,128,81,0.1);
+  color: #198051;
+  white-space: nowrap;
+}
+
+/* ── PROMINENT HERO TAGLINE ── */
+.hero-tagline-prominent {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 18px;
+  justify-content: center;
+}
+.htp-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border));
+  max-width: 80px;
+}
+.htp-line:last-child {
+  background: linear-gradient(90deg, var(--border), transparent);
+}
+.htp-text {
+  font-family: var(--fd);
+  font-size: clamp(15px, 1.8vw, 20px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  background: linear-gradient(130deg, var(--pri), var(--mag));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  white-space: nowrap;
+}
+@media(max-width:480px){
+  .htp-text { font-size: 14px; white-space: normal; text-align:center; }
+  .htp-line { display: none; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CONVERSION UI LAYOUT — single authoritative definition
+   Strategy: fixed 480px height, panels scroll internally,
+   center column flex-centers the button at all times.
+═══════════════════════════════════════════════════════════ */
+
+.conv-body {
+  display: grid;
+  grid-template-columns: 1fr 72px 1fr;
+  grid-template-rows: 1fr;
+  height: 480px;          /* fixed — panels scroll, button never moves */
+  overflow: hidden;
+}
+
+/* Left panel */
+.conv-panel.left-panel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-right: 1px solid var(--border);
+}
+
+/* Right panel */
+.conv-panel.right-panel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Document containers scroll internally */
+.fmt-doc {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.handwritten-doc {
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #d4c8a8 transparent;
+}
+
+/* Center column — button always at vertical midpoint */
+.conv-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;   /* centers content in the fixed-height column */
+  background: var(--bg);
+  border-right: 1px solid var(--border);
+  gap: 0;
+  padding: 0;
+  overflow: visible;
+}
+.conv-arrow-track {
+  flex: 1;                   /* equal space above and below button */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+}
+.conv-arrow-line {
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, var(--border), transparent);
+}
+
+/* Waiting / result panels fill available height */
+.conv-waiting {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.conv-result {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.conv-tab-panel {
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+/* ── MOBILE: stack vertically ── */
+@media (max-width: 920px) {
+  .conv-body {
+    grid-template-columns: 1fr;
+    grid-template-rows: 320px 64px 320px;
+    height: auto;
+  }
+  .conv-center {
+    flex-direction: row;
+    border-right: none;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 16px;
+    height: 64px;
+    justify-content: center;
+    gap: 12px;
+  }
+  .conv-arrow-track {
+    flex: 1;
+  }
+  .conv-arrow-line {
+    width: 100%;
+    height: 1px;
+  }
+  .conv-center-wrap {
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .conv-body {
+    grid-template-rows: 260px 60px 280px;
+  }
+  .handwritten-doc {
+    font-size: 12px;
+    padding: 8px 10px 8px 28px;
+  }
+}
+
+/* ── DOCUMENT STATUS BAR ── */
+.doc-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 12px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.doc-status-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.doc-status-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 99px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.doc-status-badge.draft     { background: rgba(251,188,5,0.12); color: #8a5e00; }
+.doc-status-badge.extracted { background: rgba(139,53,200,0.12); color: #534AB7; }
+.doc-status-badge.review    { background: rgba(24,95,165,0.12); color: #185FA5; }
+.doc-status-badge.approved  { background: rgba(25,128,81,0.12); color: #198051; }
+.doc-status-name {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.doc-approval-flow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.apv-step {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--faint);
+  padding: 2px 7px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.apv-step.done   { color: #198051; }
+.apv-step.active { background: var(--pri-glow); color: var(--pri); }
+.apv-arrow { font-size: 10px; color: var(--border); }
+
+/* ── PHOTO DOC RESTRUCTURED ── */
+.photo-frame-slim {
+  background: #1a1a2e;
+  border-bottom: 1px solid var(--border);
+  padding: 10px 12px;
+  position: relative;
+  flex-shrink: 0;
+}
+.photo-scan-badge-sm {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 8px;
+}
+.photo-content-slim { opacity: 0.75; }
+.photo-blur-row.hi { font-weight: 700; font-size: 12px; color: rgba(255,255,255,0.9); margin-bottom: 4px; }
+.photo-blur-row    { font-size: 11px; color: rgba(255,255,255,0.7); font-family: monospace; margin-bottom: 2px; }
+.photo-blur-row.sm { font-size: 10.5px; color: rgba(255,255,255,0.55); }
+.photo-blur-row.warn { color: rgba(255,200,50,0.9); font-weight: 600; }
+
+.photo-section-head {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--pri);
+  padding: 8px 12px 4px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.photo-struct-grid {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+}
+.psg-item {
+  display: flex;
+  gap: 8px;
+  padding: 7px 12px;
+  border-bottom: 0.5px solid rgba(139,53,200,0.07);
+  align-items: baseline;
+}
+.psg-item.psg-warn { background: rgba(200,140,0,0.04); }
+.psg-key {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--faint);
+  min-width: 80px;
+  flex-shrink: 0;
+}
+.psg-val { font-size: 12.5px; color: var(--text); line-height: 1.5; }
+.psg-item.psg-warn .psg-val { color: #8a5e00; font-weight: 600; }
+.photo-review-note {
+  font-size: 11px;
+  color: var(--faint);
+  padding: 8px 12px;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+  flex-shrink: 0;
+  font-style: italic;
+}
+
+/* ── BADGE TAGLINE ── */
+.conv-badge-tagline {
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.005em !important;
+  padding: 4px 14px !important;
+}
+
+/* ── APPROVAL BAR (RIGHT PANEL) ── */
+.crh-approval-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 7px 12px; background: var(--bg); border-bottom: 1px solid var(--border);
+  flex-shrink: 0; gap: 10px; flex-wrap: wrap;
+}
+.crh-apv-flow { display: flex; align-items: center; gap: 4px; }
+.crh-apv-step { font-size: 10px; font-weight: 600; color: var(--faint); padding: 2px 7px; border-radius: 4px; white-space: nowrap; }
+.crh-apv-step.done { color: #198051; }
+.crh-apv-step.active { background: var(--pri-glow); color: var(--pri); }
+.crh-apv-arrow { font-size: 10px; color: var(--border); }
+.crh-approve-btn {
+  font-size: 10.5px; font-weight: 700; padding: 5px 12px;
+  background: linear-gradient(130deg, var(--pri), var(--mag));
+  color: #fff; border: none; border-radius: 6px; cursor: pointer;
+  font-family: var(--fb); transition: opacity 0.2s; flex-shrink: 0;
+}
+.crh-approve-btn:hover { opacity: 0.85; }
+
+/* ── PHONE FRAME ── */
+.phone-doc { display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px 0 8px;flex:1;background:#f0eef8;gap:8px;overflow-y:auto; }
+.phone-frame { width:160px;background:#1a1a2a;border-radius:24px;padding:10px 6px 14px;box-shadow:0 8px 32px rgba(0,0,0,0.35),0 0 0 2px #333;display:flex;flex-direction:column;gap:6px;flex-shrink:0; }
+.phone-notch { display:flex;justify-content:center;align-items:center;height:12px; }
+.phone-camera-dot { width:8px;height:8px;border-radius:50%;background:#2a2a3a;border:1px solid #444; }
+.phone-viewfinder { background:#e8e4d8;border-radius:8px;position:relative;overflow:hidden;min-height:220px; }
+.phone-scan-line { position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(139,53,200,0.6),transparent);animation:phoneScan 2.5s ease-in-out infinite;z-index:5; }
+@keyframes phoneScan { 0%{top:0%;opacity:1}90%{top:95%;opacity:0.6}100%{top:0%;opacity:0} }
+.vf-corner { position:absolute;width:14px;height:14px;border-color:rgba(139,53,200,0.8);border-style:solid;z-index:6; }
+.vf-tl{top:4px;left:4px;border-width:2px 0 0 2px} .vf-tr{top:4px;right:4px;border-width:2px 2px 0 0}
+.vf-bl{bottom:4px;left:4px;border-width:0 0 2px 2px} .vf-br{bottom:4px;right:4px;border-width:0 2px 2px 0}
+.phone-doc-sheet { padding:10px 8px;transform:rotate(-1.5deg);background:#fff;margin:8px 6px;border-radius:2px;box-shadow:0 2px 8px rgba(0,0,0,0.15);position:relative;z-index:2; }
+.pds-line{font-size:6px;line-height:1.5;color:#222;font-family:monospace} .pds-line.bold{font-weight:700;font-size:7px;color:#111} .pds-line.sub{font-size:5.5px;color:#555} .pds-line.sm{font-size:5.5px;color:#444} .pds-line.warn{color:#c03030;font-weight:700} .pds-divider{border-top:0.5px dashed #ccc;margin:3px 0}
+.ocr-box{position:absolute;border:1.5px solid rgba(139,53,200,0.7);background:rgba(139,53,200,0.06);border-radius:2px;font-size:5.5px;font-weight:700;color:var(--pri);padding:1px 3px;z-index:8}
+.ocr-box-1{top:14px;left:10px} .ocr-box-2{top:75px;left:10px} .ocr-box-3{top:130px;left:10px}
+.warn-box{border-color:rgba(200,100,0,0.8)!important;color:#a05000!important;background:rgba(200,100,0,0.06)!important}
+.phone-confidence{position:absolute;bottom:6px;right:6px;font-size:5.5px;font-weight:700;color:rgba(139,53,200,0.9);background:rgba(255,255,255,0.9);padding:2px 5px;border-radius:3px;display:flex;align-items:center;gap:3px;z-index:9}
+.conf-dot{width:5px;height:5px;border-radius:50%;background:var(--pri);animation:pulse 1.5s infinite}
+.phone-bottom{display:flex;justify-content:center;padding:2px 0} .phone-shutter{font-size:18px;color:#555;line-height:1}
+.phone-caption{font-size:11px;color:var(--muted);text-align:center;max-width:200px;line-height:1.5;padding:0 8px}
+.cert-logo-svg{background:none!important;border:none!important}
 </style>
 </head>
 <body>
@@ -2272,8 +3025,8 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
 
     <!-- ① Centered minimal text above the product -->
     <div class="hero-text-block reveal">
-      <h1>Autonomous AI agents that<br><span class="grad">manage your spec data.</span></h1>
-      <p class="hero-kicker">So your food scientists can do food science.</p>
+      <h1 style="font-size:clamp(26px,3vw,42px);line-height:1.1;letter-spacing:-0.03em;font-weight:700;margin-bottom:12px">Autonomous AI agents that<br><span class="grad">manage your spec data.</span></h1>
+      <p class="hero-kicker" style="font-size:clamp(14px,1.4vw,18px)">So your food scientists can do food science.</p>
 
     </div>
 
@@ -2283,13 +3036,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
       <!-- Glow halo behind the UI -->
       <div class="stage-glow"></div>
 
-      <!-- Floating spec chips -->
-      <div class="spec-chip chip-1">⚠ Salt: 1.6g — flagged for review</div>
-      <div class="spec-chip chip-2">✓ EU 1169/2011 validated</div>
-      <div class="spec-chip chip-3">🥚 Allergen: Eggs — Contains</div>
-      <div class="spec-chip chip-4">⚡ Generated in 3.4s</div>
-      <div class="spec-chip chip-5">📋 4 ingredients extracted</div>
-      <div class="spec-chip chip-6">✓ Regulatory compliant</div>
+
 
       <!-- The conversion UI — full width -->
       <div class="conv-shell">
@@ -2298,62 +3045,338 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
           <span class="conv-dot r"></span>
           <span class="conv-dot y"></span>
           <span class="conv-dot g"></span>
-          <span class="conv-title">AutoSpec.ai — Spec Converter</span>
           <div class="conv-bar-right">
             <span class="conv-bar-stat">🔬 Food Scientists</span>
             <span class="conv-bar-stat">📋 Regulatory</span>
             <span class="conv-bar-stat">⚗️ R&amp;D</span>
-            <span class="conv-badge">AI-Powered</span>
+            <span class="conv-badge conv-badge-tagline">✦ Powered by AI. Perfected by Humans.</span>
           </div>
         </div>
 
-        <div class="conv-body" id="convBody">
+        <div class="conv-body" id="convBody" style="display:grid;grid-template-columns:1fr 72px 1fr;height:480px;overflow:hidden;position:relative">
 
-          <!-- LEFT: Handwritten spec -->
-          <div class="conv-panel left-panel">
-            <div class="conv-panel-label">
-              <span class="conv-panel-icon">📋</span>
-              Handwritten Specification
+          <!-- LEFT: Multi-format document input -->
+          <div class="conv-panel left-panel" style="display:flex;flex-direction:column;overflow:hidden;border-right:1px solid var(--border)">
+
+            <!-- Format selector tabs -->
+            <div class="fmt-drop-hint">
+              <span class="fmt-drop-icon">⬇</span>
+              <span class="fmt-drop-text">Drop any file — or choose a format to preview</span>
             </div>
-            <div class="handwritten-doc">
-              <div class="hw-coffee-ring"></div>
-              <div class="hw-fold"></div>
-              <div class="hw-title">Product Spec Sheet<span class="hw-date">12/03/25</span></div>
-              <div class="hw-line"><span class="hw-key">Product:</span><span class="hw-val">Classic Mayonnaise</span></div>
-              <div class="hw-line"><span class="hw-key">Code:</span><span class="hw-strikethrough">011</span><span class="hw-val"> 012</span><span class="hw-correction">corrected MC</span></div>
-              <div class="hw-line"><span class="hw-key">Supplier:</span><span class="hw-val hw-underline">New City Ingredients</span></div>
-              <div class="hw-divider"></div>
-              <div class="hw-section">Ingredients <span class="hw-highlight">check % by weight!</span></div>
-              <div class="hw-line sm"><span class="hw-bullet">—</span>Soybean oil <span class="hw-note">(oil)</span><span class="hw-tick">✓</span></div>
-              <div class="hw-line sm"><span class="hw-bullet">—</span>Whole egg <span class="hw-note">(emulsifier)</span><span class="hw-flag red">ALLERGEN</span></div>
-              <div class="hw-line sm"><span class="hw-bullet">—</span>White vinegar <span class="hw-note">(preservative)</span><span class="hw-tick">✓</span></div>
-              <div class="hw-line sm"><span class="hw-bullet">—</span>Salt, Sugar, Spices <span class="hw-question">spec %?</span></div>
-              <div class="hw-divider"></div>
-              <div class="hw-section">Nutritional <span class="hw-small-note">(per 100g)</span></div>
-              <div class="hw-line sm"><span class="hw-bullet">—</span>Energy: 680 kcal<span class="hw-tick">✓</span></div>
-              <div class="hw-line sm"><span class="hw-bullet">—</span>Fat: 75g &nbsp;Sat: 11g<span class="hw-tick">✓</span></div>
-              <div class="hw-line sm"><span class="hw-bullet">—</span>Carbs: 1.5g &nbsp;Sugar: 1.2g<span class="hw-tick">✓</span></div>
-              <div class="hw-line sm"><span class="hw-bullet">—</span>Protein: 1.2g<span class="hw-tick">✓</span></div>
-              <div class="hw-line sm"><span class="hw-bullet">—</span><span class="hw-circled">Salt: 1.6g</span><span class="hw-question red-q">⚠ high — recheck</span></div>
-              <div class="hw-divider"></div>
-              <div class="hw-section">Allergens</div>
-              <div class="hw-line sm"><span class="hw-bullet">—</span><span class="hw-bold-mark">Eggs</span> — Contains<span class="hw-flag red">BOLD on label</span></div>
-              <div class="hw-line sm"><span class="hw-bullet">—</span>Soya — May contain<span class="hw-flag amber">advisory</span></div>
-              <div class="hw-scribble">← Cross-check with Reg 1169/2011 Art.21</div>
-              <div class="hw-divider"></div>
-              <div class="hw-line"><span class="hw-key">Shelf life:</span><span class="hw-strikethrough">9 months</span><span class="hw-val"> 12 months</span><span class="hw-correction">updated SR</span></div>
-              <div class="hw-line"><span class="hw-key">Storage:</span><span class="hw-val">Refrigerate after opening</span></div>
-              <div class="hw-stamp-approve">DRAFT<br><span style="font-size:10px">pending review</span></div>
-              <div class="hw-initials">
-                <span class="hw-initial mc">MC ✓</span>
-                <span class="hw-initial jo">JO ?</span>
-                <span class="hw-initial sr">SR ✓</span>
+            <div class="fmt-selector">
+              <button class="fmt-tab active" id="fmt-pdf"  onclick="switchFmt('pdf')"  title="Supplier PDF specification">
+                <span class="fmt-tab-icon">📄</span><span class="fmt-tab-label">PDF</span>
+              </button>
+              <button class="fmt-tab"        id="fmt-hw"   onclick="switchFmt('hw')"   title="Handwritten spec sheet">
+                <span class="fmt-tab-icon">✏️</span><span class="fmt-tab-label">Handwritten</span>
+              </button>
+              <button class="fmt-tab"        id="fmt-xls"  onclick="switchFmt('xls')"  title="Excel data sheet">
+                <span class="fmt-tab-icon">📊</span><span class="fmt-tab-label">Excel</span>
+              </button>
+              <button class="fmt-tab"        id="fmt-img"  onclick="switchFmt('img')"  title="Photo or scan">
+                <span class="fmt-tab-icon">📸</span><span class="fmt-tab-label">Photo</span>
+              </button>
+            </div>
+
+            <div class="conv-panel-label" id="fmt-label">
+              <span class="conv-panel-icon">📄</span>
+              <span id="fmt-label-text">Supplier PDF — Extract, Validate &amp; Approve</span>
+              
+            </div>
+
+            <!-- ── HANDWRITTEN DOC ── -->
+            <div class="fmt-doc" id="doc-hw" style="display:none">
+              
+                <div class="handwritten-doc">
+                <div class="hw-coffee-ring"></div>
+                <div class="hw-fold"></div>
+                <div class="hw-title">Product Spec Sheet<span class="hw-date">12/03/25</span></div>
+                <div class="hw-line"><span class="hw-key">Product:</span><span class="hw-val">Classic Mayonnaise</span></div>
+                <div class="hw-line"><span class="hw-key">Code:</span><span class="hw-strikethrough">011</span><span class="hw-val"> 012</span><span class="hw-correction">corrected MC</span></div>
+                <div class="hw-line"><span class="hw-key">Supplier:</span><span class="hw-val hw-underline">New City Ingredients</span></div>
+                <div class="hw-divider"></div>
+                <div class="hw-section">Ingredients <span class="hw-highlight">check % by weight!</span></div>
+                <div class="hw-line sm"><span class="hw-bullet">—</span>Soybean oil <span class="hw-note">(oil)</span><span class="hw-tick">✓</span></div>
+                <div class="hw-line sm"><span class="hw-bullet">—</span>Whole egg <span class="hw-note">(emulsifier)</span><span class="hw-flag red">ALLERGEN</span></div>
+                <div class="hw-line sm"><span class="hw-bullet">—</span>White vinegar <span class="hw-note">(preservative)</span><span class="hw-tick">✓</span></div>
+                <div class="hw-line sm"><span class="hw-bullet">—</span>Salt, Sugar, Spices <span class="hw-question">spec %?</span></div>
+                <div class="hw-divider"></div>
+                <div class="hw-section">Nutritional <span class="hw-small-note">(per 100g)</span></div>
+                <div class="hw-line sm"><span class="hw-bullet">—</span>Energy: 680 kcal<span class="hw-tick">✓</span></div>
+                <div class="hw-line sm"><span class="hw-bullet">—</span>Fat: 75g &nbsp;Sat: 11g<span class="hw-tick">✓</span></div>
+                <div class="hw-line sm"><span class="hw-bullet">—</span>Carbs: 1.5g &nbsp;Sugar: 1.2g<span class="hw-tick">✓</span></div>
+                <div class="hw-line sm"><span class="hw-bullet">—</span>Protein: 1.2g<span class="hw-tick">✓</span></div>
+                <div class="hw-line sm"><span class="hw-bullet">—</span><span class="hw-circled">Salt: 1.6g</span><span class="hw-question red-q">⚠ high — recheck</span></div>
+                <div class="hw-divider"></div>
+                <div class="hw-section">Allergens</div>
+                <div class="hw-line sm"><span class="hw-bullet">—</span><span class="hw-bold-mark">Eggs</span> — Contains<span class="hw-flag red">BOLD on label</span></div>
+                <div class="hw-line sm"><span class="hw-bullet">—</span>Soya — May contain<span class="hw-flag amber">advisory</span></div>
+                <div class="hw-scribble">← Cross-check with Reg 1169/2011 Art.21</div>
+                <div class="hw-divider"></div>
+                <div class="hw-line"><span class="hw-key">Shelf life:</span><span class="hw-strikethrough">9 months</span><span class="hw-val"> 12 months</span><span class="hw-correction">updated SR</span></div>
+                <div class="hw-line"><span class="hw-key">Storage:</span><span class="hw-val">Refrigerate after opening</span></div>
+                <div class="hw-stamp-approve">DRAFT<br><span style="font-size:10px">pending review</span></div>
+                <div class="hw-initials">
+                  <span class="hw-initial mc">MC ✓</span>
+                  <span class="hw-initial jo">JO ?</span>
+                  <span class="hw-initial sr">SR ✓</span>
+                </div>
               </div>
             </div>
+
+            <!-- ── PDF SUPPLIER SPEC ── -->
+            <div class="fmt-doc" id="doc-pdf" style="display:flex">
+              <div class="pdf-doc">
+                <!-- Draft/Approval status -->
+                
+
+                <!-- Supplier header -->
+                <div class="pdf-header">
+                  <div class="pdf-logo-area">
+                    <div class="pdf-logo-placeholder" style="background:linear-gradient(135deg,#2a5f3a,#1a3d26);font-size:14px;font-weight:900;letter-spacing:0.02em">KJ</div>
+                    <div>
+                      <div class="pdf-company">King Julian Flour Company, Inc.</div>
+                      <div class="pdf-address">Antananarivo, Madagascar · Est. 2009 · Certified B-Corp</div>
+                    </div>
+                  </div>
+                  <div class="pdf-doc-meta">
+                    <div class="pdf-meta-row"><span>Item #:</span><span>KJF-4821</span></div>
+                    <div class="pdf-meta-row"><span>Mfg #:</span><span>30291</span></div>
+                    <div class="pdf-meta-row"><span>UPC:</span><span>0 84723 30291 7</span></div>
+                    <div class="pdf-meta-row"><span>Updated:</span><span>03/14/26</span></div>
+                  </div>
+                </div>
+
+                <div class="pdf-title-bar">WHOLE WHEAT FLOUR — PRODUCT SPECIFICATION</div>
+
+                <!-- AI extraction progress bar -->
+                <div class="pdf-ai-progress">
+                  <div class="pdf-ai-label">
+                    <span class="pdf-extract-dot"></span>
+                    AutoSpec.ai extracting &amp; validating this document
+                  </div>
+                  <div class="pdf-progress-track"><div class="pdf-progress-fill"></div></div>
+                </div>
+
+                <!-- Extraction chips — what AI found -->
+                <div class="pdf-extract-chips">
+                  <span class="pec pec-ok">✓ Product identified</span>
+                  <span class="pec pec-ok">✓ Ingredient statement extracted</span>
+                  <span class="pec pec-ok">✓ Nutritional data — 16 values</span>
+                  <span class="pec pec-ok">✓ Technical specs extracted</span>
+                  <span class="pec pec-warn">⚠ Wheat allergen — explicit declaration missing</span>
+                  <span class="pec pec-ok">✓ Certifications noted — Kosher, Non-GMO</span>
+                  <span class="pec pec-info">ℹ Shelf life: 180 days — mapped to 6 months</span>
+                </div>
+
+                <!-- Structured extraction output -->
+                <div class="pdf-section-head">Extracted: Product Identification</div>
+                <div class="pdf-grid2">
+                  <div class="pdf-field"><div class="pdf-field-label">Product Name</div><div class="pdf-field-val">Whole Wheat Flour</div></div>
+                  <div class="pdf-field"><div class="pdf-field-label">Manufacturer</div><div class="pdf-field-val">King Julian Flour Co.</div></div>
+                  <div class="pdf-field"><div class="pdf-field-label">Net Weight</div><div class="pdf-field-val">50 lbs (22.7 kg)</div></div>
+                  <div class="pdf-field"><div class="pdf-field-label">Shelf Life</div><div class="pdf-field-val">180 days — cool &amp; dry</div></div>
+                </div>
+
+                <div class="pdf-section-head">Extracted: Technical Specifications</div>
+                <div class="pdf-nutri-table">
+                  <div class="pdf-nutri-row hd"><span>Parameter</span><span>Value</span><span>Status</span></div>
+                  <div class="pdf-nutri-row"><span>Protein (14% M.B.)</span><span>14% ±0.3%</span><span style="color:#198051;font-size:10px;font-weight:700">✓ Extracted</span></div>
+                  <div class="pdf-nutri-row"><span>Moisture (Maximum)</span><span>14%</span><span style="color:#198051;font-size:10px;font-weight:700">✓ Extracted</span></div>
+                  <div class="pdf-nutri-row"><span>Ash (14% M.B.)</span><span>&gt; 1.5%</span><span style="color:#198051;font-size:10px;font-weight:700">✓ Extracted</span></div>
+                  <div class="pdf-nutri-row"><span>Falling Number</span><span>&gt; 350 sec</span><span style="color:#198051;font-size:10px;font-weight:700">✓ Extracted</span></div>
+                </div>
+
+                <div class="pdf-section-head">Extracted: Nutritional Data (per 100g)</div>
+                <div class="pdf-nutri-table">
+                  <div class="pdf-nutri-row hd"><span>Nutrient</span><span>Per 100g</span><span>%DV</span></div>
+                  <div class="pdf-nutri-row"><span>Energy</span><span>340 kcal</span><span>—</span></div>
+                  <div class="pdf-nutri-row"><span>Fat</span><span>2.5g</span><span>3.21%</span></div>
+                  <div class="pdf-nutri-row"><span>Carbohydrates</span><span>68g</span><span>24.73%</span></div>
+                  <div class="pdf-nutri-row"><span>Dietary Fiber</span><span>10.7g</span><span>38.21%</span></div>
+                  <div class="pdf-nutri-row"><span>Protein</span><span>14g</span><span>28.00%</span></div>
+                  <div class="pdf-nutri-row"><span>Sodium</span><span>2mg</span><span>0.09%</span></div>
+                  <div class="pdf-nutri-row"><span>Iron</span><span>3.6mg</span><span>20.00%</span></div>
+                </div>
+
+                <!-- Allergen flag — the key validation finding -->
+                <div class="pdf-allergen-box" style="border-color:rgba(200,140,0,0.4);background:rgba(200,140,0,0.05)">
+                  <span class="pdf-allergen-label" style="color:#8a5e00">⚠ VALIDATION FLAG:</span>
+                  <strong>Wheat</strong> is a major FDA allergen. This spec contains no explicit allergen declaration statement. AutoSpec.ai recommends adding: <em>"Contains: WHEAT"</em> before finalising.
+                </div>
+
+                <!-- Certifications available -->
+                <div class="pdf-certs-row">
+                  <span class="pdf-cert-pill">✓ Kosher Certificate available on request</span>
+                  <span class="pdf-cert-pill">✓ Non-GMO statement available</span>
+                  <span class="pdf-cert-pill">✓ SDS &amp; COA available on request</span>
+                </div>
+
+                <div class="pdf-footer-bar">King Julian Flour · KJF-4821 · Updated 03/14/26 · AutoSpec.ai extraction — 14 fields extracted · 1 flag raised · Pending approval</div>
+
+              </div>
+            </div>
+
+            <!-- ── EXCEL SHEET ── -->
+            <div class="fmt-doc" id="doc-xls" style="display:none">
+              
+                <div class="xls-doc">
+                <div class="xls-toolbar">
+                  <span class="xls-tab active-xls">Nutritional Data</span>
+                  <span class="xls-tab">Ingredients</span>
+                  <span class="xls-tab">Certs</span>
+                </div>
+                <div class="xls-formula-bar">
+                  <span class="xls-cell-ref">B12</span>
+                  <span class="xls-formula">=SUM(B4:B11)*0.01</span>
+                </div>
+                <table class="xls-table">
+                  <thead>
+                    <tr>
+                      <th class="xls-row-num"></th>
+                      <th>A</th><th>B</th><th>C</th><th>D</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="xls-header-row">
+                      <td class="xls-row-num">1</td>
+                      <td colspan="4" class="xls-merged">New City Ingredients — Classic Mayonnaise — Nutritional Spec v4.2</td>
+                    </tr>
+                    <tr><td class="xls-row-num">2</td><td class="xls-col-head">Nutrient</td><td class="xls-col-head">Per 100g</td><td class="xls-col-head">Unit</td><td class="xls-col-head">Tolerance</td></tr>
+                    <tr><td class="xls-row-num">3</td><td>Energy (kcal)</td><td class="xls-num">680</td><td>kcal</td><td>±5%</td></tr>
+                    <tr><td class="xls-row-num">4</td><td>Fat</td><td class="xls-num">74.8</td><td>g</td><td>±2g</td></tr>
+                    <tr><td class="xls-row-num">5</td><td>— Saturates</td><td class="xls-num xls-indent">11.1</td><td>g</td><td>±1g</td></tr>
+                    <tr><td class="xls-row-num">6</td><td>Carbohydrate</td><td class="xls-num">1.4</td><td>g</td><td>±0.5g</td></tr>
+                    <tr><td class="xls-row-num">7</td><td>— Sugars</td><td class="xls-num xls-indent">0.9</td><td>g</td><td>±0.3g</td></tr>
+                    <tr><td class="xls-row-num">8</td><td>Protein</td><td class="xls-num">1.2</td><td>g</td><td>±0.5g</td></tr>
+                    <tr class="xls-warn-row"><td class="xls-row-num">9</td><td>Salt</td><td class="xls-num">1.64</td><td>g</td><td>±0.2g</td></tr>
+                    <tr><td class="xls-row-num">10</td><td>Fibre</td><td class="xls-num">0.0</td><td>g</td><td>—</td></tr>
+                    <tr class="xls-formula-row"><td class="xls-row-num">11</td><td>Energy (kJ)</td><td class="xls-num xls-formula-cell">=B3*4.184</td><td>kJ</td><td></td></tr>
+                    <tr class="xls-formula-row"><td class="xls-row-num">12</td><td>Total (g/100g check)</td><td class="xls-num xls-formula-cell">=SUM(B4:B10)</td><td>g</td><td class="xls-warn-cell">⚠ Check</td></tr>
+                  </tbody>
+                </table>
+                <div class="xls-comment-bubble">SR 14/10/24: Salt value updated from 1.58 — please re-validate label</div>
+              </div>
+            </div>
+
+            <!-- ── PHOTO / SCAN ── -->
+            <div clas                 <div class="fmt-doc" id="doc-img" style="display:none">
+              <div class="phone-doc">
+                <div class="phone-frame">
+                  <div class="phone-notch"><div class="phone-camera-dot"></div></div>
+                  <div class="phone-viewfinder">
+                    <div class="phone-scan-line"></div>
+                    <div class="vf-corner vf-tl"></div><div class="vf-corner vf-tr"></div>
+                    <div class="vf-corner vf-bl"></div><div class="vf-corner vf-br"></div>
+                    <div class="phone-doc-sheet">
+                      <div class="pds-line bold">PRODUCT SPECIFICATION</div>
+                      <div class="pds-line bold">New City Ingredients</div>
+                      <div class="pds-line sub">Classic Mayonnaise · SKU 012</div>
+                      <div class="pds-divider"></div>
+                      <div class="pds-line">Ingredients:</div>
+                      <div class="pds-line sm">Soybean oil, Whole egg, White vinegar,</div>
+                      <div class="pds-line sm">Salt, Sugar, Spices, Natural flavours</div>
+                      <div class="pds-divider"></div>
+                      <div class="pds-line">Nutritional per 100g:</div>
+                      <div class="pds-line sm">Energy 680 kcal · Fat 74.8g · Protein 1.2g</div>
+                      <div class="pds-line sm warn">⚠ ALLERGEN: Contains EGG</div>
+                      <div class="pds-divider"></div>
+                      <div class="pds-line sm">Shelf life: 12 months</div>
+                    </div>
+                    <div class="ocr-box ocr-box-1">Product</div>
+                    <div class="ocr-box ocr-box-2">Ingredients</div>
+                    <div class="ocr-box ocr-box-3 warn-box">⚠ Allergen</div>
+                    <div class="phone-confidence"><span class="conf-dot"></span>OCR · 94%</div>
+                  </div>
+                  <div class="phone-bottom"><div class="phone-shutter">◉</div></div>
+                </div>
+                <div class="phone-caption">📸 Photograph any spec sheet — AutoSpec.ai reads and structures it automatically</div>
+              </div>
+            </div>
+
+
+                        <!-- ── EXCEL SHEET ── -->
+            <div class="fmt-doc" id="doc-xls" style="display:none">
+              
+                <div class="xls-doc">
+                <div class="xls-toolbar">
+                  <span class="xls-tab active-xls">Nutritional Data</span>
+                  <span class="xls-tab">Ingredients</span>
+                  <span class="xls-tab">Certs</span>
+                </div>
+                <div class="xls-formula-bar">
+                  <span class="xls-cell-ref">B12</span>
+                  <span class="xls-formula">=SUM(B4:B11)*0.01</span>
+                </div>
+                <table class="xls-table">
+                  <thead>
+                    <tr>
+                      <th class="xls-row-num"></th>
+                      <th>A</th><th>B</th><th>C</th><th>D</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="xls-header-row">
+                      <td class="xls-row-num">1</td>
+                      <td colspan="4" class="xls-merged">New City Ingredients — Classic Mayonnaise — Nutritional Spec v4.2</td>
+                    </tr>
+                    <tr><td class="xls-row-num">2</td><td class="xls-col-head">Nutrient</td><td class="xls-col-head">Per 100g</td><td class="xls-col-head">Unit</td><td class="xls-col-head">Tolerance</td></tr>
+                    <tr><td class="xls-row-num">3</td><td>Energy (kcal)</td><td class="xls-num">680</td><td>kcal</td><td>±5%</td></tr>
+                    <tr><td class="xls-row-num">4</td><td>Fat</td><td class="xls-num">74.8</td><td>g</td><td>±2g</td></tr>
+                    <tr><td class="xls-row-num">5</td><td>— Saturates</td><td class="xls-num xls-indent">11.1</td><td>g</td><td>±1g</td></tr>
+                    <tr><td class="xls-row-num">6</td><td>Carbohydrate</td><td class="xls-num">1.4</td><td>g</td><td>±0.5g</td></tr>
+                    <tr><td class="xls-row-num">7</td><td>— Sugars</td><td class="xls-num xls-indent">0.9</td><td>g</td><td>±0.3g</td></tr>
+                    <tr><td class="xls-row-num">8</td><td>Protein</td><td class="xls-num">1.2</td><td>g</td><td>±0.5g</td></tr>
+                    <tr class="xls-warn-row"><td class="xls-row-num">9</td><td>Salt</td><td class="xls-num">1.64</td><td>g</td><td>±0.2g</td></tr>
+                    <tr><td class="xls-row-num">10</td><td>Fibre</td><td class="xls-num">0.0</td><td>g</td><td>—</td></tr>
+                    <tr class="xls-formula-row"><td class="xls-row-num">11</td><td>Energy (kJ)</td><td class="xls-num xls-formula-cell">=B3*4.184</td><td>kJ</td><td></td></tr>
+                    <tr class="xls-formula-row"><td class="xls-row-num">12</td><td>Total (g/100g check)</td><td class="xls-num xls-formula-cell">=SUM(B4:B10)</td><td>g</td><td class="xls-warn-cell">⚠ Check</td></tr>
+                  </tbody>
+                </table>
+                <div class="xls-comment-bubble">SR 14/10/24: Salt value updated from 1.58 — please re-validate label</div>
+              </div>
+            </div>
+
+            <!-- ── PHOTO / SCAN ── -->
+            <div class="fmt-doc" id="doc-img" style="display:none">
+              <div class="photo-doc">
+                <div class="photo-frame">
+                  <div class="photo-scan-line"></div>
+                  <div class="photo-corner tl"></div>
+                  <div class="photo-corner tr"></div>
+                  <div class="photo-corner bl"></div>
+                  <div class="photo-corner br"></div>
+                  <div class="photo-content">
+                    <div class="photo-blur-row hi">PRODUCT SPECIFICATION</div>
+                    <div class="photo-blur-row hi">New City Ingredients — Classic Mayonnaise</div>
+                    <div class="photo-blur-row">Soybean oil, Whole egg, White vinegar</div>
+                    <div class="photo-blur-row">Salt, Sugar, Spices, Natural flavours</div>
+                    <div class="photo-blur-row sm">Energy: 680 kcal &nbsp;|&nbsp; Fat: 74.8g</div>
+                    <div class="photo-blur-row sm">Saturates: 11.1g &nbsp;|&nbsp; Carbs: 1.4g</div>
+                    <div class="photo-blur-row sm">Protein: 1.2g &nbsp;|&nbsp; Salt: 1.64g</div>
+                    <div class="photo-blur-row sm warn">⚠ ALLERGEN: Contains EGG</div>
+                    <div class="photo-blur-row sm">Shelf life: 12 months unopened</div>
+                    <div class="photo-blur-row sm">Store below 25°C after opening</div>
+                    <div class="photo-blur-row sm muted">Signature: _____________ Date: _______</div>
+                  </div>
+                  <div class="photo-ai-overlay">
+                    <div class="ai-scan-badge">
+                      <span class="ai-scan-dot"></span>
+                      AI reading document...
+                    </div>
+                    <div class="ai-detect-box box-1">Product name</div>
+                    <div class="ai-detect-box box-2">Ingredients</div>
+                    <div class="ai-detect-box box-3">Allergen</div>
+                  </div>
+                </div>
+                <div class="photo-caption">📸 Drag &amp; drop, photograph, or scan any physical spec sheet — AutoSpec.ai reads and extracts the data automatically.</div>
+              </div>
+            </div>
+
           </div>
 
-          <!-- CENTRE: Convert button -->
-          <div class="conv-center">
+<!-- CENTRE: Convert button -->
+          <div class="conv-center" style="display:flex;flex-direction:column;align-items:center;justify-content:center;border-right:1px solid var(--border)">
             <div class="conv-arrow-track"><div class="conv-arrow-line"></div></div>
             <div class="conv-center-wrap">
               <span class="conv-try-label">Try it</span>
@@ -2371,7 +3394,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
           </div>
 
           <!-- RIGHT: Structured data output -->
-          <div class="conv-panel right-panel" id="rightPanel">
+          <div class="conv-panel right-panel" id="rightPanel" style="display:flex;flex-direction:column;overflow:hidden">
             <div class="conv-panel-label">
               <span class="conv-panel-icon">✅</span>
               Structured Specification
@@ -2383,8 +3406,20 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
             </div>
             <div class="conv-result" id="convResult" style="display:none">
               <div class="conv-result-head">
-                <span class="crh-name">Classic Mayonnaise</span>
-                <span class="crh-code">SKU: 012</span>
+                <span class="crh-name" id="crh-name-val">Whole Wheat Flour</span>
+                <span class="crh-code" id="crh-sku-val">Item: GG-2096</span>
+              </div>
+              <div class="crh-approval-bar">
+                <div class="crh-apv-flow">
+                  <span class="crh-apv-step done">Uploaded</span>
+                  <span class="crh-apv-arrow">→</span>
+                  <span class="crh-apv-step done">Extracted</span>
+                  <span class="crh-apv-arrow">→</span>
+                  <span class="crh-apv-step active" id="apv-review">Review</span>
+                  <span class="crh-apv-arrow">→</span>
+                  <span class="crh-apv-step" id="apv-approved">Approved</span>
+                </div>
+                <button class="crh-approve-btn" id="approveBtn" onclick="approveSpec()">✓ Approve Spec</button>
               </div>
               <div class="conv-tabs">
                 <span class="conv-tab active-ct" onclick="switchTab(this,'tab-ingredients')">Ingredients</span>
@@ -2392,55 +3427,61 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
                 <span class="conv-tab" onclick="switchTab(this,'tab-allergens')">Allergens</span>
                 <span class="conv-tab" onclick="switchTab(this,'tab-info')">Info</span>
                 <span class="conv-tab" onclick="switchTab(this,'tab-certs')">Certifications</span>
-                <span class="conv-tab" onclick="switchTab(this,'tab-connections')">Connections</span>
               </div>
               <div class="conv-tab-panel" id="tab-ingredients">
                 <table class="conv-table">
                   <thead><tr><th>Ingredient</th><th>Source</th><th>Function</th><th>Status</th></tr></thead>
                   <tbody>
-                    <tr><td>Soybean oil</td><td>Soybean</td><td>Oil</td><td><span class="cs ok">✓</span></td></tr>
-                    <tr><td>Whole egg</td><td>Eggs</td><td>Emulsifier</td><td><span class="cs ok">✓</span></td></tr>
-                    <tr><td>White vinegar</td><td>—</td><td>Preservative</td><td><span class="cs ok">✓</span></td></tr>
-                    <tr><td>Salt, Sugar</td><td>—</td><td>Seasoning</td><td><span class="cs ok">✓</span></td></tr>
+                    <tr><td>Whole wheat flour</td><td>Hard red wheat</td><td>Base ingredient</td><td><span class="cs ok">✓</span></td></tr>
+                    <tr><td colspan="4" style="font-size:11px;color:var(--faint);font-style:italic;padding:6px 10px">Single-ingredient product · 100% whole wheat kernel milled</td></tr>
                   </tbody>
                 </table>
+                <div style="padding:8px 10px;font-size:11.5px;color:#8a5e00;background:rgba(200,140,0,0.06);border-top:1px solid rgba(200,140,0,0.15);display:flex;align-items:flex-start;gap:6px">
+                  <span style="flex-shrink:0">⚠</span>
+                  <span><strong>Allergen flag:</strong> Product contains <strong>WHEAT</strong> — a major FDA allergen. No explicit allergen declaration found in source document. Add: <em>"Contains: WHEAT"</em></span>
+                </div>
               </div>
               <div class="conv-tab-panel" id="tab-nutrients" style="display:none">
                 <table class="conv-table">
-                  <thead><tr><th>Nutrient</th><th>Per 100g</th><th>Check</th></tr></thead>
+                  <thead><tr><th>Nutrient</th><th>Per 100g</th><th>%DV</th></tr></thead>
                   <tbody>
-                    <tr><td>Energy</td><td>680 kcal</td><td><span class="cs ok">✓</span></td></tr>
-                    <tr><td>Fat</td><td>75g</td><td><span class="cs ok">✓</span></td></tr>
-                    <tr><td>– Saturates</td><td>11g</td><td><span class="cs ok">✓</span></td></tr>
-                    <tr><td>Carbohydrates</td><td>1.5g</td><td><span class="cs ok">✓</span></td></tr>
-                    <tr><td>– Sugars</td><td>1.2g</td><td><span class="cs ok">✓</span></td></tr>
-                    <tr><td>Protein</td><td>1.2g</td><td><span class="cs ok">✓</span></td></tr>
-                    <tr><td>Salt</td><td>1.6g</td><td><span class="cs warn">⚠</span></td></tr>
+                    <tr><td>Energy</td><td>340 kcal</td><td><span class="cs ok">✓</span></td></tr>
+                    <tr><td>Fat</td><td>2.5g</td><td>3.21%</td></tr>
+                    <tr><td>– Saturates</td><td>0.43g</td><td>2.15%</td></tr>
+                    <tr><td>Carbohydrates</td><td>68g</td><td>24.73%</td></tr>
+                    <tr><td>Dietary Fiber</td><td>10.7g</td><td class="cs ok">38.21%</td></tr>
+                    <tr><td>Total Sugars</td><td>0.41g</td><td>—</td></tr>
+                    <tr><td>Protein</td><td>14g</td><td>28.00%</td></tr>
+                    <tr><td>Sodium</td><td>2mg</td><td>0.09%</td></tr>
+                    <tr><td>Iron</td><td>3.6mg</td><td>20.00%</td></tr>
+                    <tr><td>Potassium</td><td>363mg</td><td>7.72%</td></tr>
                   </tbody>
                 </table>
               </div>
               <div class="conv-tab-panel" id="tab-allergens" style="display:none">
                 <table class="conv-table">
-                  <thead><tr><th>Allergen</th><th>Status</th><th>Declaration</th></tr></thead>
+                  <thead><tr><th>Allergen</th><th>Status</th><th>Action required</th></tr></thead>
                   <tbody>
-                    <tr><td>Eggs</td><td><span class="cs warn">Contains</span></td><td>Bold on label</td></tr>
-                    <tr><td>Soya</td><td><span class="cs info">May contain</span></td><td>Advisory</td></tr>
+                    <tr><td><strong>Wheat</strong></td><td><span class="cs warn">⚠ Undeclared</span></td><td>Add "Contains: WHEAT"</td></tr>
+                    <tr><td colspan="3" style="font-size:11px;color:var(--faint);font-style:italic;padding:6px 10px">No cross-contact allergens stated in source document — verify with supplier</td></tr>
                   </tbody>
                 </table>
               </div>
               <div class="conv-tab-panel" id="tab-info" style="display:none">
                 <div class="conv-info-grid">
-                  <div class="conv-info-item"><div class="cii-key">Shelf Life</div><div class="cii-val">12 months</div></div>
-                  <div class="conv-info-item"><div class="cii-key">Storage</div><div class="cii-val">Refrigerate after opening</div></div>
-                  <div class="conv-info-item"><div class="cii-key">Supplier</div><div class="cii-val">New City Ingredients</div></div>
-                  <div class="conv-info-item"><div class="cii-key">Regulation</div><div class="cii-val">EU 1169/2011 <span class="cs ok">✓</span></div></div>
+                  <div class="conv-info-item"><div class="cii-key">Shelf Life</div><div class="cii-val">180 days — cool &amp; dry</div></div>
+                  <div class="conv-info-item"><div class="cii-key">Net Weight</div><div class="cii-val">50 lbs (22.7 kg)</div></div>
+                  <div class="conv-info-item"><div class="cii-key">Supplier</div><div class="cii-val">King Julian Flour Co.</div></div>
+                  <div class="conv-info-item"><div class="cii-key">Item #</div><div class="cii-val">KJF-4821 · Mfg 30291</div></div>
+                  <div class="conv-info-item"><div class="cii-key">Protein spec</div><div class="cii-val">14% ±0.3% (14% M.B.)</div></div>
+                  <div class="conv-info-item"><div class="cii-key">Regulation</div><div class="cii-val">FDA 21 CFR <span class="cs ok">✓</span></div></div>
                 </div>
               </div>
               <!-- Certifications tab -->
               <div class="conv-tab-panel" id="tab-certs" style="display:none">
                 <div class="cert-grid">
                   <div class="cert-card cert-active">
-                    <div class="cert-logo">✡</div>
+                    <div class="cert-logo cert-logo-svg"><svg viewBox="0 0 40 40" width="36" height="36"><circle cx="20" cy="20" r="19" fill="none" stroke="#222" stroke-width="2"/><text x="20" y="17" text-anchor="middle" font-size="9" font-weight="700" font-family="serif" fill="#222">OU</text><text x="20" y="28" text-anchor="middle" font-size="7.5" font-family="serif" fill="#222">KOSHER</text></svg></div>
                     <div class="cert-body">
                       <div class="cert-name">Kosher Certified</div>
                       <div class="cert-issuer">Orthodox Union (OU)</div>
@@ -2455,7 +3496,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
                     </div>
                   </div>
                   <div class="cert-card cert-active">
-                    <div class="cert-logo">☪</div>
+                    <div class="cert-logo cert-logo-svg"><svg viewBox="0 0 40 40" width="36" height="36"><circle cx="20" cy="20" r="19" fill="none" stroke="#2a7a2a" stroke-width="2"/><text x="20" y="16" text-anchor="middle" font-size="8.5" font-weight="700" font-family="serif" fill="#2a7a2a">HALAL</text><path d="M13,24 a8,8 0 0,0 14,0" fill="none" stroke="#2a7a2a" stroke-width="1.5"/><circle cx="25" cy="20" r="1.5" fill="#2a7a2a"/></svg></div>
                     <div class="cert-body">
                       <div class="cert-name">Halal Certified</div>
                       <div class="cert-issuer">HMC — Halal Monitoring Committee</div>
@@ -2470,7 +3511,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
                     </div>
                   </div>
                   <div class="cert-card cert-warn">
-                    <div class="cert-logo">🌿</div>
+                    <div class="cert-logo cert-logo-svg"><svg viewBox="0 0 40 40" width="36" height="36"><circle cx="20" cy="20" r="19" fill="none" stroke="#e07000" stroke-width="2"/><text x="20" y="14" text-anchor="middle" font-size="6.5" font-weight="700" font-family="sans-serif" fill="#e07000">NON</text><text x="20" y="22" text-anchor="middle" font-size="6.5" font-weight="700" font-family="sans-serif" fill="#e07000">GMO</text><path d="M14,30 Q20,23 26,30" fill="none" stroke="#4a9a00" stroke-width="1.5"/><line x1="20" y1="23" x2="20" y2="30" stroke="#4a9a00" stroke-width="1.2"/></svg></div>
                     <div class="cert-body">
                       <div class="cert-name">Non-GMO Verified</div>
                       <div class="cert-issuer">Non-GMO Project</div>
@@ -2491,52 +3532,6 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
                 </div>
               </div>
 
-              <!-- Connections tab -->
-              <div class="conv-tab-panel" id="tab-connections" style="display:none">
-                <div class="conn-header">
-                  <div class="conn-header-text">
-                    <div class="conn-header-title">Supplier Network</div>
-                    <div class="conn-header-sub">Classic Mayonnaise · 1 active connection</div>
-                  </div>
-                  <button class="cert-dl-btn">+ Add connection</button>
-                </div>
-                <div class="conn-node-wrap">
-                  <div class="conn-product-node">
-                    <div class="conn-node-icon">🫙</div>
-                    <div class="conn-node-label">Classic<br>Mayonnaise</div>
-                    <div class="conn-node-sku">SKU 012</div>
-                  </div>
-                  <div class="conn-line-wrap">
-                    <div class="conn-line"><div class="conn-line-pulse"></div></div>
-                    <div class="conn-line-label">Ingredient supplier</div>
-                  </div>
-                  <div class="conn-supplier-node">
-                    <div class="conn-supplier-header">
-                      <div class="conn-supplier-avatar">NCI</div>
-                      <div>
-                        <div class="conn-supplier-name">New City Ingredients</div>
-                        <div class="conn-supplier-tag">● Connected to your network</div>
-                      </div>
-                    </div>
-                    <div class="conn-supplier-specs">
-                      <div class="conn-spec-pill">🌿 Soybean oil</div>
-                      <div class="conn-spec-pill">🥚 Whole egg</div>
-                      <div class="conn-spec-pill">🍶 White vinegar</div>
-                    </div>
-                    <div class="conn-supplier-meta">
-                      <span class="conn-meta-item">📋 12 specs shared</span>
-                      <span class="conn-meta-item">🔄 Last sync: 2h ago</span>
-                      <span class="conn-meta-item">✓ Data verified</span>
-                    </div>
-                    <div class="conn-supplier-actions">
-                      <button class="cert-dl-btn">📤 Push spec update</button>
-                      <button class="cert-dl-btn">📋 View shared specs</button>
-                      <button class="cert-dl-btn">💬 Message supplier</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
               <div class="conv-actions">
                 <button class="conv-action-btn">📄 Export PDF</button>
                 <button class="conv-action-btn">📊 Export Excel</button>
@@ -2548,7 +3543,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
 
         <div class="conv-status" id="convStatus">
           <span class="cs-dot idle" id="csDot"></span>
-          <span id="csText">Ready — upload a spec sheet or paste text to begin</span>
+          <span id="csText">Ready — PDF, Excel, handwritten sheet, photo · any format · click Convert to extract</span>
         </div>
       </div>
     </div>
@@ -2557,7 +3552,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
     <div class="hero-cta-below reveal" style="transition-delay:0.35s">
       <button class="btn btn-primary btn-lg" onclick="openModal()">See it in action →</button>
       <button class="btn btn-outline btn-lg" onclick="openModal()">Get a Quote</button>
-      <span class="hero-tagline-inline">✦ AI-driven. Human-verified.</span>
+      <span class="hero-tagline-inline">✦ Powered by AI. Perfected by humans.</span>
     </div>
 
     <!-- ④ Proof row below the stage -->
@@ -3128,7 +4123,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
         <li class="faq-item"><button class="faq-q">How is pricing determined for my business?<span class="faq-icon">+</span></button><div class="faq-a">AutoSpec.ai uses a SpecCredit model — not a subscription. On the free tier you get 10 specs per month and one buyer connection at no cost. For more volume, you earn SpecCredits by contributing to the network (uploading specs, connecting buyers, inviting suppliers) and spend them to unlock additional capacity. Paid tiers are priced per active connection — so you pay for the relationships that are generating value, not for seats that sit idle. Use the calculator on the pricing page to model your exact cost.</div></li>
         <li class="faq-item"><button class="faq-q">Is AutoSpec.ai suitable for alcohol and beverage companies?<span class="faq-icon">+</span></button><div class="faq-a">Absolutely. AutoSpec.ai has specific support for alcohol calculations, beverage formulation, and the regulatory requirements unique to the alcohol category including TTB compliance in the US and equivalent frameworks in the UK and EU.</div></li>
         <li class="faq-item"><button class="faq-q">How does AI handle my proprietary recipes and formulations?<span class="faq-icon">+</span></button><div class="faq-a">Your formulations are encrypted at rest and in transit. They are never used to train AI models and never shared with third parties. Only users within your workspace can access your data. Enterprise customers can request dedicated data residency options.</div></li>
-        <li class="faq-item"><button class="faq-q">Will this replace my R&amp;D or regulatory team?<span class="faq-icon">+</span></button><div class="faq-a">No — and that's a core design principle, not a disclaimer. Our tagline is "AI-driven. Human-verified." for a reason. AutoSpec.ai handles the time-consuming, repetitive data work — formatting, normalization, regulatory cross-checking — so your experts spend their time on decisions that actually require their expertise. The humans stay in control. The AI removes the busywork that was preventing them from doing their real jobs.</div></li>
+        <li class="faq-item"><button class="faq-q">Will this replace my R&amp;D or regulatory team?<span class="faq-icon">+</span></button><div class="faq-a">No — and that's a core design principle, not a disclaimer. Our tagline is "Powered by AI. Perfected by humans." for a reason. AutoSpec.ai handles the time-consuming, repetitive data work — formatting, normalization, regulatory cross-checking — so your experts spend their time on decisions that actually require their expertise. The humans stay in control. The AI removes the busywork that was preventing them from doing their real jobs.</div></li>
         <li class="faq-item"><button class="faq-q">How long does it take to get started?<span class="faq-icon">+</span></button><div class="faq-a">The free tier takes about four minutes — sign up, upload a spec, see what comes back. That's the whole onboarding for Connect tier. For Network tier customers, most are fully operational within a week. Enterprise implementations with ERP and PLM integration typically take three to six weeks, with our team managing the process end-to-end.</div></li>
       </ul>
     </div>
@@ -3158,7 +4153,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
       <div class="foot-brand">
         <img src="autospec-logo.png" alt="AutoSpec.ai">
         <p>Autonomous AI agents for food specification management. Built by industry insiders. Trusted by R&amp;D teams, regulatory professionals, and supply chain managers across the US food industry.</p>
-        <div class="foot-tagline">✦ AI-driven. Human-verified.</div>
+        <div class="foot-tagline">✦ Powered by AI. Perfected by humans.</div>
         <div class="social-row">
           <a href="#" class="soc-btn" aria-label="LinkedIn">in</a>
           <a href="#" class="soc-btn" aria-label="Twitter">𝕏</a>
@@ -3326,7 +4321,107 @@ function closePrivacyModal() { document.getElementById('privacyModal').classList
 document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closePrivacyModal(); });
 
 
+
+// Format switcher
+var fmtIcons  = {hw:'✏️', pdf:'📄', xls:'📊', img:'📸'};
+var fmtLabels = {pdf:'Supplier PDF — Extract, Validate & Approve', hw:'Handwritten Specification', xls:'Excel Sheet — Data Extraction', img:'Photo / Scan — OCR Extraction'};
+
+function switchFmt(fmt) {
+  // Tabs
+  ['hw','pdf','xls','img'].forEach(function(f) {
+    var t = document.getElementById('fmt-'+f);
+    if(t) t.classList.toggle('active', f === fmt);
+    var d = document.getElementById('doc-'+f);
+    if(d) d.style.display = f === fmt ? 'flex' : 'none';
+  });
+  // Label
+  var lbl = document.getElementById('fmt-label-text');
+  var ico = document.getElementById('fmt-label');
+  if(lbl) lbl.textContent = fmtLabels[fmt];
+  if(ico) ico.querySelector('.conv-panel-icon').textContent = fmtIcons[fmt];
+  // Update right-panel product name & SKU based on source format
+  var nameEl = document.getElementById('crh-name-val');
+  var skuEl  = document.getElementById('crh-sku-val');
+  if (nameEl && skuEl) {
+    if (fmt === 'pdf') {
+      nameEl.textContent = 'Whole Wheat Flour';
+      skuEl.textContent  = 'Item: KJF-4821';
+    } else if (fmt === 'hw') {
+      nameEl.textContent = 'Classic Mayonnaise';
+      skuEl.textContent  = 'SKU: 012';
+    } else if (fmt === 'xls') {
+      nameEl.textContent = 'Whole Wheat Flour';
+      skuEl.textContent  = 'Item: KJF-4821 v4.2';
+    } else {
+      nameEl.textContent = 'Detected Product';
+      skuEl.textContent  = 'Extracting...';
+    }
+  }
+
+  // Reset conversion if active
+  var result = document.getElementById('convResult');
+  var waiting = document.getElementById('convWaiting');
+  var badge = document.getElementById('liveBadge');
+  var dot = document.getElementById('csDot');
+  var txt = document.getElementById('csText');
+  if(result && result.style.display !== 'none') {
+    result.style.display = 'none';
+    if(waiting) waiting.style.display = 'flex';
+    if(badge) badge.style.display = 'none';
+    var btn = document.getElementById('convBtn');
+    if(btn) btn.classList.remove('processing');
+    if(dot) dot.className = 'cs-dot idle';
+    if(txt) txt.textContent = 'Ready — upload a spec sheet or paste text to begin';
+  }
+}
+
 // Spec conversion demo
+// ── SPEC DATA BY FORMAT ──
+var specData = {
+  pdf: {
+    name: 'Whole Wheat Flour', sku: 'Item: KJF-4821',
+    statusText: '✓ Spec extracted — 14 fields, 10 nutrients, 1 allergen flag raised',
+    ingredients: '<table class="conv-table"><thead><tr><th>Ingredient</th><th>Source</th><th>Function</th><th>Status</th></tr></thead><tbody><tr><td>Whole wheat flour</td><td>Hard red wheat</td><td>Base ingredient</td><td><span class="cs ok">✓</span></td></tr><tr><td colspan="4" style="font-size:11px;color:var(--faint);font-style:italic;padding:6px 10px">Single-ingredient product · 100% whole wheat kernel milled</td></tr></tbody></table><div style="padding:8px 10px;font-size:11.5px;color:#8a5e00;background:rgba(200,140,0,0.06);border-top:1px solid rgba(200,140,0,0.15);display:flex;align-items:flex-start;gap:6px"><span style="flex-shrink:0">⚠</span><span><strong>Allergen flag:</strong> Contains <strong>WHEAT</strong> — major FDA allergen. No explicit declaration in source document. Add: <em>"Contains: WHEAT"</em></span></div>',
+    nutrients: '<table class="conv-table"><thead><tr><th>Nutrient</th><th>Per 100g</th><th>%DV</th></tr></thead><tbody><tr><td>Energy</td><td>340 kcal</td><td>—</td></tr><tr><td>Fat</td><td>2.5g</td><td>3.21%</td></tr><tr><td>— Saturates</td><td>0.43g</td><td>2.15%</td></tr><tr><td>Carbohydrates</td><td>68g</td><td>24.73%</td></tr><tr><td>Dietary Fiber</td><td>10.7g</td><td class="cs ok">38.21% ✓</td></tr><tr><td>Protein</td><td>14g</td><td>28.00%</td></tr><tr><td>Sodium</td><td>2mg</td><td>0.09%</td></tr><tr><td>Iron</td><td>3.6mg</td><td>20.00%</td></tr><tr><td>Potassium</td><td>363mg</td><td>7.72%</td></tr></tbody></table>',
+    allergens: '<table class="conv-table"><thead><tr><th>Allergen</th><th>Status</th><th>Action required</th></tr></thead><tbody><tr><td><strong>Wheat</strong></td><td><span class="cs warn">⚠ Undeclared</span></td><td>Add "Contains: WHEAT"</td></tr><tr><td colspan="3" style="font-size:11px;color:var(--faint);font-style:italic;padding:6px 10px">No cross-contact allergens stated — verify with supplier</td></tr></tbody></table>',
+    info: '<div class="conv-info-grid"><div class="conv-info-item"><div class="cii-key">Shelf Life</div><div class="cii-val">180 days — cool &amp; dry</div></div><div class="conv-info-item"><div class="cii-key">Net Weight</div><div class="cii-val">50 lbs (22.7 kg)</div></div><div class="conv-info-item"><div class="cii-key">Supplier</div><div class="cii-val">King Julian Flour Co.</div></div><div class="conv-info-item"><div class="cii-key">Item #</div><div class="cii-val">KJF-4821 · Mfg 30291</div></div><div class="conv-info-item"><div class="cii-key">Protein spec</div><div class="cii-val">14% ±0.3% (14% M.B.)</div></div><div class="conv-info-item"><div class="cii-key">Regulation</div><div class="cii-val">FDA 21 CFR <span class="cs ok">✓</span></div></div></div>'
+  },
+  hw: {
+    name: 'Classic Mayonnaise', sku: 'SKU: 012',
+    statusText: '✓ Spec extracted — 4 ingredients, 7 nutrients, 2 allergens, all fields validated',
+    ingredients: '<table class="conv-table"><thead><tr><th>Ingredient</th><th>Source</th><th>Function</th><th>Status</th></tr></thead><tbody><tr><td>Soybean oil</td><td>Soybean</td><td>Oil</td><td><span class="cs ok">✓</span></td></tr><tr><td>Whole egg</td><td>Eggs</td><td>Emulsifier</td><td><span class="cs ok">✓</span></td></tr><tr><td>White vinegar</td><td>—</td><td>Preservative</td><td><span class="cs ok">✓</span></td></tr><tr><td>Salt, Sugar</td><td>—</td><td>Seasoning</td><td><span class="cs ok">✓</span></td></tr></tbody></table>',
+    nutrients: '<table class="conv-table"><thead><tr><th>Nutrient</th><th>Per 100g</th><th>Check</th></tr></thead><tbody><tr><td>Energy</td><td>680 kcal</td><td><span class="cs ok">✓</span></td></tr><tr><td>Fat</td><td>75g</td><td><span class="cs ok">✓</span></td></tr><tr><td>— Saturates</td><td>11g</td><td><span class="cs ok">✓</span></td></tr><tr><td>Carbohydrates</td><td>1.5g</td><td><span class="cs ok">✓</span></td></tr><tr><td>— Sugars</td><td>1.2g</td><td><span class="cs ok">✓</span></td></tr><tr><td>Protein</td><td>1.2g</td><td><span class="cs ok">✓</span></td></tr><tr><td>Salt</td><td>1.6g</td><td><span class="cs warn">⚠</span></td></tr></tbody></table>',
+    allergens: '<table class="conv-table"><thead><tr><th>Allergen</th><th>Status</th><th>Declaration</th></tr></thead><tbody><tr><td>Eggs</td><td><span class="cs warn">Contains</span></td><td>Bold on label</td></tr><tr><td>Soya</td><td><span class="cs info">May contain</span></td><td>Advisory</td></tr></tbody></table>',
+    info: '<div class="conv-info-grid"><div class="conv-info-item"><div class="cii-key">Shelf Life</div><div class="cii-val">12 months</div></div><div class="conv-info-item"><div class="cii-key">Storage</div><div class="cii-val">Refrigerate after opening</div></div><div class="conv-info-item"><div class="cii-key">Supplier</div><div class="cii-val">New City Ingredients</div></div><div class="conv-info-item"><div class="cii-key">Regulation</div><div class="cii-val">FDA 21 CFR <span class="cs ok">✓</span></div></div></div>'
+  },
+  xls: {
+    name: 'Whole Wheat Flour', sku: 'Item: KJF-4821 v4.2',
+    statusText: '✓ Spec extracted from Excel — 10 nutrients, 4 technical specs validated',
+    ingredients: '<table class="conv-table"><thead><tr><th>Ingredient</th><th>Source</th><th>Function</th><th>Status</th></tr></thead><tbody><tr><td>Whole wheat flour</td><td>Hard red wheat</td><td>Base ingredient</td><td><span class="cs ok">✓</span></td></tr></tbody></table>',
+    nutrients: '<table class="conv-table"><thead><tr><th>Nutrient</th><th>Per 100g</th><th>Tolerance</th></tr></thead><tbody><tr><td>Energy</td><td>340 kcal</td><td>—</td></tr><tr><td>Fat</td><td>2.5g</td><td>—</td></tr><tr><td>Protein</td><td>14g</td><td>±0.3%</td></tr><tr><td>Salt</td><td>2mg</td><td>±0.2g</td></tr></tbody></table>',
+    allergens: '<table class="conv-table"><thead><tr><th>Allergen</th><th>Status</th><th>Action</th></tr></thead><tbody><tr><td><strong>Wheat</strong></td><td><span class="cs warn">⚠ Undeclared</span></td><td>Add declaration</td></tr></tbody></table>',
+    info: '<div class="conv-info-grid"><div class="conv-info-item"><div class="cii-key">Source</div><div class="cii-val">Excel v4.2</div></div><div class="conv-info-item"><div class="cii-key">Item #</div><div class="cii-val">KJF-4821</div></div></div>'
+  },
+  img: {
+    name: 'Detected via OCR', sku: 'Pending review',
+    statusText: '✓ OCR extraction complete — 11 fields detected, human review recommended',
+    ingredients: '<div style="padding:12px;font-size:12.5px;color:var(--muted);line-height:1.7">OCR detected: Soybean oil, Whole egg, White vinegar, Salt, Sugar, Spices, Natural flavours. <br><span style="color:var(--pri);font-weight:600">Human review recommended before approval.</span></div>',
+    nutrients: '<div style="padding:12px;font-size:12.5px;color:var(--muted)">Nutritional values extracted via OCR. Accuracy confidence: 94%. Recommend verification against original document.</div>',
+    allergens: '<div style="padding:12px;font-size:12.5px;color:var(--muted)">Allergen text detected. Manual review required to confirm declarations.</div>',
+    info: '<div class="conv-info-grid"><div class="conv-info-item"><div class="cii-key">Source</div><div class="cii-val">Photo / Scan</div></div><div class="conv-info-item"><div class="cii-key">OCR Confidence</div><div class="cii-val">94%</div></div></div>'
+  }
+};
+
+// Get active format
+function getActiveFmt() {
+  var tabs = ['pdf','hw','xls','img'];
+  for(var i=0; i<tabs.length; i++){
+    var t = document.getElementById('fmt-'+tabs[i]);
+    if(t && t.classList.contains('active')) return tabs[i];
+  }
+  return 'pdf';
+}
+
 function runConversion() {
   var btn = document.getElementById('convBtn');
   var dot = document.getElementById('csDot');
@@ -3366,7 +4461,26 @@ function runConversion() {
     clearInterval(interval);
     btn.classList.remove('processing');
     dot.className = 'cs-dot done';
-    txt.textContent = '✓ Spec extracted — 4 ingredients, 7 nutrients, 2 allergens, all fields validated';
+    // Load the right data for the active format
+    var fmt = getActiveFmt();
+    var data = specData[fmt] || specData['pdf'];
+    txt.textContent = data.statusText;
+    // Update product name/sku
+    var nameEl = document.getElementById('crh-name-val');
+    var skuEl  = document.getElementById('crh-sku-val');
+    if(nameEl) nameEl.textContent = data.name;
+    if(skuEl)  skuEl.textContent  = data.sku;
+    // Inject tab panel content
+    var tabMap = {
+      'tab-ingredients': data.ingredients,
+      'tab-nutrients':   data.nutrients,
+      'tab-allergens':   data.allergens,
+      'tab-info':        data.info
+    };
+    Object.keys(tabMap).forEach(function(id){
+      var el = document.getElementById(id);
+      if(el) el.innerHTML = tabMap[id];
+    });
     document.getElementById('convWaiting').style.display = 'none';
     document.getElementById('convResult').style.display = 'flex';
     document.getElementById('liveBadge').style.display = 'inline-block';
@@ -3465,6 +4579,17 @@ function calcPlatform() {
   document.getElementById('pc-saving').textContent  = '$' + (saving/1000).toFixed(0) + 'K';
   document.getElementById('pc-roi').textContent     = roi + '×';
   document.getElementById('pc-payback').textContent = paybackWks <= 6 ? '<' + paybackWks + ' wks' : paybackWks + ' wks';
+}
+
+
+function approveSpec() {
+  var btn = document.getElementById('approveBtn');
+  var review = document.getElementById('apv-review');
+  var approved = document.getElementById('apv-approved');
+  if (!btn || btn.disabled) return;
+  btn.textContent = '✓ Approved'; btn.style.background = 'linear-gradient(130deg,#198051,#0f5c38)'; btn.disabled = true;
+  if (review) review.classList.remove('active');
+  if (approved) { approved.classList.add('done'); approved.classList.add('active'); }
 }
 
 // Cookie banner
