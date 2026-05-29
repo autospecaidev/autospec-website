@@ -1982,6 +1982,253 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
   padding: 8px 14px;
   flex-wrap: wrap;
 }
+
+/* ══════════════════════════════════════════
+   REVISED PRICING SECTION
+══════════════════════════════════════════ */
+
+/* SC Explainer bar */
+.sc-explainer {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 22px 24px;
+  margin-bottom: 40px;
+  align-items: start;
+}
+.sc-ex-title {
+  font-family: var(--fd);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: -0.01em;
+}
+.sc-coin { color: var(--pri); font-size: 18px; }
+.sc-ex-desc { font-size: 13px; color: var(--muted); line-height: 1.7; }
+.sc-mini-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--faint);
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+.sc-mini-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--muted);
+  padding: 5px 0;
+  border-bottom: 0.5px solid rgba(0,0,0,0.04);
+}
+.sc-mini-row:last-child { border-bottom: none; }
+.sc-badge-earn {
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 2px 8px;
+  background: rgba(25,128,81,0.1);
+  color: #198051;
+  border-radius: 99px;
+  white-space: nowrap;
+  margin-left: 8px;
+  flex-shrink: 0;
+}
+.sc-badge-spend {
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 2px 8px;
+  background: rgba(139,53,200,0.1);
+  color: var(--pri);
+  border-radius: 99px;
+  white-space: nowrap;
+  margin-left: 8px;
+  flex-shrink: 0;
+}
+
+/* Pricing tier label */
+.price-tier-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--faint);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+/* Gate — email verification */
+.price-calc-gate {
+  background: var(--bg-2);
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+.gate-icon {
+  font-size: 22px;
+  color: var(--pri);
+  margin-bottom: 8px;
+  display: block;
+}
+.gate-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-2);
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+.gate-input-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.gate-email {
+  flex: 1;
+  padding: 9px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: var(--fb);
+  color: var(--text);
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s;
+  min-width: 0;
+}
+.gate-email:focus { border-color: var(--pri); }
+.gate-btn {
+  padding: 9px 16px;
+  background: linear-gradient(130deg, var(--pri-lt), var(--mag));
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--fb);
+  white-space: nowrap;
+  transition: opacity 0.2s;
+  flex-shrink: 0;
+}
+.gate-btn:hover { opacity: 0.88; }
+.gate-note {
+  font-size: 11px;
+  color: var(--faint);
+  line-height: 1.5;
+}
+.gate-error {
+  font-size: 11.5px;
+  color: #c03030;
+  margin-top: 6px;
+  min-height: 16px;
+  font-weight: 500;
+}
+
+/* Calculator (unlocked) */
+.price-calculator {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 16px;
+  animation: fadeIn 0.4s ease;
+}
+@keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+.calc-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--pri);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+.calc-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.calc-row label { flex: 1; line-height: 1.4; }
+.calc-row input[type=range] { width: 100px; flex-shrink: 0; accent-color: var(--pri); }
+.calc-row span { font-size: 12.5px; font-weight: 600; color: var(--text); min-width: 44px; text-align: right; flex-shrink: 0; }
+.calc-results {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+.calc-result-item { text-align: center; }
+.cr-num { font-family: var(--fd); font-size: 18px; font-weight: 700; color: var(--pri); letter-spacing: -0.02em; }
+.cr-lbl { font-size: 10.5px; color: var(--faint); margin-top: 2px; }
+.calc-footnote { font-size: 10.5px; color: var(--faint); margin-top: 10px; line-height: 1.5; }
+
+/* Pricing trust row */
+.pricing-trust {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 36px;
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 500;
+  padding: 16px;
+  background: var(--bg-2);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+.pricing-trust span:first-child,
+.pricing-trust span:nth-child(3),
+.pricing-trust span:nth-child(5),
+.pricing-trust span:nth-child(7) { color: var(--pri); }
+.pricing-trust span:nth-child(even) { color: var(--faint); }
+
+/* Featured card updated */
+.price-card.featured { background: var(--bg-dark); }
+
+/* Responsive */
+@media (max-width: 920px) {
+  .sc-explainer { grid-template-columns: 1fr; gap: 12px; }
+  .gate-input-row { flex-direction: column; }
+  .gate-btn { width: 100%; }
+  .calc-results { grid-template-columns: repeat(3,1fr); }
+}
+@media (max-width: 480px) {
+  .sc-explainer { display: none; }
+  .calc-results { grid-template-columns: 1fr; }
+}
+
+/* SC key label */
+.sc-key {
+  color: var(--pri);
+  font-size: 14px;
+}
+.sc-key-line {
+  font-size: 11.5px;
+  color: var(--faint);
+  font-weight: 500;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  background: var(--pri-glow);
+  border-radius: 6px;
+  display: inline-block;
+  letter-spacing: 0.01em;
+}
 </style>
 </head>
 <body>
@@ -2373,14 +2620,14 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
   <div class="container">
     <div class="problem-grid">
       <div class="reveal">
-        <div class="sec-tag">The root cause</div>
-        <h2 class="sec-head" style="color:#fff">Your biggest bottleneck isn't supply chain, labor, or costs — <span style="color:#c990f0">it's messy product data.</span></h2>
-        <p class="sec-sub">Food companies lose billions every year because their product data is fragmented, inconsistent, and inaccessible. We're here to fix it.</p>
+        <div class="sec-tag">The real problem</div>
+        <h2 class="sec-head" style="color:#fff">Your food scientists are doing <span style="color:#c990f0">data admin.</span></h2>
+        <p class="sec-sub">The average food R&amp;D or regulatory professional spends over a third of their week managing spec documents — not developing products, not ensuring compliance. They're reformatting spreadsheets, chasing suppliers, and reconciling versions. That's the problem AutoSpec.ai was built to eliminate.</p>
         <ul class="pain-list">
-          <li class="pain-item"><div class="pain-x">✗</div><div class="pain-text"><strong>Fragmented data across emails, portals and spreadsheets</strong> — no single source of truth across teams, suppliers and customers.</div></li>
-          <li class="pain-item"><div class="pain-x">✗</div><div class="pain-text"><strong>Incompatible formats from every supplier</strong> — hours of manual normalization, standardization and reformatting before data is usable.</div></li>
-          <li class="pain-item"><div class="pain-x">✗</div><div class="pain-text"><strong>Every customer wants data a different way</strong> — custom exports, different specs, mounting complexity with no scalable solution.</div></li>
-          <li class="pain-item"><div class="pain-x">✗</div><div class="pain-text"><strong>Regulatory and labeling errors are costly</strong> — inaccurate data creates compliance risk, product recalls, and brand damage.</div></li>
+          <li class="pain-item"><div class="pain-x">✗</div><div class="pain-text"><strong>Every supplier sends data in a different format</strong> — your team normalizes it by hand, every time, for every product change.</div></li>
+          <li class="pain-item"><div class="pain-x">✗</div><div class="pain-text"><strong>No one knows which spec version is current</strong> — your co-manufacturer has v4, your buyer has v7, your QA team is working from v11.</div></li>
+          <li class="pain-item"><div class="pain-x">✗</div><div class="pain-text"><strong>Regulatory changes don't announce themselves</strong> — when FDA or EU rules update, you find out when a label gets rejected or a retailer flags a non-compliance.</div></li>
+          <li class="pain-item"><div class="pain-x">✗</div><div class="pain-text"><strong>Audit prep is a three-week fire drill</strong> — because traceability was never built in, it has to be reconstructed from email threads and shared drives before every inspection.</div></li>
         </ul>
       </div>
       <div class="reveal" style="transition-delay:0.15s">
@@ -2392,7 +2639,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
           <div class="chaos-row g"><span>📂</span> 47 versions of the same spec across 6 email threads</div>
           <div class="chaos-row a"><span>🔄</span> EU Reg update — which of our 200 specs are affected?</div>
           <div class="chaos-row r"><span>🍷</span> Alcohol calculation error flagged by distributor</div>
-          <div class="chaos-fix">⚡ AutoSpec.ai creates one unified, intelligent product data ecosystem</div>
+          <div class="chaos-fix">⚡ AutoSpec.ai gives every spec one source of truth — structured, validated, and always current</div>
         </div>
       </div>
     </div>
@@ -2404,27 +2651,27 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
   <div class="container">
     <div class="how-head reveal">
       <div class="sec-tag">How it works</div>
-      <h2 class="sec-head">From unstructured data to <span class="grad">structured, actionable specs</span></h2>
-      <p class="sec-sub">Our AI agent ingests data from any source, in any format, and transforms it into a single intelligent taxonomy — ready to share with anyone, in any format they require.</p>
+      <h2 class="sec-head">One input. Any format.<br><span class="grad">A perfect spec every time.</span></h2>
+      <p class="sec-sub">Upload a handwritten sheet, a supplier PDF, or an Excel export. AutoSpec.ai reads it, structures it, validates it against the right regulations, and makes it shareable — in under five minutes.</p>
     </div>
     <div class="how-grid">
       <div class="how-card reveal">
         <div class="how-num">01</div>
         <div class="how-icon">📥</div>
-        <h3>Ingest from any source</h3>
-        <p>Connect your suppliers, co-manufacturers, ERP, PLM, or QMS. AutoSpec.ai accepts unstructured data in any format — spreadsheets, PDFs, emails, or API — eliminating manual normalization.</p>
+        <h3>Upload anything</h3>
+        <p>Handwritten sheet. Supplier PDF. Excel. Email forward. Photo on your phone. AutoSpec.ai reads them all — no reformatting, no templates, no training your suppliers to change how they work.</p>
       </div>
       <div class="how-card reveal" style="transition-delay:0.12s">
         <div class="how-num">02</div>
         <div class="how-icon">⚡</div>
-        <h3>AI normalizes &amp; validates</h3>
-        <p>Our AI agent interprets, structures, and validates your product data — calculating nutritional values, verifying allergen declarations, checking label claims, and mapping to regulatory requirements automatically.</p>
+        <h3>AI structures &amp; validates</h3>
+        <p>Every ingredient mapped. Every nutritional value calculated. Every label claim checked against FDA, EU, UK, and 40+ regional frameworks. Allergens flagged. Certifications tracked. Done in seconds — not days.</p>
       </div>
       <div class="how-card reveal" style="transition-delay:0.24s">
         <div class="how-num">03</div>
         <div class="how-icon">📤</div>
-        <h3>Deliver in any format</h3>
-        <p>Push validated specifications to any customer or partner in whatever format they require — PDF, Excel, API, or directly to their supplier portal. One source of truth, infinite outputs.</p>
+        <h3>Share with anyone</h3>
+        <p>Push the finished spec to your buyer as a PDF, your co-manufacturer as Excel, your ERP via API, or directly into a supplier portal — all from the same validated source. One spec, every format, zero rework.</p>
       </div>
     </div>
   </div>
@@ -2435,24 +2682,24 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
   <div class="container">
     <div class="aud-head reveal">
       <div class="sec-tag">Who we serve</div>
-      <h2 class="sec-head">Built for every node in the food supply chain</h2>
-      <p class="sec-sub" style="margin:0 auto">From startup brands to Fortune 500 manufacturers — AutoSpec.ai scales to your complexity.</p>
+      <h2 class="sec-head">Built for the people who live<br><span class="grad">inside the spec.</span></h2>
+      <p class="sec-sub" style="margin:0 auto">Whether you make it, source it, or sell it — you're managing specification data. AutoSpec.ai is built for every team in that chain, from a one-person R&amp;D function to a co-manufacturer running 500 SKUs for 40 brands.</p>
     </div>
     <div class="aud-grid">
       <div class="aud-card reveal">
         <div class="aud-icon">🏭</div>
         <h3>Co-Packers &amp; Co-Manufacturers</h3>
-        <p>Product information requirements continue to grow in detail and complexity. AutoSpec.ai provides an intelligent taxonomy that evolves with your needs — enabling efficiency, compliance, and scalability at any volume.</p>
+        <p>You manage specs for dozens of brands simultaneously — each with their own requirements, retailer portals, and label formats. AutoSpec.ai creates a single structured spec per product that outputs to whatever format each customer demands, without your team doing the translation.</p>
       </div>
       <div class="aud-card reveal" style="transition-delay:0.12s">
         <div class="aud-icon">🌿</div>
-        <h3>Suppliers</h3>
-        <p>Seamlessly share data with any manufacturer regardless of format, structure, or portal. Eliminate the burden of logging into multiple customer portals — one platform to manage all your specification exchanges.</p>
+        <h3>Ingredient Suppliers</h3>
+        <p>Your customers ask for specs in six different formats across five different portals. AutoSpec.ai lets you upload your ingredient spec once and share it with every customer in whatever format they require — without logging into a different portal for each one.</p>
       </div>
       <div class="aud-card reveal" style="transition-delay:0.24s">
         <div class="aud-icon">🛒</div>
-        <h3>Brands &amp; Customers</h3>
-        <p>Receive customized product data in any format you require, meeting your specifications while maintaining complete data integrity and consistency across every SKU and every supplier relationship.</p>
+        <h3>Food Brands &amp; R&amp;D Teams</h3>
+        <p>From your first 10 SKUs to your 500th — spec management shouldn't slow down innovation. AutoSpec.ai keeps every formulation current, every label claim validated, and every supplier in sync, so your team ships products faster and with more confidence.</p>
       </div>
     </div>
   </div>
@@ -2463,39 +2710,39 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
   <div class="container">
     <div class="cap-head reveal">
       <div class="sec-tag">Platform capabilities</div>
-      <h2 class="sec-head">The power of <span class="grad">AutoSpec.ai</span></h2>
-      <p class="sec-sub">Unlike solutions that merely incorporate AI features, AutoSpec.ai is fundamentally powered by artificial intelligence at its core — built by industry insiders who lived the problem.</p>
+      <h2 class="sec-head">Everything your spec<br><span class="grad">workflow actually needs.</span></h2>
+      <p class="sec-sub">AutoSpec.ai isn't a legacy platform with an AI feature bolted on. Every capability was designed from scratch around what food scientists, regulatory teams, and supply chain managers actually do every day.</p>
     </div>
     <div class="cap-grid">
       <div class="cap-card reveal">
         <div class="cap-icon">🔍</div>
-        <h4>AI-Driven Natural Language Search</h4>
-        <p>Find the right product data instantly using plain-language queries. No more hunting through folders or portals — ask a question, get an answer.</p>
+        <h4>Ask it anything</h4>
+        <p>"Which of our sauces contain sesame?" "What specs are due for renewal this quarter?" Plain-English queries across your entire spec library — answered instantly, without building a report.</p>
       </div>
       <div class="cap-card reveal" style="transition-delay:0.08s">
         <div class="cap-icon">🔄</div>
-        <h4>Real-Time Synchronization</h4>
-        <p>Ensure every stakeholder — teams, suppliers, customers, co-manufacturers — always has the latest, most accurate product data with zero manual updates.</p>
+        <h4>One version. Always current.</h4>
+        <p>When a spec changes, every connected party sees the updated version — automatically. No email. No re-upload. No "which file did you send?" Your supplier, your buyer, and your QA team are always working from the same document.</p>
       </div>
       <div class="cap-card reveal" style="transition-delay:0.16s">
         <div class="cap-icon">🏷️</div>
-        <h4>Label &amp; Regulatory Intelligence</h4>
-        <p>Automatically validate label claims, allergen declarations, and nutritional values against FDA, EU, UK, and 40+ regional regulatory frameworks — including full alcohol labeling compliance.</p>
+        <h4>Regulatory intelligence built in</h4>
+        <p>Every spec is automatically validated against FDA 21 CFR, EU 1169/2011, UK FIR, CODEX, FSANZ, and 40+ frameworks. Label claims checked. Allergens flagged for bold. Alcohol calculations included. You're alerted when a regulation changes that affects your products — before your retailer is.</p>
       </div>
       <div class="cap-card reveal" style="transition-delay:0.08s">
         <div class="cap-icon">⚗️</div>
-        <h4>Formula &amp; Ingredient Management</h4>
-        <p>Create and maintain formulations with automatic nutritional roll-ups, alcohol calculations, allergen matrices, and cross-category formula calculations — all in one place.</p>
+        <h4>Formula management that thinks ahead</h4>
+        <p>Change one ingredient and AutoSpec.ai recalculates every nutritional value, re-checks every label claim, and flags every formula that's affected — across your entire product library. No spreadsheet can do that.</p>
       </div>
       <div class="cap-card reveal" style="transition-delay:0.16s">
         <div class="cap-icon">🤝</div>
-        <h4>Seamless Supplier Integration</h4>
-        <p>Accept data from any supplier in any format — structured or unstructured. Our AI eliminates manual normalization and standardization, regardless of source system or data quality.</p>
+        <h4>Your suppliers don't need to change</h4>
+        <p>They can keep sending PDFs, spreadsheets, or photos of handwritten sheets. AutoSpec.ai reads and structures whatever arrives — your team gets clean, validated data regardless of how disorganised the source was.</p>
       </div>
       <div class="cap-card reveal" style="transition-delay:0.24s">
         <div class="cap-icon">📊</div>
-        <h4>Unified Data Ecosystem</h4>
-        <p>One structured source of truth across teams, suppliers, and customers. Slash data sharing costs, eliminate duplication and errors, and reduce regulatory and operational risk.</p>
+        <h4>One platform. Every relationship.</h4>
+        <p>Connect your suppliers, your co-manufacturers, your buyers, and your internal teams — all sharing from the same validated spec. No more parallel spreadsheets. No more "send me the latest version." One source of truth, forever.</p>
       </div>
     </div>
   </div>
@@ -2506,32 +2753,32 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
   <div class="container">
     <div class="impact-head reveal">
       <div class="sec-tag">Business impact</div>
-      <h2 class="sec-head">What changes when your product data works</h2>
+      <h2 class="sec-head">What your team gains<br>when specs stop being a problem</h2>
     </div>
     <div class="impact-grid">
       <div class="impact-item reveal">
         <div class="impact-bullet">🚀</div>
-        <div><h4>Accelerate Product Innovation</h4><p>Clean, structured data speeds up product development and market launches — from concept to compliant spec in hours, not weeks.</p></div>
+        <div><h4>Faster time to shelf</h4><p>When spec management takes hours instead of weeks, your R&amp;D team gets that time back. New products move from formulation to retailer-ready spec without the usual back-and-forth.</p></div>
       </div>
       <div class="impact-item reveal" style="transition-delay:0.1s">
         <div class="impact-bullet">🤝</div>
-        <div><h4>Effortless Collaboration</h4><p>Teams, suppliers, and customers work seamlessly with harmonized data. No more version conflicts or email back-and-forth.</p></div>
+        <div><h4>No more "which version is this?"</h4><p>Everyone — your team, your co-manufacturer, your buyer, your regulatory consultant — works from the same live spec. Version conflicts become impossible by design.</p></div>
       </div>
       <div class="impact-item reveal" style="transition-delay:0.1s">
         <div class="impact-bullet">💰</div>
-        <div><h4>Slash Data Sharing Costs</h4><p>Reduce manual data entry expenses and eliminate inefficiencies in data exchange — measurable ROI from day one.</p></div>
+        <div><h4>Measurable ROI from day one</h4><p>At an average of 6 hours per spec at $45/hour, a team managing 200 specs/year spends over $54,000 in labor on data admin alone. AutoSpec.ai cuts that by 80%.</p></div>
       </div>
       <div class="impact-item reveal" style="transition-delay:0.2s">
         <div class="impact-bullet">🏆</div>
-        <div><h4>Stronger Market Position</h4><p>Accurate, accessible product data builds customer trust, brand credibility, and a competitive advantage in your category.</p></div>
+        <div><h4>Credibility with every buyer</h4><p>When a retailer asks for a full spec pack with 48 hours' notice, you send it in twenty minutes. That responsiveness — and that accuracy — becomes a competitive advantage.</p></div>
       </div>
       <div class="impact-item reveal" style="transition-delay:0.2s">
         <div class="impact-bullet">⚡</div>
-        <div><h4>Faster, Better Decisions</h4><p>AI-powered insights turn product data into a strategic asset — giving leadership the real-time visibility to act with confidence.</p></div>
+        <div><h4>Compliance before it's a crisis</h4><p>AutoSpec.ai monitors 40+ regulatory frameworks and alerts you when a change affects your products — before a retailer flags it, before a recall is triggered, before the audit.</p></div>
       </div>
       <div class="impact-item reveal" style="transition-delay:0.3s">
         <div class="impact-bullet">✅</div>
-        <div><h4>Minimize Regulatory Risk</h4><p>Validated data and automatic regulatory monitoring minimizes compliance failures, product recalls, and operational disruptions.</p></div>
+        <div><h4>Audit-ready, always</h4><p>Every spec carries a full version history, approval log, and traceability record. Audit prep goes from a three-week scramble to a one-click export.</p></div>
       </div>
     </div>
   </div>
@@ -2540,89 +2787,238 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
 <!-- PRICING -->
 <section class="pricing" id="pricing">
   <div class="container">
-    <div class="pricing-head reveal">
-      <div class="sec-tag">AI-Powered Ingredient Spec Platform</div>
-      <h2 class="sec-head">What you get at every level</h2>
-    </div>
-    <p class="pricing-intro reveal" style="transition-delay:0.1s">Three tiers built around outcomes — not seats, not storage. You pay only when value is delivered.</p>
 
+    <div class="pricing-head reveal">
+      <div class="sec-tag">Outcome-based pricing</div>
+      <h2 class="sec-head">You pay for results.<br><span class="grad">Not seats. Not storage.</span></h2>
+    </div>
+    <p class="pricing-intro reveal" style="transition-delay:0.1s">
+      Every tier is built around <strong>SpecCredits</strong> — earned by contributing to the network, spent to access more of the platform.
+      The more you give to the network, the more you get back. Value flows before money does.
+    </p>
+
+    <!-- SPECCREDIT EXPLAINER -->
+    <div class="sc-explainer reveal" style="transition-delay:0.15s">
+      <div class="sc-ex-left">
+        <div class="sc-ex-title">
+          <span class="sc-coin">◈</span> What is a SpecCredit?
+        </div>
+        <div class="sc-key-line">SC = SpecCredit &nbsp;·&nbsp; AutoSpec.ai's contribution currency &nbsp;·&nbsp; Earn by giving to the network. Spend to unlock more.</div>
+        <p class="sc-ex-desc">SpecCredits are earned by contributing value to the AutoSpec.ai network — uploading a spec, connecting a buyer, adding a certification. Spend them to generate additional specs, run compliance checks, or unlock platform features. The more active you are, the less you pay.</p>
+      </div>
+      <div class="sc-ex-earn">
+        <div class="sc-mini-label">Earn SC (SpecCredits) by contributing</div>
+        <div class="sc-mini-row"><span>Upload & complete a spec</span><span class="sc-badge-earn">+50 SC</span></div>
+        <div class="sc-mini-row"><span>Buyer accepts your connection</span><span class="sc-badge-earn">+75 SC</span></div>
+        <div class="sc-mini-row"><span>Invite a supplier who activates</span><span class="sc-badge-earn">+100 SC</span></div>
+        <div class="sc-mini-row"><span>Welcome bonus — first spec</span><span class="sc-badge-earn">+200 SC</span></div>
+      </div>
+      <div class="sc-ex-spend">
+        <div class="sc-mini-label">Spend SC (SpecCredits) to access more</div>
+        <div class="sc-mini-row"><span>Extra spec beyond free tier</span><span class="sc-badge-spend">50 SC</span></div>
+        <div class="sc-mini-row"><span>Extra buyer connection</span><span class="sc-badge-spend">75 SC</span></div>
+        <div class="sc-mini-row"><span>Excel / portal export</span><span class="sc-badge-spend">30 SC</span></div>
+        <div class="sc-mini-row"><span>Regulatory check</span><span class="sc-badge-spend">20 SC</span></div>
+      </div>
+    </div>
+
+    <!-- THREE TIERS -->
     <div class="pricing-grid">
 
       <!-- CONNECT -->
       <div class="price-card reveal">
         <div class="price-accent-line"></div>
-        <div class="price-tier">Entry</div>
+        <div class="price-tier-label">Entry</div>
         <div class="price-name">Connect</div>
-        <div class="price-desc">Small suppliers &amp; emerging brands entering the network for the first time.</div>
+        <div class="price-desc">For any supplier, brand, or team exploring AutoSpec.ai for the first time — regardless of company size. No credit card, no commitment. Get in, see value, share specs with your buyers.</div>
+
         <div class="price-outcome">
-          <div class="po-label">Outcome Unit</div>
-          <div class="po-value">Per accepted spec translation</div>
+          <div class="po-label">How you pay</div>
+          <div class="po-value">Free forever</div>
+          <div class="po-note">Up to 10 specs/month · 1 buyer connection · PDF export</div>
         </div>
+
         <ul class="price-feats">
-          <li><span class="ck">✓</span> Up to 3 active buyer connections</li>
-          <li><span class="ck">✓</span> 10 free spec translations per month</li>
-          <li><span class="ck">✓</span> Any-format ingest — PDF, Excel, image</li>
-          <li><span class="ck">✓</span> Basic compliance flag alerts</li>
+          <li><span class="ck">✓</span> 200 SC welcome bonus on first spec</li>
+          <li><span class="ck">✓</span> AI spec generation from any format</li>
+          <li><span class="ck">✓</span> Ingredient & allergen extraction</li>
+          <li><span class="ck">✓</span> 1 buyer/supplier connection</li>
+          <li><span class="ck">✓</span> PDF export — shareable immediately</li>
+          <li><span class="ck">✓</span> Basic regulatory flag alerts</li>
+          <li><span class="ck">✓</span> Earn SC for every spec you upload</li>
         </ul>
+
         <div class="price-signal">
-          <div class="price-signal-label">Growth Signal</div>
-          <div class="price-signal-text">More than 3 buyer connections or 50+ specs per month</div>
+          <div class="price-signal-label">Natural upgrade signal</div>
+          <div class="price-signal-text">When you hit 10 specs/month or need a second buyer connection — that is when Network becomes the obvious next step.</div>
         </div>
-        <button class="btn btn-outline price-cta" onclick="openModal()">Get a Quote →</button>
+
+        <button class="btn btn-outline price-cta" onclick="openModal()">Start free →</button>
       </div>
 
       <!-- NETWORK -->
       <div class="price-card featured reveal" style="transition-delay:0.12s">
         <div class="feat-badge">Most Popular</div>
         <div class="price-accent-line" style="background:linear-gradient(90deg,var(--pri-lt),var(--mag))"></div>
-        <div class="price-tier" style="color:#c990f0">Growth</div>
+        <div class="price-tier-label" style="color:#c990f0">Growth</div>
         <div class="price-name" style="color:#fff">Network</div>
-        <div class="price-desc" style="color:rgba(255,255,255,0.65)">Mid-size brands &amp; multi-customer suppliers acting as network hubs.</div>
+        <div class="price-desc" style="color:rgba(255,255,255,0.65)">For brands and suppliers managing multiple buyer and supplier relationships simultaneously. Priced per active connection — so you only pay for the relationships that are actively generating value.</div>
+
         <div class="price-outcome" style="background:rgba(255,255,255,0.07);border-color:rgba(255,255,255,0.12)">
-          <div class="po-label" style="color:rgba(255,255,255,0.5)">Outcome Unit</div>
-          <div class="po-value" style="color:#fff">Per active connection + volume bands</div>
+          <div class="po-label" style="color:rgba(255,255,255,0.5)">How you pay</div>
+          <div class="po-value" style="color:#fff">Per active connection</div>
+          <div class="po-note" style="color:rgba(255,255,255,0.5)">Volume discounts at 5, 10, 20+ connections · Unused SC rolls forward</div>
         </div>
+
         <ul class="price-feats">
-          <li style="color:rgba(255,255,255,0.8)"><span class="ck" style="color:#c990f0">✓</span> Unlimited active connections</li>
-          <li style="color:rgba(255,255,255,0.8)"><span class="ck" style="color:#c990f0">✓</span> 200 included spec translations per month</li>
-          <li style="color:rgba(255,255,255,0.8)"><span class="ck" style="color:#c990f0">✓</span> Supplier-to-supplier data sharing</li>
-          <li style="color:rgba(255,255,255,0.8)"><span class="ck" style="color:#c990f0">✓</span> Compliance scoring dashboard</li>
+          <li style="color:rgba(255,255,255,0.8)"><span class="ck" style="color:#c990f0">✓</span> Unlimited specs</li>
+          <li style="color:rgba(255,255,255,0.8)"><span class="ck" style="color:#c990f0">✓</span> Unlimited buyer/supplier connections</li>
           <li style="color:rgba(255,255,255,0.8)"><span class="ck" style="color:#c990f0">✓</span> Bi-directional format mapping</li>
+          <li style="color:rgba(255,255,255,0.8)"><span class="ck" style="color:#c990f0">✓</span> Regulatory watch — 40+ frameworks</li>
+          <li style="color:rgba(255,255,255,0.8)"><span class="ck" style="color:#c990f0">✓</span> Compliance scoring dashboard</li>
+          <li style="color:rgba(255,255,255,0.8)"><span class="ck" style="color:#c990f0">✓</span> Excel, PDF, portal push exports</li>
+          <li style="color:rgba(255,255,255,0.8)"><span class="ck" style="color:#c990f0">✓</span> Version control & audit trail</li>
+          <li style="color:rgba(255,255,255,0.8)"><span class="ck" style="color:#c990f0">✓</span> 2× SC earn rate on all contributions</li>
         </ul>
+
         <div class="price-signal" style="background:rgba(255,255,255,0.07);border-color:rgba(255,255,255,0.1)">
-          <div class="price-signal-label" style="color:rgba(255,255,255,0.5)">Growth Signal</div>
-          <div class="price-signal-text" style="color:rgba(255,255,255,0.75)">500+ specs per month or anchor buyer mandate</div>
+          <div class="price-signal-label" style="color:rgba(255,255,255,0.5)">Connection pricing model</div>
+          <div class="price-signal-text" style="color:rgba(255,255,255,0.75)">Use the calculator below to model your exact cost based on your connections and spec volume.</div>
         </div>
+
+        <div class="price-calc-gate" id="gate-network">
+          <div class="gate-icon">◈</div>
+          <div class="gate-text">Verify your business email to access the Network cost calculator</div>
+          <div class="gate-input-row">
+            <input type="email" class="gate-email" id="gate-email-net" placeholder="you@yourcompany.com">
+            <button class="gate-btn" onclick="verifyGate('network')">Unlock →</button>
+          </div>
+          <div class="gate-note">We verify your email domain — no spam, no sales calls unless you ask.</div>
+          <div class="gate-error" id="gate-err-net"></div>
+        </div>
+
+        <div class="price-calculator" id="calc-network" style="display:none">
+          <div class="calc-title">◈ Network cost estimator</div>
+          <div class="calc-row">
+            <label>Active buyer connections</label>
+            <input type="range" min="1" max="50" value="5" id="nc-conns" oninput="calcNetwork()">
+            <span id="nc-conns-val">5</span>
+          </div>
+          <div class="calc-row">
+            <label>Specs per month</label>
+            <input type="range" min="10" max="500" step="10" value="80" id="nc-specs" oninput="calcNetwork()">
+            <span id="nc-specs-val">80</span>
+          </div>
+          <div class="calc-results">
+            <div class="calc-result-item">
+              <div class="cr-num" id="nc-cost">£145</div>
+              <div class="cr-lbl">Est. monthly cost</div>
+            </div>
+            <div class="calc-result-item">
+              <div class="cr-num" id="nc-sc">+400 SC</div>
+              <div class="cr-lbl">SC earned/month</div>
+            </div>
+            <div class="calc-result-item">
+              <div class="cr-num" id="nc-cpp">£1.81</div>
+              <div class="cr-lbl">Cost per spec</div>
+            </div>
+          </div>
+          <div class="calc-footnote">Estimates in USD. Based on standard connection rate with 5-connection volume discount applied. Final pricing confirmed on signup.</div>
+        </div>
+
         <button class="btn btn-white price-cta" onclick="openModal()">Get a Quote →</button>
       </div>
 
       <!-- PLATFORM -->
       <div class="price-card reveal" style="transition-delay:0.24s">
         <div class="price-accent-line" style="background:linear-gradient(90deg,#6330a8,#9040c8)"></div>
-        <div class="price-tier">Enterprise</div>
+        <div class="price-tier-label">Enterprise</div>
         <div class="price-name">Platform</div>
-        <div class="price-desc">Large CPG &amp; foodservice anchors managing 100s of supply chain nodes.</div>
+        <div class="price-desc">Large CPG, co-manufacturers and foodservice anchors managing hundreds of supply chain nodes. Value-share model tied to measurable outcomes.</div>
+
         <div class="price-outcome">
-          <div class="po-label">Outcome Unit</div>
-          <div class="po-value">SLA-backed acceptance rate &amp; compliance %</div>
+          <div class="po-label">How you pay</div>
+          <div class="po-value">Value-share on outcomes</div>
+          <div class="po-note">Priced against hours saved, errors eliminated, suppliers onboarded</div>
         </div>
+
         <ul class="price-feats">
-          <li><span class="ck">✓</span> Unlimited network nodes</li>
+          <li><span class="ck">✓</span> Unlimited everything</li>
           <li><span class="ck">✓</span> Guaranteed spec acceptance SLA ≥98%</li>
           <li><span class="ck">✓</span> White-label supplier onboarding</li>
-          <li><span class="ck">✓</span> Regulatory &amp; allergen compliance engine</li>
-          <li><span class="ck">✓</span> ERP / PLM integration connectors</li>
-          <li><span class="ck">✓</span> Dedicated customer success</li>
+          <li><span class="ck">✓</span> ERP / PLM integration (SAP, Oracle)</li>
+          <li><span class="ck">✓</span> Custom regulatory frameworks</li>
+          <li><span class="ck">✓</span> Dedicated Customer Success Manager</li>
+          <li><span class="ck">✓</span> 1.5× SC earn rate · Anchor tier status</li>
+          <li><span class="ck">✓</span> <strong style="color:var(--text)">White-glove supplier onboarding</strong> — our team contacts, qualifies, and onboards your entire supplier network on your behalf</li>
         </ul>
+
         <div class="price-signal" style="background:rgba(99,48,168,0.06);border-color:rgba(99,48,168,0.15)">
-          <div class="price-signal-label" style="color:var(--pri)">Network Effect</div>
-          <div class="price-signal-text">Anchor buyer joins — suppliers auto-onboard to the platform</div>
+          <div class="price-signal-label" style="color:var(--pri)">ROI modeller</div>
+          <div class="price-signal-text">Verify your business email to access the enterprise ROI and value-share calculator.</div>
         </div>
+
+        <div class="price-calc-gate" id="gate-platform" style="background:rgba(99,48,168,0.04);border-color:rgba(99,48,168,0.18)">
+          <div class="gate-icon" style="color:var(--pri)">◈</div>
+          <div class="gate-text" style="color:var(--text-2)">Verify your business email to access the Platform ROI calculator</div>
+          <div class="gate-input-row">
+            <input type="email" class="gate-email" id="gate-email-plat" placeholder="you@yourcompany.com">
+            <button class="gate-btn" style="background:linear-gradient(130deg,var(--pri),var(--mag))" onclick="verifyGate('platform')">Unlock →</button>
+          </div>
+          <div class="gate-note">Enterprise-only calculator. Verified business domains only.</div>
+          <div class="gate-error" id="gate-err-plat"></div>
+        </div>
+
+        <div class="price-calculator" id="calc-platform" style="display:none">
+          <div class="calc-title" style="color:var(--pri)">◈ Platform ROI estimator</div>
+          <div class="calc-row">
+            <label>Specs managed per year</label>
+            <input type="range" min="100" max="10000" step="100" value="1000" id="pc-specs" oninput="calcPlatform()">
+            <span id="pc-specs-val">1,000</span>
+          </div>
+          <div class="calc-row">
+            <label>Avg. hours per spec (current)</label>
+            <input type="range" min="1" max="20" value="6" id="pc-hours" oninput="calcPlatform()">
+            <span id="pc-hours-val">6 hrs</span>
+          </div>
+          <div class="calc-row">
+            <label>Team hourly cost ($)</label>
+            <input type="range" min="20" max="120" step="5" value="45" id="pc-rate" oninput="calcPlatform()">
+            <span id="pc-rate-val">£45</span>
+          </div>
+          <div class="calc-results">
+            <div class="calc-result-item">
+              <div class="cr-num" id="pc-saving">£216K</div>
+              <div class="cr-lbl">Annual hours saved (£)</div>
+            </div>
+            <div class="calc-result-item">
+              <div class="cr-num" id="pc-roi">8×</div>
+              <div class="cr-lbl">Estimated ROI</div>
+            </div>
+            <div class="calc-result-item">
+              <div class="cr-num" id="pc-payback">&lt;6 wks</div>
+              <div class="cr-lbl">Payback period</div>
+            </div>
+          </div>
+          <div class="calc-footnote">AutoSpec.ai reduces avg. spec time by ~80%. ROI calculated against a platform investment starting at $2,500/month. Actual results vary.</div>
+        </div>
+
         <button class="btn btn-outline price-cta" onclick="openModal()">Contact Sales →</button>
       </div>
 
+    </div><!-- /pricing-grid -->
+
+    <!-- Trust row -->
+    <div class="pricing-trust reveal">
+      <span>◈ No credit card to start</span>
+      <span>·</span>
+      <span>◈ No seat fees</span>
+      <span>·</span>
+      <span>◈ No storage charges</span>
+      <span>·</span>
+      <span>◈ You pay only when value is delivered</span>
     </div>
-    <p class="pricing-footnote reveal">Outcome-based pricing · No seats · No storage charges · You pay only when value is delivered</p>
+
   </div>
 </section>
 
@@ -2653,9 +3049,9 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
 <section class="testimonials" id="testimonials">
   <div class="container">
     <div class="test-head reveal">
-      <div class="sec-tag">The shift your team will feel</div>
-      <h2 class="sec-head">What changes when your<br><span class="grad">spec data actually works</span></h2>
-      <p class="test-intro">We can't yet share named references on this page — but speak to our team and we'll connect you directly with customers in your category. In the meantime, here's what the change feels like from the inside.</p>
+      <div class="sec-tag">What the change feels like</div>
+      <h2 class="sec-head">Three teams.<br><span class="grad">Three different problems solved.</span></h2>
+      <p class="test-intro">We're building our reference library. When you're ready to speak with someone in your specific category — co-manufacturer, brand, or supplier — we'll make that introduction. In the meantime, this is what the shift looks like from the inside.</p>
     </div>
     <div class="test-grid">
 
@@ -2729,11 +3125,11 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
       <ul class="faq-list reveal" style="transition-delay:0.1s">
         <li class="faq-item"><button class="faq-q">Can AutoSpec.ai connect to my PLM, ERP, or other software?<span class="faq-icon">+</span></button><div class="faq-a">Yes. AutoSpec.ai connects to SAP, Oracle, Sage, and most major PLM and QMS platforms. We also provide a robust API and webhook support for custom integrations. Our team has deep implementation experience across enterprise food &amp; beverage technology stacks.</div></li>
         <li class="faq-item"><button class="faq-q">How does the connection to my suppliers work?<span class="faq-icon">+</span></button><div class="faq-a">AutoSpec.ai accepts supplier data in any format — spreadsheets, PDFs, emails, or direct API connections. Our AI normalizes and standardizes everything, so your suppliers don't need to change how they work. You get clean, structured data regardless of source.</div></li>
-        <li class="faq-item"><button class="faq-q">How is pricing determined for my business?<span class="faq-icon">+</span></button><div class="faq-a">We use an outcome-based pricing model — meaning your cost is tied to the value we deliver, not a flat subscription fee. We'll work with you to understand your product portfolio size, supplier network, and use cases, then build a quote that reflects the efficiency and cost savings you'll gain.</div></li>
+        <li class="faq-item"><button class="faq-q">How is pricing determined for my business?<span class="faq-icon">+</span></button><div class="faq-a">AutoSpec.ai uses a SpecCredit model — not a subscription. On the free tier you get 10 specs per month and one buyer connection at no cost. For more volume, you earn SpecCredits by contributing to the network (uploading specs, connecting buyers, inviting suppliers) and spend them to unlock additional capacity. Paid tiers are priced per active connection — so you pay for the relationships that are generating value, not for seats that sit idle. Use the calculator on the pricing page to model your exact cost.</div></li>
         <li class="faq-item"><button class="faq-q">Is AutoSpec.ai suitable for alcohol and beverage companies?<span class="faq-icon">+</span></button><div class="faq-a">Absolutely. AutoSpec.ai has specific support for alcohol calculations, beverage formulation, and the regulatory requirements unique to the alcohol category including TTB compliance in the US and equivalent frameworks in the UK and EU.</div></li>
         <li class="faq-item"><button class="faq-q">How does AI handle my proprietary recipes and formulations?<span class="faq-icon">+</span></button><div class="faq-a">Your formulations are encrypted at rest and in transit. They are never used to train AI models and never shared with third parties. Only users within your workspace can access your data. Enterprise customers can request dedicated data residency options.</div></li>
-        <li class="faq-item"><button class="faq-q">Will AI replace my regulatory or R&amp;D team?<span class="faq-icon">+</span></button><div class="faq-a">No — and this is core to our philosophy. AutoSpec.ai is built on "AI-driven, Human-verified." Our platform handles the time-consuming, repetitive data work so your experts can focus on higher-value decisions. The humans stay in control; the AI removes the busywork.</div></li>
-        <li class="faq-item"><button class="faq-q">How long does it take to get started?<span class="faq-icon">+</span></button><div class="faq-a">Most customers are up and running within a week. Our onboarding team works closely with you to map your data sources, configure integrations, and tailor the platform to your workflows. Enterprise implementations with deep ERP connectivity typically take 3–6 weeks.</div></li>
+        <li class="faq-item"><button class="faq-q">Will this replace my R&amp;D or regulatory team?<span class="faq-icon">+</span></button><div class="faq-a">No — and that's a core design principle, not a disclaimer. Our tagline is "AI-driven. Human-verified." for a reason. AutoSpec.ai handles the time-consuming, repetitive data work — formatting, normalization, regulatory cross-checking — so your experts spend their time on decisions that actually require their expertise. The humans stay in control. The AI removes the busywork that was preventing them from doing their real jobs.</div></li>
+        <li class="faq-item"><button class="faq-q">How long does it take to get started?<span class="faq-icon">+</span></button><div class="faq-a">The free tier takes about four minutes — sign up, upload a spec, see what comes back. That's the whole onboarding for Connect tier. For Network tier customers, most are fully operational within a week. Enterprise implementations with ERP and PLM integration typically take three to six weeks, with our team managing the process end-to-end.</div></li>
       </ul>
     </div>
   </div>
@@ -2744,13 +3140,13 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
   <div class="container">
     <div class="cta-card reveal">
       <div class="sec-tag" style="color:#c990f0;margin-bottom:10px">Join the future of food data</div>
-      <h2>Ready to fix your product data?</h2>
-      <p>Join food brands and manufacturers already transforming their specification management with AutoSpec.ai. From start-ups to Fortune 500 — affordable, scalable, and built by people who understand your business.</p>
+      <h2>Your specs should work<br>as hard as your team does.</h2>
+      <p>AutoSpec.ai was built by people who spent careers inside food &amp; beverage — and got tired of watching great scientists do data entry. If your team is spending more time managing spec documents than they are developing products, this is worth fifteen minutes of your time.</p>
       <div class="cta-actions">
         <button class="btn btn-white" onclick="openModal()">Get a Demo →</button>
         <button class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.3)" onclick="openModal()">Get a Quote</button>
       </div>
-      <p class="cta-note">Reach us directly at <a href="mailto:info@autospec.ai" style="color:#c990f0">info@autospec.ai</a> · We respond quickly.</p>
+      <p class="cta-note">Email us directly at <a href="mailto:info@autospec.ai" style="color:#c990f0">info@autospec.ai</a> · We're a small team and we respond personally — usually same day.</p>
     </div>
   </div>
 </section>
@@ -2761,7 +3157,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
     <div class="foot-grid">
       <div class="foot-brand">
         <img src="autospec-logo.png" alt="AutoSpec.ai">
-        <p>AI-native food specification management. Transforming fragmented data into a unified product ecosystem.</p>
+        <p>Autonomous AI agents for food specification management. Built by industry insiders. Trusted by R&amp;D teams, regulatory professionals, and supply chain managers across the US food industry.</p>
         <div class="foot-tagline">✦ AI-driven. Human-verified.</div>
         <div class="social-row">
           <a href="#" class="soc-btn" aria-label="LinkedIn">in</a>
@@ -2982,6 +3378,93 @@ function switchTab(el, panelId) {
   document.querySelectorAll('.conv-tab-panel').forEach(function(p){ p.style.display = 'none'; });
   el.classList.add('active-ct');
   document.getElementById(panelId).style.display = 'block';
+}
+
+
+// ── PRICING GATE VERIFICATION ──
+const BLOCKED_DOMAINS = ['gmail.com','yahoo.com','hotmail.com','outlook.com',
+  'icloud.com','me.com','aol.com','mail.com','protonmail.com','zoho.com',
+  'yandex.com','gmx.com','live.com','msn.com'];
+
+function verifyGate(tier) {
+  var emailId = tier === 'network' ? 'gate-email-net' : 'gate-email-plat';
+  var errId   = tier === 'network' ? 'gate-err-net'   : 'gate-err-plat';
+  var gateId  = tier === 'network' ? 'gate-network'   : 'gate-platform';
+  var calcId  = tier === 'network' ? 'calc-network'   : 'calc-platform';
+
+  var email = document.getElementById(emailId).value.trim();
+  var errEl = document.getElementById(errId);
+  errEl.textContent = '';
+
+  if (!email || !email.includes('@')) {
+    errEl.textContent = 'Please enter a valid email address.';
+    return;
+  }
+
+  var domain = email.split('@')[1].toLowerCase();
+
+  if (BLOCKED_DOMAINS.indexOf(domain) !== -1) {
+    errEl.textContent = 'Please use a business email address — not a personal one.';
+    return;
+  }
+
+  // Accepted — show calculator
+  document.getElementById(gateId).style.display = 'none';
+  document.getElementById(calcId).style.display = 'block';
+
+  // Initialise the right calculator
+  if (tier === 'network') calcNetwork();
+  else calcPlatform();
+
+  // Fire to Formspree silently
+  fetch('https://formspree.io/f/xnjrzgga', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json','Accept':'application/json'},
+    body: JSON.stringify({
+      type: 'Calculator unlock — ' + tier,
+      email: email,
+      domain: domain
+    })
+  });
+}
+
+// Network calculator
+function calcNetwork() {
+  var conns = parseInt(document.getElementById('nc-conns').value);
+  var specs = parseInt(document.getElementById('nc-specs').value);
+  document.getElementById('nc-conns-val').textContent = conns;
+  document.getElementById('nc-specs-val').textContent = specs;
+
+  // Volume discount
+  var rate = conns >= 20 ? 29 : conns >= 10 ? 34 : conns >= 5 ? 39 : 49;
+  var cost = Math.round(conns * rate);
+  var earnedSC = specs * 50 + conns * 75;
+  var cpp = specs > 0 ? '$' + (cost / specs).toFixed(2) : '—';
+
+  document.getElementById('nc-cost').textContent = '$' + cost;
+  document.getElementById('nc-sc').textContent   = '+' + earnedSC.toLocaleString() + ' SC';
+  document.getElementById('nc-cpp').textContent  = cpp;
+}
+
+// Platform ROI calculator
+function calcPlatform() {
+  var specs = parseInt(document.getElementById('pc-specs').value);
+  var hours = parseInt(document.getElementById('pc-hours').value);
+  var rate  = parseInt(document.getElementById('pc-rate').value);
+  document.getElementById('pc-specs-val').textContent = specs.toLocaleString();
+  document.getElementById('pc-hours-val').textContent = hours + ' hrs';
+  document.getElementById('pc-rate-val').textContent  = '$' + rate;
+
+  var totalHours = specs * hours;
+  var timeSaved  = Math.round(totalHours * 0.80); // 80% reduction
+  var saving     = timeSaved * rate;
+  var investment = 30000; // $2,500/month × 12
+  var roi        = Math.round(saving / investment);
+  var paybackWks = Math.round((investment / 12) / (saving / 52));
+
+  document.getElementById('pc-saving').textContent  = '$' + (saving/1000).toFixed(0) + 'K';
+  document.getElementById('pc-roi').textContent     = roi + '×';
+  document.getElementById('pc-payback').textContent = paybackWks <= 6 ? '<' + paybackWks + ' wks' : paybackWks + ' wks';
 }
 
 // Cookie banner
