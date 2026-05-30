@@ -788,7 +788,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
 @keyframes livepulse { 0%,100%{opacity:1}50%{opacity:0.5} }
 
 /* LEFT — handwritten doc */
-.left-panel { border-right: 1px solid var(--border); }
+
 .handwritten-doc {
   flex: 1;
   padding: 10px 12px 10px 38px;
@@ -1004,7 +1004,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
 }
 
 /* RIGHT — structured output */
-.right-panel { }
+
 .conv-waiting {
   flex: 1;
   display: flex;
@@ -1340,15 +1340,11 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
   height: 100%;
 }
 
-.left-panel {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
+
 .handwritten-doc {
   flex: 1;
 }
-.right-panel { display: flex; flex-direction: column; overflow: hidden; }
+
 .conv-waiting {
   flex: 1;
 }
@@ -1395,7 +1391,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
   .conv-try-label { writing-mode: horizontal-tb; }
   .conv-try-arrow:first-of-type { transform: rotate(-90deg); }
   .conv-try-arrow:last-of-type  { transform: rotate(90deg); }
-  .left-panel { border-right: none; max-height: 380px; }
+  
   .handwritten-doc { max-height: 340px; }
   .conv-result { min-height: 340px; }
   .conv-waiting { min-height: 200px; }
@@ -1426,7 +1422,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
   .foot-grid { grid-template-columns: 1fr; }
   .pricing-grid { gap: 14px; }
   
-  .left-panel { max-height: 300px; }
+  
   .handwritten-doc { max-height: 260px; }
 }
 
@@ -1457,7 +1453,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
 
   /* Conversion UI */
   
-  .left-panel { max-height: 260px; }
+  
   .handwritten-doc { max-height: 220px; font-size: 12px; padding: 8px 10px 8px 28px; }
   .hw-title { font-size: 13px; }
   .hw-line { font-size: 12px; }
@@ -1668,7 +1664,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
   .conv-bar-stat { display: none; }
   .spec-chip { display: none; }
   .stage-glow { width: 400px; }
-  .left-panel { max-height: 340px; }
+  
   .handwritten-doc { max-height: 300px; }
   .conv-result { min-height: 300px; }
   
@@ -2684,28 +2680,13 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
    center column flex-centers the button at all times.
 ═══════════════════════════════════════════════════════════ */
 
-.conv-body {
-  display: grid;
-  grid-template-columns: 1fr 72px 1fr;
-  grid-template-rows: 1fr;
-  height: 480px;          /* fixed — panels scroll, button never moves */
-  overflow: hidden;
-}
+
 
 /* Left panel */
-.conv-panel.left-panel {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  border-right: 1px solid var(--border);
-}
+
 
 /* Right panel */
-.conv-panel.right-panel {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
+
 
 /* Document containers scroll internally */
 .fmt-doc {
@@ -2724,29 +2705,9 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
 }
 
 /* Center column — button always at vertical midpoint */
-.conv-center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;   /* centers content in the fixed-height column */
-  background: var(--bg);
-  border-right: 1px solid var(--border);
-  gap: 0;
-  padding: 0;
-  overflow: visible;
-}
-.conv-arrow-track {
-  flex: 1;                   /* equal space above and below button */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 0;
-}
-.conv-arrow-line {
-  width: 1px;
-  height: 100%;
-  background: linear-gradient(180deg, transparent, var(--border), transparent);
-}
+
+
+
 
 /* Waiting / result panels fill available height */
 .conv-waiting {
@@ -2771,28 +2732,10 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
 
 /* ── MOBILE: stack vertically ── */
 @media (max-width: 920px) {
-  .conv-body {
-    grid-template-columns: 1fr;
-    grid-template-rows: 320px 64px 320px;
-    height: auto;
-  }
-  .conv-center {
-    flex-direction: row;
-    border-right: none;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 8px 16px;
-    height: 64px;
-    justify-content: center;
-    gap: 12px;
-  }
-  .conv-arrow-track {
-    flex: 1;
-  }
-  .conv-arrow-line {
-    width: 100%;
-    height: 1px;
-  }
+  
+  
+  
+  
   .conv-center-wrap {
     flex-direction: row;
     gap: 10px;
@@ -2801,9 +2744,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
 }
 
 @media (max-width: 480px) {
-  .conv-body {
-    grid-template-rows: 260px 60px 280px;
-  }
+  
   .handwritten-doc {
     font-size: 12px;
     padding: 8px 10px 8px 28px;
@@ -2982,6 +2923,108 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
 .phone-bottom{display:flex;justify-content:center;padding:2px 0} .phone-shutter{font-size:18px;color:#555;line-height:1}
 .phone-caption{font-size:11px;color:var(--muted);text-align:center;max-width:200px;line-height:1.5;padding:0 8px}
 .cert-logo-svg{background:none!important;border:none!important}
+
+/* ═══════════════════════════════════════════════════
+   CONV-BODY LAYOUT — responsive, no inline styles
+   JS sets data-layout="desktop"|"mobile" on body
+═══════════════════════════════════════════════════ */
+
+/* Desktop: 3-column side-by-side */
+.conv-body {
+  display: grid;
+  grid-template-columns: 1fr 72px 1fr;
+  height: 480px;
+  overflow: hidden;
+  position: relative;
+}
+.conv-panel.left-panel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-right: 1px solid var(--border);
+}
+.conv-panel.right-panel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.conv-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid var(--border);
+}
+.conv-arrow-track {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+}
+.conv-arrow-line {
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, var(--border), transparent);
+}
+
+/* Mobile: vertical stack */
+@media (max-width: 720px) {
+  .conv-body {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    height: auto;
+  }
+  .conv-panel.left-panel {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    max-height: 340px;
+  }
+  .conv-center {
+    flex-direction: row;
+    border-right: none;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 16px;
+    min-height: 64px;
+    justify-content: center;
+    gap: 12px;
+  }
+  .conv-arrow-track { flex: 1; }
+  .conv-arrow-line { width: 100%; height: 1px; }
+  .conv-center-wrap { flex-direction: row; gap: 10px; align-items: center; }
+  .conv-try-label { font-size: 11px; }
+  .conv-try-arrow:first-of-type { transform: rotate(-90deg); }
+  .conv-try-arrow:last-of-type  { transform: rotate(90deg);  }
+  .conv-panel.right-panel { min-height: 300px; }
+  .conv-waiting { min-height: 200px; }
+}
+
+/* Tablet: slightly looser */
+@media (min-width: 721px) and (max-width: 1024px) {
+  .conv-body { height: 440px; }
+}
+
+/* Small mobile */
+@media (max-width: 420px) {
+  .conv-panel.left-panel { max-height: 280px; }
+  .handwritten-doc { font-size: 11.5px; padding: 8px 10px 8px 28px; }
+  .conv-panel.right-panel { min-height: 260px; }
+}
+
+/* Tabs: icon only on small mobile */
+@media (max-width: 380px) {
+  .fmt-tab-label { display: none; }
+  .fmt-tab { padding: 9px 10px; gap: 0; }
+  .fmt-tab-icon { font-size: 16px; }
+}
+
+/* Mobile */
+@media (max-width: 720px) {
+  .cap-bridge-row { gap: 6px; }
+  .cap-bridge-item { min-width: 120px; padding: 8px 10px; }
+  .cap-bridge-arrow { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -3053,10 +3096,10 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
           </div>
         </div>
 
-        <div class="conv-body" id="convBody" style="display:grid;grid-template-columns:1fr 72px 1fr;height:480px;overflow:hidden;position:relative">
+        <div class="conv-body" id="convBody">
 
           <!-- LEFT: Multi-format document input -->
-          <div class="conv-panel left-panel" style="display:flex;flex-direction:column;overflow:hidden;border-right:1px solid var(--border)">
+          <div class="conv-panel left-panel">
 
             <!-- Format selector tabs -->
             <div class="fmt-drop-hint">
@@ -3376,7 +3419,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
           </div>
 
 <!-- CENTRE: Convert button -->
-          <div class="conv-center" style="display:flex;flex-direction:column;align-items:center;justify-content:center;border-right:1px solid var(--border)">
+          <div class="conv-center">
             <div class="conv-arrow-track"><div class="conv-arrow-line"></div></div>
             <div class="conv-center-wrap">
               <span class="conv-try-label">Try it</span>
@@ -3394,7 +3437,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
           </div>
 
           <!-- RIGHT: Structured data output -->
-          <div class="conv-panel right-panel" id="rightPanel" style="display:flex;flex-direction:column;overflow:hidden">
+          <div class="conv-panel right-panel" id="rightPanel">
             <div class="conv-panel-label">
               <span class="conv-panel-icon">✅</span>
               Structured Specification
@@ -3571,6 +3614,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
   </div>
 </section>
 
+
 <!-- MARQUEE -->
 <div class="marquee-section">
   <div class="marquee-track">
@@ -3706,23 +3750,23 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
     <div class="cap-head reveal">
       <div class="sec-tag">Platform capabilities</div>
       <h2 class="sec-head">Everything your spec<br><span class="grad">workflow actually needs.</span></h2>
-      <p class="sec-sub">AutoSpec.ai isn't a legacy platform with an AI feature bolted on. Every capability was designed from scratch around what food scientists, regulatory teams, and supply chain managers actually do every day.</p>
+      <p class="sec-sub">The graphic above shows the simplest version of what we do — any document in, structured data out. What makes that possible is everything below.</p>
     </div>
     <div class="cap-grid">
       <div class="cap-card reveal">
         <div class="cap-icon">🔍</div>
         <h4>Ask it anything</h4>
-        <p>"Which of our sauces contain sesame?" "What specs are due for renewal this quarter?" Plain-English queries across your entire spec library — answered instantly, without building a report.</p>
+        <p>"Which of our specs have expiring certifications?" "What products contain sesame?" Plain-English queries across your entire spec library — answered instantly.</p>
       </div>
       <div class="cap-card reveal" style="transition-delay:0.08s">
         <div class="cap-icon">🔄</div>
         <h4>One version. Always current.</h4>
-        <p>When a spec changes, every connected party sees the updated version — automatically. No email. No re-upload. No "which file did you send?" Your supplier, your buyer, and your QA team are always working from the same document.</p>
+        <p>When a spec changes, every connected party sees the updated version automatically. No email. No re-upload. Your supplier, your buyer, and your QA team always work from the same document.</p>
       </div>
       <div class="cap-card reveal" style="transition-delay:0.16s">
         <div class="cap-icon">🏷️</div>
         <h4>Regulatory intelligence built in</h4>
-        <p>Every spec is automatically validated against FDA 21 CFR, EU 1169/2011, UK FIR, CODEX, FSANZ, and 40+ frameworks. Label claims checked. Allergens flagged for bold. Alcohol calculations included. You're alerted when a regulation changes that affects your products — before your retailer is.</p>
+        <p>Every spec is automatically validated against FDA 21 CFR, EU 1169/2011, UK FIR, CODEX, FSANZ, and 40+ frameworks. Missing allergen declarations caught. Label claims checked. You're alerted before your retailer is.</p>
       </div>
       <div class="cap-card reveal" style="transition-delay:0.08s">
         <div class="cap-icon">⚗️</div>
@@ -3732,7 +3776,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
       <div class="cap-card reveal" style="transition-delay:0.16s">
         <div class="cap-icon">🤝</div>
         <h4>Your suppliers don't need to change</h4>
-        <p>They can keep sending PDFs, spreadsheets, or photos of handwritten sheets. AutoSpec.ai reads and structures whatever arrives — your team gets clean, validated data regardless of how disorganised the source was.</p>
+        <p>PDF, Excel, handwritten sheet, or a photo on a phone — AutoSpec.ai reads and structures whatever arrives. Your team gets clean, validated data regardless of how the supplier sent it.</p>
       </div>
       <div class="cap-card reveal" style="transition-delay:0.24s">
         <div class="cap-icon">📊</div>
