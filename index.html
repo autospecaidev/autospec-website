@@ -3384,447 +3384,383 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
    Background: soft gradient mesh, not black
 ═══════════════════════════════════════════════════════ */
 
-
-
+.agent-section { margin-top: 0; }
+.agent-section-head { text-align: center; max-width: 720px; margin: 0 auto 28px; }
 
 /* Scene switcher */
-
-
-
-
-
-
-
-
+.ags-switcher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin: 0 auto 24px;
+  max-width: 480px;
+  background: #f3f0fc;
+  border: 1px solid #ddd6f8;
+  border-radius: 12px;
+  padding: 4px;
+}
+.ags-switch {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border: none;
+  background: transparent;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: var(--fb);
+  text-align: left;
+}
+.ags-switch.active {
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(83,74,183,0.14);
+}
+.ags-sw-num {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--pri);
+  background: #eeedfe;
+  width: 24px; height: 24px;
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.ags-switch.active .ags-sw-num { background: var(--pri); color: #fff; }
+.ags-sw-label { font-size: 13px; font-weight: 600; color: var(--muted); }
+.ags-switch.active .ags-sw-label { color: var(--text); }
+.ags-switch-sep { width: 1px; height: 24px; background: #ddd6f8; flex-shrink: 0; }
 
 /* Canvas: soft gradient background */
-
+.ags-canvas {
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  gap: 0;
+  background: linear-gradient(135deg, #f0ebff 0%, #e8f4ff 50%, #f5eeff 100%);
+  border: 1px solid #ddd6f8;
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 380px;
+  margin-bottom: 1px;
+}
 
 /* Org panels */
+.ags-org {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.ags-left  { background: rgba(83,74,183,0.04); border-right: 1px solid rgba(83,74,183,0.12); }
+.ags-right { background: rgba(192,32,176,0.03); }
 
-
-
-
-
-
-
-
-
-
-
+.ags-org-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.ags-org-logo {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 800; color: #fff;
+  flex-shrink: 0;
+  font-family: var(--fd);
+}
+.ags-org-logo.lg { width: 48px; height: 48px; font-size: 18px; border-radius: 14px; }
+.ags-org-name { font-size: 14px; font-weight: 700; color: #1a1020; }
+.ags-org-role { font-size: 11px; color: var(--muted); }
+.ags-org-badge {
+  margin-left: auto;
+  font-size: 10px; font-weight: 700;
+  padding: 3px 9px; border-radius: 99px;
+  background: #eeedfe; color: var(--pri);
+  flex-shrink: 0;
+}
+.supp-badge { background: #fce8fa; color: #8a0d7d; }
 
 /* Agent card */
-
-
-
-
-
-
-
-
-
-
-
-/* Chat message bubbles */
-
-
-
-
-
-
-
-
-
-
-
-/* Internal approval gate */
-
-
-
-
-
-
-
-
-
-
-/* Center SVG */
-
-
-
-/* Transaction log */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Play row */
-
-
-
-
-
-
-/* ── SCENE 2: NETWORK ── */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@media (max-width: 720px) {
-  
-  
-  
-  
-  
-}
-
-/* ═══════════════════════════════════════════════════════
-   AGENT DIAGRAM — Redesigned
-   Layout: 3-col (buyer | supplier | log), fits viewport
-   Background: warm gradient mesh, not black
-═══════════════════════════════════════════════════════ */
-
-.agd-wrap { margin-top: 0; }
-.agd-heading { text-align: center; max-width: 680px; margin: 0 auto 24px; }
-
-/* ── Mode switcher ── */
-.agd-modes {
-  display: flex; align-items: center; justify-content: center;
-  gap: 0; margin: 0 auto 20px;
-  max-width: 520px;
-  background: #f3f0fc;
-  border: 1px solid rgba(83,74,183,0.18);
-  border-radius: 14px; padding: 5px;
-}
-.agd-mode {
-  flex: 1; display: flex; align-items: center; gap: 10px;
-  padding: 11px 14px; border: none; background: transparent;
-  border-radius: 10px; cursor: pointer; font-family: var(--fb);
-  transition: all 0.22s; text-align: left;
-}
-.agd-mode.active {
+.ags-agent-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   background: #fff;
-  box-shadow: 0 2px 12px rgba(83,74,183,0.15), 0 1px 3px rgba(0,0,0,0.08);
-}
-.agd-mode-icon {
-  font-size: 18px; flex-shrink: 0; width: 32px; height: 32px;
-  border-radius: 8px; background: #eeedfe;
-  display: flex; align-items: center; justify-content: center;
-  transition: background 0.22s;
-}
-.agd-mode.active .agd-mode-icon { background: linear-gradient(135deg,var(--pri),var(--mag)); color: #fff; }
-.agd-mode-text { display: flex; flex-direction: column; gap: 1px; }
-.agd-mode-title { font-size: 13px; font-weight: 700; color: var(--muted); transition: color 0.2s; }
-.agd-mode.active .agd-mode-title { color: var(--text); }
-.agd-mode-sub { font-size: 11px; color: var(--faint); }
-.agd-mode-div { width: 1px; height: 32px; background: rgba(83,74,183,0.15); flex-shrink: 0; }
-
-/* ── Console shell ── */
-.agd-console {
-  border-radius: 16px; overflow: hidden;
   border: 1px solid rgba(83,74,183,0.18);
-  box-shadow: 0 8px 40px rgba(83,74,183,0.12), 0 2px 8px rgba(0,0,0,0.06);
-}
-
-/* Top bar */
-.agd-topbar {
-  display: flex; align-items: center; gap: 10px;
-  padding: 10px 16px;
-  background: linear-gradient(90deg,#1e1535,#2d1a4a);
-  flex-shrink: 0;
-}
-.agd-tb-dots { display: flex; gap: 5px; }
-.agd-tb-dots span { width: 11px; height: 11px; border-radius: 50%; }
-.agd-tb-dots span:nth-child(1){ background:#ff5f57; }
-.agd-tb-dots span:nth-child(2){ background:#febc2e; }
-.agd-tb-dots span:nth-child(3){ background:#28c840; }
-.agd-tb-title { flex: 1; font-size: 11.5px; color: rgba(255,255,255,0.5); font-weight: 500; letter-spacing: 0.02em; }
-.agd-tb-live {
-  display: flex; align-items: center; gap: 5px;
-  font-size: 11px; font-weight: 700;
-  color: #4ade80; background: rgba(74,222,128,0.12);
-  padding: 3px 9px; border-radius: 99px;
-}
-.agd-live-dot { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; animation: agLivePulse 1.4s infinite; }
-@keyframes agLivePulse {
-  0%{box-shadow:0 0 0 0 rgba(74,222,128,0.5)} 70%{box-shadow:0 0 0 7px rgba(74,222,128,0)} 100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}
-}
-.agd-run-btn {
-  padding: 6px 16px; border-radius: 8px; border: none;
-  background: linear-gradient(130deg,var(--pri),var(--mag));
-  color: #fff; font-size: 12px; font-weight: 700;
-  cursor: pointer; font-family: var(--fb); transition: opacity 0.2s;
-  flex-shrink: 0;
-}
-.agd-run-btn:hover { opacity: 0.85; }
-.agd-run-btn:disabled { opacity: 0.45; cursor: default; }
-
-/* ── 3-column body ── */
-.agd-body {
-  display: grid;
-  grid-template-columns: 1fr 1fr 260px;
-  height: 420px;
-  background: linear-gradient(145deg,#faf8ff 0%,#f0eaff 40%,#e8f4ff 100%);
-}
-.agd-col {
-  display: flex; flex-direction: column; overflow: hidden;
-}
-.agd-col-buyer    { border-right: 1px solid rgba(83,74,183,0.12); }
-.agd-col-supplier { border-right: 1px solid rgba(83,74,183,0.12); }
-.agd-col-log { background: rgba(15,10,30,0.94); }
-
-/* Org card at top of each col */
-.agd-org-card {
-  display: flex; align-items: center; gap: 10px;
-  padding: 12px 14px;
-  background: rgba(255,255,255,0.8);
-  border-bottom: 1px solid rgba(83,74,183,0.1);
-  flex-shrink: 0;
-  backdrop-filter: blur(8px);
-}
-.agd-org-logo {
-  width: 34px; height: 34px; border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-.agd-org-logo.lg { width: 44px; height: 44px; border-radius: 13px; }
-.agd-org-logo.sm { width: 28px; height: 28px; border-radius: 8px; }
-.agd-org-info { flex: 1; min-width: 0; }
-.agd-org-name { font-size: 13px; font-weight: 700; color: #1a1020; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.agd-org-type { font-size: 11px; color: var(--muted); }
-.agd-org-status { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--muted); flex-shrink: 0; font-weight: 600; }
-.agd-status-dot {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: #d1cff0; display: inline-block; flex-shrink: 0;
-  transition: background 0.3s;
-}
-.agd-status-dot.live { background:#4ade80; animation:agLivePulse 1.4s infinite; }
-.agd-status-dot.thinking { background:#facc15; animation:agLivePulse 1.4s infinite; }
-
-/* Chat area */
-.agd-chat-area {
-  flex: 1; overflow-y: auto; padding: 10px 12px;
-  display: flex; flex-direction: column; gap: 8px;
-  scrollbar-width: thin; scrollbar-color: rgba(83,74,183,0.2) transparent;
-}
-.agd-chat-empty {
-  flex: 1; display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  gap: 8px; opacity: 0.4;
-}
-.agd-empty-icon { font-size: 28px; }
-.agd-empty-label { font-size: 12px; color: var(--muted); text-align: center; line-height: 1.4; }
-
-/* Message bubbles */
-.agd-msg {
-  display: flex; flex-direction: column; gap: 2px;
-  opacity: 0; transform: translateY(6px);
-  animation: agMsgIn 0.35s ease forwards;
-  max-width: 92%;
-}
-@keyframes agMsgIn {
-  to { opacity:1; transform:translateY(0); }
-}
-.agd-msg-from { font-size: 10px; font-weight: 600; color: var(--faint); padding: 0 4px; }
-.agd-msg-body {
-  padding: 9px 12px; border-radius: 12px 12px 12px 3px;
-  font-size: 12.5px; line-height: 1.55; color: #1a1020;
-  background: #fff; border: 1px solid rgba(83,74,183,0.14);
-  box-shadow: 0 2px 8px rgba(83,74,183,0.06);
-}
-.agd-msg.sent .agd-msg-body {
-  background: linear-gradient(135deg,#534AB7,#6d5dd4);
-  color: #fff; border: none;
-  border-radius: 12px 12px 3px 12px;
-  box-shadow: 0 3px 12px rgba(83,74,183,0.3);
-}
-.agd-msg.received .agd-msg-body {
-  background: linear-gradient(135deg,#be185d,#d940b8);
-  color: #fff; border: none;
-  box-shadow: 0 3px 12px rgba(192,32,176,0.25);
-}
-.agd-msg.system .agd-msg-body {
-  background: #f0fdf4; border-color: #86efac; color: #166534;
-  font-size: 12px;
-}
-.agd-msg.warning .agd-msg-body {
-  background: #fffbeb; border-color: #fde68a; color: #78350f;
-  font-size: 12px;
-}
-
-/* Regulatory gate */
-.agd-reg-gate {
-  margin: 0 12px 8px;
-  background: rgba(255,251,235,0.95);
-  border: 1.5px solid #fcd34d;
   border-radius: 10px;
   padding: 10px 12px;
-  animation: agFadeUp 0.4s ease;
+  position: relative;
+  transition: box-shadow 0.3s;
+}
+.ags-agent-card.active {
+  box-shadow: 0 0 0 2px var(--pri), 0 4px 18px rgba(83,74,183,0.2);
+}
+.ags-agent-dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: #d1cff0;
   flex-shrink: 0;
+  transition: all 0.3s;
 }
-@keyframes agFadeUp { from{opacity:0;transform:translateY(5px)} to{opacity:1;transform:translateY(0)} }
-.agd-rg-header { display:flex; align-items:center; gap:7px; font-size:12px; font-weight:700; color:#92400e; margin-bottom:5px; }
-.agd-rg-title { font-size:12px; }
-.agd-rg-body { font-size:11.5px; color:#78350f; line-height:1.5; margin-bottom:7px; }
-.agd-rg-checks { display:flex; flex-direction:column; gap:4px; }
-.agd-rg-check {
-  display:flex; align-items:center; gap:7px;
-  font-size:11px; color:#78350f; padding:4px 7px;
-  background:rgba(254,243,199,0.7); border-radius:6px;
-  opacity:0; animation:agFadeUp 0.3s ease forwards;
+.ags-agent-dot.live {
+  background: #4ade80;
+  box-shadow: 0 0 0 0 rgba(74,222,128,0.5);
+  animation: aDot 1.4s infinite;
 }
-.agd-rg-check.pass { background:rgba(220,252,231,0.8); color:#166534; }
+@keyframes aDot {
+  0%  { box-shadow: 0 0 0 0 rgba(74,222,128,0.5); }
+  70% { box-shadow: 0 0 0 8px rgba(74,222,128,0); }
+  100%{ box-shadow: 0 0 0 0 rgba(74,222,128,0); }
+}
+.ags-agent-icon { font-size: 22px; }
+.ags-agent-label { font-size: 12.5px; font-weight: 700; color: #1a1020; }
+.ags-agent-state { font-size: 11px; color: var(--muted); transition: color 0.3s; }
+.ags-agent-state.working { color: var(--pri); font-weight: 600; }
+.ags-agent-state.done { color: #198051; font-weight: 600; }
 
-/* Log column (dark) */
-.agd-log-header {
-  padding: 10px 12px 8px;
-  font-size: 10px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.1em;
-  color: rgba(255,255,255,0.4);
-  border-bottom: 1px solid rgba(255,255,255,0.07);
-  flex-shrink: 0; display:flex; align-items:center; gap:7px;
+/* Chat message bubbles */
+.ags-messages { display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.ags-bubble {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s, transform 0.4s;
+  max-width: 100%;
 }
-.agd-log-icon { font-size: 13px; }
-.agd-log-stream {
-  flex: 1; overflow-y: auto; padding: 8px 10px;
-  display: flex; flex-direction: column; gap: 2px;
-  scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.1) transparent;
+.ags-bubble.show { opacity: 1; transform: translateY(0); }
+.ags-bubble-from { font-size: 10px; font-weight: 600; color: var(--faint); letter-spacing: 0.04em; }
+.ags-bubble-body {
+  background: #fff;
+  border: 1px solid rgba(83,74,183,0.15);
+  border-radius: 12px 12px 12px 3px;
+  padding: 9px 12px;
+  font-size: 12.5px;
+  color: #1a1020;
+  line-height: 1.5;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  word-break: break-word;
 }
-.agd-log-entry {
-  display: flex; align-items: flex-start; gap: 6px;
-  padding: 5px 4px; font-size: 11px; line-height: 1.5;
-  opacity: 0; animation: agLogIn 0.3s ease forwards;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
+.ags-bubble.outgoing .ags-bubble-body {
+  background: linear-gradient(135deg, #534AB7, #6d63d0);
+  color: #fff;
+  border-color: transparent;
+  border-radius: 12px 12px 3px 12px;
 }
-@keyframes agLogIn { from{opacity:0;transform:translateX(-4px)} to{opacity:1;transform:translateX(0)} }
-.agd-log-t { color:rgba(255,255,255,0.28); flex-shrink:0; font-size:10px; padding-top:1px; }
-.agd-log-pip { width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:4px; }
-.agd-log-pip.c{background:#818cf8} .agd-log-pip.s{background:#e879f9}
-.agd-log-pip.g{background:#4ade80} .agd-log-pip.w{background:#fbbf24}
-.agd-log-txt { color:rgba(255,255,255,0.75); flex:1; }
-.agd-log-txt strong { color:#fff; }
-.agd-log-footer {
-  padding: 8px 10px; font-size: 11px; color: rgba(255,255,255,0.4);
-  border-top: 1px solid rgba(255,255,255,0.06); min-height: 28px;
-  flex-shrink: 0;
+.ags-bubble.incoming .ags-bubble-body {
+  background: linear-gradient(135deg, #c020b0, #d040c0);
+  color: #fff;
+  border-color: transparent;
 }
+.ags-bubble.system .ags-bubble-body {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+  color: #166534;
+  font-size: 12px;
+}
+.ags-bubble.warning .ags-bubble-body {
+  background: #fffbeb;
+  border-color: #fde68a;
+  color: #78350f;
+}
+.ags-bubble-meta { font-size: 10px; color: var(--faint); align-self: flex-end; }
 
-/* ── SCENE 2: RIPPLE BODY ── */
-.agd-body-ripple {
-  grid-template-columns: 200px 1fr 260px;
-  height: 420px;
+/* Internal approval gate */
+.ags-internal-approval {
+  background: #fff;
+  border: 1.5px solid #fde68a;
+  border-radius: 10px;
+  padding: 12px;
+  display: none;
+  animation: fadeSlideIn 0.4s ease;
 }
-.agd-ripple-hub {
+@keyframes fadeSlideIn {
+  from { opacity:0; transform:translateY(6px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.ags-internal-approval.visible { display: block; }
+.ags-apv-header {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12.5px; font-weight: 700; color: #78350f;
+  margin-bottom: 6px;
+}
+.ags-apv-icon { font-size: 16px; }
+.ags-apv-status { font-size: 12px; color: #78350f; line-height: 1.5; margin-bottom: 8px; }
+.ags-apv-actions { display: flex; flex-direction: column; gap: 5px; }
+.ags-apv-row {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 11.5px; color: var(--muted); padding: 5px 8px;
+  background: #fefce8; border-radius: 6px; border: 1px solid #fef08a;
+}
+.ags-apv-row.approved { background: #f0fdf4; border-color: #bbf7d0; color: #166534; }
+
+/* Center SVG */
+.ags-center { position: relative; overflow: visible; }
+.ags-conn-svg { width: 100%; height: 100%; }
+
+/* Transaction log */
+.ags-timeline {
+  background: #f8f7ff;
+  border: 1px solid #e8e4f8;
+  border-radius: 0 0 16px 16px;
+  border-top: none;
+  padding: 12px 16px;
+  min-height: 120px;
+  max-height: 180px;
+  overflow-y: auto;
+}
+.ags-tl-head {
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.09em; color: var(--faint); margin-bottom: 8px;
+}
+.ags-tl-stream { display: flex; flex-direction: column; gap: 4px; }
+.ags-tl-entry {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: 12px; color: var(--muted); line-height: 1.5;
+  opacity: 0; animation: logIn 0.35s ease forwards;
+  padding: 3px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+@keyframes logIn {
+  from { opacity:0; transform:translateX(-6px); }
+  to   { opacity:1; transform:translateX(0); }
+}
+.ags-tl-time { color: var(--faint); flex-shrink: 0; font-size: 11px; }
+.ags-tl-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+.ags-tl-dot.c { background: #534AB7; }
+.ags-tl-dot.s { background: #c020b0; }
+.ags-tl-dot.g { background: #198051; }
+.ags-tl-dot.w { background: #d97706; }
+.ags-tl-msg { flex: 1; color: var(--text-2, #333); }
+.ags-tl-msg strong { color: var(--text); }
+
+/* Play row */
+.ags-play-row {
+  display: flex; align-items: center; gap: 14px;
+  padding: 18px 0 0;
+  flex-wrap: wrap;
+}
+.ags-play-btn {
+  background: linear-gradient(130deg, var(--pri), var(--mag));
+  color: #fff; border: none;
+  padding: 11px 24px; border-radius: 10px;
+  font-size: 13.5px; font-weight: 700;
+  cursor: pointer; font-family: var(--fb);
+  transition: opacity 0.2s, transform 0.15s;
+}
+.ags-play-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+.ags-play-btn:disabled { opacity: 0.55; transform: none; cursor: default; }
+.ags-play-note { font-size: 12px; color: var(--muted); }
+
+/* ── SCENE 2: NETWORK ── */
+.ags-network-canvas {
+  background: linear-gradient(135deg, #f0ebff 0%, #e8f4ff 60%, #f5eeff 100%);
+  border: 1px solid #ddd6f8;
+  border-radius: 16px;
+  padding: 28px 20px;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 24px;
+  align-items: center;
+  min-height: 340px;
+}
+.ags-hub {
   display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  padding: 16px 12px; gap: 10px;
-  border-right: 1px solid rgba(83,74,183,0.12);
+  align-items: center; text-align: center; gap: 10px;
 }
-.agd-rh-org { display:flex;flex-direction:column;align-items:center;gap:8px; }
-.agd-rh-name { font-size:13px;font-weight:700;color:#1a1020;text-align:center; }
-.agd-rh-agent {
-  display:flex;align-items:center;gap:6px;
-  font-size:11.5px;font-weight:700;color:var(--pri);
-  background:#eeedfe;padding:4px 10px;border-radius:99px;
+.ags-hub-org { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.ags-hub-agent {
+  display: flex; align-items: center; gap: 6px;
+  background: #fff;
+  border: 1px solid rgba(83,74,183,0.2);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 11.5px; font-weight: 700; color: var(--pri);
 }
-.agd-rh-signal {
-  font-size:11px;color:var(--pri);text-align:center;line-height:1.5;
-  background:rgba(83,74,183,0.06);border:1px solid rgba(83,74,183,0.15);
-  border-radius:8px;padding:7px 10px;
-  transition:opacity 0.5s;
+.ags-hub-request {
+  font-size: 11.5px; color: var(--muted); line-height: 1.5;
+  background: #fff; border: 1px solid rgba(83,74,183,0.15);
+  border-radius: 8px; padding: 8px 10px;
+  text-align: center; transition: opacity 0.4s;
 }
-.agd-ripple-spokes {
-  display:flex;flex-direction:column;justify-content:space-around;
-  padding:14px 12px;gap:10px;overflow:hidden;
+.ags-spokes {
+  display: flex; flex-direction: column; gap: 14px;
 }
-.agd-ripple-spoke { display:flex;align-items:center;gap:0; }
-.agd-rs-line {
-  flex:1;height:3px;border-radius:99px;
-  background:rgba(83,74,183,0.15);
-  position:relative;overflow:hidden;
+.ags-spoke { display: flex; align-items: center; gap: 0; }
+.ags-spoke-line {
+  flex: 1; height: 3px;
+  background: #ddd6f8;
+  border-radius: 99px;
+  position: relative;
+  overflow: hidden;
 }
-.agd-rs-beam {
-  position:absolute;top:0;left:-80%;
-  width:60%;height:100%;
-  background:linear-gradient(90deg,transparent,#534AB7,#c020b0,transparent);
-  border-radius:99px;
+.ags-spoke-pulse {
+  position: absolute; top: 0; left: -100%;
+  width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, var(--pri), var(--mag), transparent);
+  border-radius: 99px;
+  transition: none;
 }
-.agd-rs-beam.run { animation:agBeam 0.9s ease-in-out infinite; }
-@keyframes agBeam { 0%{left:-80%} 100%{left:120%} }
-.agd-rs-card {
-  width:180px;flex-shrink:0;
-  background:#fff;border:1.5px solid rgba(83,74,183,0.15);
-  border-radius:12px;padding:10px 12px;
-  transition:border-color 0.3s,box-shadow 0.3s;
+.ags-spoke-pulse.running {
+  animation: spokePulse 1.2s ease-in-out infinite;
 }
-.agd-rs-card.active{border-color:#534AB7;box-shadow:0 0 0 3px rgba(83,74,183,0.1)}
-.agd-rs-card.done{border-color:#22c55e;box-shadow:0 0 0 3px rgba(34,197,94,0.1)}
-.agd-rs-card.warn{border-color:#f59e0b;box-shadow:0 0 0 3px rgba(245,158,11,0.1)}
-.agd-rsc-top{display:flex;align-items:flex-start;gap:7px;margin-bottom:7px}
-.agd-rsc-name{font-size:12px;font-weight:700;color:#1a1020;line-height:1.3}
-.agd-rsc-agent{font-size:10.5px;color:var(--muted)}
-.agd-rsc-badge{
-  margin-left:auto;flex-shrink:0;
-  font-size:10px;font-weight:700;padding:2px 7px;border-radius:99px;
-  background:#f3f0fc;color:var(--faint);transition:all 0.3s;white-space:nowrap;
+@keyframes spokePulse {
+  0%  { left: -70%; }
+  100%{ left: 110%; }
 }
-.agd-rsc-badge.active{background:#eeedfe;color:var(--pri)}
-.agd-rsc-badge.done{background:#dcfce7;color:#15803d}
-.agd-rsc-badge.warn{background:#fef3c7;color:#92400e}
-.agd-rsc-tasks{display:flex;flex-direction:column;gap:3px}
-.agd-rsc-task{
-  font-size:11px;color:var(--muted);
-  display:flex;align-items:flex-start;gap:5px;line-height:1.4;
-  opacity:0;animation:agFadeUp 0.3s ease forwards;
+.ags-spoke-org {
+  background: #fff;
+  border: 1px solid #ddd6f8;
+  border-radius: 12px;
+  padding: 12px 14px;
+  min-width: 160px;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
+.ags-spoke-org.active { border-color: var(--pri); box-shadow: 0 0 0 2px rgba(83,74,183,0.15); }
+.ags-spoke-org.done   { border-color: #4ade80; box-shadow: 0 0 0 2px rgba(74,222,128,0.15); }
+.ags-spoke-org.warn   { border-color: #f59e0b; }
+.ags-sorg-logo {
+  width: 30px; height: 30px; border-radius: 8px;
+  color: #fff; font-size: 11px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--fd); margin-bottom: 6px;
+}
+.ags-sorg-name { font-size: 12.5px; font-weight: 700; color: #1a1020; line-height: 1.3; margin-bottom: 4px; }
+.ags-sorg-agent { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
+.ags-sorg-status {
+  font-size: 11px; font-weight: 600; color: var(--faint);
+  padding: 3px 8px; border-radius: 99px;
+  background: #f3f0fc; display: inline-block; transition: all 0.3s;
+}
+.ags-sorg-status.active { background: #eeedfe; color: var(--pri); }
+.ags-sorg-status.done   { background: #f0fdf4; color: #198051; }
+.ags-sorg-status.warn   { background: #fffbeb; color: #d97706; }
+.ags-sorg-tasks { margin-top: 8px; display: flex; flex-direction: column; gap: 4px; }
+.ags-sorg-task {
+  font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 5px;
+  opacity: 0; transition: opacity 0.3s;
+}
+.ags-sorg-task.show { opacity: 1; }
+.ags-network-result {
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  border: 1.5px solid #86efac;
+  border-radius: 12px;
+  padding: 14px 18px;
+  display: flex; align-items: center; gap: 14px;
+  margin: 16px 0;
+  transition: opacity 0.5s;
+}
+.anr-icon { font-size: 24px; flex-shrink: 0; }
+.anr-text { flex: 1; font-size: 13px; color: #166534; line-height: 1.5; }
+.anr-time { font-size: 20px; font-weight: 700; color: #198051; flex-shrink: 0; }
 
-/* Responsive */
-@media (max-width:900px){
-  .agd-body{grid-template-columns:1fr 1fr;height:auto}
-  .agd-col-log{display:none}
-  .agd-body-ripple{grid-template-columns:1fr;height:auto}
-  .agd-ripple-hub{flex-direction:row;border-right:none;border-bottom:1px solid rgba(83,74,183,0.12)}
-  .agd-modes{max-width:100%}
-  .agd-tb-title{display:none}
-}
-@media (max-width:600px){
-  .agd-body{grid-template-columns:1fr;height:auto}
-  .agd-col-buyer{border-right:none;border-bottom:1px solid rgba(83,74,183,0.12)}
+@media (max-width: 720px) {
+  .ags-canvas { grid-template-columns: 1fr; }
+  .ags-center { height: 48px; }
+  .ags-network-canvas { grid-template-columns: 1fr; }
+  .ags-switcher { max-width: 100%; }
+  .ags-spoke-org { min-width: 130px; }
 }
 </style>
 </head>
@@ -4569,217 +4505,195 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
     </div>
 
 
-    <!-- ═══ AGENT NETWORK DIAGRAM ═══ -->
-    <div class="agd-wrap reveal">
-
-      <!-- Section heading -->
-      <div class="agd-heading">
-        <div class="sec-tag" style="margin-top:52px">Autonomous agents</div>
+    <!-- AGENT NETWORK SECTION -->
+    <div class="agent-section reveal">
+      <div class="agent-section-head">
+        <div class="sec-tag" style="margin-top:52px">Autonomous AI agents</div>
         <h2 class="sec-head">Agents that work<br><span class="grad">while your team sleeps.</span></h2>
-        <p class="sec-sub">Every organisation on AutoSpec.ai runs a dedicated AI agent. They communicate directly with each other — requesting data, clearing compliance gates, renewing certifications — with no human sending a single email.</p>
+        <p class="sec-sub">Every organisation on AutoSpec.ai runs an AI agent. They communicate directly with each other — requesting data, processing compliance checks, fulfilling obligations — without a human touching a keyboard. Watch two transactions unfold in real time.</p>
       </div>
 
-      <!-- Mode switcher -->
-      <div class="agd-modes">
-        <button class="agd-mode active" id="agd-mode-1" onclick="agdSwitchMode(1)">
-          <span class="agd-mode-icon">⟵⟶</span>
-          <div class="agd-mode-text">
-            <span class="agd-mode-title">Direct Sync</span>
-            <span class="agd-mode-sub">Two agents, one outcome</span>
-          </div>
+      <!-- Scene switcher -->
+      <div class="ags-switcher">
+        <button class="ags-switch active" id="ags-btn-1" onclick="agScene(1)">
+          <span class="ags-sw-num">01</span>
+          <span class="ags-sw-label">One-to-one exchange</span>
         </button>
-        <div class="agd-mode-div"></div>
-        <button class="agd-mode" id="agd-mode-2" onclick="agdSwitchMode(2)">
-          <span class="agd-mode-icon">⊙</span>
-          <div class="agd-mode-text">
-            <span class="agd-mode-title">The Ripple</span>
-            <span class="agd-mode-sub">One signal, your whole supply chain</span>
-          </div>
+        <div class="ags-switch-sep"></div>
+        <button class="ags-switch" id="ags-btn-2" onclick="agScene(2)">
+          <span class="ags-sw-num">02</span>
+          <span class="ags-sw-label">Network — one to many</span>
         </button>
       </div>
 
-      <!-- ─── SCENE 1: Direct Sync ─── -->
-      <div class="agd-scene" id="agd-s1">
-        <div class="agd-console">
+      <!-- ════ SCENE 1: ONE-TO-ONE ════ -->
+      <div class="ags-scene" id="ags-scene-1">
+        <div class="ags-canvas">
 
-          <!-- Console top bar -->
-          <div class="agd-topbar">
-            <div class="agd-tb-dots"><span></span><span></span><span></span></div>
-            <div class="agd-tb-title">AutoSpec.ai · Agent Channel · Direct Sync</div>
-            <div class="agd-tb-live" id="s1-live-badge" style="display:none"><span class="agd-live-dot"></span>Live</div>
-            <button class="agd-run-btn" id="s1-btn" onclick="agdRun1()">▶ Run</button>
+          <!-- Left Org: Brightland Foods -->
+          <div class="ags-org ags-left">
+            <div class="ags-org-header">
+              <div class="ags-org-logo" style="background:linear-gradient(135deg,#534AB7,#3d359c)">B</div>
+              <div>
+                <div class="ags-org-name">Brightland Foods</div>
+                <div class="ags-org-role">Buyer</div>
+              </div>
+              <div class="ags-org-badge">Customer</div>
+            </div>
+
+            <div class="ags-agent-card" id="s1-cust-agent">
+              <div class="ags-agent-dot" id="s1-cust-dot"></div>
+              <div class="ags-agent-icon">🤖</div>
+              <div class="ags-agent-info">
+                <div class="ags-agent-label">Customer Agent</div>
+                <div class="ags-agent-state" id="s1-cust-state">Ready</div>
+              </div>
+            </div>
+
+            <div class="ags-messages" id="s1-cust-msgs"></div>
           </div>
 
-          <!-- 3-column body -->
-          <div class="agd-body">
-
-            <!-- COL 1: Buyer org -->
-            <div class="agd-col agd-col-buyer">
-              <div class="agd-org-card">
-                <div class="agd-org-logo" style="background:linear-gradient(135deg,#4338ca,#6d28d9)">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none">
-                    <circle cx="12" cy="8" r="4" fill="rgba(255,255,255,0.9)"/>
-                    <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round"/>
-                  </svg>
-                </div>
-                <div class="agd-org-info">
-                  <div class="agd-org-name">Brightland Foods</div>
-                  <div class="agd-org-type">Buyer · Customer Agent</div>
-                </div>
-                <div class="agd-org-status" id="s1-cust-status">
-                  <span class="agd-status-dot" id="s1-cust-dot"></span>
-                  <span id="s1-cust-label">Ready</span>
-                </div>
-              </div>
-
-              <div class="agd-chat-area" id="s1-cust-chat">
-                <div class="agd-chat-empty">
-                  <div class="agd-empty-icon">🤖</div>
-                  <div class="agd-empty-label">Customer Agent will start here</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- COL 2: Supplier org -->
-            <div class="agd-col agd-col-supplier">
-              <div class="agd-org-card" style="--org-accent:#9d174d">
-                <div class="agd-org-logo" style="background:linear-gradient(135deg,#1a3d26,#2d6a44)">
-                  <span style="font-size:13px;font-weight:900;color:#fff;font-family:serif">KJ</span>
-                </div>
-                <div class="agd-org-info">
-                  <div class="agd-org-name">King Julian Ingredients</div>
-                  <div class="agd-org-type">Supplier · Supplier Agent</div>
-                </div>
-                <div class="agd-org-status" id="s1-supp-status">
-                  <span class="agd-status-dot" id="s1-supp-dot"></span>
-                  <span id="s1-supp-label">Listening</span>
-                </div>
-              </div>
-
-              <!-- Regulatory gate — hidden until triggered -->
-              <div class="agd-reg-gate" id="s1-gate" style="display:none">
-                <div class="agd-rg-header">
-                  <span id="s1-gate-icon">🔒</span>
-                  <span class="agd-rg-title">Regulatory &amp; Compliance Gate</span>
-                </div>
-                <div class="agd-rg-body" id="s1-gate-body">
-                  Nutritional data contains proprietary formulation — approval required before release.
-                </div>
-                <div class="agd-rg-checks" id="s1-gate-checks"></div>
-              </div>
-
-              <div class="agd-chat-area" id="s1-supp-chat">
-                <div class="agd-chat-empty">
-                  <div class="agd-empty-icon">🤖</div>
-                  <div class="agd-empty-label">Supplier Agent responds here</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- COL 3: Live log -->
-            <div class="agd-col agd-col-log">
-              <div class="agd-log-header">
-                <span class="agd-log-icon">⚡</span> Live transaction log
-              </div>
-              <div class="agd-log-stream" id="s1-log"></div>
-              <div class="agd-log-footer" id="s1-log-footer"></div>
-            </div>
-
+          <!-- Center connection SVG -->
+          <div class="ags-center">
+            <svg class="ags-conn-svg" id="s1-svg" viewBox="0 0 120 400" preserveAspectRatio="none">
+              <defs>
+                <marker id="arr-r" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                  <path d="M0,0 L6,3 L0,6 Z" fill="#534AB7"/>
+                </marker>
+                <marker id="arr-l" markerWidth="6" markerHeight="6" refX="1" refY="3" orient="auto">
+                  <path d="M6,0 L0,3 L6,6 Z" fill="#c020b0"/>
+                </marker>
+              </defs>
+              <line x1="0" y1="90" x2="120" y2="90" stroke="#534AB7" stroke-width="1.5"
+                    stroke-dasharray="6,4" opacity="0.3" id="s1-line-1"/>
+              <line x1="120" y1="130" x2="0" y2="130" stroke="#c020b0" stroke-width="1.5"
+                    stroke-dasharray="6,4" opacity="0.3" id="s1-line-2"/>
+              <circle id="s1-pkt-1a" cx="-20" cy="90" r="6" fill="#534AB7" opacity="0"/>
+              <circle id="s1-pkt-1b" cx="-20" cy="90" r="6" fill="#534AB7" opacity="0"/>
+              <circle id="s1-pkt-2"  cx="140" cy="130" r="6" fill="#c020b0" opacity="0"/>
+              <circle id="s1-pkt-3"  cx="140" cy="130" r="6" fill="#4ade80" opacity="0"/>
+            </svg>
           </div>
+
+          <!-- Right Org: King Julian Ingredients -->
+          <div class="ags-org ags-right">
+            <div class="ags-org-header">
+              <div class="ags-org-logo" style="background:linear-gradient(135deg,#1a3d26,#2a5f3a)">KJ</div>
+              <div>
+                <div class="ags-org-name">King Julian Ingredients</div>
+                <div class="ags-org-role">Supplier</div>
+              </div>
+              <div class="ags-org-badge supp-badge">Supplier</div>
+            </div>
+
+            <div class="ags-agent-card" id="s1-supp-agent">
+              <div class="ags-agent-dot" id="s1-supp-dot"></div>
+              <div class="ags-agent-icon">🤖</div>
+              <div class="ags-agent-info">
+                <div class="ags-agent-label">Supplier Agent</div>
+                <div class="ags-agent-state" id="s1-supp-state">Listening</div>
+              </div>
+            </div>
+
+            <!-- Internal regulatory approval node -->
+            <div class="ags-internal-approval" id="s1-approval">
+              <div class="ags-apv-header">
+                <span class="ags-apv-icon" id="s1-apv-icon">🔒</span>
+                <span class="ags-apv-title">Regulatory & Compliance</span>
+              </div>
+              <div class="ags-apv-status" id="s1-apv-status">Internal approval gate — nutritional data carries regulatory risk</div>
+              <div class="ags-apv-actions" id="s1-apv-actions"></div>
+            </div>
+
+            <div class="ags-messages" id="s1-supp-msgs"></div>
+          </div>
+
+        </div>
+
+        <!-- Transaction timeline -->
+        <div class="ags-timeline" id="s1-timeline">
+          <div class="ags-tl-head">Live transaction log</div>
+          <div class="ags-tl-stream" id="s1-tl-stream"></div>
+        </div>
+
+        <div class="ags-play-row">
+          <button class="ags-play-btn" id="s1-play" onclick="runScene1()">▶ Run the exchange</button>
+          <span class="ags-play-note">No human involvement · Fully autonomous</span>
         </div>
       </div>
 
-      <!-- ─── SCENE 2: The Ripple ─── -->
-      <div class="agd-scene" id="agd-s2" style="display:none">
-        <div class="agd-console">
+      <!-- ════ SCENE 2: ONE-TO-MANY ════ -->
+      <div class="ags-scene" id="ags-scene-2" style="display:none">
+        <div class="ags-network-canvas">
 
-          <div class="agd-topbar">
-            <div class="agd-tb-dots"><span></span><span></span><span></span></div>
-            <div class="agd-tb-title">AutoSpec.ai · Agent Network · The Ripple</div>
-            <div class="agd-tb-live" id="s2-live-badge" style="display:none"><span class="agd-live-dot"></span>Live</div>
-            <button class="agd-run-btn" id="s2-btn" onclick="agdRun2()">▶ Run</button>
+          <!-- Hub: Brightland Foods -->
+          <div class="ags-hub">
+            <div class="ags-hub-org">
+              <div class="ags-org-logo lg" style="background:linear-gradient(135deg,#534AB7,#3d359c)">B</div>
+              <div class="ags-org-name">Brightland Foods</div>
+              <div class="ags-hub-agent">
+                <span class="ags-agent-dot" id="s2-hub-dot"></span>
+                <span class="ags-agent-label">Customer Agent</span>
+              </div>
+              <div class="ags-hub-request" id="s2-hub-req" style="opacity:0">
+                Sending 2 requests to<br><strong>all active suppliers simultaneously</strong>
+              </div>
+            </div>
           </div>
 
-          <div class="agd-body agd-body-ripple">
+          <!-- Network spokes -->
+          <div class="ags-spokes" id="s2-spokes">
 
-            <!-- Hub -->
-            <div class="agd-ripple-hub">
-              <div class="agd-rh-org">
-                <div class="agd-org-logo lg" style="background:linear-gradient(135deg,#4338ca,#6d28d9)">
-                  <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
-                    <circle cx="12" cy="8" r="4" fill="rgba(255,255,255,0.9)"/>
-                    <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round"/>
-                  </svg>
-                </div>
-                <div class="agd-rh-name">Brightland Foods</div>
-                <div class="agd-rh-agent">
-                  <span class="agd-status-dot" id="s2-hub-dot"></span>
-                  Customer Agent
-                </div>
-              </div>
-              <div class="agd-rh-signal" id="s2-signal" style="opacity:0">
-                Sending to all active suppliers simultaneously →
+            <div class="ags-spoke" id="s2-spoke-1">
+              <div class="ags-spoke-line"><div class="ags-spoke-pulse" id="s2-pulse-1"></div></div>
+              <div class="ags-spoke-org" id="s2-org-1">
+                <div class="ags-sorg-logo" style="background:linear-gradient(135deg,#1a3d26,#2a5f3a)">KJ</div>
+                <div class="ags-sorg-name">King Julian<br>Ingredients</div>
+                <div class="ags-sorg-agent">🤖 Supplier Agent</div>
+                <div class="ags-sorg-status" id="s2-status-1">Standby</div>
+                <div class="ags-sorg-tasks" id="s2-tasks-1"></div>
               </div>
             </div>
 
-            <!-- Spokes + suppliers -->
-            <div class="agd-ripple-spokes">
-
-              <div class="agd-ripple-spoke" id="s2-sp1">
-                <div class="agd-rs-line"><div class="agd-rs-beam" id="s2-beam1"></div></div>
-                <div class="agd-rs-card" id="s2-card1">
-                  <div class="agd-rsc-top">
-                    <div class="agd-org-logo sm" style="background:linear-gradient(135deg,#1a3d26,#2d6a44)"><span style="color:#fff;font-weight:900;font-size:10px;font-family:serif">KJ</span></div>
-                    <div>
-                      <div class="agd-rsc-name">King Julian Ingredients</div>
-                      <div class="agd-rsc-agent">🤖 Supplier Agent</div>
-                    </div>
-                    <div class="agd-rsc-badge" id="s2-b1">Standby</div>
-                  </div>
-                  <div class="agd-rsc-tasks" id="s2-t1"></div>
-                </div>
+            <div class="ags-spoke" id="s2-spoke-2">
+              <div class="ags-spoke-line"><div class="ags-spoke-pulse" id="s2-pulse-2"></div></div>
+              <div class="ags-spoke-org" id="s2-org-2">
+                <div class="ags-sorg-logo" style="background:linear-gradient(135deg,#855a1e,#b07a30)">RE</div>
+                <div class="ags-sorg-name">Rich Earth<br>Avocado Farms</div>
+                <div class="ags-sorg-agent">🤖 Supplier Agent</div>
+                <div class="ags-sorg-status" id="s2-status-2">Standby</div>
+                <div class="ags-sorg-tasks" id="s2-tasks-2"></div>
               </div>
-
-              <div class="agd-ripple-spoke" id="s2-sp2">
-                <div class="agd-rs-line"><div class="agd-rs-beam" id="s2-beam2"></div></div>
-                <div class="agd-rs-card" id="s2-card2">
-                  <div class="agd-rsc-top">
-                    <div class="agd-org-logo sm" style="background:linear-gradient(135deg,#78350f,#b45309)"><span style="color:#fff;font-weight:900;font-size:9px;font-family:sans-serif">RE</span></div>
-                    <div>
-                      <div class="agd-rsc-name">Rich Earth Avocado Farms</div>
-                      <div class="agd-rsc-agent">🤖 Supplier Agent</div>
-                    </div>
-                    <div class="agd-rsc-badge" id="s2-b2">Standby</div>
-                  </div>
-                  <div class="agd-rsc-tasks" id="s2-t2"></div>
-                </div>
-              </div>
-
-              <div class="agd-ripple-spoke" id="s2-sp3">
-                <div class="agd-rs-line"><div class="agd-rs-beam" id="s2-beam3"></div></div>
-                <div class="agd-rs-card" id="s2-card3">
-                  <div class="agd-rsc-top">
-                    <div class="agd-org-logo sm" style="background:linear-gradient(135deg,#1e3a5f,#1d4ed8)"><span style="color:#fff;font-weight:900;font-size:9px;font-family:sans-serif">PF</span></div>
-                    <div>
-                      <div class="agd-rsc-name">Pacific Foods Co.</div>
-                      <div class="agd-rsc-agent">🤖 Supplier Agent</div>
-                    </div>
-                    <div class="agd-rsc-badge" id="s2-b3">Standby</div>
-                  </div>
-                  <div class="agd-rsc-tasks" id="s2-t3"></div>
-                </div>
-              </div>
-
             </div>
 
-            <!-- Log column -->
-            <div class="agd-col agd-col-log">
-              <div class="agd-log-header"><span class="agd-log-icon">⚡</span> Live transaction log</div>
-              <div class="agd-log-stream" id="s2-log"></div>
-              <div class="agd-log-footer" id="s2-log-footer"></div>
+            <div class="ags-spoke" id="s2-spoke-3">
+              <div class="ags-spoke-line"><div class="ags-spoke-pulse" id="s2-pulse-3"></div></div>
+              <div class="ags-spoke-org" id="s2-org-3">
+                <div class="ags-sorg-logo" style="background:linear-gradient(135deg,#185FA5,#1a7ab0)">PF</div>
+                <div class="ags-sorg-name">Pacific Foods<br>Co.</div>
+                <div class="ags-sorg-agent">🤖 Supplier Agent</div>
+                <div class="ags-sorg-status" id="s2-status-3">Standby</div>
+                <div class="ags-sorg-tasks" id="s2-tasks-3"></div>
+              </div>
             </div>
 
           </div>
+
+        </div>
+
+        <!-- Network result bar -->
+        <div class="ags-network-result" id="s2-result" style="opacity:0">
+          <div class="anr-icon">⚡</div>
+          <div class="anr-text">
+            <strong>3 suppliers resolved simultaneously</strong> —
+            nutrition data received · 2 of 3 Kosher certs renewed · 1 flagged for manual review
+          </div>
+          <div class="anr-time" id="s2-elapsed">in 4.2s</div>
+        </div>
+
+        <div class="ags-play-row">
+          <button class="ags-play-btn" id="s2-play" onclick="runScene2()">▶ Run the network</button>
+          <span class="ags-play-note">All three suppliers contacted and resolved in parallel</span>
         </div>
       </div>
 
@@ -5711,282 +5625,250 @@ function approveSpec() {
 
 
 
-
-
-// ══ AGENT DIAGRAM v2 ══
-function agdSwitchMode(n) {
+// ══ AGENT DIAGRAM: Scene switcher ══
+function agScene(n) {
   [1,2].forEach(function(i){
-    var s=document.getElementById('agd-s'+i), b=document.getElementById('agd-mode-'+i);
-    if(s) s.style.display=(i===n)?'block':'none';
-    if(b) b.classList.toggle('active',i===n);
+    var s = document.getElementById('ags-scene-'+i);
+    var b = document.getElementById('ags-btn-'+i);
+    if(s) s.style.display = (i===n)?'block':'none';
+    if(b) b.classList.toggle('active', i===n);
   });
 }
 
-// ─── helpers ───
-function agdT(s){ return s*1000; }
-function agdTime(s){ var h=9,m=14+Math.floor(s/60),sec=Math.floor(s)%60; return ('0'+h).slice(-2)+':'+('0'+m).slice(-2)+':'+('0'+sec).slice(-2); }
-
-function agdLog(streamId, sec, pip, html){
-  setTimeout(function(){
-    var s=document.getElementById(streamId); if(!s) return;
-    var e=document.createElement('div'); e.className='agd-log-entry';
-    e.innerHTML='<span class="agd-log-t">'+agdTime(sec)+'</span><span class="agd-log-pip '+pip+'"></span><span class="agd-log-txt">'+html+'</span>';
-    s.appendChild(e); s.parentElement.scrollTop=99999;
-  }, agdT(sec));
-}
-
-function agdMsg(chatId, type, from, body, sec){
-  setTimeout(function(){
-    var c=document.getElementById(chatId); if(!c) return;
-    var empty=c.querySelector('.agd-chat-empty');
-    if(empty) empty.style.display='none';
-    var m=document.createElement('div'); m.className='agd-msg '+type;
-    m.innerHTML='<div class="agd-msg-from">'+from+'</div><div class="agd-msg-body">'+body+'</div>';
-    c.appendChild(m); c.scrollTop=99999;
-  }, agdT(sec));
-}
-
-function agdDot(id, state){
-  var el=document.getElementById(id); if(!el) return;
-  el.className='agd-status-dot'+(state?' '+state:'');
-}
-function agdLabel(id, txt){
-  var el=document.getElementById(id); if(!el) return;
-  el.textContent=txt;
-}
-function agdShow(id, sec){
-  setTimeout(function(){
-    var el=document.getElementById(id); if(el) el.style.display='block';
-  }, agdT(sec));
-}
-function agdOpacity(id, val, sec){
-  setTimeout(function(){
-    var el=document.getElementById(id); if(el) el.style.opacity=val;
-  }, agdT(sec));
-}
-function agdGateCheck(checksId, txt, pass, sec){
-  setTimeout(function(){
-    var c=document.getElementById(checksId); if(!c) return;
-    var r=document.createElement('div');
-    r.className='agd-rg-check'+(pass?' pass':'');
-    r.innerHTML=(pass?'✓ ':'⏳ ')+txt;
-    c.appendChild(r);
-  }, agdT(sec));
-}
-function agdFooter(id, txt, sec){
-  setTimeout(function(){
-    var el=document.getElementById(id); if(el) el.textContent=txt;
-  }, agdT(sec));
-}
-
-// ─── SCENE 1: Direct Sync ───
-function agdRun1(){
-  var btn=document.getElementById('s1-btn');
-  if(!btn||btn.disabled) return;
-  btn.disabled=true; btn.textContent='● Running...';
+// ══ SCENE 1: One-to-one with regulatory approval ══
+function runScene1() {
+  var btn = document.getElementById('s1-play');
+  if(!btn || btn.disabled) return;
+  btn.disabled = true; btn.textContent = '● Agents working...';
 
   // Reset
-  ['s1-cust-chat','s1-supp-chat','s1-log'].forEach(function(id){
-    var el=document.getElementById(id); if(!el) return;
-    el.innerHTML=''; 
-    if(id.includes('chat')){
-      var emp=document.createElement('div'); emp.className='agd-chat-empty';
-      emp.innerHTML='<div class="agd-empty-icon">🤖</div><div class="agd-empty-label">'+(id.includes('cust')?'Customer':'Supplier')+' Agent will start here</div>';
-      el.appendChild(emp);
-    }
+  ['s1-cust-msgs','s1-supp-msgs','s1-tl-stream'].forEach(function(id){
+    var el=document.getElementById(id); if(el) el.innerHTML='';
   });
-  var gate=document.getElementById('s1-gate');
-  if(gate){ gate.style.display='none'; document.getElementById('s1-gate-checks').innerHTML=''; }
-  var live=document.getElementById('s1-live-badge');
+  var apv = document.getElementById('s1-approval');
+  if(apv) apv.classList.remove('visible');
+  document.getElementById('s1-apv-actions').innerHTML='';
 
-  // Live badge on
-  setTimeout(function(){ if(live) live.style.display='flex'; }, agdT(0.3));
+  function ms(sec){ return sec*1000; }
+  function now(s){ return '09:'+('0'+(14+Math.floor(s/60))).slice(-2)+':'+('0'+(s%60)).slice(-2); }
 
-  // ── Customer wakes, sends requests ──
-  agdDot('s1-cust-dot','live');
-  agdLabel('s1-cust-label','Working…');
-  agdLog('s1-log', 0.6, 'c', '<strong>Customer Agent</strong> — Brightland Foods — initiated sync');
+  function setState(id,txt,cls){
+    var el=document.getElementById(id);
+    if(!el) return;
+    el.textContent=txt;
+    el.className='ags-agent-state';
+    if(cls) el.classList.add(cls);
+  }
+  function setDot(id,live){
+    var el=document.getElementById(id);
+    if(el) el.classList.toggle('live',live);
+  }
+  function setAgentActive(id,on){
+    var el=document.getElementById(id);
+    if(el) el.classList.toggle('active',on);
+  }
+  function bubble(containerId, type, from, bodyHTML, sec){
+    setTimeout(function(){
+      var c=document.getElementById(containerId); if(!c) return;
+      var b=document.createElement('div');
+      b.className='ags-bubble '+type;
+      b.innerHTML='<div class="ags-bubble-from">'+from+'</div><div class="ags-bubble-body">'+bodyHTML+'</div>';
+      c.appendChild(b);
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ b.classList.add('show'); }); });
+    }, ms(sec));
+  }
+  function tlog(sec,dotCls,msg){
+    setTimeout(function(){
+      var s=document.getElementById('s1-tl-stream'); if(!s) return;
+      var e=document.createElement('div');
+      e.className='ags-tl-entry';
+      e.innerHTML='<span class="ags-tl-time">'+now(sec)+'</span><span class="ags-tl-dot '+dotCls+'"></span><span class="ags-tl-msg">'+msg+'</span>';
+      s.appendChild(e);
+      s.parentElement.scrollTop=s.parentElement.scrollHeight;
+    }, ms(sec));
+  }
 
-  agdMsg('s1-cust-chat','sent','Customer Agent → King Julian Ingredients',
-    '📊 Requesting <strong>analyzed nutritional data</strong> for Whole Wheat Flour (KJF-4821)<br><span style="font-size:11px;opacity:0.85">Format: FDA 21 CFR compliant · structured · signed</span>', 1.2);
-  agdLog('s1-log', 1.3, 'c', 'Requesting nutritional analysis — KJF-4821');
+  // ── Timeline ──
+  tlog(0.5,'c','<strong>Customer Agent (Brightland Foods)</strong> initiated spec sync');
 
-  agdMsg('s1-cust-chat','sent','Customer Agent → King Julian Ingredients',
-    '📅 <strong>Kosher cert alert</strong> — Certificate #KJ-2024-K expires in 18 days.<br><span style="font-size:11px;opacity:0.85">Renewal required before next distribution window.</span>', 2.8);
-  agdLog('s1-log', 2.9, 'c', 'Kosher cert expiry flagged — 18 days remaining');
+  // Customer wakes, sends message 1
+  setTimeout(function(){ setDot('s1-cust-dot',true); setState('s1-cust-state','Working...','working'); setAgentActive('s1-cust-agent',true); }, ms(0.8));
+  bubble('s1-cust-msgs','outgoing','Customer Agent → King Julian Ingredients',
+    '📊 Requesting <b>analyzed nutritional data</b> for Whole Wheat Flour (KJF-4821)<br>Format required: FDA 21 CFR compliant · structured JSON', 1.2);
+  tlog(1.3,'c','Requesting analyzed nutrition data for KJF-4821');
 
-  agdDot('s1-cust-dot','');
-  agdLabel('s1-cust-label','Awaiting response');
+  // Kosher reminder
+  bubble('s1-cust-msgs','outgoing','Customer Agent → King Julian Ingredients',
+    '📅 <b>Kosher certification alert</b> — OU certificate #KJ-2024-K expires in 18 days.<br>Renewal required before distribution deadline.', 2.5);
+  tlog(2.6,'c','Kosher cert expiry reminder sent (18 days remaining)');
+  setTimeout(function(){ setDot('s1-cust-dot',false); setState('s1-cust-state','Awaiting response'); setAgentActive('s1-cust-agent',false); }, ms(3.4));
 
-  // ── Supplier receives ──
-  agdDot('s1-supp-dot','thinking');
-  agdLabel('s1-supp-label','Processing…');
-  agdLog('s1-log', 3.8, 's', '<strong>Supplier Agent</strong> — King Julian Ingredients — received 2 requests');
+  // Supplier receives
+  setTimeout(function(){ setDot('s1-supp-dot',true); setState('s1-supp-state','Processing...','working'); setAgentActive('s1-supp-agent',true); }, ms(3.8));
+  tlog(3.9,'s','<strong>Supplier Agent (King Julian Ingredients)</strong> received 2 requests');
+  bubble('s1-supp-msgs','default','Supplier Agent',
+    '🔍 Received nutrition request — checking internal ERP for analyzed nutritional data...', 4.2);
 
-  agdMsg('s1-supp-chat','default','Supplier Agent',
-    '🔍 Checking internal ERP for nutritional dataset KJF-4821…', 4.2);
-
-  // ── Regulatory gate appears ──
-  agdShow('s1-gate', 5.0);
+  // Regulatory gate appears
   setTimeout(function(){
-    var b=document.getElementById('s1-gate-body');
-    if(b) b.textContent='Nutritional data contains proprietary formulation. External release requires compliance clearance.';
-  }, agdT(5.0));
-  agdLog('s1-log', 5.1, 'w', '⚠ Regulatory gate triggered — proprietary data detected');
+    var apv=document.getElementById('s1-approval'); if(apv) apv.classList.add('visible');
+    document.getElementById('s1-apv-status').textContent='Nutritional analysis contains proprietary formulation data — regulatory approval required before external disclosure.';
+  }, ms(5.2));
+  tlog(5.3,'w','⚠ Regulatory gate triggered — nutritional data carries formulation risk');
 
-  agdGateCheck('s1-gate-checks','Checking data classification policy…',false, 5.8);
-  agdLog('s1-log', 5.9, 'w', 'Checking data classification policy…');
-
-  agdGateCheck('s1-gate-checks','Verifying Brightland Foods NDA on file…',false, 7.0);
-  agdLog('s1-log', 7.1, 'w', 'Verifying NDA status — Brightland Foods');
-
-  // Gate passes
+  // Approval process
   setTimeout(function(){
-    var checks=document.querySelectorAll('#s1-gate-checks .agd-rg-check');
-    if(checks[0]){ checks[0].classList.add('pass'); checks[0].innerHTML='✓ Standard nutritional data — approved for release'; }
-    if(checks[1]){ checks[1].classList.add('pass'); checks[1].innerHTML='✓ NDA verified · Brightland Foods (signed 2025-03)'; }
-    var icon=document.getElementById('s1-gate-icon');
-    if(icon) icon.textContent='✅';
-    var body=document.getElementById('s1-gate-body');
-    if(body) body.textContent='Both checks passed. Supplier Agent authorised to release data.';
-  }, agdT(8.5));
-  agdLog('s1-log', 8.6, 'g', 'Compliance gate passed — NDA verified · data release authorised');
+    var acts=document.getElementById('s1-apv-actions');
+    var r1=document.createElement('div'); r1.className='ags-apv-row';
+    r1.innerHTML='⏳ Checking data classification policy...';
+    acts.appendChild(r1);
+  }, ms(6.0));
+  setTimeout(function(){
+    var acts=document.getElementById('s1-apv-actions');
+    var r2=document.createElement('div'); r2.className='ags-apv-row';
+    r2.innerHTML='⏳ Verifying Brightland Foods NDA on file...';
+    acts.appendChild(r2);
+  }, ms(6.9));
+  setTimeout(function(){
+    var acts=document.getElementById('s1-apv-actions');
+    var rows=acts.querySelectorAll('.ags-apv-row');
+    rows[0].classList.add('approved'); rows[0].innerHTML='✓ Standard nutrition data — approved for release';
+    rows[1].classList.add('approved'); rows[1].innerHTML='✓ NDA confirmed · Brightland Foods (signed 2025-03)';
+    document.getElementById('s1-apv-icon').textContent='✅';
+    document.getElementById('s1-apv-status').textContent='Both checks passed. Supplier Agent authorised to release data.';
+  }, ms(8.2));
+  tlog(8.3,'g','Regulatory checks passed · NDA verified · data release authorised');
 
-  // Supplier sends responses
-  agdMsg('s1-supp-chat','received','Supplier Agent → Brightland Foods',
-    '✅ <strong>Nutritional analysis — KJF-4821</strong><br>16 values · FDA 21 CFR compliant<br><span style="font-size:11px;opacity:0.85">Protein 14g · Fibre 10.7g · Sodium 2mg · Energy 340 kcal</span>', 9.4);
-  agdLog('s1-log', 9.5, 's', 'Nutrition package sent — 16 values, FDA validated');
+  // Supplier sends nutrition data back
+  bubble('s1-supp-msgs','incoming','Supplier Agent → Brightland Foods',
+    '✅ <b>Analyzed nutrition data — KJF-4821</b><br>16 values validated · FDA 21 CFR compliant<br>Protein 14g · Fibre 10.7g · Sodium 2mg · Energy 340 kcal…', 9.0);
+  tlog(9.1,'s','Nutrition data package sent (16 values · FDA compliant)');
 
-  agdMsg('s1-supp-chat','received','Supplier Agent → Brightland Foods',
-    '📜 <strong>Kosher renewal filed</strong> with Orthodox Union (OU)<br><span style="font-size:11px;opacity:0.85">New certificate valid through December 2027.</span>', 10.6);
-  agdLog('s1-log', 10.7, 's', 'Kosher renewal filed with OU · valid 2027');
+  // Kosher renewal
+  bubble('s1-supp-msgs','incoming','Supplier Agent → Brightland Foods',
+    '📜 <b>Kosher renewal initiated</b> — filed with Orthodox Union (OU)<br>Expected new certificate valid through Dec 2027.', 10.2);
+  tlog(10.3,'s','Kosher renewal filed with OU · valid through 2027');
 
   // Customer receives
-  agdDot('s1-cust-dot','live');
-  agdLabel('s1-cust-label','Received ✓');
-  agdMsg('s1-cust-chat','system','AutoSpec.ai',
-    '✓ Nutritional data received &amp; filed<br>✓ Kosher renewal confirmed — cert updating', 11.4);
-  agdLog('s1-log', 11.5, 'g', '<strong>Complete.</strong> Both obligations fulfilled — 0 human actions taken.');
-  agdFooter('s1-log-footer', '✓ Transaction closed · 11.5s · 0 human actions', 12.0);
+  setTimeout(function(){ setDot('s1-cust-dot',true); setState('s1-cust-state','Received','done'); setAgentActive('s1-cust-agent',true); }, ms(11.0));
+  bubble('s1-cust-msgs','system','AutoSpec.ai','✓ Nutrition data received &amp; filed<br>✓ Kosher renewal confirmed · certificate updating', 11.4);
+  tlog(11.5,'g','<strong>Transaction complete.</strong> Both obligations fulfilled autonomously — 0 human actions required.');
 
-  // Done
   setTimeout(function(){
-    agdDot('s1-supp-dot',''); agdLabel('s1-supp-label','Done ✓');
-    agdDot('s1-cust-dot','');
-    if(live) live.style.display='none';
-    btn.disabled=false; btn.textContent='▶ Replay';
-  }, agdT(13.5));
+    setDot('s1-supp-dot',false); setState('s1-supp-state','Done','done');
+    setDot('s1-cust-dot',false); setAgentActive('s1-cust-agent',false); setAgentActive('s1-supp-agent',false);
+    btn.disabled=false; btn.textContent='▶ Replay the exchange';
+  }, ms(13));
 }
 
-// ─── SCENE 2: The Ripple ───
-function agdRun2(){
-  var btn=document.getElementById('s2-btn');
+// ══ SCENE 2: One-to-many network ══
+function runScene2() {
+  var btn=document.getElementById('s2-play');
   if(!btn||btn.disabled) return;
-  btn.disabled=true; btn.textContent='● Rippling…';
+  btn.disabled=true; btn.textContent='● Network activating...';
 
   // Reset
-  document.getElementById('s2-log').innerHTML='';
-  agdOpacity('s2-signal',0, 0);
-  agdDot('s2-hub-dot','');
-  var live2=document.getElementById('s2-live-badge');
+  var hubDot=document.getElementById('s2-hub-dot');
+  var hubReq=document.getElementById('s2-hub-req');
+  var result=document.getElementById('s2-result');
+  if(hubReq) hubReq.style.opacity='0';
+  if(result) result.style.opacity='0';
   [1,2,3].forEach(function(i){
-    var beam=document.getElementById('s2-beam'+i); if(beam) beam.classList.remove('run');
-    var card=document.getElementById('s2-card'+i); if(card) card.className='agd-rs-card';
-    var badge=document.getElementById('s2-b'+i); if(badge){ badge.textContent='Standby'; badge.className='agd-rsc-badge'; }
-    var tasks=document.getElementById('s2-t'+i); if(tasks) tasks.innerHTML='';
+    var p=document.getElementById('s2-pulse-'+i);
+    if(p) p.classList.remove('running');
+    var o=document.getElementById('s2-org-'+i);
+    if(o) o.className='ags-spoke-org';
+    var s=document.getElementById('s2-status-'+i);
+    if(s){ s.textContent='Standby'; s.className='ags-sorg-status'; }
+    var t=document.getElementById('s2-tasks-'+i);
+    if(t) t.innerHTML='';
   });
-  agdFooter('s2-log-footer','','');
+  if(hubDot) { hubDot.className='ags-agent-dot'; }
 
-  function rscTask(n, txt, done, sec){
+  function ms(s){ return s*1000; }
+  function task(orgN, txt, sec, done){
     setTimeout(function(){
-      var t=document.getElementById('s2-t'+n); if(!t) return;
-      var r=document.createElement('div'); r.className='agd-rsc-task';
-      r.innerHTML=(done?'<span style="color:#22c55e">✓</span> ':'<span style="color:#f59e0b">⏳</span> ')+txt;
+      var t=document.getElementById('s2-tasks-'+orgN); if(!t) return;
+      var r=document.createElement('div');
+      r.className='ags-sorg-task show';
+      r.innerHTML=(done?'✓ ':'⏳ ')+txt;
       t.appendChild(r);
-    }, agdT(sec));
+    }, ms(sec));
   }
-  function rscBadge(n, txt, cls, sec){
+  function status(n,txt,cls,sec){
     setTimeout(function(){
-      var el=document.getElementById('s2-b'+n); if(!el) return;
-      el.textContent=txt; el.className='agd-rsc-badge '+cls;
-      var card=document.getElementById('s2-card'+n);
-      if(card) card.className='agd-rs-card '+cls;
-    }, agdT(sec));
+      var s=document.getElementById('s2-status-'+n); if(!s) return;
+      s.textContent=txt; s.className='ags-sorg-status '+(cls||'');
+    }, ms(sec));
   }
-  function beam(n, on, sec){
+  function orgCls(n,cls,sec){
     setTimeout(function(){
-      var el=document.getElementById('s2-beam'+n);
-      if(el) el.classList.toggle('run',on);
-    }, agdT(sec));
+      var o=document.getElementById('s2-org-'+n);
+      if(o) o.className='ags-spoke-org '+cls;
+    }, ms(sec));
   }
 
-  setTimeout(function(){ if(live2) live2.style.display='flex'; }, agdT(0.3));
-  agdDot('s2-hub-dot','live');
-  agdLog('s2-log',0.5,'c','<strong>Customer Agent</strong> — Brightland Foods — broadcasting to 3 suppliers');
-  agdOpacity('s2-signal','1', 1.2);
+  // Hub wakes
+  setTimeout(function(){ if(hubDot) hubDot.classList.add('live'); }, ms(0.5));
+  setTimeout(function(){ if(hubReq) hubReq.style.opacity='1'; }, ms(1.0));
 
-  // All beams fire together
-  [1,2,3].forEach(function(i){ beam(i,true,1.8); });
-  agdLog('s2-log',1.9,'c','Sending 2 requests to all suppliers simultaneously…');
-
-  // All three receive
+  // All pulses fire simultaneously
   setTimeout(function(){
-    [1,2,3].forEach(function(i){ rscBadge(i,'Receiving…','active',0); });
-    agdLog('s2-log',0,'s','All 3 agents received — processing in parallel');
-  }, agdT(2.8));
+    [1,2,3].forEach(function(i){
+      var p=document.getElementById('s2-pulse-'+i);
+      if(p) p.classList.add('running');
+    });
+  }, ms(1.8));
 
-  // KJ (1) — passes gate, resolves fully
-  agdLog('s2-log',3.2,'s','<strong>KJ Agent:</strong> querying ERP for nutritional data…');
-  rscTask(1,'Fetching nutritional data from ERP',false,3.4);
-  agdLog('s2-log',4.0,'w','<strong>KJ Agent:</strong> regulatory gate — checking NDA…');
-  rscTask(1,'Regulatory gate — NDA verified ✓',true,4.2);
-  agdLog('s2-log',5.0,'g','<strong>KJ Agent:</strong> data cleared · package sent');
-  rscTask(1,'Nutrition data sent ✓',true,5.1);
-  rscTask(1,'Kosher renewal filed with OU ✓',true,5.7);
-  rscBadge(1,'Done ✓','done',6.1);
-  beam(1,false,6.2);
+  // Suppliers receive — simultaneously
+  [1,2,3].forEach(function(i){
+    status(i,'Receiving...','active', 2.6);
+    orgCls(i,'active', 2.6);
+  });
 
-  // Rich Earth (2) — no gate, fast
-  agdLog('s2-log',3.5,'s','<strong>Rich Earth Agent:</strong> USDA public data — no gate required');
-  rscTask(2,'Nutritional data — USDA public record',true,3.6);
-  rscTask(2,'No regulatory gate needed',true,4.1);
-  rscTask(2,'Nutrition data sent ✓',true,4.5);
-  rscTask(2,'No Kosher cert on file — N/A',true,4.9);
-  rscBadge(2,'Done ✓','done',5.1);
-  beam(2,false,5.2);
+  // KJ (1) — processes normally
+  task(1,'Retrieving nutritional data from ERP', 3.2, false);
+  task(1,'Regulatory gate — NDA verified ✓', 4.1, true);
+  task(1,'Nutrition data sent', 5.0, true);
+  task(1,'Kosher renewal filed with OU', 5.6, true);
+  status(1,'Complete ✓','done', 6.0); orgCls(1,'done', 6.0);
 
-  // Pacific Foods (3) — Kosher blocked
-  agdLog('s2-log',3.7,'s','<strong>Pacific Foods Agent:</strong> retrieving nutrition data…');
-  rscTask(3,'Nutritional data sent ✓',true,4.6);
-  agdLog('s2-log',5.5,'w','<strong>Pacific Foods Agent:</strong> Kosher renewal — blocked, needs manual action');
-  rscTask(3,'⚠ Kosher renewal — blocked, manual review needed',false,5.8);
-  rscBadge(3,'Action needed','warn',6.3);
-  beam(3,false,6.4);
+  // Rich Earth (2) — processes fast (no cert issue)
+  task(2,'Nutritional data found — avocado (USDA)', 3.4, false);
+  task(2,'No regulatory gate — public data', 3.9, true);
+  task(2,'Nutrition data sent', 4.4, true);
+  task(2,'No Kosher cert on file — N/A', 4.9, true);
+  status(2,'Complete ✓','done', 5.2); orgCls(2,'done', 5.2);
 
-  // Hub receives back
-  agdDot('s2-hub-dot','');
-  agdLog('s2-log',7.2,'g','<strong>Complete.</strong> 3 suppliers resolved in parallel — 2 fully done, 1 flagged');
-  agdFooter('s2-log-footer','✓ 3 suppliers · 4.2s · 0 human actions · 1 flagged for review', 7.5);
+  // Pacific Foods (3) — Kosher cert issue → manual review
+  task(3,'Retrieving nutritional data...', 3.5, false);
+  task(3,'Nutrition data sent', 4.6, true);
+  task(3,'⚠ Kosher cert — renewal blocked, manual review needed', 5.8, false);
+  status(3,'Action needed','warn', 6.2); orgCls(3,'warn', 6.2);
 
+  // Hub receives all
+  setTimeout(function(){ if(hubDot) hubDot.classList.remove('live'); }, ms(7.0));
+
+  // Result bar
   setTimeout(function(){
-    if(live2) live2.style.display='none';
-    btn.disabled=false; btn.textContent='▶ Replay';
-  }, agdT(8.5));
+    if(result){ result.style.opacity='1'; }
+    if(btn){ btn.disabled=false; btn.textContent='▶ Replay the network'; }
+  }, ms(7.4));
 }
 
-// Auto-run scene 1 on scroll into view (once)
+// Auto-run scene 1 when scrolled into view (once)
 (function(){
-  var done=false;
+  var fired=false;
   function chk(){
-    if(done) return;
-    var el=document.getElementById('s1-btn'); if(!el) return;
+    if(fired) return;
+    var el=document.getElementById('s1-play');
+    if(!el) return;
     var r=el.getBoundingClientRect();
-    if(r.top<window.innerHeight-60){ done=true; setTimeout(agdRun1,700); }
+    if(r.top<window.innerHeight-60 && r.bottom>0){ fired=true; setTimeout(runScene1,600); }
   }
   window.addEventListener('scroll',chk,{passive:true});
-  setTimeout(chk,1200);
+  setTimeout(chk,1000);
 })();
-
 
 // Cookie banner
 function acceptCookies() {
