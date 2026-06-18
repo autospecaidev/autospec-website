@@ -769,7 +769,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
   text-transform: uppercase;
   letter-spacing: 0.09em;
   color: var(--faint);
-  padding: 8px 12px 6px;
+  padding: 4px 10px 3px;
   border-bottom: 1px solid var(--border);
   background: var(--bg);
   flex-shrink: 0;
@@ -2191,8 +2191,8 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 9px 14px;
-  font-size: 12px;
+  padding: 6px 12px;
+  font-size: 11.5px;
   font-weight: 600;
   color: var(--muted);
   background: none;
@@ -2511,7 +2511,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
 /* Responsive */
 @media (max-width: 920px) {
   .fmt-tab-label { display: none; }
-  .fmt-tab { padding: 8px 10px; }
+  .fmt-tab-x-removed { padding: 8px 10px; }
 }
 @media (max-width: 480px) {
   .fmt-selector { overflow-x: auto; }
@@ -2521,11 +2521,11 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
 .fmt-drop-hint {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 7px 12px;
-  background: linear-gradient(90deg, rgba(139,53,200,0.05), rgba(192,32,176,0.03));
+  gap: 6px;
+  padding: 4px 10px;
+  background: linear-gradient(90deg, rgba(139,53,200,0.04), rgba(192,32,176,0.02));
   border-bottom: 1px dashed var(--border);
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 600;
   color: var(--pri);
   flex-shrink: 0;
@@ -3025,6 +3025,269 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
   .cap-bridge-item { min-width: 120px; padding: 8px 10px; }
   .cap-bridge-arrow { display: none; }
   }
+
+/* ── HW AVOCADO SPEC STYLES ── */
+.hw-company-name {
+  font-family: 'Caveat', cursive;
+  font-size: 15px; font-weight: 600;
+  color: #1c1848; letter-spacing: 0.01em; margin-bottom: 1px;
+}
+.hw-company-loc {
+  font-family: 'Caveat', cursive;
+  font-size: 12px; color: #7060a0; margin-bottom: 6px; font-style: italic;
+}
+.hw-grid2 {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 2px 8px; margin-bottom: 4px;
+}
+.hw-grid-item {
+  display: flex; align-items: baseline; gap: 4px;
+  font-family: 'Caveat', cursive; font-size: 12.5px;
+}
+.hw-italic { font-style: italic; }
+.hw-allergen-table {
+  display: flex; flex-direction: column; gap: 0;
+  margin-bottom: 4px; font-family: 'Caveat', cursive;
+}
+.hw-at-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-size: 11.5px; padding: 2px 0;
+  border-bottom: 0.5px dashed rgba(139,53,200,0.1);
+  color: #2a2466;
+}
+.hw-at-row.hd { font-size: 10px; font-weight: 600; color: var(--pri); }
+.hw-at-row .hw-tick { color: #198051; font-size: 11px; }
+.hw-nutri-table {
+  display: flex; flex-direction: column;
+  font-family: 'Caveat', cursive;
+}
+.hw-nt-row {
+  display: grid; grid-template-columns: 1fr auto auto;
+  gap: 8px; font-size: 11.5px; color: #2a2466;
+  padding: 2px 0; border-bottom: 0.5px dashed rgba(139,53,200,0.08);
+}
+.hw-nt-row.hd { font-size: 10px; font-weight: 600; color: var(--pri); }
+.hw-nt-row.indent span:first-child { padding-left: 8px; }
+
+/* ── PDF TWO-COLUMN BODY ── */
+.pdf-body-cols {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0; flex: 1; overflow: hidden;
+}
+.pdf-col {
+  padding: 10px 12px; overflow-y: auto;
+  scrollbar-width: thin;
+}
+.pdf-col:first-child { border-right: 1px solid var(--border); }
+.pdf-body-text {
+  font-size: 11px; color: var(--muted); line-height: 1.6;
+  margin-bottom: 8px;
+}
+.pdf-kv-list { margin-bottom: 8px; }
+.pdf-kv {
+  display: flex; justify-content: space-between;
+  font-size: 11px; color: var(--muted);
+  padding: 3px 0; border-bottom: 0.5px solid var(--border);
+}
+.pdf-kv span:last-child { font-weight: 600; color: var(--text); }
+
+/* ════════════════════════════════════
+   REAL HANDWRITTEN DOC — rw- prefix
+════════════════════════════════════ */
+.rw-doc {
+  flex: 1;
+  background: #ffffff;
+  padding: 14px 16px 14px 14px;
+  overflow-y: auto;
+  font-family: 'Caveat', cursive;
+  position: relative;
+  scrollbar-width: thin;
+}
+.rw-company-header {
+  text-align: center;
+  margin-bottom: 4px;
+}
+.rw-company-name {
+  font-size: 16px; font-weight: 600;
+  color: #1a1a1a; letter-spacing: 0.05em;
+}
+.rw-company-loc {
+  font-size: 13px; color: #333;
+  font-style: italic;
+}
+.rw-rule {
+  border: none; border-top: 2px solid #1a1a1a;
+  margin: 6px 0;
+}
+.rw-rule.thin { border-top-width: 1px; margin: 4px 0; }
+.rw-title {
+  text-align: center;
+  font-size: 15px; font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #1a1a1a;
+  margin: 4px 0;
+  text-transform: uppercase;
+}
+/* Bordered table — like drawn with a ruler */
+.rw-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 8px;
+  font-family: 'Caveat', cursive;
+}
+.rw-table td {
+  border: 1.5px solid #555;
+  padding: 4px 6px;
+  font-size: 12px;
+  color: #1a1a1a;
+  vertical-align: top;
+  line-height: 1.4;
+}
+.rw-table.rw-allergen td { padding: 3px 6px; font-size: 11.5px; }
+.rw-table.rw-allergen td:last-child { text-align: center; width: 40px; font-weight: 600; }
+.rw-table.rw-nutri td { padding: 3px 5px; font-size: 11px; text-align: right; }
+.rw-table.rw-nutri td:first-child { text-align: left; }
+.rw-table.rw-allergen .rw-th td,
+.rw-table.rw-nutri .rw-th td {
+  font-weight: 700;
+  font-size: 11px;
+  text-align: center;
+  background: rgba(0,0,0,0.04);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.rw-cell-label { font-size: 10px; font-weight: 700; text-transform: uppercase; color: #333; letter-spacing: 0.04em; }
+.rw-cell-val { font-size: 13px; color: #1a1a1a; }
+.rw-italic { font-style: italic; }
+.rw-sub { font-size: 10px; color: #555; }
+.rw-indent { padding-left: 10px !important; }
+.rw-para {
+  font-size: 13px; color: #1a1a1a; line-height: 1.6;
+  margin: 6px 0; font-style: italic;
+}
+.rw-status-line {
+  font-size: 13px; color: #1a1a1a;
+  margin: 3px 0; line-height: 1.4;
+}
+.rw-label { font-weight: 600; }
+.rw-two-tables {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 10px;
+  margin-top: 8px;
+}
+.rw-table-section { display: flex; flex-direction: column; gap: 4px; }
+.rw-table-title {
+  font-size: 13px; font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: #1a1a1a; text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.rw-source { font-size: 10px; color: #666; margin-top: 4px; font-style: italic; }
+
+/* ════════════════════════════════════
+   PDF DOC — King Arthur style  ka- prefix
+════════════════════════════════════ */
+.ka-doc {
+  flex: 1;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: var(--fb);
+}
+.ka-item-num {
+  font-size: 10px; font-weight: 700; font-style: italic;
+  color: #333; padding: 6px 12px 2px;
+  flex-shrink: 0;
+}
+.ka-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 12px 8px;
+  border-bottom: 2px solid #333;
+  flex-shrink: 0;
+}
+.ka-logo-svg { flex-shrink: 0; }
+.ka-company-block { flex: 1; }
+.ka-company-name {
+  font-size: 16px; font-weight: 700;
+  font-family: 'Times New Roman', serif;
+  letter-spacing: 0.04em;
+  color: #1a1a1a; line-height: 1.2;
+}
+.ka-company-rule {
+  border-top: 1px solid #333; margin: 4px 0;
+}
+.ka-company-sub {
+  font-size: 9.5px; color: #555;
+  letter-spacing: 0.03em;
+}
+.ka-product-title {
+  text-align: center;
+  font-size: 16px; font-weight: 700;
+  color: #8B0000;
+  letter-spacing: 0.06em;
+  padding: 6px 12px 4px;
+  flex-shrink: 0;
+  font-family: serif;
+}
+.ka-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  flex: 1;
+  overflow: hidden;
+}
+.ka-col {
+  padding: 8px 12px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #222;
+}
+.ka-col:first-child { border-right: 1px solid #ccc; }
+.ka-section {
+  font-size: 11.5px; font-weight: 700;
+  color: #1a1a1a;
+  margin: 8px 0 3px;
+  padding-bottom: 2px;
+  border-bottom: 1px solid #ddd;
+}
+.ka-col:first-child .ka-section:first-child { margin-top: 0; }
+.ka-body-text { font-size: 11px; color: #333; line-height: 1.55; margin-bottom: 4px; }
+.ka-meta-group { margin-bottom: 6px; }
+.ka-meta-row { display: flex; justify-content: space-between; font-size: 11px; color: #333; padding: 1px 0; }
+.ka-meta-row span:last-child { font-weight: 600; }
+.ka-spec-table { display: flex; flex-direction: column; margin-bottom: 6px; }
+.ka-spec-row {
+  display: flex; justify-content: space-between;
+  font-size: 11px; color: #333; padding: 2px 0;
+  border-bottom: 0.5px solid #eee;
+}
+.ka-spec-row span:last-child { font-weight: 600; }
+.ka-allergen-flag {
+  background: rgba(200,140,0,0.07);
+  border: 1px solid rgba(200,140,0,0.3);
+  border-radius: 4px;
+  padding: 6px 8px;
+  font-size: 10.5px;
+  color: #7a5000;
+  line-height: 1.5;
+  margin-top: 8px;
+}
+.ka-footer {
+  border-top: 1px solid #ccc;
+  padding: 5px 12px;
+  background: #fafafa;
+  flex-shrink: 0;
+  text-align: center;
+}
+.ka-footer-main { font-size: 10px; font-weight: 600; color: #333; }
+.ka-footer-sub  { font-size: 9.5px; color: #888; margin-top: 1px; }
 </style>
 </head>
 <body>
@@ -3104,7 +3367,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
             <!-- Format selector tabs -->
             <div class="fmt-drop-hint">
               <span class="fmt-drop-icon">⬇</span>
-              <span class="fmt-drop-text">Drop any file — or choose a format to preview</span>
+              <span class="fmt-drop-text">Drop a file or choose a format</span>
             </div>
             <div class="fmt-selector">
               <button class="fmt-tab active" id="fmt-pdf"  onclick="switchFmt('pdf')"  title="Supplier PDF specification">
@@ -3129,136 +3392,189 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
 
             <!-- ── HANDWRITTEN DOC ── -->
             <div class="fmt-doc" id="doc-hw" style="display:none">
-              
-                <div class="handwritten-doc">
-                <div class="hw-coffee-ring"></div>
-                <div class="hw-fold"></div>
-                <div class="hw-title">Product Spec Sheet<span class="hw-date">12/03/25</span></div>
-                <div class="hw-line"><span class="hw-key">Product:</span><span class="hw-val">Classic Mayonnaise</span></div>
-                <div class="hw-line"><span class="hw-key">Code:</span><span class="hw-strikethrough">011</span><span class="hw-val"> 012</span><span class="hw-correction">corrected MC</span></div>
-                <div class="hw-line"><span class="hw-key">Supplier:</span><span class="hw-val hw-underline">New City Ingredients</span></div>
-                <div class="hw-divider"></div>
-                <div class="hw-section">Ingredients <span class="hw-highlight">check % by weight!</span></div>
-                <div class="hw-line sm"><span class="hw-bullet">—</span>Soybean oil <span class="hw-note">(oil)</span><span class="hw-tick">✓</span></div>
-                <div class="hw-line sm"><span class="hw-bullet">—</span>Whole egg <span class="hw-note">(emulsifier)</span><span class="hw-flag red">ALLERGEN</span></div>
-                <div class="hw-line sm"><span class="hw-bullet">—</span>White vinegar <span class="hw-note">(preservative)</span><span class="hw-tick">✓</span></div>
-                <div class="hw-line sm"><span class="hw-bullet">—</span>Salt, Sugar, Spices <span class="hw-question">spec %?</span></div>
-                <div class="hw-divider"></div>
-                <div class="hw-section">Nutritional <span class="hw-small-note">(per 100g)</span></div>
-                <div class="hw-line sm"><span class="hw-bullet">—</span>Energy: 680 kcal<span class="hw-tick">✓</span></div>
-                <div class="hw-line sm"><span class="hw-bullet">—</span>Fat: 75g &nbsp;Sat: 11g<span class="hw-tick">✓</span></div>
-                <div class="hw-line sm"><span class="hw-bullet">—</span>Carbs: 1.5g &nbsp;Sugar: 1.2g<span class="hw-tick">✓</span></div>
-                <div class="hw-line sm"><span class="hw-bullet">—</span>Protein: 1.2g<span class="hw-tick">✓</span></div>
-                <div class="hw-line sm"><span class="hw-bullet">—</span><span class="hw-circled">Salt: 1.6g</span><span class="hw-question red-q">⚠ high — recheck</span></div>
-                <div class="hw-divider"></div>
-                <div class="hw-section">Allergens</div>
-                <div class="hw-line sm"><span class="hw-bullet">—</span><span class="hw-bold-mark">Eggs</span> — Contains<span class="hw-flag red">BOLD on label</span></div>
-                <div class="hw-line sm"><span class="hw-bullet">—</span>Soya — May contain<span class="hw-flag amber">advisory</span></div>
-                <div class="hw-scribble">← Cross-check with Reg 1169/2011 Art.21</div>
-                <div class="hw-divider"></div>
-                <div class="hw-line"><span class="hw-key">Shelf life:</span><span class="hw-strikethrough">9 months</span><span class="hw-val"> 12 months</span><span class="hw-correction">updated SR</span></div>
-                <div class="hw-line"><span class="hw-key">Storage:</span><span class="hw-val">Refrigerate after opening</span></div>
-                <div class="hw-stamp-approve">DRAFT<br><span style="font-size:10px">pending review</span></div>
-                <div class="hw-initials">
-                  <span class="hw-initial mc">MC ✓</span>
-                  <span class="hw-initial jo">JO ?</span>
-                  <span class="hw-initial sr">SR ✓</span>
-                </div>
-              </div>
-            </div>
+  <div class="rw-doc">
+
+    <!-- Company header — centered like the real scan -->
+    <div class="rw-company-header">
+      <div class="rw-company-name">Rich Earth Avocado Farms</div>
+      <div class="rw-company-loc">Temecula Valley, California</div>
+    </div>
+    <div class="rw-rule"></div>
+
+    <!-- Title -->
+    <div class="rw-title">Product Specification Sheet</div>
+    <div class="rw-rule thin"></div>
+
+    <!-- Product ID table — 3-column bordered like the real one -->
+    <table class="rw-table">
+      <tr>
+        <td><span class="rw-cell-label">Product:</span><br><span class="rw-cell-val">Avocado</span></td>
+        <td><span class="rw-cell-label">Variety:</span><br><span class="rw-cell-val">Hass / Organic</span></td>
+        <td><span class="rw-cell-label">Scientific Name:</span><br><span class="rw-cell-val rw-italic">Persea Americana</span></td>
+      </tr>
+      <tr>
+        <td><span class="rw-cell-label">Family:</span><br><span class="rw-cell-val">Lauraceae</span></td>
+        <td><span class="rw-cell-label">Origin:</span><br><span class="rw-cell-val">USA</span></td>
+        <td><span class="rw-cell-label">Packaging:</span><br><span class="rw-cell-val">Cardboard Box</span></td>
+      </tr>
+    </table>
+
+    <!-- Description -->
+    <div class="rw-para">Avocado has a rough and thick skin, green to black when ripe. It has a creamy consistency.</div>
+
+    <!-- Status lines -->
+    <div class="rw-status-line"><span class="rw-label">Ingredients :</span> 100% Avocado</div>
+    <div class="rw-status-line"><span class="rw-label">GMO Status :</span> This product is free from GMO</div>
+    <div class="rw-status-line"><span class="rw-label">Kosher Status :</span> Kosher Certified</div>
+    <div class="rw-status-line"><span class="rw-label">Halal Status :</span> Halal certified</div>
+
+    <!-- Two-column tables: Allergen + Nutritional -->
+    <div class="rw-two-tables">
+
+      <!-- Allergen table -->
+      <div class="rw-table-section">
+        <div class="rw-table-title">Allergen Status</div>
+        <table class="rw-table rw-allergen">
+          <tr class="rw-th"><td>Allergen Type</td><td>Yes / No</td></tr>
+          <tr><td>Cereals incl. Gluten<br><span class="rw-sub">(Wheat, Rye, Barley, Oats, Spelt)</span></td><td>No</td></tr>
+          <tr><td>Crustacea &amp; their products</td><td>No</td></tr>
+          <tr><td>Egg and Egg products</td><td>No</td></tr>
+          <tr><td>Fish and Fish products</td><td>No</td></tr>
+          <tr><td>Milk and Milk products</td><td>No</td></tr>
+          <tr><td>Nuts and Nut products</td><td>No</td></tr>
+          <tr><td>Sesame seeds</td><td>No</td></tr>
+          <tr><td>Peanuts &amp; Peanut products</td><td>No</td></tr>
+          <tr><td>Soybean &amp; Soybean products</td><td>No</td></tr>
+          <tr><td>Added Sulphites &gt;10mg/kg</td><td>No</td></tr>
+          <tr><td>Celery</td><td>No</td></tr>
+        </table>
+      </div>
+
+      <!-- Nutritional table -->
+      <div class="rw-table-section">
+        <div class="rw-table-title">Nutritional Data</div>
+        <table class="rw-table rw-nutri">
+          <tr class="rw-th"><td></td><td>Qty<br>Per Serving</td><td>Qty<br>Per 100g</td></tr>
+          <tr><td>Energy</td><td>704 kJ</td><td>939 kJ</td></tr>
+          <tr><td>Protein</td><td>1.4g</td><td>1.9g</td></tr>
+          <tr><td>Fat Total</td><td>15.1g</td><td>20.1g</td></tr>
+          <tr><td class="rw-indent">— Saturated</td><td>2.4g</td><td>3.2g</td></tr>
+          <tr><td>Carbohydrate</td><td>5.2g</td><td>7g</td></tr>
+          <tr><td class="rw-indent">— Sugars</td><td>0.6g</td><td>0.9g</td></tr>
+          <tr><td>Dietary Fibre</td><td>4.2g</td><td>5.6g</td></tr>
+          <tr><td>Sodium</td><td>7.0mg</td><td>9.0mg</td></tr>
+        </table>
+        <div class="rw-source">* Source: USDA Database</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
 
             <!-- ── PDF SUPPLIER SPEC ── -->
             <div class="fmt-doc" id="doc-pdf" style="display:flex">
-              <div class="pdf-doc">
-                <!-- Draft/Approval status -->
-                
+  <div class="ka-doc">
 
-                <!-- Supplier header -->
-                <div class="pdf-header">
-                  <div class="pdf-logo-area">
-                    <div class="pdf-logo-placeholder" style="background:linear-gradient(135deg,#2a5f3a,#1a3d26);font-size:14px;font-weight:900;letter-spacing:0.02em">KJ</div>
-                    <div>
-                      <div class="pdf-company">King Julian Flour Company, Inc.</div>
-                      <div class="pdf-address">Antananarivo, Madagascar · Est. 2009 · Certified B-Corp</div>
-                    </div>
-                  </div>
-                  <div class="pdf-doc-meta">
-                    <div class="pdf-meta-row"><span>Item #:</span><span>KJF-4821</span></div>
-                    <div class="pdf-meta-row"><span>Mfg #:</span><span>30291</span></div>
-                    <div class="pdf-meta-row"><span>UPC:</span><span>0 84723 30291 7</span></div>
-                    <div class="pdf-meta-row"><span>Updated:</span><span>03/14/26</span></div>
-                  </div>
-                </div>
+    <div class="ka-item-num">Item # KJF-4821</div>
 
-                <div class="pdf-title-bar">WHOLE WHEAT FLOUR — PRODUCT SPECIFICATION</div>
+    <div class="ka-header">
+      <div class="ka-logo-block">
+        <svg viewBox="0 0 64 72" width="52" height="58" class="ka-logo-svg">
+          <!-- Shield shape -->
+          <path d="M32,2 L60,14 L60,42 Q60,62 32,70 Q4,62 4,42 L4,14 Z"
+                fill="#1c3a28" stroke="#0f2518" stroke-width="1.5"/>
+          <!-- Inner shield border -->
+          <path d="M32,7 L55,17 L55,42 Q55,59 32,66 Q9,59 9,42 L9,17 Z"
+                fill="none" stroke="#4a8f5c" stroke-width="1"/>
+          <!-- Gold banner strip -->
+          <rect x="4" y="30" width="56" height="14" fill="#c8a84b" opacity="0.18"/>
+          <!-- KJ monogram -->
+          <text x="32" y="34" text-anchor="middle" font-size="20" font-weight="900"
+                fill="#ffffff" font-family="Georgia,serif" letter-spacing="-1">KJ</text>
+          <!-- Tagline -->
+          <text x="32" y="46" text-anchor="middle" font-size="5" font-weight="600"
+                fill="#a8d5b0" font-family="Georgia,serif" letter-spacing="1.2">INGREDIENTS</text>
+          <!-- Decorative wheat stalks either side of KJ -->
+          <line x1="12" y1="36" x2="18" y2="28" stroke="#c8a84b" stroke-width="1" opacity="0.7"/>
+          <line x1="12" y1="36" x2="14" y2="27" stroke="#c8a84b" stroke-width="1" opacity="0.7"/>
+          <line x1="52" y1="36" x2="46" y2="28" stroke="#c8a84b" stroke-width="1" opacity="0.7"/>
+          <line x1="52" y1="36" x2="50" y2="27" stroke="#c8a84b" stroke-width="1" opacity="0.7"/>
+          <!-- Small crown at top -->
+          <polygon points="32,4 28,11 32,9 36,11" fill="#c8a84b" opacity="0.8"/>
+        </svg>
+      </div>
+      <div class="ka-company-block">
+        <div class="ka-company-name">King Julian Ingredients Co.</div>
+        <div class="ka-company-rule"></div>
+        <div class="ka-company-sub">Est. 2009 &nbsp;|&nbsp; Certified B-Corp &nbsp;·&nbsp; committed to quality</div>
+      </div>
+    </div>
 
-                <!-- AI extraction progress bar -->
-                <div class="pdf-ai-progress">
-                  <div class="pdf-ai-label">
-                    <span class="pdf-extract-dot"></span>
-                    AutoSpec.ai extracting &amp; validating this document
-                  </div>
-                  <div class="pdf-progress-track"><div class="pdf-progress-fill"></div></div>
-                </div>
+    <div class="ka-product-title">Whole Wheat Flour</div>
 
-                <!-- Extraction chips — what AI found -->
-                <div class="pdf-extract-chips">
-                  <span class="pec pec-ok">✓ Product identified</span>
-                  <span class="pec pec-ok">✓ Ingredient statement extracted</span>
-                  <span class="pec pec-ok">✓ Nutritional data — 16 values</span>
-                  <span class="pec pec-ok">✓ Technical specs extracted</span>
-                  <span class="pec pec-warn">⚠ Wheat allergen — explicit declaration missing</span>
-                  <span class="pec pec-ok">✓ Certifications noted — Kosher, Non-GMO</span>
-                  <span class="pec pec-info">ℹ Shelf life: 180 days — mapped to 6 months</span>
-                </div>
+    <div class="ka-body">
 
-                <!-- Structured extraction output -->
-                <div class="pdf-section-head">Extracted: Product Identification</div>
-                <div class="pdf-grid2">
-                  <div class="pdf-field"><div class="pdf-field-label">Product Name</div><div class="pdf-field-val">Whole Wheat Flour</div></div>
-                  <div class="pdf-field"><div class="pdf-field-label">Manufacturer</div><div class="pdf-field-val">King Julian Flour Co.</div></div>
-                  <div class="pdf-field"><div class="pdf-field-label">Net Weight</div><div class="pdf-field-val">50 lbs (22.7 kg)</div></div>
-                  <div class="pdf-field"><div class="pdf-field-label">Shelf Life</div><div class="pdf-field-val">180 days — cool &amp; dry</div></div>
-                </div>
+      <div class="ka-col">
+        <div class="ka-meta-group">
+          <div class="ka-meta-row"><span>King Julian Mfg #:</span><span>30291</span></div>
+          <div class="ka-meta-row"><span>UPC:</span><span>0 84723 302917</span></div>
+          <div class="ka-meta-row"><span>Net Weight:</span><span>50 lbs</span></div>
+        </div>
 
-                <div class="pdf-section-head">Extracted: Technical Specifications</div>
-                <div class="pdf-nutri-table">
-                  <div class="pdf-nutri-row hd"><span>Parameter</span><span>Value</span><span>Status</span></div>
-                  <div class="pdf-nutri-row"><span>Protein (14% M.B.)</span><span>14% ±0.3%</span><span style="color:#198051;font-size:10px;font-weight:700">✓ Extracted</span></div>
-                  <div class="pdf-nutri-row"><span>Moisture (Maximum)</span><span>14%</span><span style="color:#198051;font-size:10px;font-weight:700">✓ Extracted</span></div>
-                  <div class="pdf-nutri-row"><span>Ash (14% M.B.)</span><span>&gt; 1.5%</span><span style="color:#198051;font-size:10px;font-weight:700">✓ Extracted</span></div>
-                  <div class="pdf-nutri-row"><span>Falling Number</span><span>&gt; 350 sec</span><span style="color:#198051;font-size:10px;font-weight:700">✓ Extracted</span></div>
-                </div>
+        <div class="ka-section">Description</div>
+        <div class="ka-body-text">Finely ground whole grain flour milled from 100% of the wheat kernel. High in protein making it ideal for all types of yeasted breads, rolls, and pizza. Strong enough to be used on its own or in combination with other flours.</div>
 
-                <div class="pdf-section-head">Extracted: Nutritional Data (per 100g)</div>
-                <div class="pdf-nutri-table">
-                  <div class="pdf-nutri-row hd"><span>Nutrient</span><span>Per 100g</span><span>%DV</span></div>
-                  <div class="pdf-nutri-row"><span>Energy</span><span>340 kcal</span><span>—</span></div>
-                  <div class="pdf-nutri-row"><span>Fat</span><span>2.5g</span><span>3.21%</span></div>
-                  <div class="pdf-nutri-row"><span>Carbohydrates</span><span>68g</span><span>24.73%</span></div>
-                  <div class="pdf-nutri-row"><span>Dietary Fiber</span><span>10.7g</span><span>38.21%</span></div>
-                  <div class="pdf-nutri-row"><span>Protein</span><span>14g</span><span>28.00%</span></div>
-                  <div class="pdf-nutri-row"><span>Sodium</span><span>2mg</span><span>0.09%</span></div>
-                  <div class="pdf-nutri-row"><span>Iron</span><span>3.6mg</span><span>20.00%</span></div>
-                </div>
+        <div class="ka-section">Regulations &amp; Food Safety</div>
+        <div class="ka-body-text">Shelf life: <strong>180 days</strong> when stored cool and dry.<br><br>Do not eat raw flour, dough, or batter. Raw agricultural product — not subjected to a microbiological kill step. Intended for further processing. Prepared in accordance with current FDA regulations.</div>
 
-                <!-- Allergen flag — the key validation finding -->
-                <div class="pdf-allergen-box" style="border-color:rgba(200,140,0,0.4);background:rgba(200,140,0,0.05)">
-                  <span class="pdf-allergen-label" style="color:#8a5e00">⚠ VALIDATION FLAG:</span>
-                  <strong>Wheat</strong> is a major FDA allergen. This spec contains no explicit allergen declaration statement. AutoSpec.ai recommends adding: <em>"Contains: WHEAT"</em> before finalising.
-                </div>
+        <div class="ka-section">Packaging &amp; Shipping</div>
+        <div class="ka-body-text">
+          Bag dimensions: 23″ × 17″ × 4″<br>
+          Net Weight: 50 lbs &nbsp;·&nbsp; Gross Weight: 50.35 lbs<br>
+          Pallet: 5 × 10 = 50 bags &nbsp;·&nbsp; 2,550 lbs<br>
+          Standard 4-way pallet, 40″ × 48″ × 60″
+        </div>
+      </div>
 
-                <!-- Certifications available -->
-                <div class="pdf-certs-row">
-                  <span class="pdf-cert-pill">✓ Kosher Certificate available on request</span>
-                  <span class="pdf-cert-pill">✓ Non-GMO statement available</span>
-                  <span class="pdf-cert-pill">✓ SDS &amp; COA available on request</span>
-                </div>
+      <div class="ka-col">
+        <div class="ka-section">Documentation</div>
+        <div class="ka-body-text">SDS, Kosher Certificate, Non-GMO statement, and Certificates of Analysis available upon request. Please include item number and lot code with request.</div>
 
-                <div class="pdf-footer-bar">King Julian Flour · KJF-4821 · Updated 03/14/26 · AutoSpec.ai extraction — 14 fields extracted · 1 flag raised · Pending approval</div>
+        <div class="ka-section">Lot Code</div>
+        <div class="ka-body-text">Lot code is mill packed date.</div>
 
-              </div>
-            </div>
+        <div class="ka-section">Specifications</div>
+        <div class="ka-spec-table">
+          <div class="ka-spec-row"><span>Protein (14% M.B.)</span><span>14% ± 0.3%</span></div>
+          <div class="ka-spec-row"><span>Moisture (Maximum)</span><span>14%</span></div>
+          <div class="ka-spec-row"><span>Ash (14% M.B.)</span><span>&gt; 1.5%</span></div>
+          <div class="ka-spec-row"><span>Falling Number</span><span>&gt; 350 sec</span></div>
+        </div>
+
+        <div class="ka-section">Ingredient Statement</div>
+        <div class="ka-body-text"><strong>Whole wheat flour</strong></div>
+
+        <div class="ka-section">Nutritional Analysis</div>
+        <div class="ka-body-text">See page 2 for full nutritional panel.</div>
+
+        <div class="ka-section">Allergen Information</div>
+        <div class="ka-body-text">Product is derived from wheat. Manufactured in a facility that processes wheat products.</div>
+      </div>
+
+    </div>
+
+    <div class="ka-footer">
+      <div class="ka-footer-main">© 2026 King Julian Ingredients Co. &nbsp;·&nbsp; KJF-4821 &nbsp;·&nbsp; Updated 03/14/26</div>
+      <div class="ka-footer-sub">Manufacturer Product Spec Sheet &nbsp;·&nbsp; Antananarivo, Madagascar</div>
+    </div>
+
+  </div>
+</div>
+
+
+
 
             <!-- ── EXCEL SHEET ── -->
             <div class="fmt-doc" id="doc-xls" style="display:none">
@@ -3479,9 +3795,9 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
                     <tr><td colspan="4" style="font-size:11px;color:var(--faint);font-style:italic;padding:6px 10px">Single-ingredient product · 100% whole wheat kernel milled</td></tr>
                   </tbody>
                 </table>
-                <div style="padding:8px 10px;font-size:11.5px;color:#8a5e00;background:rgba(200,140,0,0.06);border-top:1px solid rgba(200,140,0,0.15);display:flex;align-items:flex-start;gap:6px">
-                  <span style="flex-shrink:0">⚠</span>
-                  <span><strong>Allergen flag:</strong> Product contains <strong>WHEAT</strong> — a major FDA allergen. No explicit allergen declaration found in source document. Add: <em>"Contains: WHEAT"</em></span>
+                <div style="padding:8px 10px;font-size:11.5px;color:#198051;background:rgba(25,128,81,0.05);border-top:1px solid rgba(25,128,81,0.15);display:flex;align-items:flex-start;gap:6px">
+                  <span style="flex-shrink:0">✓</span>
+                  <span><strong>Allergen declared:</strong> Source document states product is derived from <strong>wheat</strong> and processed in a wheat facility.</span>
                 </div>
               </div>
               <div class="conv-tab-panel" id="tab-nutrients" style="display:none">
@@ -3505,8 +3821,8 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
                 <table class="conv-table">
                   <thead><tr><th>Allergen</th><th>Status</th><th>Action required</th></tr></thead>
                   <tbody>
-                    <tr><td><strong>Wheat</strong></td><td><span class="cs warn">⚠ Undeclared</span></td><td>Add "Contains: WHEAT"</td></tr>
-                    <tr><td colspan="3" style="font-size:11px;color:var(--faint);font-style:italic;padding:6px 10px">No cross-contact allergens stated in source document — verify with supplier</td></tr>
+                    <tr><td><strong>Wheat</strong></td><td><span class="cs ok">✓ Declared</span></td><td>Stated as wheat-derived in document</td></tr>
+                    <tr><td colspan="3" style="font-size:11px;color:var(--faint);font-style:italic;padding:6px 10px">Manufactured in a facility that processes wheat products. No other allergens declared.</td></tr>
                   </tbody>
                 </table>
               </div>
@@ -3514,7 +3830,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
                 <div class="conv-info-grid">
                   <div class="conv-info-item"><div class="cii-key">Shelf Life</div><div class="cii-val">180 days — cool &amp; dry</div></div>
                   <div class="conv-info-item"><div class="cii-key">Net Weight</div><div class="cii-val">50 lbs (22.7 kg)</div></div>
-                  <div class="conv-info-item"><div class="cii-key">Supplier</div><div class="cii-val">King Julian Flour Co.</div></div>
+                  <div class="conv-info-item"><div class="cii-key">Supplier</div><div class="cii-val">King Julian Ingredients Co.</div></div>
                   <div class="conv-info-item"><div class="cii-key">Item #</div><div class="cii-val">KJF-4821 · Mfg 30291</div></div>
                   <div class="conv-info-item"><div class="cii-key">Protein spec</div><div class="cii-val">14% ±0.3% (14% M.B.)</div></div>
                   <div class="conv-info-item"><div class="cii-key">Regulation</div><div class="cii-val">FDA 21 CFR <span class="cs ok">✓</span></div></div>
@@ -4391,8 +4707,8 @@ function switchFmt(fmt) {
       nameEl.textContent = 'Whole Wheat Flour';
       skuEl.textContent  = 'Item: KJF-4821';
     } else if (fmt === 'hw') {
-      nameEl.textContent = 'Classic Mayonnaise';
-      skuEl.textContent  = 'SKU: 012';
+      nameEl.textContent = 'Avocado — Hass/Organic';
+      skuEl.textContent  = 'Rich Earth Avocado Farms';
     } else if (fmt === 'xls') {
       nameEl.textContent = 'Whole Wheat Flour';
       skuEl.textContent  = 'Item: KJF-4821 v4.2';
@@ -4424,26 +4740,27 @@ function switchFmt(fmt) {
 var specData = {
   pdf: {
     name: 'Whole Wheat Flour', sku: 'Item: KJF-4821',
-    statusText: '✓ Spec extracted — 14 fields, 10 nutrients, 1 allergen flag raised',
-    ingredients: '<table class="conv-table"><thead><tr><th>Ingredient</th><th>Source</th><th>Function</th><th>Status</th></tr></thead><tbody><tr><td>Whole wheat flour</td><td>Hard red wheat</td><td>Base ingredient</td><td><span class="cs ok">✓</span></td></tr><tr><td colspan="4" style="font-size:11px;color:var(--faint);font-style:italic;padding:6px 10px">Single-ingredient product · 100% whole wheat kernel milled</td></tr></tbody></table><div style="padding:8px 10px;font-size:11.5px;color:#8a5e00;background:rgba(200,140,0,0.06);border-top:1px solid rgba(200,140,0,0.15);display:flex;align-items:flex-start;gap:6px"><span style="flex-shrink:0">⚠</span><span><strong>Allergen flag:</strong> Contains <strong>WHEAT</strong> — major FDA allergen. No explicit declaration in source document. Add: <em>"Contains: WHEAT"</em></span></div>',
+    statusText: '✓ Spec extracted — 14 fields, 10 nutrients, wheat allergen declared ✓',
+    ingredients: '<table class="conv-table"><thead><tr><th>Ingredient</th><th>Source</th><th>Function</th><th>Status</th></tr></thead><tbody><tr><td>Whole wheat flour</td><td>Hard red wheat</td><td>Base ingredient</td><td><span class="cs ok">✓</span></td></tr><tr><td colspan="4" style="font-size:11px;color:var(--faint);font-style:italic;padding:6px 10px">Single-ingredient product · 100% whole wheat kernel milled</td></tr></tbody></table><div style="padding:8px 10px;font-size:11.5px;color:#198051;background:rgba(25,128,81,0.05);border-top:1px solid rgba(25,128,81,0.15);display:flex;align-items:flex-start;gap:6px"><span style="flex-shrink:0">✓</span><span><strong>Allergen declared:</strong> Document states product is derived from <strong>wheat</strong> and processed in a wheat facility. No other allergens declared.</span></div>',
     nutrients: '<table class="conv-table"><thead><tr><th>Nutrient</th><th>Per 100g</th><th>%DV</th></tr></thead><tbody><tr><td>Energy</td><td>340 kcal</td><td>—</td></tr><tr><td>Fat</td><td>2.5g</td><td>3.21%</td></tr><tr><td>— Saturates</td><td>0.43g</td><td>2.15%</td></tr><tr><td>Carbohydrates</td><td>68g</td><td>24.73%</td></tr><tr><td>Dietary Fiber</td><td>10.7g</td><td class="cs ok">38.21% ✓</td></tr><tr><td>Protein</td><td>14g</td><td>28.00%</td></tr><tr><td>Sodium</td><td>2mg</td><td>0.09%</td></tr><tr><td>Iron</td><td>3.6mg</td><td>20.00%</td></tr><tr><td>Potassium</td><td>363mg</td><td>7.72%</td></tr></tbody></table>',
-    allergens: '<table class="conv-table"><thead><tr><th>Allergen</th><th>Status</th><th>Action required</th></tr></thead><tbody><tr><td><strong>Wheat</strong></td><td><span class="cs warn">⚠ Undeclared</span></td><td>Add "Contains: WHEAT"</td></tr><tr><td colspan="3" style="font-size:11px;color:var(--faint);font-style:italic;padding:6px 10px">No cross-contact allergens stated — verify with supplier</td></tr></tbody></table>',
-    info: '<div class="conv-info-grid"><div class="conv-info-item"><div class="cii-key">Shelf Life</div><div class="cii-val">180 days — cool &amp; dry</div></div><div class="conv-info-item"><div class="cii-key">Net Weight</div><div class="cii-val">50 lbs (22.7 kg)</div></div><div class="conv-info-item"><div class="cii-key">Supplier</div><div class="cii-val">King Julian Flour Co.</div></div><div class="conv-info-item"><div class="cii-key">Item #</div><div class="cii-val">KJF-4821 · Mfg 30291</div></div><div class="conv-info-item"><div class="cii-key">Protein spec</div><div class="cii-val">14% ±0.3% (14% M.B.)</div></div><div class="conv-info-item"><div class="cii-key">Regulation</div><div class="cii-val">FDA 21 CFR <span class="cs ok">✓</span></div></div></div>'
+    allergens: '<table class="conv-table"><thead><tr><th>Allergen</th><th>Status</th><th>Declaration</th></tr></thead><tbody><tr><td><strong>Wheat</strong></td><td><span class="cs ok">✓ Declared</span></td><td>Product derived from wheat — stated in document</td></tr><tr><td colspan="3" style="font-size:11px;color:var(--faint);font-style:italic;padding:6px 10px">Manufactured in a facility that processes wheat products. No other allergens declared.</td></tr></tbody></table>',
+    info: '<div class="conv-info-grid"><div class="conv-info-item"><div class="cii-key">Shelf Life</div><div class="cii-val">180 days — cool &amp; dry</div></div><div class="conv-info-item"><div class="cii-key">Net Weight</div><div class="cii-val">50 lbs (22.7 kg)</div></div><div class="conv-info-item"><div class="cii-key">Supplier</div><div class="cii-val">King Julian Ingredients Co.</div></div><div class="conv-info-item"><div class="cii-key">Item #</div><div class="cii-val">KJF-4821 · Mfg 30291</div></div><div class="conv-info-item"><div class="cii-key">Protein spec</div><div class="cii-val">14% ±0.3% (14% M.B.)</div></div><div class="conv-info-item"><div class="cii-key">Regulation</div><div class="cii-val">FDA 21 CFR <span class="cs ok">✓</span></div></div></div>'
   },
   hw: {
-    name: 'Classic Mayonnaise', sku: 'SKU: 012',
-    statusText: '✓ Spec extracted — 4 ingredients, 7 nutrients, 2 allergens, all fields validated',
-    ingredients: '<table class="conv-table"><thead><tr><th>Ingredient</th><th>Source</th><th>Function</th><th>Status</th></tr></thead><tbody><tr><td>Soybean oil</td><td>Soybean</td><td>Oil</td><td><span class="cs ok">✓</span></td></tr><tr><td>Whole egg</td><td>Eggs</td><td>Emulsifier</td><td><span class="cs ok">✓</span></td></tr><tr><td>White vinegar</td><td>—</td><td>Preservative</td><td><span class="cs ok">✓</span></td></tr><tr><td>Salt, Sugar</td><td>—</td><td>Seasoning</td><td><span class="cs ok">✓</span></td></tr></tbody></table>',
-    nutrients: '<table class="conv-table"><thead><tr><th>Nutrient</th><th>Per 100g</th><th>Check</th></tr></thead><tbody><tr><td>Energy</td><td>680 kcal</td><td><span class="cs ok">✓</span></td></tr><tr><td>Fat</td><td>75g</td><td><span class="cs ok">✓</span></td></tr><tr><td>— Saturates</td><td>11g</td><td><span class="cs ok">✓</span></td></tr><tr><td>Carbohydrates</td><td>1.5g</td><td><span class="cs ok">✓</span></td></tr><tr><td>— Sugars</td><td>1.2g</td><td><span class="cs ok">✓</span></td></tr><tr><td>Protein</td><td>1.2g</td><td><span class="cs ok">✓</span></td></tr><tr><td>Salt</td><td>1.6g</td><td><span class="cs warn">⚠</span></td></tr></tbody></table>',
-    allergens: '<table class="conv-table"><thead><tr><th>Allergen</th><th>Status</th><th>Declaration</th></tr></thead><tbody><tr><td>Eggs</td><td><span class="cs warn">Contains</span></td><td>Bold on label</td></tr><tr><td>Soya</td><td><span class="cs info">May contain</span></td><td>Advisory</td></tr></tbody></table>',
-    info: '<div class="conv-info-grid"><div class="conv-info-item"><div class="cii-key">Shelf Life</div><div class="cii-val">12 months</div></div><div class="conv-info-item"><div class="cii-key">Storage</div><div class="cii-val">Refrigerate after opening</div></div><div class="conv-info-item"><div class="cii-key">Supplier</div><div class="cii-val">New City Ingredients</div></div><div class="conv-info-item"><div class="cii-key">Regulation</div><div class="cii-val">FDA 21 CFR <span class="cs ok">✓</span></div></div></div>'
+    name: 'Avocado — Hass/Organic', sku: 'Rich Earth Avocado Farms',
+    statusText: '✓ Spec extracted — 1 ingredient, 8 nutrients, 11 allergens checked (all clear), 2 certifications',
+    ingredients: '<table class="conv-table"><thead><tr><th>Ingredient</th><th>Source</th><th>Function</th><th>Status</th></tr></thead><tbody><tr><td>Avocado</td><td>Hass variety — USA origin</td><td>100% whole fruit</td><td><span class="cs ok">✓</span></td></tr><tr><td colspan="4" style="font-size:11px;color:var(--faint);font-style:italic;padding:6px 10px">Single-ingredient product · Persea Americana · Lauraceae family · Organic certified</td></tr></tbody></table><div style="padding:8px 10px;font-size:11.5px;color:#198051;background:rgba(25,128,81,0.05);border-top:1px solid rgba(25,128,81,0.15);display:flex;align-items:flex-start;gap:6px"><span>✓</span><span><strong>All 11 allergens checked — none detected.</strong> Product is free from gluten, crustacea, egg, fish, milk, nuts, sesame, peanuts, soybean, sulphites, and celery.</span></div>',
+    nutrients: '<table class="conv-table"><thead><tr><th>Nutrient</th><th>Per Serving</th><th>Per 100g</th></tr></thead><tbody><tr><td>Energy</td><td>704 kJ</td><td>939 kJ</td></tr><tr><td>Protein</td><td>1.4g</td><td>1.9g</td></tr><tr><td>Fat Total</td><td>15.1g</td><td>20.1g</td></tr><tr><td>— Saturated</td><td>2.4g</td><td>3.2g</td></tr><tr><td>Carbohydrate</td><td>5.2g</td><td>7g</td></tr><tr><td>— Sugars</td><td>0.6g</td><td>0.9g</td></tr><tr><td>Dietary Fibre</td><td>4.2g</td><td class="cs ok">5.6g ✓</td></tr><tr><td>Sodium</td><td>7.0mg</td><td>9.0mg</td></tr></tbody></table><div style="padding:6px 10px;font-size:11px;color:var(--faint);border-top:1px solid var(--border)">Source: USDA Nutrient Database</div>',
+    allergens: '<table class="conv-table"><thead><tr><th>Allergen</th><th>Result</th></tr></thead><tbody><tr><td>Cereals / Gluten (wheat, rye, barley, oats)</td><td><span class="cs ok">NO</span></td></tr><tr><td>Crustacea and their products</td><td><span class="cs ok">NO</span></td></tr><tr><td>Egg and egg products</td><td><span class="cs ok">NO</span></td></tr><tr><td>Fish and fish products</td><td><span class="cs ok">NO</span></td></tr><tr><td>Milk and milk products</td><td><span class="cs ok">NO</span></td></tr><tr><td>Nuts and nut products</td><td><span class="cs ok">NO</span></td></tr><tr><td>Sesame seeds</td><td><span class="cs ok">NO</span></td></tr><tr><td>Peanuts and peanut products</td><td><span class="cs ok">NO</span></td></tr><tr><td>Soybean and soybean products</td><td><span class="cs ok">NO</span></td></tr><tr><td>Added sulphites &gt;10mg/kg</td><td><span class="cs ok">NO</span></td></tr><tr><td>Celery</td><td><span class="cs ok">NO</span></td></tr></tbody></table>',
+    info: '<div class="conv-info-grid"><div class="conv-info-item"><div class="cii-key">Product</div><div class="cii-val">Avocado — Hass/Organic</div></div><div class="conv-info-item"><div class="cii-key">Scientific Name</div><div class="cii-val"><em>Persea Americana</em></div></div><div class="conv-info-item"><div class="cii-key">Origin</div><div class="cii-val">USA</div></div><div class="conv-info-item"><div class="cii-key">Packaging</div><div class="cii-val">Cardboard Box</div></div><div class="conv-info-item"><div class="cii-key">GMO Status</div><div class="cii-val">Free from GMO ✓</div></div><div class="conv-info-item"><div class="cii-key">Certifications</div><div class="cii-val">Kosher Certified · Halal Certified</div></div></div>'
   },
+
   xls: {
     name: 'Whole Wheat Flour', sku: 'Item: KJF-4821 v4.2',
     statusText: '✓ Spec extracted from Excel — 10 nutrients, 4 technical specs validated',
     ingredients: '<table class="conv-table"><thead><tr><th>Ingredient</th><th>Source</th><th>Function</th><th>Status</th></tr></thead><tbody><tr><td>Whole wheat flour</td><td>Hard red wheat</td><td>Base ingredient</td><td><span class="cs ok">✓</span></td></tr></tbody></table>',
     nutrients: '<table class="conv-table"><thead><tr><th>Nutrient</th><th>Per 100g</th><th>Tolerance</th></tr></thead><tbody><tr><td>Energy</td><td>340 kcal</td><td>—</td></tr><tr><td>Fat</td><td>2.5g</td><td>—</td></tr><tr><td>Protein</td><td>14g</td><td>±0.3%</td></tr><tr><td>Salt</td><td>2mg</td><td>±0.2g</td></tr></tbody></table>',
-    allergens: '<table class="conv-table"><thead><tr><th>Allergen</th><th>Status</th><th>Action</th></tr></thead><tbody><tr><td><strong>Wheat</strong></td><td><span class="cs warn">⚠ Undeclared</span></td><td>Add declaration</td></tr></tbody></table>',
+    allergens: '<table class="conv-table"><thead><tr><th>Allergen</th><th>Status</th><th>Action</th></tr></thead><tbody><tr><td><strong>Wheat</strong></td><td><span class=\"cs ok\">✓ Declared</span></td><td>Wheat-derived — stated in document</td></tr></tbody></table>',
     info: '<div class="conv-info-grid"><div class="conv-info-item"><div class="cii-key">Source</div><div class="cii-val">Excel v4.2</div></div><div class="conv-info-item"><div class="cii-key">Item #</div><div class="cii-val">KJF-4821</div></div></div>'
   },
   img: {
