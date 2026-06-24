@@ -4469,6 +4469,99 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
 @media (max-width: 640px) {
   .ps-card { padding: 36px 24px; }
 }
+
+/* ══════════════════════════════════════════════════════
+   PLATFORM IN ACTION — ACCESS GATE
+══════════════════════════════════════════════════════ */
+.pia-gate {
+  max-width: 480px;
+  margin: 0 auto 40px;
+}
+.pia-gate-card {
+  background: #fff;
+  border: 1px solid rgba(83,74,183,0.14);
+  border-radius: 22px;
+  padding: 40px 36px;
+  text-align: center;
+  box-shadow:
+    0 0 0 1px rgba(83,74,183,0.04),
+    0 24px 60px rgba(83,74,183,0.13);
+}
+.pia-gate-icon {
+  width: 54px; height: 54px; margin: 0 auto 18px;
+  background: linear-gradient(135deg, rgba(83,74,183,0.09), rgba(192,32,176,0.07));
+  border-radius: 15px;
+  display: flex; align-items: center; justify-content: center;
+}
+.pia-gate-eyebrow {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.12em; color: var(--pri); margin-bottom: 10px;
+}
+.pia-gate-title {
+  font-family: var(--fd); font-size: 24px; font-weight: 800;
+  color: #160d22; letter-spacing: -0.02em; margin-bottom: 10px;
+}
+.pia-gate-sub {
+  font-size: 14px; color: #6b5585; line-height: 1.6;
+  max-width: 380px; margin: 0 auto 26px;
+}
+.pia-gate-form { display: flex; flex-direction: column; gap: 11px; text-align: left; }
+.pia-input {
+  width: 100%;
+  padding: 12px 15px;
+  font-family: var(--fb); font-size: 14px;
+  color: #160d22;
+  background: #faf9fd;
+  border: 1.5px solid rgba(83,74,183,0.16);
+  border-radius: 11px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+.pia-input:focus {
+  border-color: var(--pri);
+  box-shadow: 0 0 0 3px rgba(83,74,183,0.1);
+  background: #fff;
+}
+.pia-input.pia-invalid {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220,38,38,0.08);
+}
+.pia-select { cursor: pointer; appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23534AB7' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center;
+}
+.pia-error {
+  font-size: 12.5px; color: #dc2626; font-weight: 600;
+  min-height: 0; line-height: 1.45;
+  display: none;
+  padding: 8px 12px;
+  background: rgba(220,38,38,0.06);
+  border-radius: 8px;
+  border: 1px solid rgba(220,38,38,0.15);
+}
+.pia-error.show { display: block; }
+.pia-submit { width: 100%; justify-content: center; margin-top: 4px; }
+.pia-submit:disabled { opacity: 0.7; cursor: wait; }
+.pia-note {
+  font-size: 12px; color: #16a34a; text-align: center; font-weight: 600;
+  margin-top: 2px;
+}
+.pia-note.checking { color: var(--pri); }
+.pia-note.error { color: #dc2626; }
+
+/* Locked content — hidden by default */
+.pia-locked {
+  display: none;
+}
+.pia-locked.unlocked {
+  display: block;
+  animation: piaReveal 0.5s ease;
+}
+@keyframes piaReveal {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 </style>
 </head>
 <body>
@@ -4486,8 +4579,8 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
       <li><a href="#team">About</a></li>
     </ul>
     <div class="nav-actions">
-      <button class="btn btn-outline btn-sm" onclick="openModal()">Get a Demo</button>
-      <button class="btn btn-primary btn-sm" onclick="openModal()">Get a Quote</button>
+      <button class="btn btn-outline btn-sm" onclick="openModal('Nav · Get a Demo')">Get a Demo</button>
+      <button class="btn btn-primary btn-sm" onclick="openModal('Nav · Get a Quote')">Get a Quote</button>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
@@ -4500,7 +4593,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
   <a href="#pricing" class="mob-link">Pricing</a>
   <a href="#faq" class="mob-link">FAQ</a>
   <a href="#team" class="mob-link">About</a>
-  <button class="btn btn-primary" onclick="openModal();document.getElementById('mobMenu').classList.remove('open')" style="margin-top:8px">Get a Demo</button>
+  <button class="btn btn-primary" onclick="openModal('Mobile Menu · Get a Demo');document.getElementById('mobMenu').classList.remove('open')" style="margin-top:8px">Get a Demo</button>
 </div>
 
 <!-- HERO -->
@@ -4527,7 +4620,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
 
       <div class="hero-actions">
         <button class="btn btn-primary btn-lg" onclick="document.getElementById('live').scrollIntoView({behavior:'smooth'})">See it in action →</button>
-        <button class="btn btn-ghost btn-lg" onclick="openModal()">Get a demo</button>
+        <button class="btn btn-ghost btn-lg" onclick="openModal('Hero · Get a demo')">Get a demo</button>
       </div>
 
       <div class="hero-trust">
@@ -4722,25 +4815,61 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
       <text x="3" y="4" text-anchor="middle" font-size="10" fill="#1a1020" font-weight="600" font-family="Plus Jakarta Sans,sans-serif">FDA 21 CFR ready</text>
     </g>
 
-    <!-- 🇬🇧 UK HFSS — Co-Mfr → Brand arc (2nd wave) -->
+    <!-- ✡ Kosher cert — Co-Mfr → Brand arc -->
     <g opacity="0">
       <animateMotion dur="4.8s" repeatCount="indefinite" begin="5.6s" calcMode="spline"
         keySplines="0.25 0.1 0.25 1"><mpath href="#p-cb"/></animateMotion>
       <animate attributeName="opacity" values="0;0;1;1;1;0" keyTimes="0;0.06;0.14;0.80;0.92;1" dur="4.8s" repeatCount="indefinite" begin="5.6s"/>
-      <rect x="-62" y="-13" width="124" height="26" rx="13" fill="rgba(255,255,255,0.97)" filter="url(#pill-shadow)"/>
-      <text x="-48" y="4" text-anchor="middle" font-size="13">🇬🇧</text>
-      <text x="3" y="4" text-anchor="middle" font-size="10" fill="#1a1020" font-weight="600" font-family="Plus Jakarta Sans,sans-serif">UK HFSS checked</text>
+      <rect x="-66" y="-13" width="132" height="26" rx="13" fill="rgba(255,255,255,0.97)" filter="url(#pill-shadow)"/>
+      <circle cx="-52" cy="0" r="8" fill="#1e40af" opacity="0.12"/>
+      <text x="-52" y="4" text-anchor="middle" font-size="11" fill="#1e40af" font-weight="800" font-family="serif">OU</text>
+      <text x="6" y="4" text-anchor="middle" font-size="10" fill="#1a1020" font-weight="600" font-family="Plus Jakarta Sans,sans-serif">Kosher certified</text>
     </g>
 
-    <!-- 🇦🇺 FSANZ — Supplier → Brand arc (3rd wave) -->
+    <!-- ✓ Non-GMO cert — Supplier → Brand arc -->
     <g opacity="0">
       <animateMotion dur="4.6s" repeatCount="indefinite" begin="6.8s" calcMode="spline"
         keySplines="0.25 0.1 0.25 1"><mpath href="#p-sb"/></animateMotion>
       <animate attributeName="opacity" values="0;0;1;1;1;0" keyTimes="0;0.06;0.14;0.80;0.92;1" dur="4.6s" repeatCount="indefinite" begin="6.8s"/>
-      <rect x="-64" y="-13" width="128" height="26" rx="13" fill="rgba(255,255,255,0.97)" filter="url(#pill-shadow)"/>
-      <text x="-50" y="4" text-anchor="middle" font-size="13">🇦🇺</text>
-      <text x="3" y="4" text-anchor="middle" font-size="10" fill="#1a1020" font-weight="600" font-family="Plus Jakarta Sans,sans-serif">FSANZ validated</text>
+      <rect x="-66" y="-13" width="132" height="26" rx="13" fill="rgba(255,255,255,0.97)" filter="url(#pill-shadow)"/>
+      <circle cx="-52" cy="0" r="8" fill="#ea580c" opacity="0.14"/>
+      <text x="-52" y="4.5" text-anchor="middle" font-size="11">🦋</text>
+      <text x="6" y="4" text-anchor="middle" font-size="10" fill="#1a1020" font-weight="600" font-family="Plus Jakarta Sans,sans-serif">Non-GMO verified</text>
     </g>
+
+    <!-- ✓ Gluten Free cert — Brand → Co-Mfr arc -->
+    <g opacity="0">
+      <animateMotion dur="5.0s" repeatCount="indefinite" begin="7.8s" calcMode="spline"
+        keySplines="0.25 0.1 0.25 1"><mpath href="#p-bc"/></animateMotion>
+      <animate attributeName="opacity" values="0;0;1;1;1;0" keyTimes="0;0.06;0.14;0.80;0.92;1" dur="5.0s" repeatCount="indefinite" begin="7.8s"/>
+      <rect x="-64" y="-13" width="128" height="26" rx="13" fill="rgba(255,255,255,0.97)" filter="url(#pill-shadow)"/>
+      <circle cx="-50" cy="0" r="8" fill="#16a34a" opacity="0.13"/>
+      <text x="-50" y="4.5" text-anchor="middle" font-size="10">🌾</text>
+      <text x="6" y="4" text-anchor="middle" font-size="9.5" fill="#1a1020" font-weight="600" font-family="Plus Jakarta Sans,sans-serif">Gluten-free certified</text>
+    </g>
+
+    <!-- ⏰ Cert expiry tracked — Co-Mfr → Supplier arc -->
+    <g opacity="0">
+      <animateMotion dur="4.7s" repeatCount="indefinite" begin="8.8s" calcMode="spline"
+        keySplines="0.25 0.1 0.25 1"><mpath href="#p-cs"/></animateMotion>
+      <animate attributeName="opacity" values="0;0;1;1;1;0" keyTimes="0;0.06;0.14;0.80;0.92;1" dur="4.7s" repeatCount="indefinite" begin="8.8s"/>
+      <rect x="-76" y="-13" width="152" height="26" rx="13" fill="rgba(255,251,235,0.98)" filter="url(#pill-shadow)"/>
+      <circle cx="-62" cy="0" r="8" fill="#d97706" opacity="0.15"/>
+      <text x="-62" y="4.5" text-anchor="middle" font-size="11">⏰</text>
+      <text x="4" y="4" text-anchor="middle" font-size="9.5" fill="#92400e" font-weight="600" font-family="Plus Jakarta Sans,sans-serif">Halal cert · expires 60d</text>
+    </g>
+
+    <!-- ✓ Cert renewed — Supplier → Co-Mfr arc -->
+    <g opacity="0">
+      <animateMotion dur="4.9s" repeatCount="indefinite" begin="9.9s" calcMode="spline"
+        keySplines="0.25 0.1 0.25 1"><mpath href="#p-sc"/></animateMotion>
+      <animate attributeName="opacity" values="0;0;1;1;1;0" keyTimes="0;0.06;0.14;0.80;0.92;1" dur="4.9s" repeatCount="indefinite" begin="9.9s"/>
+      <rect x="-68" y="-13" width="136" height="26" rx="13" fill="rgba(240,253,244,0.98)" filter="url(#pill-shadow)"/>
+      <circle cx="-54" cy="0" r="8" fill="#16a34a" opacity="0.15"/>
+      <text x="-54" y="4" text-anchor="middle" font-size="11" fill="#16a34a" font-weight="700">✓</text>
+      <text x="6" y="4" text-anchor="middle" font-size="9.5" fill="#166534" font-weight="600" font-family="Plus Jakarta Sans,sans-serif">Cert auto-renewed</text>
+    </g>
+
 
 <!-- ══ NODE: SUPPLIERS (top) ══ -->
     <g id="eco-g-supp" style="cursor:pointer" onclick="ecoTap('supp')" filter="url(#node-shadow)">
@@ -4933,6 +5062,51 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
       <h2 class="sec-head">See exactly how it works —<br><span class="grad">two ways to explore.</span></h2>
       <p class="sec-sub" style="max-width:580px;margin:0 auto">See how AutoSpec.ai extracts and validates any spec document, and watch the AI agents negotiate across your supply chain in real time.</p>
     </div>
+
+    <!-- ══ ACCESS GATE ══ -->
+    <div class="pia-gate" id="piaGate">
+      <div class="pia-gate-card">
+        <div class="pia-gate-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="url(#piaLockGrad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <defs><linearGradient id="piaLockGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#534AB7"/><stop offset="100%" stop-color="#c020b0"/></linearGradient></defs>
+            <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+        </div>
+        <div class="pia-gate-eyebrow">Interactive walkthrough</div>
+        <h3 class="pia-gate-title">See how the platform works</h3>
+        <p class="pia-gate-sub">Explore an interactive walkthrough of spec extraction and our autonomous agent network. A full live demo follows. Verified business email required — approved on the spot.</p>
+
+        <div class="pia-gate-form" id="piaForm">
+          <div class="pia-field">
+            <input type="text" id="piaName" class="pia-input" placeholder="Full name" autocomplete="name">
+          </div>
+          <div class="pia-field">
+            <input type="email" id="piaEmail" class="pia-input" placeholder="Work email (no Gmail, Yahoo, etc.)" autocomplete="email">
+          </div>
+          <div class="pia-field">
+            <input type="text" id="piaCompany" class="pia-input" placeholder="Company name" autocomplete="organization">
+          </div>
+          <div class="pia-field">
+            <select id="piaRole" class="pia-input pia-select">
+              <option value="">Your role…</option>
+              <option>Food Scientist / R&amp;D</option>
+              <option>Regulatory / QA / Compliance</option>
+              <option>Co-Manufacturer / Operations</option>
+              <option>Ingredient Supplier</option>
+              <option>Brand Owner / Founder</option>
+              <option>Procurement / Sourcing</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="pia-error" id="piaError"></div>
+          <button class="btn btn-primary btn-lg pia-submit" id="piaSubmit" onclick="piaVerify()">Explore the walkthrough →</button>
+          <div class="pia-note" id="piaNote">✓ Instant access · We verify your domain in real time</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ GATED CONTENT (hidden until verified) ══ -->
+    <div class="pia-locked" id="piaLocked">
 
     <!-- Tab switcher -->
     <div class="live-tabs reveal" style="display:flex;gap:12px;justify-content:center;margin-bottom:28px;flex-wrap:wrap;transition-delay:0.1s">
@@ -5664,6 +5838,8 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
       </div><!-- /agt-section -->
     </div><!-- /#lp-2 -->
 
+    </div><!-- /#piaLocked -->
+
   </div><!-- /container -->
 </section>
 
@@ -5790,7 +5966,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
         <p class="ps-statement">We don't do subscriptions. We don't charge for seats, storage, or features you'll never use. AutoSpec.ai is priced on the outcomes it delivers — specs structured, connections made, errors eliminated.</p>
         <div class="ps-divider"></div>
         <p class="ps-access">We're in early access. Pricing is tailored to your volume and outcomes — get a personalised model built for your business.</p>
-        <button class="btn btn-primary btn-lg ps-cta" onclick="openModal()">Get my pricing model →</button>
+        <button class="btn btn-primary btn-lg ps-cta" onclick="openModal('Pricing · Get my pricing model')">Get my pricing model →</button>
         <p class="ps-note">Usually replied to within 24 hours &nbsp;·&nbsp; No sales pressure</p>
       </div>
     </div>
@@ -5806,7 +5982,7 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
         <div class="sec-tag">FAQ</div>
         <h2 class="sec-head">Common questions</h2>
         <p class="sec-sub" style="max-width:280px;margin-top:14px">Still have questions? Use the form and we'll get back to you quickly.</p>
-        <button class="btn btn-primary" style="margin-top:24px" onclick="openModal()">Get a Demo →</button>
+        <button class="btn btn-primary" style="margin-top:24px" onclick="openModal('CTA Section · Get a Demo')">Get a Demo →</button>
       </div>
       <ul class="faq-list reveal" style="transition-delay:0.1s">
         <li class="faq-item"><button class="faq-q">Can AutoSpec.ai connect to my PLM, ERP, or other software?<span class="faq-icon">+</span></button><div class="faq-a">Yes. AutoSpec.ai connects to SAP, Oracle, Sage, and most major PLM and QMS platforms. We also provide a robust API and webhook support for custom integrations. Our team has deep implementation experience across enterprise food &amp; beverage technology stacks.</div></li>
@@ -5829,8 +6005,8 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
       <h2>Your specs should work<br>as hard as your team does.</h2>
       <p>AutoSpec.ai was built by people who spent careers inside food &amp; beverage — and got tired of watching great scientists do data entry. If your team is spending more time managing spec documents than they are developing products, this is worth fifteen minutes of your time.</p>
       <div class="cta-actions">
-        <button class="btn btn-white" onclick="openModal()">Get a Demo →</button>
-        <button class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.3)" onclick="openModal()">Get a Quote</button>
+        <button class="btn btn-white" onclick="openModal('CTA Banner · Get a Demo')">Get a Demo →</button>
+        <button class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.3)" onclick="openModal('CTA Banner · Get a Quote')">Get a Quote</button>
       </div>
       <p class="cta-note">We're a small team — we respond personally, usually same day.</p>
     </div>
@@ -5848,16 +6024,16 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
         <div class="social-row">
           <a href="#" class="soc-btn" aria-label="LinkedIn">in</a>
           <a href="#" class="soc-btn" aria-label="Twitter">𝕏</a>
-          <a href="#" class="soc-btn" aria-label="Contact" onclick="openModal();return false;">✉</a>
+          <a href="#" class="soc-btn" aria-label="Contact" onclick="openModal('Footer · Contact icon');return false;">✉</a>
         </div>
       </div>
       <div class="foot-col"><h4>Platform</h4><ul><li><a href="#how">How It Works</a></li><li><a href="#capabilities">Capabilities</a></li><li><a href="#pricing">Pricing</a></li></ul></div>
-      <div class="foot-col"><h4>Company</h4><ul><li><a href="#team">About</a></li><li><a href="#">Blog</a></li><li><a href="#">Security</a></li><li><a href="#" onclick="openModal();return false;">Contact Us</a></li></ul></div>
+      <div class="foot-col"><h4>Company</h4><ul><li><a href="#team">About</a></li><li><a href="#">Blog</a></li><li><a href="#">Security</a></li><li><a href="#" onclick="openModal('Footer · Contact Us');return false;">Contact Us</a></li></ul></div>
       <div class="foot-col"><h4>Resources</h4><ul><li><a href="#faq">FAQ</a></li><li><a href="#">Regulatory guides</a></li><li><a href="#">API reference</a></li><li><a href="#">Status</a></li></ul></div>
     </div>
     <div class="foot-bottom">
       <span>© 2025 AutoSpec.ai · All rights reserved · Built for the future of food &amp; beverage.</span>
-      <div class="foot-links"><a href="#" onclick="openPrivacyModal();return false;">Privacy Policy</a><a href="#" onclick="openPrivacyModal();return false;">Cookie Policy</a><a href="#" onclick="openModal();return false;">Contact</a></div>
+      <div class="foot-links"><a href="#" onclick="openPrivacyModal();return false;">Privacy Policy</a><a href="#" onclick="openPrivacyModal();return false;">Cookie Policy</a><a href="#" onclick="openModal('Footer · Contact');return false;">Contact</a></div>
     </div>
   </div>
 </footer>
@@ -5951,7 +6127,9 @@ document.querySelectorAll('.faq-q').forEach(function(btn) {
 });
 
 // Modal open / close
-function openModal() {
+var modalSource = 'Unknown';
+function openModal(source) {
+  modalSource = source || 'Unknown';
   document.getElementById('demoModal').classList.add('open');
 }
 function closeModal() {
@@ -5987,7 +6165,7 @@ function submitModal() {
   fetch('https://formspree.io/f/xnjrzgga', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify({ Name: name, Email: email, Company: company, Type: type, Message: msg })
+    body: JSON.stringify({ Name: name, Email: email, Company: company, Type: type, Message: msg, Source: modalSource, _subject: 'Website Lead — ' + (type || 'Enquiry') + ' — ' + modalSource })
   })
   .then(function(res) {
     if (res.ok) {
@@ -6065,52 +6243,6 @@ var specData = {
 
 
 
-// ── PRICING GATE VERIFICATION ──
-const BLOCKED_DOMAINS = ['gmail.com','yahoo.com','hotmail.com','outlook.com',
-  'icloud.com','me.com','aol.com','mail.com','protonmail.com','zoho.com',
-  'yandex.com','gmx.com','live.com','msn.com'];
-
-function verifyGate(tier) {
-  var emailId = tier === 'network' ? 'gate-email-net' : 'gate-email-plat';
-  var errId   = tier === 'network' ? 'gate-err-net'   : 'gate-err-plat';
-  var gateId  = tier === 'network' ? 'gate-network'   : 'gate-platform';
-  var calcId  = tier === 'network' ? 'calc-network'   : 'calc-platform';
-
-  var email = document.getElementById(emailId).value.trim();
-  var errEl = document.getElementById(errId);
-  errEl.textContent = '';
-
-  if (!email || !email.includes('@')) {
-    errEl.textContent = 'Please enter a valid email address.';
-    return;
-  }
-
-  var domain = email.split('@')[1].toLowerCase();
-
-  if (BLOCKED_DOMAINS.indexOf(domain) !== -1) {
-    errEl.textContent = 'Please use a business email address — not a personal one.';
-    return;
-  }
-
-  // Accepted — show calculator
-  document.getElementById(gateId).style.display = 'none';
-  document.getElementById(calcId).style.display = 'block';
-
-  // Initialise the right calculator
-  if (tier === 'network') calcNetwork();
-  else calcPlatform();
-
-  // Fire to Formspree silently
-  fetch('https://formspree.io/f/xnjrzgga', {
-    method: 'POST',
-    headers: {'Content-Type':'application/json','Accept':'application/json'},
-    body: JSON.stringify({
-      type: 'Calculator unlock — ' + tier,
-      email: email,
-      domain: domain
-    })
-  });
-}
 
 // Network calculator
 function calcNetwork() {
@@ -6789,6 +6921,128 @@ var ecoUserInteracted = false;
 
 
 // ── SPEC CONVERTER ──
+
+
+// ══════════════════════════════════════════════════════════
+// PLATFORM IN ACTION — ACCESS GATE & COMPANY VERIFICATION
+// ══════════════════════════════════════════════════════════
+var PIA_FREE_DOMAINS = [
+  'gmail.com','googlemail.com','yahoo.com','yahoo.co.uk','yahoo.co.in','ymail.com',
+  'hotmail.com','hotmail.co.uk','outlook.com','outlook.fr','live.com','live.co.uk',
+  'msn.com','icloud.com','me.com','mac.com','aol.com','mail.com','gmx.com','gmx.net',
+  'protonmail.com','proton.me','pm.me','zoho.com','yandex.com','yandex.ru','tutanota.com',
+  'fastmail.com','hushmail.com','inbox.com','rocketmail.com','rediffmail.com',
+  'qq.com','163.com','126.com','sina.com','naver.com','daum.net','web.de','t-online.de',
+  'orange.fr','free.fr','laposte.net','libero.it','virgilio.it','bigpond.com',
+  'comcast.net','verizon.net','att.net','sbcglobal.net','cox.net','btinternet.com',
+  'mailinator.com','guerrillamail.com','10minutemail.com','temp-mail.org','throwaway.email',
+  'trashmail.com','yopmail.com','sharklasers.com','getnada.com','maildrop.cc'
+];
+var PIA_COMPETITORS = [
+  'tracegains.com','specright.com','genesisfoods.com','esha.com','trustwell.com',
+  'foodlogiq.com','safetychain.com','icix.com','ifoodds.com','aptean.com',
+  'centricsoftware.com','bamboorose.com','specpage.com','selerant.com',
+  'propelplm.com','arena.com'
+];
+function piaSetError(msg){ var e=document.getElementById('piaError'); e.textContent=msg; e.classList.add('show'); }
+function piaClearError(){ document.getElementById('piaError').classList.remove('show'); }
+function piaSetNote(msg,cls){ var n=document.getElementById('piaNote'); n.textContent=msg; n.className='pia-note'+(cls?' '+cls:''); }
+function piaMarkInvalid(id){ var el=document.getElementById(id); if(el) el.classList.add('pia-invalid'); }
+function piaClearInvalid(){ ['piaName','piaEmail','piaCompany','piaRole'].forEach(function(id){ var el=document.getElementById(id); if(el) el.classList.remove('pia-invalid'); }); }
+
+function piaCheckMX(domain){
+  return fetch('https://dns.google/resolve?name='+encodeURIComponent(domain)+'&type=MX')
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      if(data.Status===0 && data.Answer && data.Answer.length>0){
+        return data.Answer.some(function(a){ return a.type===15; });
+      }
+      return false;
+    })
+    .catch(function(){ return null; });
+}
+
+function piaUnlock(){
+  var gate=document.getElementById('piaGate');
+  var locked=document.getElementById('piaLocked');
+  if(gate) gate.style.display='none';
+  if(locked) locked.classList.add('unlocked');
+  try{ localStorage.setItem('pia_unlocked','1'); }catch(e){}
+  setTimeout(function(){
+    document.querySelectorAll('#piaLocked .reveal').forEach(function(el){ el.classList.add('visible'); });
+  },80);
+}
+
+function piaVerify(){
+  piaClearError(); piaClearInvalid();
+  var name=document.getElementById('piaName').value.trim();
+  var email=document.getElementById('piaEmail').value.trim().toLowerCase();
+  var company=document.getElementById('piaCompany').value.trim();
+  var role=document.getElementById('piaRole').value;
+  var btn=document.getElementById('piaSubmit');
+
+  if(!name){ piaMarkInvalid('piaName'); piaSetError('Please enter your full name.'); return; }
+  if(!company){ piaMarkInvalid('piaCompany'); piaSetError('Please enter your company name.'); return; }
+  if(!role){ piaMarkInvalid('piaRole'); piaSetError('Please select your role.'); return; }
+
+  var emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if(!emailRe.test(email)){ piaMarkInvalid('piaEmail'); piaSetError('Please enter a valid email address.'); return; }
+
+  var domain=email.split('@')[1];
+
+  if(PIA_FREE_DOMAINS.indexOf(domain)!==-1){
+    piaMarkInvalid('piaEmail');
+    piaSetError('Please use your work email. Free providers like Gmail, Yahoo and Outlook aren\'t accepted.');
+    return;
+  }
+  if(/(\.|^)(temp|trash|fake|spam|disposable|10min|throwaway|guerrilla)/.test(domain)){
+    piaMarkInvalid('piaEmail');
+    piaSetError('Disposable email addresses aren\'t accepted. Please use your company email.');
+    return;
+  }
+  if(PIA_COMPETITORS.indexOf(domain)!==-1){
+    piaMarkInvalid('piaEmail');
+    piaSetError('This demo isn\'t available to this domain. Please contact us directly if you believe this is an error.');
+    return;
+  }
+
+  btn.disabled=true;
+  btn.textContent='Verifying your company…';
+  piaSetNote('Checking that '+domain+' is a valid business domain…','checking');
+
+  piaCheckMX(domain).then(function(hasMX){
+    if(hasMX===false){
+      btn.disabled=false;
+      btn.textContent='Explore the walkthrough →';
+      piaMarkInvalid('piaEmail');
+      piaSetError('We couldn\'t verify that "'+domain+'" is an active business domain. Please check your email or use a different work address.');
+      piaSetNote('✓ Instant access · We verify your domain in real time','');
+      return;
+    }
+    piaSetNote('✓ Verified — opening the walkthrough…','checking');
+    fetch('https://formspree.io/f/xnjrzgga',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({
+        _subject:'Platform Demo Access — '+company,
+        Name:name, Email:email, Company:company, Role:role,
+        Domain:domain, Source:'Platform in Action gate',
+        Verified:(hasMX===true?'MX confirmed':'MX uncheckable')
+      })
+    }).then(function(){ piaUnlock(); }).catch(function(){ piaUnlock(); });
+  });
+}
+
+(function(){
+  try{
+    if(localStorage.getItem('pia_unlocked')==='1'){
+      var gate=document.getElementById('piaGate');
+      var locked=document.getElementById('piaLocked');
+      if(gate) gate.style.display='none';
+      if(locked) locked.classList.add('unlocked');
+    }
+  }catch(e){}
+})();
 
 function acceptCookies() {
   try { localStorage.setItem('cookieChoice', 'accepted'); } catch(e) {}
