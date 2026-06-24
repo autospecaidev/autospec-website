@@ -4688,6 +4688,13 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
       <path id="p-cs" d="M127,310 Q100,140 270,60" fill="none"/>
       <!-- Supplier(270,60) → Co-Mfrs(127,310): reverse -->
       <path id="p-sc" d="M270,60 Q100,140 127,310" fill="none"/>
+    <linearGradient id="scan-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#c020b0" stop-opacity="0"/>
+        <stop offset="50%" stop-color="#e040fb" stop-opacity="0.55"/>
+        <stop offset="100%" stop-color="#c020b0" stop-opacity="0"/>
+      </linearGradient>
+      <clipPath id="label-clip"><rect x="0" y="0" width="92" height="64" rx="7"/></clipPath>
+      <clipPath id="label-clip-2"><rect x="0" y="0" width="88" height="64" rx="7"/></clipPath>
     </defs>
 
     <!-- ── BACKGROUND ATMOSPHERE ── -->
@@ -4871,6 +4878,100 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
     </g>
 
 
+    <!-- ══ PRODUCT & PACKAGING SPEC PILLS ══ -->
+
+    <!-- 📦 Pack format — Supplier → Co-Mfr arc -->
+    <g opacity="0">
+      <animateMotion dur="5.1s" repeatCount="indefinite" begin="10.8s" calcMode="spline"
+        keySplines="0.25 0.1 0.25 1"><mpath href="#p-sc"/></animateMotion>
+      <animate attributeName="opacity" values="0;0;1;1;1;0" keyTimes="0;0.06;0.14;0.80;0.92;1" dur="5.1s" repeatCount="indefinite" begin="10.8s"/>
+      <rect x="-70" y="-13" width="140" height="26" rx="13" fill="rgba(237,233,254,0.97)" filter="url(#pill-shadow)"/>
+      <text x="-56" y="4.5" text-anchor="middle" font-size="11">📦</text>
+      <text x="4" y="4" text-anchor="middle" font-size="9.5" fill="#4c1d95" font-weight="600" font-family="Plus Jakarta Sans,sans-serif">Case pack: 12 × 500g</text>
+    </g>
+
+    <!-- 🏷️ Label spec — Co-Mfr → Brand arc -->
+    <g opacity="0">
+      <animateMotion dur="4.9s" repeatCount="indefinite" begin="11.9s" calcMode="spline"
+        keySplines="0.25 0.1 0.25 1"><mpath href="#p-cb"/></animateMotion>
+      <animate attributeName="opacity" values="0;0;1;1;1;0" keyTimes="0;0.06;0.14;0.80;0.92;1" dur="4.9s" repeatCount="indefinite" begin="11.9s"/>
+      <rect x="-72" y="-13" width="144" height="26" rx="13" fill="rgba(255,255,255,0.97)" filter="url(#pill-shadow)"/>
+      <text x="-58" y="4.5" text-anchor="middle" font-size="11">🏷️</text>
+      <text x="4" y="4" text-anchor="middle" font-size="9.5" fill="#1a1020" font-weight="600" font-family="Plus Jakarta Sans,sans-serif">Label artwork v3 synced</text>
+    </g>
+
+    <!-- ⚖️ Net weight — Supplier → Brand arc -->
+    <g opacity="0">
+      <animateMotion dur="4.7s" repeatCount="indefinite" begin="12.9s" calcMode="spline"
+        keySplines="0.25 0.1 0.25 1"><mpath href="#p-sb"/></animateMotion>
+      <animate attributeName="opacity" values="0;0;1;1;1;0" keyTimes="0;0.06;0.14;0.80;0.92;1" dur="4.7s" repeatCount="indefinite" begin="12.9s"/>
+      <rect x="-64" y="-13" width="128" height="26" rx="13" fill="rgba(240,253,244,0.97)" filter="url(#pill-shadow)"/>
+      <text x="-50" y="4.5" text-anchor="middle" font-size="11">⚖️</text>
+      <text x="4" y="4" text-anchor="middle" font-size="9.5" fill="#166534" font-weight="600" font-family="Plus Jakarta Sans,sans-serif">Net weight verified</text>
+    </g>
+
+    <!-- 📅 Shelf life — Brand → Supplier arc -->
+    <g opacity="0">
+      <animateMotion dur="5.0s" repeatCount="indefinite" begin="13.9s" calcMode="spline"
+        keySplines="0.25 0.1 0.25 1"><mpath href="#p-bs"/></animateMotion>
+      <animate attributeName="opacity" values="0;0;1;1;1;0" keyTimes="0;0.06;0.14;0.80;0.92;1" dur="5.0s" repeatCount="indefinite" begin="13.9s"/>
+      <rect x="-66" y="-13" width="132" height="26" rx="13" fill="rgba(255,255,255,0.97)" filter="url(#pill-shadow)"/>
+      <text x="-52" y="4.5" text-anchor="middle" font-size="11">📅</text>
+      <text x="5" y="4" text-anchor="middle" font-size="9.5" fill="#1a1020" font-weight="600" font-family="Plus Jakarta Sans,sans-serif">Shelf life: 180 days</text>
+    </g>
+
+    <!-- 🔢 Barcode/GTIN — Brand → Co-Mfr arc -->
+    <g opacity="0">
+      <animateMotion dur="4.8s" repeatCount="indefinite" begin="15.0s" calcMode="spline"
+        keySplines="0.25 0.1 0.25 1"><mpath href="#p-bc"/></animateMotion>
+      <animate attributeName="opacity" values="0;0;1;1;1;0" keyTimes="0;0.06;0.14;0.80;0.92;1" dur="4.8s" repeatCount="indefinite" begin="15.0s"/>
+      <rect x="-58" y="-13" width="116" height="26" rx="13" fill="rgba(237,233,254,0.97)" filter="url(#pill-shadow)"/>
+      <text x="-44" y="4.5" text-anchor="middle" font-size="11">▥</text>
+      <text x="6" y="4" text-anchor="middle" font-size="9.5" fill="#4c1d95" font-weight="600" font-family="Plus Jakarta Sans,sans-serif">GTIN: 0 84723…</text>
+    </g>
+
+    <!-- 🌡️ Storage temp — Co-Mfr → Supplier arc -->
+    <g opacity="0">
+      <animateMotion dur="4.9s" repeatCount="indefinite" begin="16.0s" calcMode="spline"
+        keySplines="0.25 0.1 0.25 1"><mpath href="#p-cs"/></animateMotion>
+      <animate attributeName="opacity" values="0;0;1;1;1;0" keyTimes="0;0.06;0.14;0.80;0.92;1" dur="4.9s" repeatCount="indefinite" begin="16.0s"/>
+      <rect x="-72" y="-13" width="144" height="26" rx="13" fill="rgba(255,255,255,0.97)" filter="url(#pill-shadow)"/>
+      <text x="-58" y="4.5" text-anchor="middle" font-size="11">🌡️</text>
+      <text x="4" y="4" text-anchor="middle" font-size="9.5" fill="#1a1020" font-weight="600" font-family="Plus Jakarta Sans,sans-serif">Store &lt;25°C · ambient</text>
+    </g>
+
+    <!-- 📐 Pallet config — Supplier → Co-Mfr arc -->
+    <g opacity="0">
+      <animateMotion dur="5.0s" repeatCount="indefinite" begin="17.1s" calcMode="spline"
+        keySplines="0.25 0.1 0.25 1"><mpath href="#p-sc"/></animateMotion>
+      <animate attributeName="opacity" values="0;0;1;1;1;0" keyTimes="0;0.06;0.14;0.80;0.92;1" dur="5.0s" repeatCount="indefinite" begin="17.1s"/>
+      <rect x="-70" y="-13" width="140" height="26" rx="13" fill="rgba(237,233,254,0.97)" filter="url(#pill-shadow)"/>
+      <text x="-56" y="4.5" text-anchor="middle" font-size="11">📐</text>
+      <text x="4" y="4" text-anchor="middle" font-size="9.5" fill="#4c1d95" font-weight="600" font-family="Plus Jakarta Sans,sans-serif">Pallet: 5 × 10 = 50</text>
+    </g>
+
+    <!-- ♻️ Recyclable pack — Brand → Co-Mfr arc -->
+    <g opacity="0">
+      <animateMotion dur="4.7s" repeatCount="indefinite" begin="18.2s" calcMode="spline"
+        keySplines="0.25 0.1 0.25 1"><mpath href="#p-bc"/></animateMotion>
+      <animate attributeName="opacity" values="0;0;1;1;1;0" keyTimes="0;0.06;0.14;0.80;0.92;1" dur="4.7s" repeatCount="indefinite" begin="18.2s"/>
+      <rect x="-70" y="-13" width="140" height="26" rx="13" fill="rgba(240,253,244,0.97)" filter="url(#pill-shadow)"/>
+      <text x="-56" y="4.5" text-anchor="middle" font-size="11">♻️</text>
+      <text x="4" y="4" text-anchor="middle" font-size="9.5" fill="#166534" font-weight="600" font-family="Plus Jakarta Sans,sans-serif">Recyclable · OPRL</text>
+    </g>
+
+    <!-- 🌍 Country of origin — Supplier → Brand arc -->
+    <g opacity="0">
+      <animateMotion dur="4.8s" repeatCount="indefinite" begin="19.2s" calcMode="spline"
+        keySplines="0.25 0.1 0.25 1"><mpath href="#p-sb"/></animateMotion>
+      <animate attributeName="opacity" values="0;0;1;1;1;0" keyTimes="0;0.06;0.14;0.80;0.92;1" dur="4.8s" repeatCount="indefinite" begin="19.2s"/>
+      <rect x="-70" y="-13" width="140" height="26" rx="13" fill="rgba(255,255,255,0.97)" filter="url(#pill-shadow)"/>
+      <text x="-56" y="4.5" text-anchor="middle" font-size="11">🌍</text>
+      <text x="4" y="4" text-anchor="middle" font-size="9.5" fill="#1a1020" font-weight="600" font-family="Plus Jakarta Sans,sans-serif">Origin: verified</text>
+    </g>
+
+        
+
 <!-- ══ NODE: SUPPLIERS (top) ══ -->
     <g id="eco-g-supp" style="cursor:pointer" onclick="ecoTap('supp')" filter="url(#node-shadow)">
       <circle id="eco-ring-supp" cx="270" cy="60" r="42" fill="none"
@@ -4924,6 +5025,244 @@ h1,h2,h3,h4 { letter-spacing: -0.01em; }
       <animateTransform attributeName="transform" type="rotate"
         from="0 270 225" to="360 270 225" dur="18s" repeatCount="indefinite"/>
     </circle>
+  
+    <!-- ══════════════════════════════════════════════════════
+         SURPRISE MOMENT: real label artwork glides Supplier → Brand
+         A detailed mini product label (not a text pill) travels the
+         arc, gets scanned, and receives a "validated" stamp on arrival.
+    ══════════════════════════════════════════════════════ -->
+    <g id="label-artwork" opacity="0">
+      <!-- motion along supplier→brand arc with slow cadence -->
+      <animateMotion id="label-motion" dur="9s" repeatCount="indefinite" begin="4s"
+        calcMode="spline" keyPoints="0;0;0.5;1;1"
+        keyTimes="0;0.12;0.5;0.82;1"
+        keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1">
+        <mpath href="#p-sb"/>
+      </animateMotion>
+      <!-- fade in at start, hold, fade out on arrival -->
+      <animate attributeName="opacity"
+        values="0;0;1;1;1;1;0;0" keyTimes="0;0.10;0.16;0.45;0.74;0.82;0.9;1"
+        dur="9s" repeatCount="indefinite" begin="4s"/>
+      <!-- gentle scale pop as it lifts off, settle on arrival -->
+      <animateTransform attributeName="transform" type="scale" additive="sum"
+        values="0.6;0.6;1.05;1;1;1.12;1.12" keyTimes="0;0.1;0.18;0.3;0.78;0.84;1"
+        dur="9s" repeatCount="indefinite" begin="4s"/>
+
+      <!-- ── THE LABEL (centered on 0,0 so it rides the path) ── -->
+      <g transform="translate(-46,-32)">
+        <!-- card shadow + body -->
+        <rect x="0" y="0" width="92" height="64" rx="7" fill="#ffffff" filter="url(#pill-shadow)"/>
+        <rect x="0" y="0" width="92" height="64" rx="7" fill="none" stroke="rgba(83,74,183,0.18)" stroke-width="1"/>
+        <!-- top brand band -->
+        <path d="M0,7 a7,7 0 0 1 7,-7 h78 a7,7 0 0 1 7,7 v9 h-92 z" fill="url(#gb)"/>
+        <text x="46" y="11" text-anchor="middle" font-size="5.4" font-weight="800" fill="#fff" font-family="Raleway,sans-serif" letter-spacing="0.01em" textLength="80" lengthAdjust="spacingAndGlyphs">KING JULIAN INGREDIENTS</text>
+
+        <!-- product photo block (stylised flour bag) -->
+        <rect x="6" y="21" width="26" height="34" rx="3" fill="#f4ecd8" stroke="#d9c9a3" stroke-width="0.8"/>
+        <path d="M6,30 h26 M6,46 h26" stroke="#d9c9a3" stroke-width="0.6"/>
+        <ellipse cx="19" cy="38" rx="7" ry="8" fill="#e8d5a8"/>
+        <text x="19" y="40" text-anchor="middle" font-size="9">🌾</text>
+
+        <!-- product name + details -->
+        <text x="36" y="27.5" font-size="6" font-weight="800" fill="#7a1010" font-family="Georgia,serif" textLength="50" lengthAdjust="spacingAndGlyphs">Whole Wheat Flour</text>
+        <line x1="36" y1="30.5" x2="86" y2="30.5" stroke="#e5e0ee" stroke-width="0.7"/>
+        <text x="36" y="38" font-size="4.4" fill="#555" font-family="Plus Jakarta Sans,sans-serif" textLength="48" lengthAdjust="spacingAndGlyphs">Net Wt 50 lb (22.6 kg)</text>
+        <text x="36" y="44" font-size="4.4" fill="#555" font-family="Plus Jakarta Sans,sans-serif" textLength="49" lengthAdjust="spacingAndGlyphs">Protein 14% · Item KJF-4821</text>
+
+        <!-- mini barcode -->
+        <g transform="translate(36,48)">
+          <rect width="34" height="9" fill="#fff"/>
+          <g fill="#1a1020">
+            <rect x="0" y="0" width="1" height="9"/><rect x="2" y="0" width="0.6" height="9"/>
+            <rect x="3.5" y="0" width="1.4" height="9"/><rect x="6" y="0" width="0.6" height="9"/>
+            <rect x="7.5" y="0" width="1" height="9"/><rect x="9.5" y="0" width="1.6" height="9"/>
+            <rect x="12" y="0" width="0.6" height="9"/><rect x="13.5" y="0" width="1" height="9"/>
+            <rect x="15.5" y="0" width="0.6" height="9"/><rect x="17" y="0" width="1.4" height="9"/>
+            <rect x="19.5" y="0" width="1" height="9"/><rect x="21.5" y="0" width="0.6" height="9"/>
+            <rect x="23" y="0" width="1.6" height="9"/><rect x="25.5" y="0" width="0.6" height="9"/>
+            <rect x="27" y="0" width="1" height="9"/><rect x="29" y="0" width="1.4" height="9"/>
+            <rect x="31.5" y="0" width="0.6" height="9"/><rect x="33" y="0" width="1" height="9"/>
+          </g>
+        </g>
+
+        <!-- ── SCAN SWEEP (a magenta line passes over as it's read) ── -->
+        <g clip-path="url(#label-clip)">
+          <rect id="scan-bar" x="-10" y="0" width="8" height="64" fill="url(#scan-grad)" opacity="0.9">
+            <animate attributeName="x" values="-10;-10;92;92;-10"
+              keyTimes="0;0.30;0.52;1;1" dur="9s" repeatCount="indefinite" begin="4s"/>
+          </rect>
+        </g>
+
+        <!-- ── VALIDATED STAMP (appears on arrival at the brand) ── -->
+        <g id="validated-stamp" opacity="0" transform="translate(46,32) rotate(-14)">
+          <animate attributeName="opacity" values="0;0;0;1;1;0"
+            keyTimes="0;0.72;0.78;0.82;0.9;1" dur="9s" repeatCount="indefinite" begin="4s"/>
+          <animateTransform attributeName="transform" type="scale" additive="sum"
+            values="1.8;1.8;1.8;1;1;1" keyTimes="0;0.72;0.78;0.84;0.9;1"
+            dur="9s" repeatCount="indefinite" begin="4s"/>
+          <rect x="-30" y="-12" width="60" height="24" rx="4" fill="rgba(22,163,74,0.12)" stroke="#16a34a" stroke-width="1.5"/>
+          <text x="-13" y="4" text-anchor="middle" font-size="13" fill="#16a34a" font-weight="900">✓</text>
+          <text x="7" y="-1" text-anchor="middle" font-size="6.5" fill="#15803d" font-weight="800" font-family="Plus Jakarta Sans,sans-serif">SPEC</text>
+          <text x="7" y="6" text-anchor="middle" font-size="6.5" fill="#15803d" font-weight="800    <!-- ══════════════════════════════════════════════════════
+         SURPRISE MOMENT 2: finished retail product spec glides
+         Brand → Co-Packer, gets a "PACK APPROVED" production stamp.
+    ══════════════════════════════════════════════════════ -->
+    <g id="label-artwork-2" opacity="0">
+      <animateMotion dur="9s" repeatCount="indefinite" begin="13s"
+        calcMode="spline" keyPoints="0;0;0.5;1;1"
+        keyTimes="0;0.12;0.5;0.82;1"
+        keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1">
+        <mpath href="#p-bc"/>
+      </animateMotion>
+      <animate attributeName="opacity"
+        values="0;0;1;1;1;1;0;0" keyTimes="0;0.10;0.16;0.45;0.74;0.82;0.9;1"
+        dur="9s" repeatCount="indefinite" begin="13s"/>
+      <animateTransform attributeName="transform" type="scale" additive="sum"
+        values="0.6;0.6;1.05;1;1;1.12;1.12" keyTimes="0;0.1;0.18;0.3;0.78;0.84;1"
+        dur="9s" repeatCount="indefinite" begin="13s"/>
+
+      <g transform="translate(-44,-32)">
+        <!-- card body -->
+        <rect x="0" y="0" width="88" height="64" rx="7" fill="#ffffff" filter="url(#pill-shadow)"/>
+        <rect x="0" y="0" width="88" height="64" rx="7" fill="none" stroke="rgba(192,32,176,0.2)" stroke-width="1"/>
+        <!-- top brand band (magenta family for Brightland) -->
+        <path d="M0,7 a7,7 0 0 1 7,-7 h74 a7,7 0 0 1 7,7 v9 h-88 z" fill="#be185d"/>
+        <text x="44" y="11" text-anchor="middle" font-size="5.4" font-weight="800" fill="#fff" font-family="Raleway,sans-serif" letter-spacing="0.01em" textLength="74" lengthAdjust="spacingAndGlyphs">BRIGHTLAND FOODS</text>
+
+        <!-- finished product jar illustration -->
+        <g transform="translate(7,20)">
+          <rect x="2" y="6" width="20" height="28" rx="3" fill="#f3e9c8" stroke="#c9a84b" stroke-width="0.8"/>
+          <rect x="5" y="0" width="14" height="7" rx="2" fill="#7a1d52"/>
+          <rect x="2" y="15" width="20" height="11" fill="#fff" opacity="0.85"/>
+          <text x="12" y="23" text-anchor="middle" font-size="5">🫙</text>
+        </g>
+
+        <!-- product name + details -->
+        <text x="34" y="27.5" font-size="5.6" font-weight="800" fill="#7a1052" font-family="Georgia,serif" textLength="48" lengthAdjust="spacingAndGlyphs">Heritage Granola</text>
+        <line x1="34" y1="30.5" x2="82" y2="30.5" stroke="#f0e0ec" stroke-width="0.7"/>
+        <text x="34" y="38" font-size="4.4" fill="#555" font-family="Plus Jakarta Sans,sans-serif" textLength="46" lengthAdjust="spacingAndGlyphs">Net Wt 12 oz · 340 g</text>
+        <text x="34" y="44" font-size="4.4" fill="#555" font-family="Plus Jakarta Sans,sans-serif" textLength="47" lengthAdjust="spacingAndGlyphs">SKU BLF-220 · Case ×12</text>
+
+        <!-- mini barcode -->
+        <g transform="translate(34,48)">
+          <rect width="32" height="9" fill="#fff"/>
+          <g fill="#1a1020">
+            <rect x="0" y="0" width="1" height="9"/><rect x="2" y="0" width="0.6" height="9"/>
+            <rect x="3.5" y="0" width="1.4" height="9"/><rect x="6" y="0" width="0.6" height="9"/>
+            <rect x="7.5" y="0" width="1" height="9"/><rect x="9.5" y="0" width="1.6" height="9"/>
+            <rect x="12" y="0" width="0.6" height="9"/><rect x="13.5" y="0" width="1" height="9"/>
+            <rect x="15.5" y="0" width="0.6" height="9"/><rect x="17" y="0" width="1.4" height="9"/>
+            <rect x="19.5" y="0" width="1" height="9"/><rect x="21.5" y="0" width="0.6" height="9"/>
+            <rect x="23" y="0" width="1.6" height="9"/><rect x="25.5" y="0" width="0.6" height="9"/>
+            <rect x="27" y="0" width="1" height="9"/><rect x="29" y="0" width="1.4" height="9"/>
+          </g>
+        </g>
+
+        <!-- scan sweep -->
+        <g clip-path="url(#label-clip-2)">
+          <rect x="-10" y="0" width="8" height="64" fill="url(#scan-grad)" opacity="0.9">
+            <animate attributeName="x" values="-10;-10;88;88;-10"
+              keyTimes="0;0.30;0.52;1;1" dur="9s" repeatCount="indefinite" begin="13s"/>
+          </rect>
+        </g>
+
+        <!-- PACK APPROVED stamp on arrival -->
+        <g opacity="0" transform="translate(44,32) rotate(-12)">
+          <animate attributeName="opacity" values="0;0;0;1;1;0"
+            keyTimes="0;0.72;0.78;0.82;0.9;1" dur="9s" repeatCount="indefinite" begin="13s"/>
+          <animateTransform attributeName="transform" type="scale" additive="sum"
+            values="1.8;1.8;1.8;1;1;1" keyTimes="0;0.72;0.78;0.84;0.9;1"
+            dur="9s" repeatCount="indefinite" begin="13s"/>
+          <rect x="-32" y="-12" width="64" height="24" rx="4" fill="rgba(83,74,183,0.12)" stroke="#534AB7" stroke-width="1.5"/>
+          <text x="-15" y="4" text-anchor="middle" font-size="13" fill="#534AB7" font-weight="900">⚙</text>
+          <text x="8" y="-1" text-anchor="middle" font-size="6.5" fill="#4338ca" font-weight="800" font-family="Plus Jakarta Sans,sans-serif">PACK</text>
+          <text x="8" y="6" text-anchor="middle" font-size="6.5" fill="#4338ca" font-weight="800" font-family="Plus Jakarta Sans,sans-serif">APPROVED</text>
+        </g>
+      </g>
+    </g>
+
+" font-family="Plus Jakarta Sans,sans-serif">VERIFIED</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- ══════════════════════════════════════════════════════
+         SURPRISE MOMENT 2: finished retail product spec glides
+         Brand → Co-Packer, gets a "PACK APPROVED" production stamp.
+    ══════════════════════════════════════════════════════ -->
+    <g id="label-artwork-2" opacity="0">
+      <animateMotion dur="9s" repeatCount="indefinite" begin="8.5s"
+        calcMode="spline" keyPoints="0;0;0.5;1;1"
+        keyTimes="0;0.12;0.5;0.82;1"
+        keySplines="0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1">
+        <mpath href="#p-bc"/>
+      </animateMotion>
+      <animate attributeName="opacity"
+        values="0;0;1;1;1;1;0;0" keyTimes="0;0.10;0.16;0.45;0.74;0.82;0.9;1"
+        dur="9s" repeatCount="indefinite" begin="8.5s"/>
+      <animateTransform attributeName="transform" type="scale" additive="sum"
+        values="0.6;0.6;1.05;1;1;1.12;1.12" keyTimes="0;0.1;0.18;0.3;0.78;0.84;1"
+        dur="9s" repeatCount="indefinite" begin="8.5s"/>
+
+      <g transform="translate(-44,-32)">
+        <!-- card body -->
+        <rect x="0" y="0" width="88" height="64" rx="7" fill="#ffffff" filter="url(#pill-shadow)"/>
+        <rect x="0" y="0" width="88" height="64" rx="7" fill="none" stroke="rgba(192,32,176,0.2)" stroke-width="1"/>
+        <!-- top brand band (magenta family for Brightland) -->
+        <path d="M0,7 a7,7 0 0 1 7,-7 h74 a7,7 0 0 1 7,7 v9 h-88 z" fill="#be185d"/>
+        <text x="44" y="11" text-anchor="middle" font-size="5.4" font-weight="800" fill="#fff" font-family="Raleway,sans-serif" letter-spacing="0.01em" textLength="74" lengthAdjust="spacingAndGlyphs">BRIGHTLAND FOODS</text>
+
+        <!-- finished product jar illustration -->
+        <g transform="translate(7,20)">
+          <rect x="2" y="6" width="20" height="28" rx="3" fill="#f3e9c8" stroke="#c9a84b" stroke-width="0.8"/>
+          <rect x="5" y="0" width="14" height="7" rx="2" fill="#7a1d52"/>
+          <rect x="2" y="15" width="20" height="11" fill="#fff" opacity="0.85"/>
+          <text x="12" y="23" text-anchor="middle" font-size="5">🫙</text>
+        </g>
+
+        <!-- product name + details -->
+        <text x="34" y="27.5" font-size="5.6" font-weight="800" fill="#7a1052" font-family="Georgia,serif" textLength="48" lengthAdjust="spacingAndGlyphs">Heritage Granola</text>
+        <line x1="34" y1="30.5" x2="82" y2="30.5" stroke="#f0e0ec" stroke-width="0.7"/>
+        <text x="34" y="38" font-size="4.4" fill="#555" font-family="Plus Jakarta Sans,sans-serif" textLength="46" lengthAdjust="spacingAndGlyphs">Net Wt 12 oz · 340 g</text>
+        <text x="34" y="44" font-size="4.4" fill="#555" font-family="Plus Jakarta Sans,sans-serif" textLength="47" lengthAdjust="spacingAndGlyphs">SKU BLF-220 · Case ×12</text>
+
+        <!-- mini barcode -->
+        <g transform="translate(34,48)">
+          <rect width="32" height="9" fill="#fff"/>
+          <g fill="#1a1020">
+            <rect x="0" y="0" width="1" height="9"/><rect x="2" y="0" width="0.6" height="9"/>
+            <rect x="3.5" y="0" width="1.4" height="9"/><rect x="6" y="0" width="0.6" height="9"/>
+            <rect x="7.5" y="0" width="1" height="9"/><rect x="9.5" y="0" width="1.6" height="9"/>
+            <rect x="12" y="0" width="0.6" height="9"/><rect x="13.5" y="0" width="1" height="9"/>
+            <rect x="15.5" y="0" width="0.6" height="9"/><rect x="17" y="0" width="1.4" height="9"/>
+            <rect x="19.5" y="0" width="1" height="9"/><rect x="21.5" y="0" width="0.6" height="9"/>
+            <rect x="23" y="0" width="1.6" height="9"/><rect x="25.5" y="0" width="0.6" height="9"/>
+            <rect x="27" y="0" width="1" height="9"/><rect x="29" y="0" width="1.4" height="9"/>
+          </g>
+        </g>
+
+        <!-- scan sweep -->
+        <g clip-path="url(#label-clip-2)">
+          <rect x="-10" y="0" width="8" height="64" fill="url(#scan-grad)" opacity="0.9">
+            <animate attributeName="x" values="-10;-10;88;88;-10"
+              keyTimes="0;0.30;0.52;1;1" dur="9s" repeatCount="indefinite" begin="8.5s"/>
+          </rect>
+        </g>
+
+        <!-- PACK APPROVED stamp on arrival -->
+        <g opacity="0" transform="translate(44,32) rotate(-12)">
+          <animate attributeName="opacity" values="0;0;0;1;1;0"
+            keyTimes="0;0.72;0.78;0.82;0.9;1" dur="9s" repeatCount="indefinite" begin="8.5s"/>
+          <animateTransform attributeName="transform" type="scale" additive="sum"
+            values="1.8;1.8;1.8;1;1;1" keyTimes="0;0.72;0.78;0.84;0.9;1"
+            dur="9s" repeatCount="indefinite" begin="8.5s"/>
+          <rect x="-32" y="-12" width="64" height="24" rx="4" fill="rgba(83,74,183,0.12)" stroke="#534AB7" stroke-width="1.5"/>
+          <text x="-15" y="4" text-anchor="middle" font-size="13" fill="#534AB7" font-weight="900">⚙</text>
+          <text x="8" y="-1" text-anchor="middle" font-size="6.5" fill="#4338ca" font-weight="800" font-family="Plus Jakarta Sans,sans-serif">PACK</text>
+          <text x="8" y="6" text-anchor="middle" font-size="6.5" fill="#4338ca" font-weight="800" font-family="Plus Jakarta Sans,sans-serif">APPROVED</text>
+        </g>
+      </g>
+    </g>
   </svg>
 </div>
 
