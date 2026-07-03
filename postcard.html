@@ -230,6 +230,25 @@ body{ font-family:var(--fb); background:var(--bg); color:var(--text); line-heigh
   .as-chat { bottom: 16px; right: 16px; }
   .as-chat-panel { width: calc(100vw - 24px); height: calc(100vh - 100px); bottom: 72px; }
 }
+
+/* CTA buttons side by side */
+.pc-cta-buttons{ display:flex; gap:12px; flex-wrap:wrap; justify-content:center; }
+@media (max-width:480px){ .pc-cta-buttons{ flex-direction:column; width:100%; } .pc-cta-buttons .btn{ width:100%; justify-content:center; } }
+
+/* Demo modal (matches website) */
+.modal-overlay{ display:none; position:fixed; inset:0; background:rgba(24,14,42,0.75); z-index:10000; align-items:center; justify-content:center; backdrop-filter:blur(6px); padding:20px; }
+.modal-overlay.open{ display:flex; }
+.modal-box{ background:#fff; border-radius:18px; padding:36px; width:100%; max-width:520px; position:relative; box-shadow:0 24px 60px rgba(0,0,0,0.2); max-height:90vh; overflow-y:auto; }
+.modal-close{ position:absolute; top:14px; right:16px; font-size:20px; color:var(--muted); background:none; border:none; cursor:pointer; }
+.modal-box h3{ font-family:var(--fd); font-size:22px; font-weight:800; color:#160d22; margin-bottom:8px; }
+.modal-box > p{ font-size:14px; color:var(--muted); margin-bottom:20px; }
+.modal-form{ display:flex; flex-direction:column; gap:12px; }
+.modal-input{ padding:11px 16px; border:1.5px solid var(--border); border-radius:9px; font-size:14px; font-family:var(--fb); color:var(--text); outline:none; transition:border-color 0.2s; background:var(--bg); width:100%; }
+.modal-input:focus{ border-color:var(--pri); }
+.modal-success{ display:none; text-align:center; padding:20px 0; }
+.ms-icon{ font-size:36px; margin-bottom:10px; }
+.modal-success h4{ font-family:var(--fd); font-size:19px; color:#160d22; margin-bottom:8px; }
+.modal-success p{ font-size:14px; color:var(--muted); }
 </style>
 </head>
 <body>
@@ -248,8 +267,11 @@ body{ font-family:var(--fb); background:var(--bg); color:var(--text); line-heigh
     <h1 class="pc-h1">Autonomous AI agents that <span class="grad">manage your spec data.</span></h1>
     <p class="pc-kicker">So your food scientists can do food science.</p>
     <div class="pc-cta-row">
-      <button class="btn btn-primary btn-lg" onclick="pcStartChat()">💬 Chat with us &amp; get early access →</button>
-      <span class="pc-cta-note">Answer 3 quick questions · Instant access · No sales pressure</span>
+      <div class="pc-cta-buttons">
+        <button class="btn btn-primary btn-lg" onclick="pcStartChat()">💬 Chat with us</button>
+        <button class="btn btn-outline btn-lg" onclick="openModal('Postcard QR · Get a Demo')">Get a demo →</button>
+      </div>
+      <span class="pc-cta-note">Chat for instant access · or request a demo — no sales pressure</span>
     </div>
   </div>
 
@@ -286,10 +308,43 @@ body{ font-family:var(--fb); background:var(--bg); color:var(--text); line-heigh
   </div>
 
   <div class="pc-footer">
-    <a href="https://autospec.ai">autospec.ai</a> &nbsp;·&nbsp; <a href="mailto:info@autospec.ai">info@autospec.ai</a> &nbsp;·&nbsp; <a href="#" onclick="pcStartChat();return false;">Talk to us</a><br>
+    <a href="https://autospec.ai">autospec.ai</a> &nbsp;·&nbsp; <a href="#" onclick="pcStartChat();return false;">Talk to us</a><br>
     Powered by AI · Perfected by Humans
   </div>
 
+</div>
+
+
+<!-- Demo/Quote Modal -->
+<div class="modal-overlay" id="demoModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="sec-tag" style="margin-bottom:6px">Get started</div>
+    <h3>Request a Demo</h3>
+    <p>Tell us about your business and we'll get back to you quickly — usually within one business day.</p>
+    <div class="modal-form" id="modalForm">
+      <input type="text" class="modal-input" placeholder="Your name" id="mName">
+      <input type="email" class="modal-input" placeholder="Work email" id="mEmail">
+      <input type="text" class="modal-input" placeholder="Company name" id="mCompany">
+      <select class="modal-input" id="mType" style="cursor:pointer">
+        <option value="">I am a... (select one)</option>
+        <option>Food / Beverage Brand</option>
+        <option>Co-Manufacturer / Co-Packer</option>
+        <option>Ingredient Supplier</option>
+        <option>Alcohol / Spirits Producer</option>
+        <option>R&amp;D / Food Science</option>
+        <option>Regulatory / Quality</option>
+        <option>Other</option>
+      </select>
+      <textarea class="modal-input" placeholder="Tell us about your current challenges (optional)" rows="3" style="resize:vertical"></textarea>
+      <button class="btn btn-primary" onclick="submitModal()" style="width:100%;justify-content:center">Send Request →</button>
+    </div>
+    <div class="modal-success" id="modalSuccess">
+      <div class="ms-icon">✅</div>
+      <h4>Request received!</h4>
+      <p>We'll be in touch within one business day — usually much sooner.</p>
+    </div>
+  </div>
 </div>
 
 <!-- ══ AI LEAD CHAT WIDGET ══ -->
@@ -343,6 +398,38 @@ body{ font-family:var(--fb); background:var(--bg); color:var(--text); line-heigh
 </div>
 
 <script>
+
+// ── Demo form modal ──
+var modalSource = 'Postcard QR';
+function openModal(source){
+  modalSource = source || 'Postcard QR';
+  document.getElementById('demoModal').classList.add('open');
+  try{ gtag('event','postcard_form_open',{'source':'postcard_qr'}); }catch(e){}
+}
+function closeModal(){ document.getElementById('demoModal').classList.remove('open'); }
+document.getElementById('demoModal').addEventListener('click', function(e){ if(e.target===this) closeModal(); });
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
+
+function submitModal(){
+  var name=document.getElementById('mName').value.trim();
+  var email=document.getElementById('mEmail').value.trim();
+  var company=document.getElementById('mCompany').value.trim();
+  var type=document.getElementById('mType').value;
+  var msg=document.querySelector('#modalForm textarea').value.trim();
+  var emailInput=document.getElementById('mEmail');
+  if(!email || email.indexOf('@')===-1){ emailInput.style.borderColor='#c05050'; emailInput.placeholder='Please enter a valid email'; return; }
+  emailInput.style.borderColor='';
+  var btn=document.querySelector('#modalForm .btn-primary');
+  btn.textContent='Sending...'; btn.disabled=true;
+  fetch('https://formspree.io/f/xnjrzgga',{
+    method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({ Name:name, Email:email, Company:company, Type:type, Message:msg, Source:'Postcard QR — Form', _subject:'POSTCARD QR Form — '+(type||'Enquiry')+' — '+company })
+  }).then(function(res){
+    if(res.ok){ document.getElementById('modalForm').style.display='none'; document.getElementById('modalSuccess').style.display='block'; }
+    else { btn.textContent='Send Request →'; btn.disabled=false; alert('Something went wrong. Please try the chat instead.'); }
+  }).catch(function(){ btn.textContent='Send Request →'; btn.disabled=false; alert('Something went wrong. Please try the chat instead.'); });
+}
+
 function pcStartChat(){
   var w=document.getElementById('asChat');
   if(!w.classList.contains('open')) w.classList.add('open');
