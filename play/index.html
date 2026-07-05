@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Portal Purgatory, a game by AutoSpec.ai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pri:#8b35c8; --pri-lt:#a855d4; --pri-dk:#6820a0; --mag:#c020b0; --mag-lt:#d840c8;
+    --bg:#f9f8fc; --bg2:#f2eef9; --card:#ffffff; --bgdark:#180e2a;
+    --text:#1a1020; --text2:#3d2d55; --muted:#6b5585; --faint:#a090ba;
+    --bd:rgba(139,53,200,0.13); --bdh:rgba(139,53,200,0.32);
+    --sh:0 2px 16px rgba(100,40,160,0.08); --shlg:0 8px 40px rgba(100,40,160,0.12);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--bg); color:var(--text); font-family:'Plus Jakarta Sans',sans-serif; min-height:100vh;}
+  .wrap{max-width:1080px; margin:0 auto; padding:16px 16px 48px;}
+  .narrow{max-width:480px; margin:0 auto;}
+  h1,h2{font-family:'Raleway',sans-serif;}
+  .gtext{background:linear-gradient(90deg,var(--pri),var(--mag)); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .screen{display:none;}
+  .screen.on{display:block;}
+  .chip{display:inline-block; font-family:monospace; font-size:11px; letter-spacing:2px; color:var(--mag); border:1px solid var(--mag); border-radius:4px; padding:4px 10px; margin-bottom:18px; background:var(--card);}
+  .btn{display:block; width:100%; background:linear-gradient(135deg,var(--pri),var(--mag)); color:#fff; border:none; border-radius:8px; padding:14px; font-family:'Plus Jakarta Sans',sans-serif; font-size:16px; font-weight:600; cursor:pointer; margin-top:20px; text-align:center; text-decoration:none; box-shadow:var(--sh);}
+  .btn.ghost{background:var(--card); border:1px solid var(--pri); color:var(--pri); box-shadow:none;}
+  /* clearance level cards */
+  .lvl{display:block; background:var(--card); border:1px solid var(--bd); border-radius:10px; padding:14px 16px; margin-top:14px; color:var(--text); text-decoration:none; cursor:pointer; box-shadow:var(--sh);}
+  .lvl:active{transform:scale(.99);}
+  .lvl .lv{font-family:monospace; font-size:10.5px; letter-spacing:2px; color:var(--pri); margin-bottom:5px;}
+  .lvl b{font-size:15px; font-weight:600;}
+  .lvl p{font-size:13px; color:var(--muted); margin-top:4px; line-height:1.5;}
+  .lvl.hot{border:1.5px solid var(--mag); background:var(--bg2); padding:18px 16px; box-shadow:var(--shlg);}
+  .lvl.hot b{font-size:17px;}
+  .lvstat{font-family:monospace; font-size:11px !important; color:var(--mag) !important; margin-top:8px !important;}
+  /* HUD */
+  .hud{display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; background:var(--bg); padding:10px 0; z-index:5;}
+  .hud .t{font-family:monospace; font-size:26px; font-weight:700; color:var(--text);}
+  .hud .t.low{color:#c81e1e;}
+  .hud .e{font-size:13px; color:var(--muted);}
+  /* side-by-side layout */
+  .ggrid{display:grid; grid-template-columns:1fr; gap:18px;}
+  @media(min-width:920px){
+    .ggrid{grid-template-columns:1fr 1fr; align-items:start;}
+    .portal{order:1;}
+    .paperwrap{order:2; position:sticky; top:58px;}
+  }
+  /* the King Julian spec "PDF" */
+  .paperwrap{min-width:0;}
+  .paper{background:#fbfaf5; color:#1c1c1c; font-family:Arial,Helvetica,sans-serif; font-size:12px; border-radius:3px; padding:22px 22px 14px; box-shadow:var(--shlg); border:1px solid var(--bd); line-height:1.45;}
+  .kj-head{display:flex; justify-content:space-between; align-items:flex-start; border-bottom:3px double #8a6d1f; padding-bottom:8px; margin-bottom:10px;}
+  .kj-name{font-family:Georgia,'Times New Roman',serif; font-size:17px; font-weight:bold; color:#4a3a10; letter-spacing:.5px;}
+  .kj-name span{color:#8a6d1f;}
+  .kj-tag{font-size:10px; color:#777; font-style:italic; margin-top:2px;}
+  .kj-doc{font-size:10px; text-align:right; color:#444;}
+  .kj-meta{width:100%; border-collapse:collapse; font-size:10.5px; margin-bottom:12px;}
+  .kj-meta td{border:1px solid #aaa; padding:3px 6px;}
+  .kj-meta td:nth-child(odd){background:#efece1; font-weight:bold; width:16%;}
+  .kj-sec{font-size:11px; font-weight:bold; text-transform:uppercase; letter-spacing:1px; color:#4a3a10; border-bottom:1px solid #c9bd96; margin:12px 0 6px; padding-bottom:2px;}
+  .kj-kv{margin:2px 0;}
+  .kj-kv b{display:inline-block; min-width:150px; font-weight:bold;}
+  .kj-nut{width:100%; border-collapse:collapse; font-size:11.5px; margin-top:4px;}
+  .kj-nut th,.kj-nut td{border:1px solid #999; padding:3px 8px; text-align:left;}
+  .kj-nut th{background:#efece1;}
+  .kj-nut td:last-child, .kj-nut th:last-child{text-align:right;}
+  .kj-foot{font-size:9.5px; color:#888; border-top:1px solid #ccc; margin-top:14px; padding-top:5px; display:flex; justify-content:space-between;}
+  /* the hostile portal */
+  .portal{background:#ece9e2; border-radius:6px; overflow:hidden; color:#222; font-family:Tahoma,Verdana,sans-serif; font-size:13px; box-shadow:var(--shlg); min-width:0;}
+  .pbar{background:#003399; color:#fff; padding:8px 12px; font-size:12px; font-weight:bold; display:flex; justify-content:space-between;}
+  .pbar span{font-weight:normal; opacity:.8;}
+  .pbody{padding:14px 12px 18px;}
+  .pnote{background:#ffffcc; border:1px solid #cccc88; font-size:11px; padding:6px 8px; margin-bottom:12px; color:#555500;}
+  .psec{font-size:11px; font-weight:bold; color:#003399; text-transform:uppercase; letter-spacing:1px; margin:14px 0 8px; border-bottom:1px solid #bbb; padding-bottom:3px;}
+  .pfield{margin-bottom:13px;}
+  .pfield label{display:block; font-size:12px; font-weight:bold; margin-bottom:4px; color:#333;}
+  .pfield label em{font-weight:normal; font-style:normal; color:#999; font-size:11px;}
+  .pfield input[type=text], .pfield select{width:100%; padding:7px 8px; border:1px solid #999; background:#fff; font-family:Tahoma,sans-serif; font-size:13px; border-radius:0;}
+  .pfield input.bad, .pfield select.bad{border:2px solid #cc0000; background:#fff4f4;}
+  .perr{display:none; color:#cc0000; font-size:11px; margin-top:3px;}
+  .perr.show{display:block;}
+  .nrow{display:grid; grid-template-columns:1fr 76px 118px; gap:6px; align-items:center; margin-bottom:8px;}
+  .nrow label{font-size:11.5px; font-weight:bold; color:#333;}
+  .nrow input, .nrow select{padding:6px 6px; border:1px solid #999; background:#fff; font-family:Tahoma,sans-serif; font-size:12px; border-radius:0; width:100%;}
+  .nrow input.bad, .nrow select.bad{border:2px solid #cc0000; background:#fff4f4;}
+  .nerr{grid-column:1 / -1;}
+  .allerg{display:grid; grid-template-columns:1fr 1fr; gap:3px 8px; background:#fff; border:1px solid #999; padding:8px;}
+  .allerg label{font-size:11.5px; font-weight:normal; display:flex; align-items:center; gap:5px; margin:0; color:#222;}
+  .allerg.bad{border:2px solid #cc0000;}
+  .psubmit{background:#d4d0c8; border:2px outset #fff; padding:8px 22px; font-family:Tahoma,sans-serif; font-size:13px; font-weight:bold; cursor:pointer; color:#222;}
+  .req{color:#cc0000;}
+  /* modal sabotage */
+  .ovl{display:none; position:fixed; inset:0; background:rgba(24,14,42,.55); z-index:50; align-items:center; justify-content:center; padding:24px;}
+  .ovl.on{display:flex;}
+  .mbox{background:#ece9e2; color:#222; font-family:Tahoma,sans-serif; font-size:13px; max-width:340px; width:100%; border-radius:4px; overflow:hidden;}
+  .mbox .mh{background:#003399; color:#fff; padding:7px 12px; font-size:12px; font-weight:bold;}
+  .mbox .mb{padding:16px 14px; line-height:1.5;}
+  .mbox .mb small{color:#888; display:block; margin-top:8px; font-size:10.5px;}
+  .mbox .mf{padding:0 14px 14px; text-align:right;}
+  .toast{position:fixed; bottom:24px; left:50%; transform:translateX(-50%); background:var(--card); color:var(--text); font-size:13px; padding:10px 18px; border-radius:8px; border:1px solid var(--bdh); box-shadow:var(--shlg); z-index:60; display:none; max-width:90%; text-align:center;}
+  .toast.on{display:block;}
+  /* results */
+  .score-big{font-family:'Raleway',sans-serif; font-size:56px; font-weight:800; line-height:1;}
+  .stats{display:flex; gap:10px; margin:18px 0;}
+  .stat{flex:1; background:var(--card); border:1px solid var(--bd); border-radius:10px; padding:12px; text-align:center; box-shadow:var(--sh);}
+  .stat .v{font-size:22px; font-weight:600; font-family:'Raleway',sans-serif; color:var(--text);}
+  .stat .l{font-size:11px; color:var(--muted); margin-top:2px;}
+  .punch{font-family:'Raleway',sans-serif; font-size:20px; font-weight:700; margin:22px 0 6px; line-height:1.4; color:var(--text);}
+  .punch span{color:var(--mag);}
+  .sub{color:var(--muted); font-size:14px; line-height:1.6;}
+  /* leaderboard */
+  .initrow{display:flex; gap:10px; margin-top:16px;}
+  .initrow input{flex:1; background:var(--card); border:1px solid var(--bdh); border-radius:8px; color:var(--text); font-family:monospace; font-size:20px; letter-spacing:6px; text-align:center; padding:10px; text-transform:uppercase;}
+  .initrow button{background:var(--pri); color:#fff; border:none; border-radius:8px; padding:0 22px; font-weight:600; font-size:14px; cursor:pointer;}
+  .board{margin-top:16px;}
+  .board .row{display:flex; justify-content:space-between; font-family:monospace; font-size:14px; padding:7px 10px; border-bottom:1px solid var(--bd); color:var(--text2);}
+  .board .row.me{background:var(--bg2); border-radius:6px; color:var(--mag);}
+  a{color:var(--pri);}
+  /* contact form */
+  .cform{background:var(--card); border:1px solid var(--bd); border-radius:10px; padding:16px; margin-top:20px; box-shadow:var(--sh);}
+  .cform input, .cform textarea{width:100%; background:var(--bg); border:1px solid var(--bd); border-radius:8px; color:var(--text); font-family:'Plus Jakarta Sans',sans-serif; font-size:14px; padding:10px 12px; margin-bottom:10px;}
+  .cform textarea{min-height:70px; resize:vertical;}
+  .thanks{display:none; text-align:center; padding:18px 0 6px;}
+  .thanks.on{display:block;}
+  /* extraction demo */
+  .xdemo{background:var(--card); border:1px solid var(--bd); border-radius:10px; padding:16px; margin-top:18px; box-shadow:var(--sh);}
+  .xbar{height:10px; background:var(--bg2); border-radius:5px; overflow:hidden; margin-bottom:12px;}
+  .xbar i{display:block; height:100%; width:0; background:linear-gradient(90deg,var(--pri),var(--mag)); transition:width .8s ease-out;}
+  .xrow{font-family:monospace; font-size:12.5px; line-height:1.9; opacity:0; transition:opacity .35s; color:var(--text2);}
+  .xrow.on{opacity:1;}
+  .xrow .ok{color:#0f7a55;}
+  /* mug */
+  .mugbox{display:flex; justify-content:center; margin:18px 0 6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- INTRO / CLEARANCE SELECT -->
+  <section id="s-intro" class="screen on">
+    <div class="narrow" style="padding-top:32px;">
+      <a href="https://autospec.ai"><img src="https://autospec.ai/autospec-logo.png" alt="AutoSpec.ai" style="height:36px; display:block; margin-bottom:20px;"></a>
+      <span class="chip">CLEARANCE GRANTED</span>
+      <h1 class="gtext" style="font-size:30px; font-weight:800; line-height:1.15;">You scanned the postcard.<br>Good instinct.</h1>
+      <p class="sub" style="margin-top:12px;">AutoSpec.ai builds AI agents that move food spec data between suppliers, brands, and co-packers, so nobody retypes anything, ever. Now choose your clearance level.</p>
+
+      <a class="lvl" href="https://autospec.ai/?src=game-tourist">
+        <div class="lv">LEVEL 1 &middot; TOURIST</div>
+        <b>Take me directly to the website</b>
+        <p>Straight to autospec.ai. No suffering involved. (Where's the fun in that?)</p>
+      </a>
+
+      <div class="lvl hot" onclick="startGame()">
+        <div class="lv" style="color:var(--mag);">LEVEL 2 &middot; FIELD AGENT</div>
+        <b>Play Portal Purgatory &#8594; win a travel mug</b>
+        <p>75 seconds as a food supplier in portal hell. One spec PDF, one hostile portal, zero mercy. Beat the portal and we mail you an AutoSpec.ai travel mug.</p>
+        <p class="lvstat" id="record">87% of players lose to the portal. Your suppliers play it daily.</p>
+      </div>
+
+      <p style="font-size:11px; color:var(--faint); margin-top:14px; text-align:center;">&#10022; Powered by AI. Perfected by Humans. A game by AutoSpec.ai</p>
+    </div>
+  </section>
+
+  <!-- GAME -->
+  <section id="s-game" class="screen">
+    <div class="hud">
+      <div class="t" id="timer">1:15</div>
+      <div class="e">Errors: <span id="errct">0</span></div>
+    </div>
+    <p style="font-size:12.5px; color:var(--muted); margin:0 0 12px; line-height:1.5;"><b style="color:var(--text);">Your mission:</b> type the data from the King Julian spec sheet (the paper document) into the SpecTangle portal, in the portal's format and units. Submit before the clock hits zero.</p>
+
+    <div class="ggrid">
+
+      <!-- KING JULIAN SPEC PDF -->
+      <div class="paperwrap">
+      <div class="paper">
+        <div class="kj-head">
+          <div>
+            <div class="kj-name">&#9819; KING JULIAN <span>INGREDIENTS CO.</span></div>
+            <div class="kj-tag">Est. 2009 &middot; Certified B-Corp &middot; Antananarivo, Madagascar</div>
+          </div>
+          <div class="kj-doc">MANUFACTURER PRODUCT SPEC SHEET<br>Item # KJF-4821 &middot; Mfg #30291<br>Rev: 7 &middot; Status: APPROVED</div>
+        </div>
+        <table class="kj-meta">
+          <tr><td>Product</td><td>Whole Wheat Flour</td><td>Net weight</td><td>50 lbs (22.6 kg)</td></tr>
+          <tr><td>UPC</td><td>0 84723 302917</td><td>Updated</td><td>03/14/26</td></tr>
+        </table>
+
+        <div class="kj-sec">1. Product identification</div>
+        <div class="kj-kv"><b>Description</b> Finely ground whole grain flour milled from 100% of the wheat kernel. High in protein. Ideal for yeasted breads, rolls, and pizza.</div>
+        <div class="kj-kv"><b>Date of manufacture</b> 03/14/26 (lot code is mill packed date)</div>
+        <div class="kj-kv"><b>Shelf life</b> 180 days when stored cool and dry</div>
+        <div class="kj-kv"><b>Country of provenance</b> Madagascar</div>
+
+        <div class="kj-sec">2. Physical &amp; chemical specifications</div>
+        <table class="kj-nut">
+          <tr><th>Parameter</th><th>Specification</th></tr>
+          <tr><td>Protein (14% M.B.)</td><td>14% &plusmn; 0.3%</td></tr>
+          <tr><td>Moisture</td><td>14% maximum</td></tr>
+          <tr><td>Ash (14% M.B.)</td><td>&gt; 1.5%</td></tr>
+          <tr><td>Falling Number</td><td>&gt; 350 sec</td></tr>
+        </table>
+
+        <div class="kj-sec">3. Nutritional information (typical, per 100 g)</div>
+        <table class="kj-nut">
+          <tr><th>Nutrient</th><th>Value</th></tr>
+          <tr><td>Energy</td><td>1424 kJ / 340 kcal</td></tr>
+          <tr><td>Fat</td><td>2.5 g</td></tr>
+          <tr><td>&nbsp;&nbsp;of which saturates</td><td>0.43 g</td></tr>
+          <tr><td>Carbohydrate</td><td>68 g</td></tr>
+          <tr><td>&nbsp;&nbsp;of which sugars</td><td>0.41 g</td></tr>
+          <tr><td>Dietary fibre</td><td>10.7 g</td></tr>
+          <tr><td>Protein</td><td>14 g</td></tr>
+          <tr><td>Sodium</td><td>2 mg</td></tr>
+        </table>
+
+        <div class="kj-sec">4. Allergen information</div>
+        <div class="kj-kv">Product is derived from <b style="min-width:0;">WHEAT</b>. Manufactured in a facility that processes wheat products.</div>
+
+        <div class="kj-foot"><span>KJF-4821 Rev 7 &middot; Uncontrolled when printed</span><span>Page 1 of 6</span></div>
+      </div>
+      </div>
+
+      <!-- HOSTILE PORTAL -->
+      <div class="portal">
+        <div class="pbar">SpecTangle&trade; Supplier Portal <span>Snarl&reg; v3.2.1</span></div>
+        <div class="pbody">
+          <div style="font-size:10.5px; color:#888; margin:-4px 0 10px; font-style:italic;">The World's Only Networked Ingredients Labyrinth&reg;</div>
+          <div class="pnote">&#9888; All fields are mandatory. All work is performed by the supplier, at the behest of the customer. Forms cannot be exported to Excel. Pictures are not handled well. You have <b>39 pending connection requests</b>.</div>
+
+          <div class="psec">A. Item identification</div>
+
+          <div class="pfield">
+            <label>Supplier item reference <span class="req">*</span></label>
+            <input type="text" id="f-ref" autocomplete="off">
+            <div class="perr" id="e-ref">Invalid format. Expected pattern: AAA-0000</div>
+          </div>
+
+          <div class="pfield">
+            <label>Customer item code <em>(as assigned by your customer)</em> <span class="req">*</span></label>
+            <input type="text" id="f-cust" autocomplete="off">
+            <div class="perr" id="e-cust">Invalid customer item code.</div>
+            <div style="font-size:11px; margin-top:4px;"><a href="#" id="codehelp" style="color:#003399;" onclick="return requestCode()">Where do I find this code?</a> <span id="codeinfo" style="color:#555;"></span></div>
+          </div>
+
+          <div class="psec">B. Physical &amp; chemical <span style="font-weight:normal; text-transform:none;">(select unit for EACH value)</span></div>
+          <div id="physbox"></div>
+
+          <div class="psec">C. Nutritional declaration <span style="font-weight:normal; text-transform:none;">(select unit for EACH value)</span></div>
+          <div id="nutbox"></div>
+
+          <div class="psec">D. Compliance</div>
+
+          <div class="pfield">
+            <label>Allergen declaration <em>(EU FIC Annex II)</em> <span class="req">*</span></label>
+            <div class="allerg" id="f-allerg"></div>
+            <div class="perr" id="e-allerg">Declaration does not match reference data.</div>
+          </div>
+
+          <div class="pfield">
+            <label>Production date <em>(DD/MM/YYYY)</em> <span class="req">*</span></label>
+            <input type="text" id="f-date" autocomplete="off">
+            <div class="perr" id="e-date">Date must be in DD/MM/YYYY format.</div>
+          </div>
+
+          <div class="pfield">
+            <label>Country of provenance <span class="req">*</span></label>
+            <select id="f-country"><option value="">-- Select --</option></select>
+            <div class="perr" id="e-country">Selection does not match reference data.</div>
+          </div>
+
+          <button class="psubmit" onclick="submitPortal()">Submit</button>
+          <button class="psubmit" style="margin-left:8px;" onclick="excelDecoy()">Export to Excel</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RESULTS (LOSE) -->
+  <section id="s-result" class="screen">
+    <div class="narrow" style="padding-top:28px;">
+      <a href="https://autospec.ai"><img src="https://autospec.ai/autospec-logo.png" alt="AutoSpec.ai" style="height:32px; display:block; margin-bottom:18px;"></a>
+      <p class="sub" style="letter-spacing:1px; font-size:12px; text-transform:uppercase;">Time's up. The portal wins. It usually does.</p>
+      <div class="score-big gtext" id="score">0</div>
+      <div class="stats">
+        <div class="stat"><div class="v" id="st-time">0</div><div class="l">time</div></div>
+        <div class="stat"><div class="v" id="st-fields">0</div><div class="l">fields correct</div></div>
+        <div class="stat"><div class="v" id="st-err">0</div><div class="l">errors</div></div>
+      </div>
+
+      <p class="punch">Level 3? <span>There is no level 3.</span><br>That's the point.</p>
+      <p class="sub">Your suppliers play this game for real, for every customer, in every portal, after every spec change. AutoSpec agents make the whole game disappear.</p>
+
+      <div id="entry">
+        <div class="initrow">
+          <input type="text" id="initials" maxlength="3" placeholder="AAA">
+          <button onclick="saveScore()">Save score</button>
+        </div>
+      </div>
+      <div class="board" id="board"></div>
+
+      <button class="btn" onclick="showDemo()">See how AutoSpec does this in 0.8 seconds &#8594;</button>
+      <button class="btn ghost" onclick="location.reload()">Play again</button>
+    </div>
+  </section>
+
+  <!-- WIN -->
+  <section id="s-win" class="screen">
+    <div class="narrow" style="padding-top:28px;">
+      <a href="https://autospec.ai"><img src="https://autospec.ai/autospec-logo.png" alt="AutoSpec.ai" style="height:32px; display:block; margin-bottom:18px;"></a>
+      <span class="chip">PORTAL DEFEATED</span>
+      <h1 class="gtext" style="font-size:32px; font-weight:800; line-height:1.15;">You won.</h1>
+      <p class="sub" style="margin-top:10px;" id="winstats">You beat the portal.</p>
+
+      <div class="mugbox">
+        <svg width="150" height="130" viewBox="0 0 150 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AutoSpec.ai travel mug">
+          <path d="M45 14 h60 a6 6 0 0 1 6 6 v8 h-72 v-8 a6 6 0 0 1 6-6 z" fill="#a855d4"/>
+          <path d="M41 28 h68 l-6 84 a10 10 0 0 1 -10 9 h-36 a10 10 0 0 1 -10-9 z" fill="#8b35c8"/>
+          <rect x="44" y="56" width="62" height="26" fill="#c020b0"/>
+          <text x="75" y="70" text-anchor="middle" font-family="Raleway,Arial,sans-serif" font-size="11" font-weight="800" fill="#fff">AutoSpec.ai</text>
+          <text x="75" y="79" text-anchor="middle" font-family="Arial,sans-serif" font-size="6" fill="#fde" letter-spacing="1">PORTAL SURVIVOR</text>
+          <rect x="62" y="6" width="26" height="8" rx="3" fill="#6820a0"/>
+        </svg>
+      </div>
+
+      <p class="sub" style="text-align:center;">That wins you an <b style="color:var(--text);">AutoSpec.ai travel mug</b>. Tell us where to send it.</p>
+
+      <div class="cform" id="winform">
+        <input type="text" id="w-name" placeholder="Full name">
+        <input type="text" id="w-email" placeholder="Work email">
+        <input type="text" id="w-company" placeholder="Company">
+        <textarea id="w-address" placeholder="Mailing address for your mug"></textarea>
+        <button class="btn" style="margin-top:4px;" onclick="submitContact()">Claim my mug</button>
+      </div>
+      <div class="thanks" id="winthanks">
+        <p class="punch" style="margin:0 0 6px;">Mug incoming. &#9749;</p>
+        <p class="sub">We will be in touch. Meanwhile, want to see the easy way?</p>
+      </div>
+
+      <button class="btn ghost" onclick="showDemo()">What you just did, in 0.8 seconds &#8594;</button>
+    </div>
+  </section>
+
+  <!-- DEMO / THE EASY WAY -->
+  <section id="s-demo" class="screen">
+    <div class="narrow" style="padding-top:28px;">
+      <a href="https://autospec.ai"><img src="https://autospec.ai/autospec-logo.png" alt="AutoSpec.ai" style="height:32px; display:block; margin-bottom:18px;"></a>
+      <span class="chip">THE EASY WAY</span>
+      <h1 class="gtext" style="font-size:28px; font-weight:800; line-height:1.15;">Same PDF.<br>Zero typing.</h1>
+      <p class="sub" style="margin-top:10px;">This is what AutoSpec.ai does with the exact King Julian spec you just fought. Drop the PDF in. Done.</p>
+
+      <div class="xdemo">
+        <div class="xbar"><i id="xfill"></i></div>
+        <div class="xrow"><span class="ok">&#10003;</span> Item KJF-4821 identified and structured</div>
+        <div class="xrow"><span class="ok">&#10003;</span> 1424 kJ converted to 340 kcal automatically</div>
+        <div class="xrow"><span class="ok">&#10003;</span> Sodium 2 mg became salt 0.005 g (&times;2.5)</div>
+        <div class="xrow"><span class="ok">&#10003;</span> WHEAT mapped to "Cereals containing gluten"</div>
+        <div class="xrow"><span class="ok">&#10003;</span> 03/14/26 normalized to 14/03/2026</div>
+        <div class="xrow"><span class="ok">&#10003;</span> Moisture, ash, protein, falling number extracted</div>
+        <div class="xrow"><span class="ok">&#10003;</span> Delivered to customer and co-packer in <b>0.8 seconds</b></div>
+        <div class="xrow" style="margin-top:8px;"><b style="color:var(--mag);">Nobody typed anything.</b></div>
+      </div>
+
+      <a class="btn" href="https://autospec.ai/?src=game-demo#live">See the full Platform in Action &#8594;</a>
+
+      <button class="btn ghost" onclick="location.reload()">Back to start</button>
+    </div>
+  </section>
+</div>
+
+<!-- MISSION BRIEFING -->
+<div class="ovl" id="m-brief">
+  <div style="background:var(--card); border-radius:12px; max-width:420px; width:100%; padding:24px; box-shadow:var(--shlg);">
+    <span class="chip">MISSION BRIEFING</span>
+    <h2 class="gtext" style="font-size:22px; margin-bottom:10px;">You are the supplier.</h2>
+    <p class="sub" style="margin-bottom:8px;"><b style="color:var(--text);">1.</b> The paper spec sheet from King Julian Ingredients is your source of truth.</p>
+    <p class="sub" style="margin-bottom:8px;"><b style="color:var(--text);">2.</b> Type its data into the SpecTangle portal, field by field, in the portal's format and units. Not yours. Theirs.</p>
+    <p class="sub" style="margin-bottom:8px;"><b style="color:var(--text);">3.</b> Hit Submit before the clock hits zero. All 13 fields correct wins the travel mug.</p>
+    <p class="sub" style="color:var(--mag);">Fair warning: the portal will fight you.</p>
+    <button class="btn" onclick="beginRun()">Start the 75 seconds</button>
+  </div>
+</div>
+
+<!-- SABOTAGE MODALS -->
+<div class="ovl" id="m-session">
+  <div class="mbox">
+    <div class="mh">SpecTangle&trade; Security</div>
+    <div class="mb">Your session has expired due to inactivity.<small>You were active. It doesn't matter.</small></div>
+    <div class="mf"><button class="psubmit" onclick="resumeSession()">Sign in again</button></div>
+  </div>
+</div>
+<div class="ovl" id="m-template">
+  <div class="mbox">
+    <div class="mh">SpecTangle&trade; Update</div>
+    <div class="mb">This portal has been upgraded to <b>Snarl&reg; Template v3.3</b>. Your allergen, provenance, and unit-of-measure selections have been reset to comply with the new schema.<small>The new schema is identical to the old schema. To request this fix, please become a larger customer.</small></div>
+    <div class="mf"><button class="psubmit" onclick="resumeTemplate()">OK, I guess</button></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+var TIME = 75;
+var FORM_ENDPOINT = "";
+var timeLeft = TIME, errors = 0, finished = false, tickIv = null, sabT = [];
+
+var ALLERGENS = ["Cereals containing gluten","Crustaceans","Eggs","Fish","Peanuts","Soya","Milk","Nuts","Celery","Mustard"];
+var CORRECT_ALLERG = {"Cereals containing gluten":1};
+var COUNTRIES = ["Argentina","Australia","Belgium","Brazil","Canada","Chile","China","Denmark","Egypt","France","Germany","Ghana","India","Indonesia","Ireland","Italy","Japan","Kenya","Madagascar","Mexico","Morocco","Netherlands (Kingdom of the)","New Zealand","Nigeria","Norway","Poland","Portugal","Spain","Sweden","Switzerland","Thailand","Türkiye","United Arab Emirates (the)","United Kingdom of Great Britain and Northern Ireland (the)","United States of America (the)","Viet Nam"];
+var COUNTRY_OK = "Madagascar";
+
+var UNITS = ["%","g/100g","mg/100g","kJ/100g","kcal/100g","%RI","g/serving","sec"];
+var PHYS = [
+  { id:"moist", label:"Moisture (maximum)", val:14,  unit:"%" },
+  { id:"ash",   label:"Ash (14% M.B.)",     val:1.5, unit:"%" }
+];
+var NUTS = [
+  { id:"energy",  label:"Energy",             val:340,   unit:"kcal/100g" },
+  { id:"fat",     label:"Total fat",          val:2.5,   unit:"g/100g" },
+  { id:"satfat",  label:"of which saturates", val:0.43,  unit:"g/100g" },
+  { id:"carbs",   label:"Carbohydrate",       val:68,    unit:"g/100g" },
+  { id:"protein", label:"Protein",            val:14,    unit:"g/100g" },
+  { id:"salt",    label:"Salt",               val:0.005, unit:"g/100g" }
+];
+var ALLROWS = PHYS.concat(NUTS);
+
+function $(id){ return document.getElementById(id); }
+function show(id){
+  ["s-intro","s-game","s-result","s-win","s-demo"].forEach(function(s){ $(s).classList.remove("on"); });
+  $(id).classList.add("on");
+  window.scrollTo(0,0);
+}
+function toast(msg){
+  var t = $("toast"); t.textContent = msg; t.classList.add("on");
+  setTimeout(function(){ t.classList.remove("on"); }, 3000);
+}
+
+(function buildInputs(){
+  var box = $("f-allerg");
+  ALLERGENS.forEach(function(a){
+    var l = document.createElement("label");
+    var c = document.createElement("input");
+    c.type = "checkbox"; c.value = a;
+    l.appendChild(c); l.appendChild(document.createTextNode(a));
+    box.appendChild(l);
+  });
+  var sel = $("f-country");
+  COUNTRIES.forEach(function(c){
+    var o = document.createElement("option");
+    o.value = c; o.textContent = c;
+    sel.appendChild(o);
+  });
+  function buildRows(list, boxId){
+    var nb = $(boxId);
+    list.forEach(function(n){
+      var row = document.createElement("div");
+      row.className = "nrow";
+      row.innerHTML = '<label>' + n.label + ' <span class="req">*</span></label>' +
+        '<input type="text" id="nv-' + n.id + '" autocomplete="off" inputmode="decimal">' +
+        '<select id="nu-' + n.id + '"><option value="">-- unit --</option></select>' +
+        '<div class="perr nerr" id="ne-' + n.id + '"></div>';
+      nb.appendChild(row);
+      var us = row.querySelector("select");
+      UNITS.forEach(function(u){
+        var o = document.createElement("option");
+        o.value = u; o.textContent = u;
+        us.appendChild(o);
+      });
+    });
+  }
+  buildRows(PHYS, "physbox");
+  buildRows(NUTS, "nutbox");
+})();
+
+function startGame(){
+  show("s-game");
+  $("m-brief").classList.add("on");
+}
+
+function beginRun(){
+  $("m-brief").classList.remove("on");
+  if(tickIv) return;
+  tickIv = setInterval(tick, 1000);
+  sabT.push(setTimeout(function(){ if(!finished) $("m-session").classList.add("on"); }, 25000));
+  sabT.push(setTimeout(function(){ if(!finished) $("m-template").classList.add("on"); }, 50000));
+}
+
+function tick(){
+  timeLeft--;
+  var m = Math.floor(timeLeft/60), s = timeLeft%60;
+  $("timer").textContent = m + ":" + (s<10?"0":"") + s;
+  if(timeLeft <= 10) $("timer").classList.add("low");
+  if(timeLeft <= 0) finish(false);
+}
+
+var codeState = 0;
+function requestCode(){
+  if(codeState) return false;
+  codeState = 1;
+  $("codehelp").style.display = "none";
+  var info = $("codeinfo");
+  info.textContent = "Please email Global.SupplyQuality@ to obtain YOUR OWN product codes. Awaiting reply (typically 3 to 5 business days)...";
+  setTimeout(function(){
+    if(finished) return;
+    info.innerHTML = 'Reply received: your item code is <b>KRY-88213</b>.';
+    toast("A reply! In only 8 seconds. This never happens.");
+  }, 8000);
+  return false;
+}
+
+function excelDecoy(){
+  toast("Online forms must be completed via the platform and cannot be exported to Excel.");
+}
+
+function resumeSession(){
+  $("m-session").classList.remove("on");
+  var ids = ["nv-energy","nv-moist","nv-fat","f-date","f-ref","f-cust"];
+  for(var i=0; i<ids.length; i++){
+    if($(ids[i]).value){ $(ids[i]).value = ""; break; }
+  }
+  toast("Field data was lost during re-authentication.");
+}
+
+function resumeTemplate(){
+  $("m-template").classList.remove("on");
+  $("f-allerg").querySelectorAll("input").forEach(function(b){ b.checked = false; });
+  $("f-country").value = "";
+  ALLROWS.forEach(function(n){ $("nu-" + n.id).value = ""; });
+  toast("Selections reset. Thank you for your compliance.");
+}
+
+function mark(id, bad, msg){
+  var el = $(id), err = $(id.replace("f-","e-"));
+  el.classList.toggle("bad", bad);
+  if(msg) err.textContent = msg;
+  err.classList.toggle("show", bad);
+}
+
+function numVal(id){
+  var raw = $(id).value.trim().replace(",", ".");
+  if(raw === "" || !/^\d+(\.\d+)?$/.test(raw)) return null;
+  return parseFloat(raw);
+}
+
+function checkNut(n){
+  var v = numVal("nv-" + n.id);
+  var u = $("nu-" + n.id).value;
+  return v !== null && Math.abs(v - n.val) < 0.001 && u === n.unit;
+}
+
+function nutError(n){
+  var raw = $("nv-" + n.id).value.trim();
+  var v = numVal("nv-" + n.id);
+  var u = $("nu-" + n.id).value;
+  if(raw === "") return "Value is mandatory.";
+  if(v === null) return "Numeric value only. Do not include units or symbols.";
+  if(n.id === "energy" && (Math.abs(v-1424) < 0.001 || u === "kJ/100g")) return "Customer template accepts kcal/100g only. Convert your kJ.";
+  if(n.id === "salt" && (Math.abs(v-2) < 0.001 || Math.abs(v-0.002) < 0.0001)) return "Portal requires SALT in g, not sodium. Salt = sodium × 2.5. Yes, even at 2 mg.";
+  if(n.id === "ash" && Math.abs(v-14) < 0.001) return "That is the moisture value. Ash is a different row.";
+  if(u === "") return "Select a unit of measure.";
+  if(Math.abs(v - n.val) < 0.001 && u !== n.unit) return "Unit of measure not accepted for this parameter.";
+  return "Value does not match reference data.";
+}
+
+function submitPortal(){
+  if(finished) return;
+  var fails = 0;
+
+  var ref = $("f-ref").value.trim().toUpperCase();
+  if(ref === "KJF-4821"){ mark("f-ref", false); }
+  else if(ref === "30291"){ mark("f-ref", true, "That is the manufacturing number. Use the item number."); fails++; }
+  else { mark("f-ref", true, ref === "" ? "This field is mandatory." : "Invalid format. Expected pattern: AAA-0000"); fails++; }
+
+  var cust = $("f-cust").value.trim().toUpperCase();
+  if(cust === "KRY-88213"){ mark("f-cust", false); }
+  else if(cust === ""){ mark("f-cust", true, "This field is mandatory."); fails++; }
+  else if(cust === "KJF-4821"){ mark("f-cust", true, "Use your CUSTOMER'S item code, not your internal reference."); fails++; }
+  else { mark("f-cust", true, "Invalid customer item code."); fails++; }
+
+  ALLROWS.forEach(function(n){
+    var ok = checkNut(n);
+    var vEl = $("nv-" + n.id), uEl = $("nu-" + n.id), eEl = $("ne-" + n.id);
+    vEl.classList.toggle("bad", !ok);
+    uEl.classList.toggle("bad", !ok);
+    if(!ok){ eEl.textContent = nutError(n); eEl.classList.add("show"); fails++; }
+    else { eEl.classList.remove("show"); }
+  });
+
+  var checked = {};
+  $("f-allerg").querySelectorAll("input").forEach(function(b){ if(b.checked) checked[b.value] = 1; });
+  var aOk = Object.keys(CORRECT_ALLERG).every(function(k){ return checked[k]; }) &&
+            Object.keys(checked).every(function(k){ return CORRECT_ALLERG[k]; });
+  if(aOk){ $("f-allerg").classList.remove("bad"); $("e-allerg").classList.remove("show"); }
+  else {
+    $("f-allerg").classList.add("bad");
+    $("e-allerg").textContent = 'Hint: "Wheat" is not a valid FIC term in this portal. Facility warnings are not declared here.';
+    $("e-allerg").classList.add("show"); fails++;
+  }
+
+  var dt = $("f-date").value.trim();
+  if(dt === "14/03/2026"){ mark("f-date", false); }
+  else if(dt === ""){ mark("f-date", true, "This field is mandatory."); fails++; }
+  else if(dt === "03/14/2026" || dt === "03/14/26"){ mark("f-date", true, "That is US format. The template requires DD/MM/YYYY."); fails++; }
+  else { mark("f-date", true, "Date must be in DD/MM/YYYY format (4-digit year)."); fails++; }
+
+  if($("f-country").value === COUNTRY_OK){ mark("f-country", false); }
+  else { mark("f-country", true, $("f-country").value === "" ? "This field is mandatory." : "Selection does not match reference data."); fails++; }
+
+  errors += fails;
+  $("errct").textContent = errors;
+  if(fails === 0){ finish(true); }
+  else { toast(fails + " validation error" + (fails>1?"s":"") + ". Please review the highlighted fields."); }
+}
+
+function countCorrect(){
+  var n = 0;
+  if($("f-ref").value.trim().toUpperCase() === "KJF-4821") n++;
+  if($("f-cust").value.trim().toUpperCase() === "KRY-88213") n++;
+  ALLROWS.forEach(function(x){ if(checkNut(x)) n++; });
+  var checked = {};
+  $("f-allerg").querySelectorAll("input").forEach(function(b){ if(b.checked) checked[b.value] = 1; });
+  if(Object.keys(CORRECT_ALLERG).every(function(k){ return checked[k]; }) &&
+     Object.keys(checked).every(function(k){ return CORRECT_ALLERG[k]; })) n++;
+  if($("f-date").value.trim() === "14/03/2026") n++;
+  if($("f-country").value === COUNTRY_OK) n++;
+  return n;
+}
+
+var finalScore = 0;
+function finish(win){
+  if(finished) return;
+  finished = true;
+  clearInterval(tickIv);
+  sabT.forEach(clearTimeout);
+  $("m-session").classList.remove("on");
+  $("m-template").classList.remove("on");
+
+  var fieldsOk = countCorrect();
+  var used = TIME - Math.max(timeLeft, 0);
+  finalScore = Math.max(0, fieldsOk*100 + Math.max(timeLeft,0)*10 - errors*25);
+
+  if(win){
+    $("winstats").textContent = "13 fields. " + used + " seconds. " + errors + " error" + (errors===1?"":"s") + " along the way. Almost nobody does that.";
+    show("s-win");
+  } else {
+    $("score").textContent = finalScore;
+    $("st-time").textContent = used + "s";
+    $("st-fields").textContent = fieldsOk + "/13";
+    $("st-err").textContent = errors;
+    show("s-result");
+    renderBoard(null);
+  }
+}
+
+var demoRun = false;
+function showDemo(){
+  show("s-demo");
+  if(demoRun) return;
+  demoRun = true;
+  setTimeout(function(){ $("xfill").style.width = "100%"; }, 400);
+  var rows = document.querySelectorAll("#s-demo .xrow");
+  rows.forEach(function(r, i){
+    setTimeout(function(){ r.classList.add("on"); }, 1200 + i*380);
+  });
+}
+
+function submitContact(){
+  var f = {
+    name:$("w-name").value.trim(),
+    email:$("w-email").value.trim(),
+    company:$("w-company").value.trim(),
+    address:$("w-address").value.trim()
+  };
+  if(!f.name || !f.email){ toast("Name and email are required."); return; }
+  f.type = "Mug winner (Portal Purgatory)";
+  f.score = finalScore;
+  function done(){
+    $("winform").style.display = "none";
+    $("winthanks").classList.add("on");
+  }
+  if(FORM_ENDPOINT){
+    fetch(FORM_ENDPOINT, {
+      method:"POST",
+      headers:{ "Content-Type":"application/json", "Accept":"application/json" },
+      body: JSON.stringify(f)
+    }).then(done).catch(function(){
+      window.location.href = mailtoLink(f); done();
+    });
+  } else {
+    window.location.href = mailtoLink(f);
+    done();
+  }
+}
+
+function mailtoLink(f){
+  var body = Object.keys(f).map(function(k){ return k + ": " + f[k]; }).join("\n");
+  return "mailto:info@autospec.ai?subject=" + encodeURIComponent(f.type) + "&body=" + encodeURIComponent(body);
+}
+
+function getBoard(){
+  try { return JSON.parse(localStorage.getItem("pp_scores") || "[]"); }
+  catch(e){ return []; }
+}
+
+function saveScore(){
+  var name = ($("initials").value.trim().toUpperCase() || "???").slice(0,3);
+  var list = getBoard();
+  list.push({ n: name, s: finalScore, t: Date.now() });
+  list.sort(function(a,b){ return b.s - a.s; });
+  list = list.slice(0, 10);
+  try { localStorage.setItem("pp_scores", JSON.stringify(list)); } catch(e){}
+  $("entry").style.display = "none";
+  renderBoard(name);
+}
+
+function renderBoard(me){
+  var list = getBoard();
+  if(!list.length){ $("board").innerHTML = ""; return; }
+  var html = '<div class="row" style="color:var(--faint); font-size:11px;"><span>LEADERBOARD (this device)</span><span>SCORE</span></div>';
+  var hl = false;
+  list.forEach(function(r, i){
+    var isMe = me && !hl && r.n === me && r.s === finalScore;
+    if(isMe) hl = true;
+    html += '<div class="row' + (isMe ? " me" : "") + '"><span>' + (i+1) + '. ' + r.n.replace(/[<>&]/g,"") + '</span><span>' + r.s + '</span></div>';
+  });
+  $("board").innerHTML = html;
+}
+
+(function teaseRecord(){
+  var b = getBoard();
+  if(b.length){
+    $("record").textContent = "Record on this device: " + b[0].s + " (" + b[0].n + "). Beat it.";
+  }
+})();
+</script>
+</body>
+</html>
