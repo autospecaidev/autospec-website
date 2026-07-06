@@ -119,8 +119,11 @@
   a{color:var(--pri);}
   /* contact form */
   .cform{background:var(--card); border:1px solid var(--bd); border-radius:10px; padding:16px; margin-top:20px; box-shadow:var(--sh);}
-  .cform input, .cform textarea{width:100%; background:var(--bg); border:1px solid var(--bd); border-radius:8px; color:var(--text); font-family:'Plus Jakarta Sans',sans-serif; font-size:14px; padding:10px 12px; margin-bottom:10px;}
+  .cform input, .cform textarea, .cform select{width:100%; background:var(--bg); border:1px solid var(--bd); border-radius:8px; color:var(--text); font-family:'Plus Jakarta Sans',sans-serif; font-size:14px; padding:10px 12px; margin-bottom:10px;}
   .cform textarea{min-height:70px; resize:vertical;}
+  .cform input:focus, .cform textarea:focus, .cform select:focus{outline:none; border-color:var(--bdh);}
+  .cform input.err, .cform textarea.err, .cform select.err{border-color:#c81e1e; background:#fdf3f5;}
+  .cform .perr{color:#c81e1e; font-size:12px;}
   .thanks{display:none; text-align:center; padding:18px 0 6px;}
   .thanks.on{display:block;}
   /* extraction demo */
@@ -154,7 +157,7 @@
       <div class="lvl hot" onclick="startGame()">
         <div class="lv" style="color:var(--mag);">LEVEL 2 &middot; FIELD AGENT</div>
         <b>Play Portal Purgatory &#8594; win a travel mug</b>
-        <p>75 seconds as a food supplier in portal hell. One spec PDF, one hostile portal, zero mercy. Beat the portal and we mail you an Autospec.ai travel mug.</p>
+        <p>Two minutes as a food supplier in portal hell. One spec PDF, one hostile portal, zero mercy. Beat the portal and we mail you an Autospec.ai travel mug.</p>
         <p class="lvstat" id="record">87% of players lose to the portal. Your suppliers play it daily.</p>
       </div>
 
@@ -165,7 +168,7 @@
   <!-- GAME -->
   <section id="s-game" class="screen">
     <div class="hud">
-      <div class="t" id="timer">1:15</div>
+      <div class="t" id="timer">2:00</div>
       <div class="e">Errors: <span id="errct">0</span></div>
     </div>
     <p style="font-size:12.5px; color:var(--muted); margin:0 0 12px; line-height:1.5;"><b style="color:var(--text);">Your mission:</b> type the data from the King Julian spec sheet (the paper document) into the SpecTangle portal, in the portal's format and units. Submit before the clock hits zero.</p>
@@ -315,28 +318,35 @@
       <p class="sub" style="margin-top:10px;" id="winstats">You beat the portal.</p>
 
       <div class="mugbox">
-        <svg width="150" height="130" viewBox="0 0 150 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Autospec.ai travel mug">
-          <path d="M45 14 h60 a6 6 0 0 1 6 6 v8 h-72 v-8 a6 6 0 0 1 6-6 z" fill="#a855d4"/>
-          <path d="M41 28 h68 l-6 84 a10 10 0 0 1 -10 9 h-36 a10 10 0 0 1 -10-9 z" fill="#8b35c8"/>
-          <rect x="44" y="56" width="62" height="26" fill="#c020b0"/>
-          <text x="75" y="70" text-anchor="middle" font-family="Raleway,Arial,sans-serif" font-size="11" font-weight="800" fill="#fff">Autospec.ai</text>
-          <text x="75" y="79" text-anchor="middle" font-family="Arial,sans-serif" font-size="6" fill="#fde" letter-spacing="1">PORTAL SURVIVOR</text>
-          <rect x="62" y="6" width="26" height="8" rx="3" fill="#6820a0"/>
-        </svg>
+        <img src="mug.png" alt="Autospec.ai 40 oz travel mug with Portal Survivor print" style="width:160px; height:auto;">
       </div>
 
       <p class="sub" style="text-align:center;">That wins you an <b style="color:var(--text);">Autospec.ai travel mug</b>. Tell us where to send it.</p>
 
       <div class="cform" id="winform">
-        <input type="text" id="w-name" placeholder="Full name">
-        <input type="text" id="w-email" placeholder="Work email">
-        <input type="text" id="w-company" placeholder="Company">
-        <textarea id="w-address" placeholder="Mailing address for your mug"></textarea>
-        <button class="btn" style="margin-top:4px;" onclick="submitContact()">Claim my mug</button>
+        <input type="text" id="w-name" placeholder="Full name *" autocomplete="name">
+        <input type="email" id="w-email" placeholder="Work email *" autocomplete="email">
+        <input type="text" id="w-company" placeholder="Company *" autocomplete="organization">
+        <select id="w-role">
+          <option value="">I am a... (select one)</option>
+          <option>Food / Beverage Brand</option>
+          <option>Co-Manufacturer / Co-Packer</option>
+          <option>Ingredient Supplier</option>
+          <option>Alcohol / Spirits Producer</option>
+          <option>Other</option>
+        </select>
+        <textarea id="w-address" placeholder="Mailing address for your mug *"></textarea>
+        <p class="perr" id="w-err" style="margin:-4px 0 8px;"></p>
+        <button class="btn" id="w-submit" style="margin-top:4px;" onclick="submitContact()">Claim my mug &#8594;</button>
+        <p style="font-size:11px; color:var(--faint); margin-top:8px;">We use your details only to mail your mug and reply to you. See the <a href="https://autospec.ai/#privacy">privacy policy</a>.</p>
       </div>
       <div class="thanks" id="winthanks">
-        <p class="punch" style="margin:0 0 6px;">Mug incoming. &#9749;</p>
-        <p class="sub">We will be in touch. Meanwhile, want to see the easy way?</p>
+        <p class="punch" style="margin:0 0 6px;">&#9989; Request received!</p>
+        <p class="sub">We'll be in touch within one business day, usually much sooner. Your mug ships after the show.</p>
+      </div>
+      <div class="thanks" id="winrepeat">
+        <p class="punch" style="margin:0 0 6px;">One mug per portal survivor.</p>
+        <p class="sub">You've already claimed yours, so this run was for glory alone. Very impressive, though.</p>
       </div>
 
       <button class="btn ghost" onclick="showDemo()">What you just did, in 0.8 seconds &#8594;</button>
@@ -379,30 +389,23 @@
     <p class="sub" style="margin-bottom:8px;"><b style="color:var(--text);">2.</b> Type its data into the SpecTangle portal, field by field, in the portal's format and units. Not yours. Theirs.</p>
     <p class="sub" style="margin-bottom:8px;"><b style="color:var(--text);">3.</b> Hit Submit before the clock hits zero. All 13 fields correct wins the travel mug.</p>
     <p class="sub" style="color:var(--mag);">Fair warning: the portal will fight you.</p>
-    <button class="btn" onclick="beginRun()">Start the 75 seconds</button>
+    <button class="btn" onclick="beginRun()">Start the 2 minutes</button>
   </div>
 </div>
 
-<!-- SABOTAGE MODALS -->
-<div class="ovl" id="m-session">
-  <div class="mbox">
-    <div class="mh">SpecTangle&trade; Security</div>
-    <div class="mb">Your session has expired due to inactivity.<small>You were active. It doesn't matter.</small></div>
-    <div class="mf"><button class="psubmit" onclick="resumeSession()">Sign in again</button></div>
-  </div>
-</div>
+<!-- SABOTAGE MODAL -->
 <div class="ovl" id="m-template">
   <div class="mbox">
     <div class="mh">SpecTangle&trade; Update</div>
-    <div class="mb">This portal has been upgraded to <b>Snarl&reg; Template v3.3</b>. Your allergen, provenance, and unit-of-measure selections have been reset to comply with the new schema.<small>The new schema is identical to the old schema. To request this fix, please become a larger customer.</small></div>
+    <div class="mb">This portal has been upgraded to <b>Snarl&reg; Template v3.3</b>. Please review all previously entered data for compliance with the new schema.<small>The new schema is identical to the old schema. To request this fix, please become a larger customer.</small></div>
     <div class="mf"><button class="psubmit" onclick="resumeTemplate()">OK, I guess</button></div>
   </div>
 </div>
 <div class="toast" id="toast"></div>
 
 <script>
-var TIME = 75;
-var FORM_ENDPOINT = "";
+var TIME = 120;
+var FORM_ENDPOINT = "https://formspree.io/f/xlgyzvjo";
 var timeLeft = TIME, errors = 0, finished = false, tickIv = null, sabT = [];
 
 var ALLERGENS = ["Cereals containing gluten","Crustaceans","Eggs","Fish","Peanuts","Soya","Milk","Nuts","Celery","Mustard"];
@@ -482,8 +485,7 @@ function beginRun(){
   $("m-brief").classList.remove("on");
   if(tickIv) return;
   tickIv = setInterval(tick, 1000);
-  sabT.push(setTimeout(function(){ if(!finished) $("m-session").classList.add("on"); }, 25000));
-  sabT.push(setTimeout(function(){ if(!finished) $("m-template").classList.add("on"); }, 50000));
+  sabT.push(setTimeout(function(){ if(!finished) $("m-template").classList.add("on"); }, 60000));
 }
 
 function tick(){
@@ -513,21 +515,9 @@ function excelDecoy(){
   toast("Online forms must be completed via the platform and cannot be exported to Excel.");
 }
 
-function resumeSession(){
-  $("m-session").classList.remove("on");
-  var ids = ["nv-energy","nv-moist","nv-fat","f-date","f-ref","f-cust"];
-  for(var i=0; i<ids.length; i++){
-    if($(ids[i]).value){ $(ids[i]).value = ""; break; }
-  }
-  toast("Field data was lost during re-authentication.");
-}
-
 function resumeTemplate(){
   $("m-template").classList.remove("on");
-  $("f-allerg").querySelectorAll("input").forEach(function(b){ b.checked = false; });
-  $("f-country").value = "";
-  ALLROWS.forEach(function(n){ $("nu-" + n.id).value = ""; });
-  toast("Selections reset. Thank you for your compliance.");
+  toast("Nothing actually changed. Thank you for your compliance.");
 }
 
 function mark(id, bad, msg){
@@ -633,7 +623,6 @@ function finish(win){
   finished = true;
   clearInterval(tickIv);
   sabT.forEach(clearTimeout);
-  $("m-session").classList.remove("on");
   $("m-template").classList.remove("on");
 
   var fieldsOk = countCorrect();
@@ -642,6 +631,12 @@ function finish(win){
 
   if(win){
     $("winstats").textContent = "13 fields. " + used + " seconds. " + errors + " error" + (errors===1?"":"s") + " along the way. Almost nobody does that.";
+    var claimed = false;
+    try { claimed = !!localStorage.getItem("pp_mug_claimed"); } catch(e){}
+    if(claimed){
+      $("winform").style.display = "none";
+      $("winrepeat").classList.add("on");
+    }
     show("s-win");
   } else {
     $("score").textContent = finalScore;
@@ -666,30 +661,53 @@ function showDemo(){
 }
 
 function submitContact(){
-  var f = {
-    name:$("w-name").value.trim(),
-    email:$("w-email").value.trim(),
-    company:$("w-company").value.trim(),
-    address:$("w-address").value.trim()
-  };
-  if(!f.name || !f.email){ toast("Name and email are required."); return; }
+  var fields = { name:"w-name", email:"w-email", company:"w-company", address:"w-address" };
+  var f = {};
+  var bad = [];
+  Object.keys(fields).forEach(function(k){
+    var el = $(fields[k]);
+    f[k] = el.value.trim();
+    el.classList.remove("err");
+    if(!f[k]){ bad.push(el); }
+  });
+  var errEl = $("w-err");
+  var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.email);
+  var FREE_DOMAINS = ["gmail.com","googlemail.com","yahoo.com","yahoo.co.uk","hotmail.com","hotmail.co.uk","outlook.com","outlook.co.uk","live.com","live.co.uk","aol.com","icloud.com","me.com","mac.com","proton.me","protonmail.com","gmx.com","gmx.net","mail.com","yandex.com","yandex.ru","zoho.com","msn.com","comcast.net","att.net","btinternet.com"];
+  var emailFree = emailOk && FREE_DOMAINS.indexOf(f.email.split("@")[1].toLowerCase()) !== -1;
+  if(f.email && (!emailOk || emailFree)){ bad.push($("w-email")); }
+  if(bad.length){
+    bad.forEach(function(el){ el.classList.add("err"); });
+    if(f.email && emailFree){ errEl.textContent = "Please use your work email address. Personal domains like Gmail are not accepted."; }
+    else if(f.email && !emailOk){ errEl.textContent = "Please enter a valid work email address."; }
+    else { errEl.textContent = "Please complete the highlighted fields."; }
+    return;
+  }
+  errEl.textContent = "";
+  f.role = $("w-role").value || "Not specified";
   f.type = "Mug winner (Portal Purgatory)";
   f.score = finalScore;
+  var btn = $("w-submit");
+  btn.disabled = true;
+  btn.textContent = "Sending...";
   function done(){
+    try { localStorage.setItem("pp_mug_claimed", f.email); } catch(e){}
     $("winform").style.display = "none";
     $("winthanks").classList.add("on");
+  }
+  function fallback(){
+    window.location.href = mailtoLink(f);
+    done();
   }
   if(FORM_ENDPOINT){
     fetch(FORM_ENDPOINT, {
       method:"POST",
       headers:{ "Content-Type":"application/json", "Accept":"application/json" },
       body: JSON.stringify(f)
-    }).then(done).catch(function(){
-      window.location.href = mailtoLink(f); done();
-    });
+    }).then(function(r){
+      if(r.ok){ done(); } else { fallback(); }
+    }).catch(fallback);
   } else {
-    window.location.href = mailtoLink(f);
-    done();
+    fallback();
   }
 }
 
