@@ -18,14 +18,27 @@
     'ad_user_data': 'denied',
     'ad_personalization': 'denied'
   });
-  try {
-    var cc = localStorage.getItem('cookieChoice') || (document.cookie.match(/(?:^|; )cookieChoice=([^;]*)/) || [])[1] || "";
-    if(/accept|granted|true|yes/i.test(cc)){
-      gtag('consent', 'update', { 'analytics_storage': 'granted' });
-    }
-  } catch(e){}
   gtag('config', 'G-0NRRFTHJRV');
   function track(n, p){ try { gtag('event', n, p || {}); } catch(e){} }
+  function loadClarity(){
+    if(window.__clarityLoaded) return;
+    window.__clarityLoaded = true;
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "xiji0s2kac");
+  }
+  function readConsent(){
+    try {
+      return localStorage.getItem('cookieChoice') || (document.cookie.match(/(?:^|; )cookieChoice=([^;]*)/) || [])[1] || "";
+    } catch(e){ return ""; }
+  }
+  function grantAnalytics(){
+    gtag('consent', 'update', { 'analytics_storage': 'granted' });
+    loadClarity();
+  }
+  if(/accept|granted|true|yes/i.test(readConsent())){ grantAnalytics(); }
 </script>
 <style>
   :root{
@@ -423,6 +436,15 @@
 </div>
 <div class="toast" id="toast"></div>
 
+<!-- COOKIE CONSENT BAR -->
+<div id="cbar" style="display:none; position:fixed; bottom:0; left:0; right:0; background:var(--card); border-top:1px solid var(--bd); box-shadow:0 -4px 20px rgba(100,40,160,0.10); padding:12px 16px; z-index:70;">
+  <div style="max-width:520px; margin:0 auto; display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+    <p style="font-size:12px; color:var(--muted); flex:1; min-width:220px; margin:0; line-height:1.5;">We use analytics cookies to see how the game is played. No ads, no selling data. <a href="https://autospec.ai/">Privacy policy</a></p>
+    <button onclick="consentDecline()" style="background:var(--card); border:1px solid var(--bd); border-radius:8px; padding:8px 14px; font-family:'Plus Jakarta Sans',sans-serif; font-size:13px; color:var(--muted); cursor:pointer;">Decline</button>
+    <button onclick="consentAccept()" style="background:linear-gradient(135deg,var(--pri),var(--mag)); border:none; border-radius:8px; padding:8px 16px; font-family:'Plus Jakarta Sans',sans-serif; font-size:13px; font-weight:600; color:#fff; cursor:pointer;">Accept analytics</button>
+  </div>
+</div>
+
 <script>
 var TIME = 120;
 var FORM_ENDPOINT = "https://formspree.io/f/xlgyzvjo";
@@ -775,6 +797,21 @@ function renderBoard(me){
     $("record").textContent = "Record on this device: " + b[0].s + " (" + b[0].n + "). Beat it.";
   }
 })();
+
+function saveConsent(v){
+  try { localStorage.setItem("cookieChoice", v); } catch(e){}
+  document.cookie = "cookieChoice=" + v + "; path=/; max-age=31536000; SameSite=Lax";
+}
+function consentAccept(){
+  saveConsent("accepted");
+  grantAnalytics();
+  $("cbar").style.display = "none";
+}
+function consentDecline(){
+  saveConsent("declined");
+  $("cbar").style.display = "none";
+}
+if(!readConsent()){ $("cbar").style.display = "block"; }
 </script>
 </body>
 </html>
