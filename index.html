@@ -16,7 +16,8 @@
   });
   gtag('config', 'G-0NRRFTHJRV');
 </script>
-  <!-- Microsoft Clarity (loads only after analytics consent) -->
+
+<!-- Microsoft Clarity (loads only after analytics consent) -->
 <script type="text/javascript">
   (function(){
     function loadClarity(){
@@ -29,6 +30,7 @@
       })(window, document, "clarity", "script", "xiji0s2kac");
     }
     window.loadClarity = loadClarity;
+    // If the visitor already accepted cookies on a previous visit, load now.
     var cc = "";
     try { cc = localStorage.getItem("cookieChoice") || (document.cookie.match(/(?:^|; )cookieChoice=([^;]*)/)||[])[1] || ""; } catch(e){}
     if(/accept|granted|true|yes/i.test(cc)) loadClarity();
@@ -7734,6 +7736,7 @@ function acceptCookies() {
   if (typeof gtag !== 'undefined') {
     gtag('consent', 'update', { 'analytics_storage': 'granted' });
   }
+  if (typeof window.loadClarity === 'function') window.loadClarity();
 }
 function rejectCookies() {
   try { localStorage.setItem('cookieChoice', 'rejected'); } catch(e) {}
@@ -7788,6 +7791,7 @@ try {
     <div class="privacy-section">
       <h4>5. Third-party services</h4>
       <p><strong>Google Analytics 4</strong>, used to analyse website traffic. Data is processed by Google LLC. Google may transfer data outside the EEA under Standard Contractual Clauses. Analytics only activates with your consent. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color:var(--pri)">Google Privacy Policy →</a></p>
+      <p style="margin-top:8px"><strong>Microsoft Clarity</strong>, used to understand how visitors interact with our site through aggregated heatmaps and session insights. Data is processed by Microsoft Corporation. Clarity only activates with your consent. <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener" style="color:var(--pri)">Microsoft Privacy Statement →</a></p>
       <p style="margin-top:8px"><strong>Formspree</strong>, used to receive contact form submissions. Your form data is transmitted securely to Formspree and forwarded to our team email. <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener" style="color:var(--pri)">Formspree Privacy Policy →</a></p>
     </div>
 
