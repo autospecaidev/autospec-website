@@ -7,6 +7,26 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0NRRFTHJRV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('consent', 'default', {
+    'analytics_storage': 'denied',
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied'
+  });
+  try {
+    var cc = localStorage.getItem('cookieChoice') || (document.cookie.match(/(?:^|; )cookieChoice=([^;]*)/) || [])[1] || "";
+    if(/accept|granted|true|yes/i.test(cc)){
+      gtag('consent', 'update', { 'analytics_storage': 'granted' });
+    }
+  } catch(e){}
+  gtag('config', 'G-0NRRFTHJRV');
+  function track(n, p){ try { gtag('event', n, p || {}); } catch(e){} }
+</script>
 <style>
   :root{
     --pri:#8b35c8; --pri-lt:#a855d4; --pri-dk:#6820a0; --mag:#c020b0; --mag-lt:#d840c8;
@@ -148,7 +168,7 @@
       <h1 class="gtext" style="font-size:30px; font-weight:800; line-height:1.15;">You scanned the postcard.<br>Good instinct.</h1>
       <p class="sub" style="margin-top:12px;">Autospec.ai builds AI agents that move food spec data between suppliers, brands, and co-packers, so nobody retypes anything, ever. Now choose your clearance level.</p>
 
-      <a class="lvl" href="https://autospec.ai/?src=game-tourist">
+      <a class="lvl" href="https://autospec.ai/?src=game-tourist" onclick="track('level1_website')">
         <div class="lv">LEVEL 1 &middot; TOURIST</div>
         <b>Take me directly to the website</b>
         <p>Straight to autospec.ai. No suffering involved. (Where's the fun in that?)</p>
@@ -484,6 +504,7 @@ function startGame(){
 function beginRun(){
   $("m-brief").classList.remove("on");
   if(tickIv) return;
+  track("game_start");
   tickIv = setInterval(tick, 1000);
   sabT.push(setTimeout(function(){ if(!finished) $("m-template").classList.add("on"); }, 60000));
 }
@@ -628,6 +649,7 @@ function finish(win){
   var fieldsOk = countCorrect();
   var used = TIME - Math.max(timeLeft, 0);
   finalScore = Math.max(0, fieldsOk*100 + Math.max(timeLeft,0)*10 - errors*25);
+  track(win ? "game_win" : "game_lose", { score: finalScore, errors: errors, fields_correct: fieldsOk, seconds_used: used });
 
   if(win){
     $("winstats").textContent = "13 fields. " + used + " seconds. " + errors + " error" + (errors===1?"":"s") + " along the way. Almost nobody does that.";
@@ -653,6 +675,7 @@ function showDemo(){
   show("s-demo");
   if(demoRun) return;
   demoRun = true;
+  track("view_easy_way");
   setTimeout(function(){ $("xfill").style.width = "100%"; }, 400);
   var rows = document.querySelectorAll("#s-demo .xrow");
   rows.forEach(function(r, i){
@@ -691,6 +714,7 @@ function submitContact(){
   btn.textContent = "Sending...";
   function done(){
     try { localStorage.setItem("pp_mug_claimed", f.email); } catch(e){}
+    track("mug_claim", { score: finalScore });
     $("winform").style.display = "none";
     $("winthanks").classList.add("on");
   }
