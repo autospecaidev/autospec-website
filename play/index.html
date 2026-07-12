@@ -545,11 +545,11 @@ function requestCode(){
   codeState = 1;
   $("codehelp").style.display = "none";
   var info = $("codeinfo");
-  info.textContent = "Please email Global.SupplyQuality@ to obtain YOUR OWN product codes. Awaiting reply (typically 3 to 5 business days)...";
+  info.textContent = "Emailing your customer for the code... keep filling in the other fields and check back here in a moment. (In real life this takes 3 to 5 business days.)";
   setTimeout(function(){
     if(finished) return;
-    info.innerHTML = 'Reply received: your item code is <b>KRY-88213</b>.';
-    toast("A reply! In only 8 seconds. This never happens.");
+    info.innerHTML = 'Reply received! Your customer item code is <b>KRY-88213</b>.';
+    toast("Your customer replied in seconds. Enjoy it, this never happens in real life.");
   }, 8000);
   return false;
 }
