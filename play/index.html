@@ -178,14 +178,14 @@
     <div class="narrow" style="padding-top:32px;">
       <a href="https://autospec.ai"><img src="https://autospec.ai/autospec-logo.png" alt="Autospec.ai" style="height:36px; display:block; margin-bottom:20px;"></a>
       <span class="chip">CLEARANCE GRANTED</span>
-      <h1 class="gtext" style="font-size:30px; font-weight:800; line-height:1.15;">You scanned the postcard.<br>Good instinct.</h1>
+      <h1 class="gtext" style="font-size:30px; font-weight:800; line-height:1.15;">You accepted the challenge.<br>Good instinct.</h1>
       <p class="sub" style="margin-top:12px;">Autospec.ai builds AI agents that move food spec data between suppliers, brands, and co-packers, so nobody retypes anything, ever. Now choose your clearance level.</p>
 
-      <a class="lvl" href="https://autospec.ai/?src=game-tourist" onclick="track('level1_website')">
-        <div class="lv">LEVEL 1 &middot; TOURIST</div>
-        <b>Take me directly to the website</b>
-        <p>Straight to autospec.ai. No suffering involved. (Where's the fun in that?)</p>
-      </a>
+      <div class="lvl" onclick="showTraining()">
+        <div class="lv">LEVEL 1 &middot; CADET</div>
+        <b>Training: one field, zero traps</b>
+        <p>A gentle warm-up. Copy one value from a spec sheet into a friendly portal. What could go wrong?</p>
+      </div>
 
       <div class="lvl hot" onclick="startGame()">
         <div class="lv" style="color:var(--mag);">LEVEL 2 &middot; FIELD AGENT</div>
@@ -351,7 +351,7 @@
       <p class="sub" style="margin-top:10px;" id="winstats">You beat the portal.</p>
 
       <div class="mugbox">
-        <img src="mug.png" alt="Autospec.ai 40 oz travel mug with Portal Survivor print" style="width:160px; height:auto;">
+        <img src="mug-graphic.png" alt="Autospec.ai travel mug with Portal Survivor print" style="width:160px; height:auto;">
       </div>
 
       <p class="sub" style="text-align:center;">That wins you an <b style="color:var(--text);">Autospec.ai travel mug</b>. Tell us where to send it.</p>
@@ -392,7 +392,7 @@
       <a href="https://autospec.ai"><img src="https://autospec.ai/autospec-logo.png" alt="Autospec.ai" style="height:32px; display:block; margin-bottom:18px;"></a>
       <span class="chip">THE EASY WAY</span>
       <h1 class="gtext" style="font-size:28px; font-weight:800; line-height:1.15;">Same PDF.<br>Zero typing.</h1>
-      <p class="sub" style="margin-top:10px;">This is what Autospec.ai does with the exact King Julian spec you just fought. Drop the PDF in. Done.</p>
+      <p class="sub" style="margin-top:10px;">This is what Autospec.ai does with the same King Julian spec the portal makes humans retype. Drop the PDF in. Done.</p>
 
       <div class="xdemo">
         <div class="xbar"><i id="xfill"></i></div>
@@ -411,6 +411,37 @@
       <button class="btn ghost" onclick="location.reload()">Back to start</button>
     </div>
   </section>
+</div>
+
+<!-- TRAINING LEVEL -->
+<div class="ovl" id="m-train">
+  <div style="background:var(--card); border-radius:12px; max-width:420px; width:100%; padding:24px; box-shadow:var(--shlg);">
+    <div id="t-form">
+      <span class="chip">LEVEL 1 &middot; TRAINING</span>
+      <div style="background:#fbfaf5; border:1px solid #c9bd96; border-radius:4px; padding:10px 12px; font-family:Arial,sans-serif; font-size:12px; color:#1c1c1c; margin-bottom:14px;">
+        <b style="font-family:Georgia,serif; color:#4a3a10;">&#9819; KING JULIAN INGREDIENTS CO.</b><br>
+        Product: <b>Whole Wheat Flour</b>
+      </div>
+      <div style="background:#ece9e2; border-radius:6px; overflow:hidden; font-family:Tahoma,sans-serif;">
+        <div style="background:#003399; color:#fff; font-size:11px; font-weight:bold; padding:5px 10px;">SpecTangle&trade; Training Portal <span style="font-weight:normal; opacity:.8;">Tutorial v0.1</span></div>
+        <div style="padding:12px 10px;">
+          <label style="display:block; font-size:12px; font-weight:bold; color:#333; margin-bottom:4px;">Product name <span class="req">*</span></label>
+          <input type="text" id="t-in" autocomplete="off" style="width:100%; padding:7px 8px; border:1px solid #999; background:#fff; font-family:Tahoma,sans-serif; font-size:13px;">
+          <div class="perr" id="t-err"></div>
+          <button class="psubmit" style="margin-top:10px;" onclick="trainSubmit()">Submit</button>
+        </div>
+      </div>
+    </div>
+    <div id="t-pass" style="display:none;">
+      <span class="chip">TRAINING COMPLETE</span>
+      <h2 class="gtext" style="font-size:24px; margin-bottom:10px;">&#11088; Passed. 100%.</h2>
+      <p class="sub" style="margin-bottom:8px;">Congratulations. One field. No traps. No clock.</p>
+      <p class="sub" style="margin-bottom:8px;">Your suppliers do <b style="color:var(--text);">thirteen fields</b>, in hostile formats, against the clock, for thirty different customers.</p>
+      <p class="sub" style="color:var(--mag);">Think you can survive that? The mug says you can't.</p>
+      <button class="btn" onclick="trainToGame()">I'm ready. Start Level 2 &#8594;</button>
+      <button class="btn ghost" onclick="trainClose()">Retreat</button>
+    </div>
+  </div>
 </div>
 
 <!-- MISSION BRIEFING -->
@@ -521,6 +552,35 @@ function toast(msg){
 function startGame(){
   show("s-game");
   $("m-brief").classList.add("on");
+}
+
+function showTraining(){
+  track("level1_training");
+  $("m-train").classList.add("on");
+}
+
+function trainSubmit(){
+  var v = $("t-in").value.trim().toLowerCase().replace(/\s+/g, " ");
+  var err = $("t-err");
+  if(v === "whole wheat flour"){
+    track("training_passed");
+    $("t-form").style.display = "none";
+    $("t-pass").style.display = "block";
+  } else {
+    err.textContent = v === "" ? "This field is mandatory. (It is the only field.)" : "Hmm. It is written right there. Take your time.";
+    err.classList.add("show");
+    $("t-in").style.borderColor = "#cc0000";
+    $("t-in").style.background = "#fff4f4";
+  }
+}
+
+function trainToGame(){
+  $("m-train").classList.remove("on");
+  startGame();
+}
+
+function trainClose(){
+  $("m-train").classList.remove("on");
 }
 
 function beginRun(){
