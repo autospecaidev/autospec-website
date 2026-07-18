@@ -82,9 +82,61 @@
     }
   }
 
+  /* 3. Calm the hero ecosystem graphic after its intro story plays.
+        Plays fully for ~20s (both label+stamp moments), then the chip swarm
+        fades out and the scene freezes on the stamped-label frame.
+        Hover resumes the animation. Adds a funnel link to the game below. */
+  function calmHero() {
+    var anchorEl = document.getElementById('label-artwork-2');
+    var svg = anchorEl && anchorEl.ownerSVGElement;
+    if (!svg || typeof svg.pauseAnimations !== 'function') return;
+
+    var chips = [];
+    var motions = svg.querySelectorAll('animateMotion');
+    Array.prototype.forEach.call(motions, function (m) {
+      var g = m.closest ? m.closest('g') : null;
+      if (g && !/label-artwork/.test(g.id || '')) chips.push(g);
+    });
+
+    function hideChips() {
+      chips.forEach(function (g) {
+        g.style.transition = 'opacity 0.7s';
+        g.style.opacity = '0';
+      });
+      setTimeout(function () {
+        chips.forEach(function (g) { g.style.display = 'none'; });
+      }, 750);
+    }
+    function freeze() { try { svg.pauseAnimations(); } catch (e) {} }
+
+    var reduce = false;
+    try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+
+    if (reduce) {
+      try { svg.setCurrentTime(20.6); } catch (e) {}
+      hideChips();
+      freeze();
+    } else {
+      setTimeout(hideChips, 19600);
+      setTimeout(freeze, 20500);
+    }
+
+    svg.addEventListener('mouseenter', function () { try { svg.unpauseAnimations(); } catch (e) {} });
+    svg.addEventListener('mouseleave', function () { try { svg.pauseAnimations(); } catch (e) {} });
+
+    /* funnel link below the graphic */
+    var a = document.createElement('a');
+    a.href = '/play/?src=diagram';
+    a.textContent = 'This is your supplier’s day. Try surviving it →';
+    a.style.cssText = 'display:block; text-align:center; margin:10px auto 2px; max-width:340px; background:#180e2a; color:#fff; font-family:"Plus Jakarta Sans",sans-serif; font-size:12.5px; font-weight:600; padding:9px 16px; border-radius:999px; text-decoration:none; box-shadow:0 2px 12px rgba(24,14,42,0.25);';
+    svg.insertAdjacentElement('afterend', a);
+  }
+
+  function boot() { init(); calmHero(); }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+    document.addEventListener('DOMContentLoaded', boot);
   } else {
-    init();
+    boot();
   }
 })();
