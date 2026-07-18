@@ -74,7 +74,7 @@
         '<p class="ppg-stats">87% of players lose to the portal · your suppliers play it daily</p>' +
         '</div>' +
         '<div class="ppg-mugcard">' +
-        '<img src="/play/mug.png" alt="Stanley Quencher travel mug with Autospec.ai Portal Survivor imprint">' +
+        '<img src="/play/mug-graphic.png" alt="Stanley Quencher travel mug with Autospec.ai Portal Survivor imprint">' +
         '<p class="ppg-mugcap">The prize: a 30 oz Stanley Quencher</p>' +
         '</div>' +
         '</div>';
